@@ -77,10 +77,18 @@ export function Logo({
   return (
     <span className={cn("inline-flex items-center gap-2.5 text-ink", className)}>
       <Mark className={size === "sm" ? "size-5" : "size-6"} />
+      {/* The line-height is folded into the size utility (`/[1]`) rather than
+          written as a separate `leading-none`. It has to be: `cn()` is
+          tailwind-merge, which files `leading-*` and an arbitrary `text-[...]`
+          in the same conflict group and silently drops the earlier one. The
+          wordmark was therefore rendering with the inherited body leading of
+          1.6 — a 24px line box around 15px type — which put its baseline 4-5px
+          above the breadcrumb sitting beside it in the header. Nothing warns
+          you: the class is simply absent from the DOM. */}
       <span
         className={cn(
-          "font-serif leading-none tracking-[-0.015em]",
-          size === "sm" ? "text-[0.9375rem]" : "text-[1.0625rem]",
+          "font-serif tracking-[-0.015em]",
+          size === "sm" ? "text-[0.9375rem]/[1]" : "text-[1.0625rem]/[1]",
         )}
       >
         Walkthrough
