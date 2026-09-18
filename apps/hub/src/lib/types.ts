@@ -402,6 +402,12 @@ export interface CatalogPersona {
 }
 
 export interface Catalog {
+  /**
+   * Catalog schema generation. Absent means v1 — the web-shaped generation
+   * with `route` and `desktopStatus`/`mobileStatus`, which the hub upgrades on
+   * read. See `lib/catalog-schema.ts`.
+   */
+  schemaVersion?: number;
   projectName: string;
   platform: Platform;
   driver?: CaptureDriver;

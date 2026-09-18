@@ -44,6 +44,7 @@ import { PLATFORMS } from "./types";
 import { DEFAULT_SURFACE_IDS, orderSurfaces, resolveSurface } from "./surfaces";
 import { isFeatureWalked } from "./coverage";
 import { computeStaleness } from "./run-history";
+import { normalizeCatalog } from "./catalog-schema";
 
 const ROOT = process.cwd();
 const REGISTRY = path.join(ROOT, "projects.json");
@@ -87,8 +88,18 @@ export function getProject(slug: string): Project | null {
 
 // ── Catalog ─────────────────────────────────────────────────────────────────
 
+/**
+ * Read a project's catalog, upgrading an older generation on the way in.
+ *
+ * Normalising here rather than at the call sites means every consumer — the
+ * feature grid, coverage, the health checks, the constellation — sees one
+ * shape, and a project walked by an older toolchain renders identically to one
+ * walked today. See `lib/catalog-schema.ts` for what the upgrade covers.
+ */
 export function getCatalog(slug: string): Catalog | null {
-  return readJson<Catalog>(path.join(projectDir(slug), "catalog.json"));
+  const raw = readJson<unknown>(path.join(projectDir(slug), "catalog.json"));
+  if (raw === null) return null;
+  return normalizeCatalog(raw).catalog;
 }
 
 export function getFeature(slug: string, featureId: string): CatalogFeature | null {

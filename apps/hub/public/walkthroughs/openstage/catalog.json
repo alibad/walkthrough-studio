@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Openstage",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "http://localhost:3000",
+  "discoveredAt": "2026-09-18T17:24:57.804Z",
+  "updatedAt": "2026-09-18T17:25:32.673Z",
+  "features": [
+    {
+      "featureId": "gallery",
+      "featureName": "Presentation gallery",
+      "location": "/",
+      "category": "decks",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "issueCount": 2,
+      "lastWalkthroughAt": "2026-09-18T17:25:32.673Z"
+    },
+    {
+      "featureId": "deck-scroll",
+      "featureName": "Scroll deck",
+      "location": "/awwwards-flagship",
+      "category": "decks",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "issueCount": 2,
+      "lastWalkthroughAt": "2026-09-18T17:25:32.673Z"
+    },
+    {
+      "featureId": "deck-slides",
+      "featureName": "Slide deck",
+      "location": "/sample-slides",
+      "category": "decks",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done"
+      },
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-18T17:25:32.673Z"
+    },
+    {
+      "featureId": "deck-draft-unlisted",
+      "featureName": "Unlisted draft deck",
+      "location": "/ai-patterns",
+      "category": "viewer",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "issueCount": 1,
+      "lastWalkthroughAt": "2026-09-18T17:25:32.673Z"
+    },
+    {
+      "featureId": "admin-dashboard",
+      "featureName": "Admin dashboard",
+      "location": "/admin",
+      "category": "admin",
+      "requiresAuth": true,
+      "authRole": "admin",
+      "surfaceStatus": {
+        "desktop": "done"
+      },
+      "issueCount": 1,
+      "lastWalkthroughAt": "2026-09-18T17:25:32.673Z"
+    },
+    {
+      "featureId": "share-link",
+      "featureName": "Share link",
+      "location": "/share/[id]",
+      "category": "viewer",
+      "requiresAuth": false,
+      "notes": "Not walked: the route needs a real share id and this run created none. Creating one would have written a record to the app's store, which a walk does not do uninvited.",
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "deck-password-gate",
+      "featureName": "Password-gated deck",
+      "location": "/auth/[slug]",
+      "category": "auth",
+      "requiresAuth": false,
+      "notes": "Not walked: no deck in the registry is currently marked protected, so the gate has nothing to guard and cannot be reached honestly. The admin dashboard confirms it — Password Protected reads 0.",
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    }
+  ],
+  "personas": [
+    {
+      "id": "reader",
+      "name": "Reader with a link",
+      "description": "Anyone handed a deck URL. No account, no sign-in, often on a phone in a room where the talk is already happening.",
+      "entryPoint": "/",
+      "keyJourneys": [
+        "find-and-read"
+      ],
+      "navItems": [
+        {
+          "label": "Gallery",
+          "location": "/"
+        },
+        {
+          "label": "A deck",
+          "location": "/awwwards-flagship"
+        }
+      ]
+    }
+  ]
+}

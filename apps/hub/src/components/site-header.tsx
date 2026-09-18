@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { GithubMark } from "@/components/brand/github-mark";
 import { Logo } from "@/components/brand/logo";
+import { REPO } from "@/lib/adoption";
 import { cn } from "@/lib/utils";
 
 export interface Crumb {
@@ -82,7 +84,27 @@ export function SiteHeader({
           </nav>
         )}
 
-        <div className="ml-auto flex shrink-0 items-center gap-2">{action}</div>
+        <div className="ml-auto flex shrink-0 items-center gap-3">
+          {action}
+          {/* Persistent, quiet, and on every page: a reader who decides
+              mid-walkthrough that they want this for their own app should not
+              have to navigate home to find out how. */}
+          <Link
+            href="/use"
+            className="hidden text-label text-ink-muted transition-colors hover:text-ink sm:inline"
+          >
+            Use it on your app
+          </Link>
+          <Link
+            href={REPO.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center rounded-sm text-ink-faint transition-colors hover:text-ink"
+            aria-label={`${REPO.owner}/${REPO.name} on GitHub`}
+          >
+            <GithubMark className="size-4" />
+          </Link>
+        </div>
       </div>
     </header>
   );
@@ -98,7 +120,23 @@ export function SiteFooter({ className }: { className?: string }) {
           <code className="font-mono text-[0.8125rem] text-ink-muted">walkthrough</code> skill
           and read straight off disk. Nothing here is generated at request time.
         </p>
-        <p className="shrink-0">Walkthrough Studio</p>
+        <p className="flex shrink-0 items-center gap-3">
+          <Link
+            href="/use"
+            className="text-ink-muted underline decoration-rule-strong underline-offset-2 transition-colors hover:text-ink"
+          >
+            Use it on your own app
+          </Link>
+          <span aria-hidden>·</span>
+          <Link
+            href={REPO.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink-muted underline decoration-rule-strong underline-offset-2 transition-colors hover:text-ink"
+          >
+            {REPO.owner}/{REPO.name}
+          </Link>
+        </p>
       </div>
     </footer>
   );

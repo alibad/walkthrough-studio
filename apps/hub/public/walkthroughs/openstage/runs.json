@@ -1,0 +1,46 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-18T17:25:32.687Z",
+      "startedAt": "2026-09-18T17:24:57.804Z",
+      "completedAt": "2026-09-18T17:25:32.687Z",
+      "skill": "walkthrough",
+      "agent": "walk-openstage.mjs",
+      "target": {
+        "sha": "eb4abd9c19b90a54a010d967fd8a37bb1539ed8a",
+        "shaShort": "eb4abd9",
+        "branch": "main",
+        "dirty": false,
+        "commitSubject": "fix: brand Openstage as Human Quest and stop showing the public a setup wizard"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "http://localhost:3000",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "backend: Playwright (launched Chromium) · invariants verified: retina, animationsFrozen, timeFrozen, consoleNetwork, video, realMobile, freshContext · dev-server error overlays (Next.js / Vite) hidden; the console errors behind them are still collected and reported · surface \"mobile\": the page overflows horizontally — content is 560px wide on a 393px surface, so the layout viewport expanded to 560px and a real phone renders this zoomed out with a sideways scroll · surface \"mobile\": the page overflows horizontally — content is 456px wide on a 393px surface, so the layout viewport expanded to 456px and a real phone renders this zoomed out with a sideways scroll"
+      },
+      "coverage": {
+        "features": [
+          "gallery",
+          "deck-scroll",
+          "deck-slides",
+          "deck-draft-unlisted",
+          "admin-dashboard"
+        ],
+        "personas": [
+          "reader"
+        ],
+        "screenshots": 26,
+        "videos": 1,
+        "issues": 6
+      }
+    }
+  ]
+}

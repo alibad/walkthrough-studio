@@ -1,0 +1,50 @@
+{
+  "featureId": "deck-slides",
+  "featureName": "Slide deck",
+  "type": "feature",
+  "location": "/sample-slides",
+  "category": "decks",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "A fixed frame a presenter can drive blind",
+  "overview": "Slide mode renders a deck as composed, fixed-height slides driven by the keyboard, so a presenter with a clicker never scrolls, never reflows and never waits for a page load between slides.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Title slide, fixed frame",
+      "action": "Opened the slide-mode deck.",
+      "description": "Slide mode is the other half of the product: a fixed-height frame that never scrolls, so every slide is composed rather than flowed. What fits is what the author decided fits.",
+      "screenshotFilename": "deck-slides/desktop/step-01-title.png",
+      "screenshotAlt": "The title slide of the slide-mode sample deck",
+      "location": "/sample-slides",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Advancing with the keyboard",
+      "action": "Pressed the right arrow key.",
+      "description": "The right arrow advances the deck, which is what a presenter's clicker sends. The frame stays fixed and only the content inside it changes — no scroll position to lose, no layout reflow between slides.",
+      "screenshotFilename": "deck-slides/desktop/step-02-slide-2.png",
+      "screenshotAlt": "Slide 2 of the sample deck",
+      "location": "/sample-slides",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "And again, without a reload",
+      "action": "Pressed the right arrow key.",
+      "description": "Successive advances stay within one page: the deck is a single route with slide state, so a presenter never waits for a navigation mid-sentence.",
+      "screenshotFilename": "deck-slides/desktop/step-03-slide-3.png",
+      "screenshotAlt": "Slide 3 of the sample deck",
+      "location": "/sample-slides",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Fixed-height slide frame",
+    "Keyboard/clicker advance without navigation"
+  ],
+  "generatedAt": "2026-09-18T17:25:21.094Z",
+  "capturedAt": "2026-09-18T17:25:21.094Z"
+}

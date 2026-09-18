@@ -1,0 +1,58 @@
+{
+  "personaId": "reader",
+  "journeyId": "find-and-read",
+  "headline": "From a shared link to reading the thing, with nothing in between",
+  "overview": "The Reader is handed a URL and opens it on a phone. Openstage's job for her is entirely negative — no account, no install, no controls to learn — and the journey is worth walking precisely because a product that does its job this way leaves nothing to screenshot except the absence of obstacles.",
+  "payoff": "She is reading the deck within a second of tapping the link, on a phone, with no account.",
+  "scenes": [
+    {
+      "id": "arrive",
+      "title": "A link, on a phone, two minutes before the talk",
+      "narrative": "She has the URL and nothing else — no account, no app, no sense of what she is about to open. The gallery loads to a list of four decks with their type and date, which is exactly enough to tell her she is in the right place and which of them is the one being presented.",
+      "frames": [
+        "journey-reader/mobile/scene-01-arrive.png"
+      ],
+      "frameCaptions": [
+        "The gallery as a first-time reader meets it, on a phone"
+      ],
+      "location": "/",
+      "surface": "mobile",
+      "sourceFeature": "gallery",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "open",
+      "title": "She taps the one with the interesting name",
+      "narrative": "No login wall, no cookie banner, no app-install interstitial. The deck opens straight onto its hero and she is reading within a second of tapping — which is the entire product promise for somebody in her position.",
+      "frames": [
+        "journey-reader/mobile/scene-02-open.png"
+      ],
+      "frameCaptions": [
+        "The deck opens directly, with nothing between the tap and the content"
+      ],
+      "location": "/awwwards-flagship",
+      "surface": "mobile",
+      "sourceFeature": "deck-scroll",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "reading",
+      "title": "She scrolls, because there is nothing else to learn",
+      "narrative": "A scroll deck has no controls: no next button to find, no slide count to track, no gesture to discover. She reads it the way she reads everything else on this phone, and the deck never asks her to do anything different.",
+      "frames": [
+        "journey-reader/mobile/scene-03-reading.png"
+      ],
+      "frameCaptions": [
+        "Partway into the argument, reached by scrolling"
+      ],
+      "location": "/awwwards-flagship",
+      "surface": "mobile",
+      "sourceFeature": "deck-scroll",
+      "verificationStatus": "live-walked",
+      "note": "Measured during this run: the document is 560px wide on a 393px phone, so the browser zooms out to fit and this page can be scrolled sideways. She would not know why it looks slightly small — she would just pinch."
+    }
+  ],
+  "platform": "web",
+  "surface": "mobile",
+  "capturedAt": "2026-09-18T17:25:32.652Z"
+}

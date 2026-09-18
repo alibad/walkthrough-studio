@@ -1,0 +1,50 @@
+{
+  "featureId": "deck-scroll",
+  "featureName": "Scroll deck",
+  "type": "feature",
+  "location": "/awwwards-flagship",
+  "category": "decks",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "The deck is the page",
+  "overview": "Scroll decks trade slide mechanics for reading mechanics: no controls to learn, no deck that ends before the reader is finished, and a shareable position anywhere in the argument.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "A deck that opens like an essay",
+      "action": "Opened the flagship scroll deck.",
+      "description": "A scroll deck has no slide numbers and no next button. The first screen is a full-bleed hero that sets the argument, and everything after it is reached the way a reader already knows how to reach it.",
+      "screenshotFilename": "deck-scroll/mobile/step-01-hero.png",
+      "screenshotAlt": "The opening hero of the flagship scroll deck",
+      "location": "/awwwards-flagship",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The argument begins",
+      "action": "Scrolled to 1.4 viewport heights.",
+      "description": "The first section after the hero states the claim the rest of the deck spends its length defending.",
+      "screenshotFilename": "deck-scroll/mobile/step-02-scroll-1.png",
+      "screenshotAlt": "The flagship deck partway down, at 1.4 viewport heights",
+      "location": "/awwwards-flagship",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Evidence, mid-scroll",
+      "action": "Scrolled to 3.2 viewport heights.",
+      "description": "Sections alternate between assertion and demonstration, so a reader who stops anywhere still has something concrete on screen.",
+      "screenshotFilename": "deck-scroll/mobile/step-03-scroll-2.png",
+      "screenshotAlt": "The flagship deck partway down, at 3.2 viewport heights",
+      "location": "/awwwards-flagship",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Full-bleed hero",
+    "Scroll-bound sections with no navigation to learn"
+  ],
+  "generatedAt": "2026-09-18T17:25:18.468Z",
+  "capturedAt": "2026-09-18T17:25:18.468Z"
+}

@@ -1,0 +1,61 @@
+{
+  "featureId": "gallery",
+  "featureName": "Presentation gallery",
+  "type": "feature",
+  "location": "/",
+  "category": "decks",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "An index that answers questions, not a landing page",
+  "overview": "The gallery is where a reader decides which deck to open. Search, a type filter and a grouping control all act on the same table in place, with no page loads. The per-type pill counts track the filter; the headline total reports the library.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Every live deck, counted",
+      "action": "Opened the gallery.",
+      "description": "The landing surface is an index, not a marketing page: a count, a search field, a type filter and the decks themselves in a table. The headline total and the filter pills agree at rest — four decks, three scroll and one slides — so nothing is hidden from the list before you touch anything.",
+      "screenshotFilename": "gallery/mobile/step-01-gallery.png",
+      "screenshotAlt": "The Openstage gallery listing four presentations",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Search narrows to one",
+      "action": "Typed \"grammar\" into the search field.",
+      "description": "Filtering happens as you type and against the title, so a half-remembered deck name is enough. Note what does **not** move: the headline count stays at the library total while the table below it narrows, so the big number answers \"how many decks are there\" rather than \"how many am I looking at\".",
+      "screenshotFilename": "gallery/mobile/step-02-search.png",
+      "screenshotAlt": "The gallery filtered to a single deck by the search term \"grammar\"",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Two kinds of deck, filtered apart",
+      "action": "Clicked the \"Slides\" filter pill.",
+      "description": "Openstage renders two genuinely different artefacts — a long-form scroll and a fixed slide deck — and the filter is how you pick which kind you are shopping for. Each pill carries its own count, so an empty category is visible before you click it. The filtered count lives on the pill; the headline total stays put.",
+      "screenshotFilename": "gallery/mobile/step-03-filter-slides.png",
+      "screenshotAlt": "The gallery filtered to slide decks only",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Grouping turns the list into sections",
+      "action": "Set the grouping control to \"By type\".",
+      "description": "Grouping re-sections the table by type, customer, author or date without leaving the page. On a library of four this is convenience; on a library of forty it is the difference between a list and an index.",
+      "screenshotFilename": "gallery/mobile/step-04-group-by-type.png",
+      "screenshotAlt": "The gallery grouped into sections by deck type",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Type-ahead search across deck titles",
+    "Type filter with per-category counts",
+    "Re-grouping by type, customer, author or date without a page load"
+  ],
+  "generatedAt": "2026-09-18T17:25:06.304Z",
+  "capturedAt": "2026-09-18T17:25:06.304Z"
+}

@@ -4,7 +4,7 @@
     "",
     "Wikipedia is the shipped sample because it costs nothing to reproduce: no",
     "account, no local build, no secrets. Delete this entry and the matching",
-    "public/walkthroughs/wikipedia directory to start from empty —",
+    "public/walkthroughs/wikipedia directory to start from empty \u2014",
     "`pnpm reset:demo` does both.",
     "",
     "Never put a literal secret in this file. Use a $ENV_VAR placeholder in",
@@ -14,9 +14,9 @@
     {
       "slug": "wikipedia",
       "name": "Wikipedia",
-      "tag": "Sample · public site",
-      "description": "The shipped sample: search, reading an article, and the revision history — walked live against the public site.",
-      "longDescription": "Included because anyone who clones this repo can re-run the walk and get comparable output: no account, no local build, no secrets. It also happens to be the clearest available example of the problem this tool addresses — Wikipedia makes drift visible by keeping every revision addressable and every change diffable, which a deployed application cannot do. Article text is available under CC BY-SA 4.0; this is a sample, not an affiliation.",
+      "tag": "Sample \u00b7 public site",
+      "description": "The shipped sample: search, reading an article, and the revision history \u2014 walked live against the public site.",
+      "longDescription": "Included because anyone who clones this repo can re-run the walk and get comparable output: no account, no local build, no secrets. It also happens to be the clearest available example of the problem this tool addresses \u2014 Wikipedia makes drift visible by keeping every revision addressable and every change diffable, which a deployed application cannot do. Article text is available under CC BY-SA 4.0; this is a sample, not an affiliation.",
       "target": {
         "platform": "web",
         "driver": "playwright",
@@ -26,7 +26,38 @@
         "github": "wikimedia/mediawiki",
         "githubBranch": "master"
       },
-      "auth": { "type": "none" }
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "openstage",
+      "name": "Openstage",
+      "tag": "Human Quest \u00b7 presentation platform",
+      "description": "The deck platform behind present.openstage.humanquest.net \u2014 a gallery, scroll and slide decks, a share gate and an admin studio, walked against the local dev server.",
+      "longDescription": "Openstage turns a repository into a presentation: authors register decks, the gallery filters and groups them, and each deck renders as either a long-form scroll or a fixed slide deck. It is walked here because it is the app the Walkthrough pattern is demonstrated on at AI Tinkerers Doha Round 3 \u2014 and because it exercises the parts of this schema that Wikipedia cannot: an authenticated area, a draft/unlisted surface, and interactive controls that are features of a page rather than pages of their own.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "local": "http://localhost:3000",
+        "production": "https://present.openstage.humanquest.net"
+      },
+      "codebase": {
+        "local": "/Users/alibadereddin/Code/GitHub/openstage",
+        "github": "alibad/openstage",
+        "githubBranch": "main",
+        "stack": "nextjs-app-router"
+      },
+      "auth": {
+        "type": "password",
+        "gate": "/auth/admin",
+        "roles": {
+          "admin": {
+            "password": "$ADMIN_PASSWORD",
+            "note": "Unset in the local environment; see issues.json \u2014 the middleware gate fails open when it is missing."
+          }
+        }
+      }
     }
   ]
 }

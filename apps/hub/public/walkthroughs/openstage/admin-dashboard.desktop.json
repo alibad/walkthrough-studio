@@ -1,0 +1,41 @@
+{
+  "featureId": "admin-dashboard",
+  "featureName": "Admin dashboard",
+  "type": "feature",
+  "location": "/admin",
+  "category": "admin",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Every deck, its status, and who can see it",
+  "overview": "The operator surface: presentations with status and visibility, counts for live and protected decks, and the entry points for requesting a new one. Captured in this run **without authentication**, which is itself the finding — see the open issue.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The operator's view of every deck",
+      "action": "Opened /admin in a browser context with no cookies.",
+      "description": "The admin dashboard lists every presentation with its status, customer and date, plus counts for live, password-protected and pending decks. **This capture was taken without signing in.** The middleware only enforces the admin gate when `ADMIN_PASSWORD` is set in the environment, and it is unset here — so the gate failed open rather than closed. Recorded as an issue; not repaired by this walk.",
+      "screenshotFilename": "admin-dashboard/desktop/step-01-admin.png",
+      "screenshotAlt": "The Openstage admin dashboard listing presentations and status counts",
+      "location": "/admin",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Studio, one click away",
+      "action": "Clicked \"Studio\" in the admin navigation.",
+      "description": "The Studio is where a deck is actually composed, and it sits behind the same gate as the dashboard — which is the point of recording the gate failure as a blocker rather than a curiosity. Everything an operator can do is one click from the page that let us in without a password.",
+      "screenshotFilename": "admin-dashboard/desktop/step-02-studio.png",
+      "screenshotAlt": "The Openstage admin studio",
+      "location": "/admin/studio",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Presentation inventory with draft/live status",
+    "Live, protected and pending counts"
+  ],
+  "notes": "Reached unauthenticated because ADMIN_PASSWORD is unset in the walked environment. Not evidence that production is open.",
+  "generatedAt": "2026-09-18T17:25:29.627Z",
+  "capturedAt": "2026-09-18T17:25:29.627Z"
+}

@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Library } from "@/components/constellation/library";
+import { RepoCard } from "@/components/repo-card";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getAllProjectSummaries, getPersonas } from "@/lib/data";
 import { constellationEdges, layoutConstellation } from "@/lib/constellation";
@@ -40,6 +41,13 @@ export default function HomePage() {
             personasBySlug={personasBySlug}
           />
         </Suspense>
+
+        {/* The card sits below the chart rather than above it: the library is
+            what a visitor came for, and the invitation to reuse the method only
+            makes sense once they have seen what it produces. */}
+        <div className="mx-auto w-full max-w-[1180px] shrink-0 px-6 pb-10 pt-8">
+          <RepoCard />
+        </div>
       </main>
       <SiteFooter />
     </div>

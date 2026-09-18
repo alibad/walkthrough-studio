@@ -1,0 +1,39 @@
+{
+  "featureId": "deck-draft-unlisted",
+  "featureName": "Unlisted draft deck",
+  "type": "feature",
+  "location": "/ai-patterns",
+  "category": "viewer",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Shareable before it is announced",
+  "overview": "A deck marked draft is excluded from the gallery and served in full to anyone with the link — the state an author needs between writing and publishing.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Reachable, deliberately unlisted",
+      "action": "Opened /ai-patterns directly.",
+      "description": "This deck carries `status: draft` in the registry, so it never appears in the gallery — and it renders perfectly for anyone holding the link. That is the product working as designed: a draft is shareable before it is announced. It is also the distinction a route scan cannot make, because the route exists either way.",
+      "screenshotFilename": "deck-draft-unlisted/mobile/step-01-draft.png",
+      "screenshotAlt": "The unlisted AI Patterns deck, reached directly by URL",
+      "location": "/ai-patterns",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "A draft is a whole deck, not a stub",
+      "action": "Scrolled into the body of the draft.",
+      "description": "Draft status changes listing, not rendering. The deck below the fold is fully composed, which is what makes the state useful — you circulate a link to something finished-looking and decide later whether it belongs in the index.",
+      "screenshotFilename": "deck-draft-unlisted/mobile/step-02-body.png",
+      "screenshotAlt": "The body of the unlisted deck, fully rendered",
+      "location": "/ai-patterns",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Draft status hides a deck from the index without gating it"
+  ],
+  "generatedAt": "2026-09-18T17:25:27.327Z",
+  "capturedAt": "2026-09-18T17:25:27.327Z"
+}

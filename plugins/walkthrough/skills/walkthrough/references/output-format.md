@@ -62,10 +62,43 @@ project can track a tablet or three phone sizes without a schema change.
 
 ---
 
+## Schema versions — write v2, expect to read v1
+
+`catalog.json` carries `"schemaVersion": 2`. **Always write it.** A catalog
+with no version field is v1 — the web-shaped generation that used `route`,
+`desktopStatus`/`mobileStatus`, `baseUrl` and `navItems[].route`.
+
+You will still meet v1 in the wild, because a repository that owns its own copy
+of this skill upgrades on its own schedule. That is expected and supported:
+the hub upgrades v1 in memory on every read (`apps/hub/src/lib/catalog-schema.ts`),
+so an old catalog renders correctly rather than rendering empty.
+
+Two things follow for you:
+
+- **Never hand-edit a v1 catalog into v2.** Run
+  `node scripts/migrate-catalog.mjs --write` (add `--path <dir>` for another
+  repository's artifacts). It is a dry run by default and prints every change,
+  because silently rewriting an evidence artifact is the move this project
+  exists to prevent.
+- **Do not migrate another app's in-repo catalog just because you can.** If
+  that repository ships its own dashboard reading its own catalog, upgrading
+  the file breaks their reader to fix nothing — the hub already reads both.
+
+| v1 | v2 |
+|---|---|
+| `route` | `location` |
+| `desktopStatus` / `mobileStatus` | `surfaceStatus: { desktop, mobile }` |
+| `baseUrl` | `capturedAgainst` |
+| `navItems[].route` | `navItems[].location` |
+| *(absent)* | `schemaVersion: 2`, `platform` |
+
+---
+
 ## `catalog.json`
 
 ```jsonc
 {
+  "schemaVersion": 2,
   "projectName": "Fieldnote for iOS",
   "platform": "ios",                   // web | ios | android | desktop | cli
   "driver": "ios-simulator",

@@ -204,6 +204,31 @@ health banner rather than in a tab of their own.
 
 ---
 
+## `duplicate-captures`, continued: the hole a clock punches in it
+
+**The check can be silently disarmed, and it was.**
+
+The guard compares bytes. A page carrying a live clock, a relative timestamp
+("3 minutes ago"), or a `requestAnimationFrame` counter produces byte-
+*different* captures of an unchanged screen — so two captures of the same state
+no longer collide and the check can never fire. It still runs. It just cannot
+catch anything, on exactly the kind of app most worth checking.
+
+Freezing CSS animation does not fix this: `animations: "disabled"` stops CSS
+animation and does not touch JS-driven DOM changes. The fix is to pin what the
+page reads from the clock — `page.clock.setFixedTime` in the capture layer —
+so a ticking element re-renders to identical pixels.
+
+`setFixedTime` and **not** `pauseAt`: pausing stops timers firing at all, which
+hangs any app whose loading path goes through a debounce, a retry or a
+self-dismissing splash.
+
+The capture layer does this for you and records whether it succeeded, per run.
+If you are writing a walk by hand against a backend without a clock API, know
+that your duplicate guard is weaker than it looks.
+
+---
+
 ## Things the hub can't check, that matter more
 
 Automated checks catch mechanical dishonesty. These are the ones that need you:

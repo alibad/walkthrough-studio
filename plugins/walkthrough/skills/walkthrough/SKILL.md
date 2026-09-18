@@ -114,6 +114,13 @@ shows up as a red banner with your name on the run.
   git sha. Skip it and drift detection silently stops working for that project
   — the staleness pill will keep reporting the previous run forever.
 
+- **Use the capture layer; do not re-implement it.** For web, `openCapture()`
+  enforces every invariant above and *verifies* each one by measurement rather
+  than trusting the option it passed — because a backend can report a
+  successful resize and deliver nothing, which is a measured finding and not a
+  hypothetical. A walk script that hand-rolls its own screenshot helper has
+  opted out of checks it probably does not know exist.
+
 - **Put the lesson in the script, not in chat.** When you discover a non-obvious
   capture trick — a wait that prevents a flake, an init script that skips
   onboarding, a selector that survives copy edits — write a comment in the walk
@@ -514,6 +521,13 @@ reporting rather than shipping a run that fails its own checks.
 - [`drivers/desktop.md`](drivers/desktop.md)
 - [`drivers/cli-terminal.md`](drivers/cli-terminal.md)
 
+**The capture layer** *(web; use it rather than re-implementing the invariants)*
+- [`scripts/lib/capture/index.mjs`](../../../../scripts/lib/capture/index.mjs) — `openCapture()` and the standard surfaces. Picks a backend, or takes one you name.
+- [`scripts/lib/capture/invariants.mjs`](../../../../scripts/lib/capture/invariants.mjs) — the invariants and their assertions. Each carries the failure that motivated it.
+- [`scripts/lib/capture/driver-contract.mjs`](../../../../scripts/lib/capture/driver-contract.mjs) — implement this to add a backend.
+- [`docs/findings/capture-backends-2026-09-18.md`](../../../../docs/findings/capture-backends-2026-09-18.md) — which backends can meet which invariant, measured. **Read this before proposing that an agent browser drive captures.**
+
 **Reference implementations**
-- [`scripts/walk-wikipedia.mjs`](../../../../scripts/walk-wikipedia.mjs) — features on a live public site, walked end to end. Clone this as your archetype: it has the surface setup, the settle logic, the distinctness guard and the run-manifest write, each with a comment on why.
+- [`scripts/walk-openstage.mjs`](../../../../scripts/walk-openstage.mjs) — **the archetype to clone.** Carries no invariant machinery of its own: it calls `openCapture()`, and the distinctness ledger, the Retina assertion, the surface verification, the animation freeze and the clock pin are applied for it. Also shows console errors becoming issues, a feature walked to prove a security finding, and a persona journey that reuses feature captures.
+- [`scripts/walk-wikipedia.mjs`](../../../../scripts/walk-wikipedia.mjs) — the earlier, self-contained version, kept because it is the clearest single-file explanation of *why* each invariant exists. Read it to understand them; clone `walk-openstage.mjs` to write one.
 - [`scripts/walk-wikipedia-personas.mjs`](../../../../scripts/walk-wikipedia-personas.mjs) — two persona journeys over the same site, including a scene that switches surface mid-journey and a hard failure when an asserted interaction doesn't happen.
