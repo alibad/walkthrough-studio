@@ -19,6 +19,7 @@
 
 import { mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { CONTENT_THRESHOLDS, diffCells, measureContent } from "./pixels.mjs";
 import {
   DEV_OVERLAY_CSS,
   DistinctnessLedger,
@@ -52,6 +53,8 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
     overflows: [],
     /** What was hidden from captures, so the manifest can say so. */
     suppressed: suppressCss ? [suppressNote] : [],
+    /** Captures refused for being empty or for not advancing. */
+    rejected: [],
     captures: 0,
   };
 
@@ -74,6 +77,15 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
     // page is the only authority on what it received.
     if (opts.url) await ctx.goto(opts.url);
     await ctx.settle();
+    // Wait for the app to finish painting before anything is measured or
+    // captured. Without this the first capture of a client-rendered app is a
+    // spinner, and every check above would happily pass it.
+    const ready = await waitForReady(ctx, { timeoutMs: opts.readyTimeoutMs ?? 15_000 });
+    if (!ready.ready) {
+      report.warnings.push(
+        `feature "${featureId}" on ${surface.id}: ${ready.reason} after ${ready.waitedMs}ms — captures may show a loading state`,
+      );
+    }
 
     const env = await ctx.evaluate(PROBE_SCRIPT);
     const { widthDrift } = assertSurface(env, surface);
@@ -180,13 +192,35 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
      *                                whole point is that something changed.
      * @returns {Promise<string|null>} path relative to the project dir, for JSON
      */
+    /** The last capture taken in this walk, for the progress comparison. */
+    let previousCapture = null;
+
+    /**
+     * Capture one step.
+     *
+     * @param {string} file       e.g. "step-03-results.png"
+     * @param {object} [o]
+     * @param {boolean} [o.optional]  a rejected capture skips the step instead
+     *                                of failing the walk — right for one of
+     *                                several tab views, wrong for a step whose
+     *                                whole point is that something changed.
+     * @param {boolean} [o.sparse]    this screen really is nearly empty (a
+     *                                confirmation, an empty state, a splash).
+     *                                Declaring it means you looked; it is
+     *                                recorded on the step.
+     * @param {boolean} [o.firstOfScreen] skip the progress check — this is a
+     *                                new screen, not an advance on the last one.
+     * @returns {Promise<string|null>} path relative to the project dir
+     */
     async function shot(file, o = {}) {
       await ctx.settle();
-      if (suppressCss) await ctx.injectCss(suppressCss);
+      await waitForReady(ctx);
       // Before every capture, not once per feature: scroll-triggered and
       // interaction-triggered animations are created after setup, so a freeze
       // applied only at the start leaves every later step exposed.
       await freezeAnimations(ctx);
+      if (suppressCss) await ctx.injectCss(suppressCss);
+
       const rel = `${featureId}/${surface.id}/${file}`;
       const abs = join(outDir, rel);
       mkdirSync(dirname(abs), { recursive: true });
@@ -195,20 +229,86 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
       // Measure the file, don't trust the flag.
       assertRetina(abs, surface);
 
+      // ── Is there anything on this screen? ────────────────────────────
+      //
+      // This check exists because everything above it passed on a capture
+      // showing a clipped title over 90% empty space. Pixel density,
+      // animation state and byte-uniqueness are all properties of *how* a
+      // capture was taken; none of them notices that nothing rendered.
+      let content = null;
+      try {
+        content = measureContent(abs);
+      } catch {
+        report.skipped.push("content check (unsupported PNG variant)");
+      }
+      if (content && !o.sparse && content.occupiedCells < CONTENT_THRESHOLDS.minOccupiedCells) {
+        const detail =
+          `${rel} looks empty — content in only ${Math.round(content.occupiedCells * 100)}% of the frame ` +
+          `(threshold ${Math.round(CONTENT_THRESHOLDS.minOccupiedCells * 100)}%). ` +
+          `Usually this means the page had not finished rendering, or the interaction did not land. ` +
+          `If the screen really is this sparse, pass { sparse: true } to say so deliberately.`;
+        report.rejected.push({ file: rel, reason: "empty", occupiedCells: content.occupiedCells });
+        if (o.optional) {
+          console.log(`    · skipped ${file} — nothing rendered`);
+          return null;
+        }
+        throw new InvariantViolation("contentful", detail);
+      }
+
+      // ── Did anything actually change? ────────────────────────────────
+      //
+      // Byte-inequality is too weak: two captures of the same screen differ
+      // if a single anti-aliased pixel moved. A reader's "different screen"
+      // is a meaningful share of the frame.
+      if (previousCapture && !o.firstOfScreen) {
+        // Two ways to be a new state, and a step only needs one:
+        //   a broad change  — the whole frame shifted a little (a theme swap)
+        //   a local change  — one region shifted a lot (a filtered table)
+        // Requiring only the broad signal rejected three real openstage steps,
+        // because filtering a four-row table moves 1.6% of a 1440x900 frame
+        // and almost all of the content in it.
+        //
+        // Safe to be generous here only because the emptiness check above has
+        // already run: a near-duplicate of two blank screens scores high on
+        // the local signal, and never reaches this point.
+        let d = { frameFraction: 1, contentFraction: 1 };
+        try {
+          d = diffCells(previousCapture.abs, abs);
+        } catch {
+          /* fall through — the byte guard below still applies */
+        }
+        const broad = d.frameFraction >= CONTENT_THRESHOLDS.minProgressFraction;
+        const local = d.contentFraction >= CONTENT_THRESHOLDS.minProgressContentFraction;
+        if (!broad && !local) {
+          const detail =
+            `${rel} changed ${(d.frameFraction * 100).toFixed(1)}% of the frame and ` +
+            `${(d.contentFraction * 100).toFixed(0)}% of the content area versus ${previousCapture.rel} — ` +
+            `not enough to call it a new state. The bytes differ, so the MD5 guard would have passed it; ` +
+            `a reader would see the same screen twice.`;
+          report.rejected.push({ file: rel, reason: "no-progress", ...d });
+          if (o.optional) {
+            console.log(`    · skipped ${file} — ${(d.frameFraction * 100).toFixed(1)}% of frame / ${(d.contentFraction * 100).toFixed(0)}% of content changed`);
+            return null;
+          }
+          throw new InvariantViolation("distinctCaptures", detail);
+        }
+      }
+
       const { clash } = ledger.record(scope, abs, rel);
       if (clash) {
         if (o.optional) {
-          console.log(`    · skipped ${file} — byte-identical to ${clash}, nothing changed on screen`);
+          console.log(`    · skipped ${file} — byte-identical to ${clash}`);
           return null;
         }
         throw new InvariantViolation(
           "distinctCaptures",
-          `${rel} is byte-identical to ${clash}. The interaction before it did not change the screen — ` +
-            `fix the action, mark the step optional, or drop it. Two claimed states with one real state behind them ` +
-            `is exactly what this system exists not to publish.`,
+          `${rel} is byte-identical to ${clash}. The interaction before it did not change the screen.`,
         );
       }
+
+      previousCapture = { abs, rel };
       report.captures += 1;
+      if (content) report.verified.contentful = true;
       if (ctx.consoleLog.length || ctx.networkLog.length) report.verified.consoleNetwork = true;
       return rel;
     }
@@ -287,4 +387,81 @@ async function freezeAnimations(ctx) {
       return n;
     })()`)
     .catch(() => 0);
+}
+
+/**
+ * Wait until the page has actually finished painting.
+ *
+ * ── Why a settle is not enough ────────────────────────────────────────────
+ *
+ * `networkidle` plus a fonts-ready promise says the *transport* is quiet. It
+ * says nothing about whether the app has rendered: a client-rendered page
+ * fetches, resolves, and then spends another beat building its DOM. Capturing
+ * in that gap yields a spinner — which is exactly what shipped in the first
+ * openstage persona journey.
+ *
+ * Three signals, all cheap, all in the page:
+ *
+ *  1. No visible loading indicator. Covers the common idioms — `[aria-busy]`,
+ *     role="progressbar", and the spinner/skeleton/shimmer class names that
+ *     every component library converges on.
+ *  2. The rendered text has stopped growing. Two consecutive equal readings
+ *     mean the DOM has stopped filling in.
+ *  3. Images above the fold have decoded. A half-loaded hero is a capture of
+ *     a state the user sees for 200ms and never thinks about.
+ *
+ * Returns rather than throws: a page that never settles is a finding about the
+ * app worth recording, not a reason to abandon the walk.
+ */
+async function waitForReady(ctx, { timeoutMs = 10_000, quietMs = 220 } = {}) {
+  const started = Date.now();
+  let lastLen = -1;
+  let stableCount = 0;
+  let lastReason = "did not settle";
+
+  while (Date.now() - started < timeoutMs) {
+    const state = await ctx
+      .evaluate(`(() => {
+        const vis = (el) => {
+          const r = el.getBoundingClientRect();
+          if (r.width === 0 || r.height === 0) return false;
+          const s = getComputedStyle(el);
+          return s.display !== 'none' && s.visibility !== 'hidden' && parseFloat(s.opacity || '1') > 0.05;
+        };
+        const busy = [...document.querySelectorAll(
+          '[aria-busy="true"],[role="progressbar"],[class*="spinner" i],[class*="loading" i],[class*="skeleton" i],[class*="shimmer" i]'
+        )].filter(vis).length;
+        const imgs = [...document.querySelectorAll('img')].filter((i) => {
+          const r = i.getBoundingClientRect();
+          return r.top < innerHeight && r.bottom > 0 && r.width > 0;
+        });
+        return {
+          busy,
+          textLen: (document.body.innerText || '').replace(/\s+/g, ' ').trim().length,
+          imgsPending: imgs.filter((i) => !i.complete || i.naturalWidth === 0).length,
+        };
+      })()`)
+      .catch(() => null);
+
+    if (!state) return { ready: false, reason: "could not read page state", waitedMs: Date.now() - started };
+
+    if (state.busy > 0) {
+      lastReason = `${state.busy} loading indicator(s) still visible`;
+      stableCount = 0;
+    } else if (state.imgsPending > 0) {
+      lastReason = `${state.imgsPending} above-the-fold image(s) not decoded`;
+      stableCount = 0;
+    } else if (state.textLen === lastLen) {
+      stableCount++;
+      if (stableCount >= 2) {
+        return { ready: true, reason: "settled", waitedMs: Date.now() - started, textLen: state.textLen };
+      }
+    } else {
+      lastReason = "content still arriving";
+      stableCount = 0;
+    }
+    lastLen = state.textLen;
+    await new Promise((r) => setTimeout(r, quietMs));
+  }
+  return { ready: false, reason: lastReason, waitedMs: Date.now() - started };
 }

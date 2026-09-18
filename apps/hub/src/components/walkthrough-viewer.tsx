@@ -260,6 +260,9 @@ function Step({
   );
 
   const media = (
+    /* Hand-held surfaces already land in the side-by-side column, which caps
+       them at 16rem — about 555px tall for a 393x852 phone. The tall-image
+       problem lives in the journey scene layout, not here. */
     <div className={cn(sideBySide ? "w-full max-w-[16rem] shrink-0" : "mt-5")}>
       <div className="group relative">
         <SurfaceFrame surface={surface} location={step.location}>
@@ -280,9 +283,13 @@ function Step({
 
         <span
           aria-hidden
-          className="pointer-events-none absolute right-2 top-2 z-10 rounded-sm border border-rule bg-paper/90 p-1 opacity-0 transition-opacity group-hover:opacity-100"
+          /* Always visible, not hover-only: on a hand-held capture the image is
+             deliberately shown smaller than life, so the way back to full size
+             has to be discoverable without hunting for it. */
+          className="pointer-events-none absolute right-2 top-2 z-10 flex items-center gap-1 rounded-sm border border-rule bg-paper/90 px-1.5 py-1 text-[0.6875rem] text-ink-muted opacity-70 transition-opacity group-hover:opacity-100"
         >
           <Maximize2 className="size-3 text-ink-muted" />
+          <span className="hidden sm:inline">Full size</span>
         </span>
       </div>
 

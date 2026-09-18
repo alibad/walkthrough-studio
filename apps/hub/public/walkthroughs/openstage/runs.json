@@ -1,9 +1,9 @@
 {
   "runs": [
     {
-      "id": "2026-09-18T17:25:32.687Z",
-      "startedAt": "2026-09-18T17:24:57.804Z",
-      "completedAt": "2026-09-18T17:25:32.687Z",
+      "id": "2026-09-18T20:39:07.448Z",
+      "startedAt": "2026-09-18T20:37:51.063Z",
+      "completedAt": "2026-09-18T20:39:07.448Z",
       "skill": "walkthrough",
       "agent": "walk-openstage.mjs",
       "target": {
@@ -24,7 +24,7 @@
         "locales": [
           "en"
         ],
-        "notes": "backend: Playwright (launched Chromium) · invariants verified: retina, animationsFrozen, timeFrozen, consoleNetwork, video, realMobile, freshContext · dev-server error overlays (Next.js / Vite) hidden; the console errors behind them are still collected and reported · surface \"mobile\": the page overflows horizontally — content is 560px wide on a 393px surface, so the layout viewport expanded to 560px and a real phone renders this zoomed out with a sideways scroll · surface \"mobile\": the page overflows horizontally — content is 456px wide on a 393px surface, so the layout viewport expanded to 456px and a real phone renders this zoomed out with a sideways scroll"
+        "notes": "backend: Playwright (launched Chromium) · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext · dev-server error overlays (Next.js / Vite) hidden; the console errors behind them are still collected and reported · surface \"mobile\": the page overflows horizontally — content is 560px wide on a 393px surface, so the layout viewport expanded to 560px and a real phone renders this zoomed out with a sideways scroll · surface \"mobile\": the page overflows horizontally — content is 456px wide on a 393px surface, so the layout viewport expanded to 456px and a real phone renders this zoomed out with a sideways scroll"
       },
       "coverage": {
         "features": [
@@ -37,7 +37,7 @@
         "personas": [
           "reader"
         ],
-        "screenshots": 26,
+        "screenshots": 25,
         "videos": 1,
         "issues": 6
       }

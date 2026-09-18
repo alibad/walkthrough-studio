@@ -75,7 +75,13 @@ export default async function ProjectPage({
             className={`mb-12 grid gap-5 ${hasHealthToShow ? "lg:grid-cols-2" : "grid-cols-1"}`}
           >
             <WhatsNew slug={slug} staleness={summary.staleness} catalog={catalog} />
-            {hasHealthToShow && <CatalogHealthBanner health={health} />}
+            {hasHealthToShow && (
+              <CatalogHealthBanner
+                health={health}
+                slug={slug}
+                openIssueCount={issues.filter((i) => (i.status ?? "open") === "open").length}
+              />
+            )}
           </div>
 
           <PersonaStrip slug={slug} personas={personas} />

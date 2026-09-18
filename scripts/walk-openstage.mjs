@@ -85,7 +85,7 @@ function recordConsole(walk, featureId, location) {
       status: "open",
       location,
       featureId,
-      description: hydration
+      detail: hydration
         ? `React reported that the server-rendered HTML did not match the client on first render, so the tree is thrown away and rebuilt in the browser. The user-visible cost is a flash of the wrong content and a slower first interaction; the maintenance cost is that any real SSR bug now hides inside a warning the team has learned to ignore.\n\nVerified to be the app's own and not an artefact of how it was walked: the same error appears in a plain browser session with no clock pinning, no injected CSS and no emulation.\n\nFull message:\n\n${text.slice(0, 600)}`
         : text.slice(0, 600),
       foundAt: new Date().toISOString(),
@@ -464,7 +464,7 @@ async function walkAdmin(surface) {
       status: "open",
       location: "/admin",
       featureId: F,
-      description:
+      detail:
         "`src/middleware.ts` wraps the admin cookie check in `if (adminPassword)`. With the variable unset the branch is skipped and the request falls through to `NextResponse.next()`, so the dashboard, the studio and the new-presentation form all render to an anonymous visitor. Reproduced in a browser context with no cookies: /admin returned the dashboard rather than redirecting to /auth/admin.\n\nThe risk is not the local machine — it is that a deploy which loses the variable exposes the admin area **silently**, with no error, no log line and nothing visibly different. A missing admin password should fail closed: deny and say why.",
       foundAt: new Date().toISOString(),
     });
@@ -617,7 +617,7 @@ for (const { fn, surfaces } of PLAN) {
         title: `Walk failed: ${fn.name} on ${surfaceId}`,
         severity: "major",
         status: "open",
-        description: err.message,
+        detail: err.message,
         foundAt: new Date().toISOString(),
       });
     }
@@ -641,7 +641,7 @@ issues.push({
   status: "open",
   location: "/",
   featureId: "gallery",
-  description:
+  detail:
     "The grouping control renders a bare `<select>` with the options No grouping / By type / By customer / By author / By date. Native selects draw their popup with OS chrome, which ignores the app's dark theme and differs between macOS, Windows and Android — so the one control on the page that opens a menu is the one control that will not match the design. The workspace's own UI standard calls for the project's Select component here.",
   foundAt: new Date().toISOString(),
 });
@@ -660,7 +660,7 @@ for (const o of report.overflows) {
     status: "open",
     location: o.location ? new URL(o.location).pathname : "/",
     featureId: o.featureId,
-    description:
+    detail:
       `On a ${o.surfaceWidth}px phone surface this page's document is ${o.contentWidth}px wide, so the browser widens the ` +
       `layout viewport to fit and the page renders zoomed out with a sideways scroll. The widest element measured across ` +
       "the decks is a `flex shrink-0` row at 2940px — a horizontal strip that never shrinks below its content. " +

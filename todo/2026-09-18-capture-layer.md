@@ -199,3 +199,82 @@ Also measured and worth knowing: simulator video is `yuv420p` (4:2:0 chroma
 subsampling, lossy on coloured UI text) and **variable frame rate** — roughly
 1.1 fps on a near-static screen. It illustrates a flow; it is not evidence the
 way a PNG is.
+
+---
+
+## Evening — the captures were weak, and the checks could not tell
+
+Review of the two walks: *"the screenshots themselves… they're crap, they're not
+really telling much… there's no validation happening, it's a very weak system,
+not something I can put out yet."* Fair on every count. What follows is what was
+actually wrong and what changed.
+
+### The hole at the centre
+
+The capture layer verified device pixel ratio, animation state, clock, context
+isolation and byte-distinctness — **every one of those is a property of how a
+capture was taken, and none of them looks at what it contains.** So it published
+a persona journey whose scenes were a dark rectangle with "Presenter Stu"
+clipped mid-word over 90% empty space, and passed two near-identical frames
+because a one-pixel line differed between them.
+
+A loading spinner is Retina, animation-free, deterministic, isolated and
+byte-unique. It is also worthless.
+
+**Two new checks, both measuring the image rather than the process:**
+
+- **Is there anything on this screen?** The frame is divided into a grid and
+  each cell asked whether anything is drawn in it, using local contrast. The
+  first attempt measured "what share is one flat colour" and rejected the
+  clipped hero (0.986) *and* a perfectly good gallery screenshot (0.971) —
+  whitespace is not emptiness. Measuring **where** content sits separates them
+  cleanly: the bad captures score 0.11–0.20, the good ones 0.58–0.95.
+- **Did anything actually change?** Byte-inequality is satisfied by one
+  anti-aliased pixel. Change is now measured both across the frame and across
+  the area that carries content, because filtering a four-row table moves 1.6%
+  of a 1440x900 frame and almost all of the content in it. Requiring only the
+  first rejected three legitimate steps.
+
+**And a readiness gate before every capture**, because `networkidle` says the
+transport is quiet, not that the app has painted. It waits for loading
+indicators to clear, for rendered text to stop growing, and for above-the-fold
+images to decode — then records a warning if the page never settles, because a
+page that never settles is a finding about the app.
+
+The proof it works: on the re-walk the layer **refused** the scene that started
+this, with `skipped scene-02-open.png — nothing rendered`.
+
+### The reading experience
+
+- **A phone capture was rendering 2,558px tall.** The journey's full-bleed
+  layout handed a 393x852 surface a 1180px column. Hand-held captures are now
+  capped at 340px wide — about 735px tall — with the full 1179x2556 one click
+  away, and the "Full size" control is always visible rather than appearing on
+  hover.
+- **"Unknown" is now "Drift not tracked"**, which says what it means: there is
+  no local checkout to diff against.
+- **Findings have somewhere to go.** The banner truncated at six, dropped every
+  description and linked nowhere. There is now a findings page per project,
+  grouped by severity, each entry carrying its full text, its location and a
+  link to the feature it was found in.
+- **A persona with no art was a giant letter.** "R" told a reader nothing and
+  read as a broken image. The fallback now carries the two facts that identify a
+  persona — where they enter the product, and how many journeys have been walked.
+
+### Two contract mistakes of my own
+
+Issues were being written with a `description` field where `CapturedIssue`
+declares `detail`, so every finding rendered with its title and no body. Earlier
+the same day the run manifest was written with invented field names and crashed
+the run card. Both are the same error: writing a file from memory instead of
+from `references/output-format.md`.
+
+### Still wrong, and not papered over
+
+The deck hero genuinely does not render at phone width — that is the horizontal
+overflow already filed as an issue, and it is why the journey is two scenes
+rather than three. The walk now refuses to ship a capture of it rather than
+presenting a broken frame as documentation.
+
+No persona art: this repo has no `OPENAI_API_KEY`, so `pnpm persona:art` cannot
+run. Not worth borrowing a key from another project without being asked.

@@ -76,7 +76,13 @@ const STALENESS_COPY: Record<StalenessVerdict, { label: string; hint: string }> 
     hint: "Substantial drift since the last walkthrough — re-walk before trusting it.",
   },
   never: { label: "Never walked", hint: "No walkthrough has been captured yet." },
-  unknown: { label: "Unknown", hint: "Can't compare — no readable local checkout." },
+  // Not "Unknown": a bare word leaves the reader wondering whether the app is
+  // fine, broken, or unchecked. The pill now states the actual situation, and
+  // the hint explains the consequence.
+  unknown: {
+    label: "Drift not tracked",
+    hint: "No local checkout to diff against, so we can't tell whether the app has changed since this walk.",
+  },
 };
 
 const STALENESS_TONE: Record<StalenessVerdict, Tone> = {

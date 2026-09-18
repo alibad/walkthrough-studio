@@ -25,6 +25,7 @@ import { useState } from "react";
 import { Maximize2, Play } from "lucide-react";
 import type { JourneyScene, JourneySceneLayout, Surface } from "@/lib/types";
 import { SurfaceFrame } from "@/components/surface-frame";
+import { isHandheld } from "@/lib/surfaces";
 import { VerificationBadge } from "@/components/status";
 import { Prose } from "@/components/prose";
 import { cn } from "@/lib/utils";
@@ -156,7 +157,19 @@ function SceneCapture({
   const src = scene.frames[Math.min(frame, scene.frames.length - 1)];
 
   return (
-    <figure className="space-y-2">
+    /*
+     * The width cap on a hand-held capture is load-bearing, not decoration.
+     *
+     * A phone surface is 393x852. The "full-bleed" scene layout hands its
+     * capture a 1180px column, which renders that aspect 2,558px tall — about
+     * three screens of scrolling for one scene. A journey is the artifact
+     * non-engineers actually read, and it was the least readable thing here.
+     *
+     * 340px puts the same capture at roughly 735px, and the lightbox is one
+     * click away for the full 1179x2556. Desktop surfaces are left alone:
+     * 1440x900 in a 1180px column is already a sensible 737px.
+     */
+    <figure className={cn("space-y-2", isHandheld(surface) && "mx-auto w-full max-w-[340px]")}>
       <div className="group relative">
         <SurfaceFrame surface={surface} location={scene.location}>
           <Image

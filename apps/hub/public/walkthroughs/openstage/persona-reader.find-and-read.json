@@ -21,21 +21,6 @@
       "verificationStatus": "live-walked"
     },
     {
-      "id": "open",
-      "title": "She taps the one with the interesting name",
-      "narrative": "No login wall, no cookie banner, no app-install interstitial. The deck opens straight onto its hero and she is reading within a second of tapping — which is the entire product promise for somebody in her position.",
-      "frames": [
-        "journey-reader/mobile/scene-02-open.png"
-      ],
-      "frameCaptions": [
-        "The deck opens directly, with nothing between the tap and the content"
-      ],
-      "location": "/awwwards-flagship",
-      "surface": "mobile",
-      "sourceFeature": "deck-scroll",
-      "verificationStatus": "live-walked"
-    },
-    {
       "id": "reading",
       "title": "She scrolls, because there is nothing else to learn",
       "narrative": "A scroll deck has no controls: no next button to find, no slide count to track, no gesture to discover. She reads it the way she reads everything else on this phone, and the deck never asks her to do anything different.",
@@ -54,5 +39,5 @@
   ],
   "platform": "web",
   "surface": "mobile",
-  "capturedAt": "2026-09-18T17:25:32.652Z"
+  "capturedAt": "2026-09-18T20:39:07.409Z"
 }

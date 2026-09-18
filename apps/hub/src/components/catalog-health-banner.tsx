@@ -1,4 +1,5 @@
-import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
+import Link from "next/link";
+import { AlertTriangle, ArrowRight, CheckCircle2, Info } from "lucide-react";
 import { Prose } from "@/components/prose";
 import { cn } from "@/lib/utils";
 import type { CatalogHealthReport } from "@/lib/catalog-health";
@@ -16,9 +17,15 @@ import type { CatalogHealthReport } from "@/lib/catalog-health";
  */
 export function CatalogHealthBanner({
   health,
+  slug,
+  openIssueCount = 0,
   className,
 }: {
   health: CatalogHealthReport;
+  /** Project slug, so a finding can link to the page that explains it. */
+  slug?: string;
+  /** Issues recorded during capture, as opposed to checks on the artifacts. */
+  openIssueCount?: number;
   className?: string;
 }) {
   const warnings = health.issues.filter((i) => i.severity === "warning");
@@ -72,6 +79,21 @@ export function CatalogHealthBanner({
             <div className="min-w-0">
               <h3 className="text-small font-semibold text-ink">{issue.title}</h3>
               <Prose className="mt-1 text-small">{issue.detail}</Prose>
+              {/* The summary truncates at six findings and drops every
+                  description, which is right for a banner and useless for
+                  acting on them. Anyone who reads "the /admin gate is skipped"
+                  and wants to know what that means needs somewhere to go. */}
+              {issue.kind === "open-issues" && slug && (
+                <Link
+                  href={`/${slug}/issues`}
+                  className="mt-2 inline-flex items-center gap-1.5 text-label font-medium text-ink transition-colors hover:text-accent"
+                >
+                  {openIssueCount > 0
+                    ? `Read all ${openIssueCount} findings`
+                    : "Read all findings"}
+                  <ArrowRight className="size-3.5" strokeWidth={1.75} aria-hidden />
+                </Link>
+              )}
             </div>
           </li>
         ))}

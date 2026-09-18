@@ -61,9 +61,30 @@ export function PersonaStrip({
                     className="object-cover object-top"
                   />
                 ) : (
-                  <span className="grid size-full place-items-center font-serif text-display text-ink-faint">
-                    {persona.name.trim().charAt(0).toUpperCase()}
-                  </span>
+                  /* No art yet.
+                   *
+                   * The previous fallback was the persona's first initial at
+                   * display size — a giant "R" that told a reader nothing about
+                   * who the persona is, and read as a broken image rather than
+                   * a deliberate state. A card with no portrait should still
+                   * carry the two facts that actually identify a persona: where
+                   * they come into the product, and how much of their journey
+                   * has been walked.
+                   */
+                  <div className="flex size-full flex-col justify-end gap-1 bg-[linear-gradient(135deg,var(--paper-sunken),var(--paper-deep))] p-4">
+                    <span className="eyebrow">Persona</span>
+                    <span className="font-serif text-title leading-tight text-ink">
+                      {persona.name}
+                    </span>
+                    {persona.entryPoint && (
+                      <span className="locator w-fit max-w-full truncate">{persona.entryPoint}</span>
+                    )}
+                    <span className="text-label text-ink-faint">
+                      {persona.journeyCount > 0
+                        ? `${persona.journeyCount} walked ${persona.journeyCount === 1 ? "journey" : "journeys"}`
+                        : "no journey walked yet"}
+                    </span>
+                  </div>
                 )}
                 {persona.hasStory && (
                   <span className="absolute right-2 top-2 flex items-center gap-1 rounded-full border border-rule bg-paper/90 px-2 py-0.5 font-mono text-micro text-ink backdrop-blur">
