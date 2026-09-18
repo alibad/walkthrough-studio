@@ -1,0 +1,432 @@
+@import "tailwindcss";
+
+/*
+ * ═══════════════════════════════════════════════════════════════════════════
+ *  WALKTHROUGH STUDIO — "paper & ink"
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ *  The design brief in one line: this should read like a well-made field
+ *  guide, not a dashboard.
+ *
+ *  Three decisions follow from that, and everything else is downstream:
+ *
+ *  1. ONE LIGHT REGISTER. Warm paper ground, near-black ink. No dark mode.
+ *     A walkthrough's whole job is to present captured screenshots of *other*
+ *     people's apps — and those screenshots have their own backgrounds. A
+ *     neutral warm paper mat frames a screenshot of a dark app and a light one
+ *     equally well; a dark chrome makes every light capture glare and every
+ *     dark capture disappear into the page. The mat serves the content.
+ *
+ *  2. ONE ACCENT. Vermilion, used for exactly three things: the active state,
+ *     a genuine warning, and the brand mark. When one colour carries meaning,
+ *     a single vermilion dot on a page of ink is unmissable. Status colours
+ *     exist but are deliberately desaturated into the same printed register
+ *     so they never compete with it.
+ *
+ *  3. TYPE DOES THE HIERARCHY, NOT BOXES. A serif display face over a humanist
+ *     sans, separated by size and leading rather than by nested cards. Rules
+ *     are hairlines; radii are small; shadows are the short crisp kind a
+ *     print casts lying on a table, never a soft glow.
+ *
+ *  Adding a token here is cheap. Adding a second accent is not — it costs the
+ *  legibility of the first one.
+ */
+
+@theme inline {
+  /* ── Type families ──────────────────────────────────────────────────── */
+  --font-sans: var(--font-sans-stack);
+  --font-serif: var(--font-serif-stack);
+  --font-mono: var(--font-mono-stack);
+  --font-display: var(--font-serif-stack);
+
+  /* ── Type scale ─────────────────────────────────────────────────────────
+   * A tight, editorial ramp. Body is 15px because 16 is a hair loud next to
+   * a serif display, and 14 makes long step descriptions tiring.
+   */
+  --text-micro: 0.6875rem;   /* 11px — eyebrows, meta, tabular labels */
+  --text-label: 0.75rem;     /* 12px — chips, table headers, captions */
+  --text-small: 0.8125rem;   /* 13px — secondary prose, hints */
+  --text-body: 0.9375rem;    /* 15px — step descriptions, overviews */
+  --text-title: 1.0625rem;   /* 17px — card titles, step titles */
+  --text-head: 1.375rem;     /* 22px — section heads */
+  --text-head-lg: 1.875rem;  /* 30px — page titles */
+  --text-display: 3rem;      /* 48px — the one big statement per page */
+  --text-display-lg: 4.25rem;
+
+  /* ── The paper ladder ───────────────────────────────────────────────────
+   * Note the direction: raised surfaces are *lighter* than the page. This is
+   * the opposite of the dark-UI convention where cards sit lighter to appear
+   * closer — on paper, a card is a whiter sheet laid on a warmer one.
+   */
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunken: var(--paper-sunken);
+  --color-paper-deep: var(--paper-deep);
+
+  /* ── Ink ladder ─────────────────────────────────────────────────────── */
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+
+  /* ── Rules ──────────────────────────────────────────────────────────── */
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+
+  /* ── The one accent ─────────────────────────────────────────────────── */
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-wash: var(--brand-wash);
+
+  /* ── Status, in the printed register ────────────────────────────────────
+   * Desaturated on purpose. These must read as *annotations in the margin*,
+   * not as a traffic light bolted onto a book.
+   */
+  --color-ok: #3f6b4a;
+  --color-ok-wash: #eaf0ea;
+  --color-warn: #8c6415;
+  --color-warn-wash: #f7f0e0;
+  --color-alert: #a4382a;
+  --color-alert-wash: #f8e9e6;
+  --color-note: #3c5a78;
+  --color-note-wash: #e9eef3;
+
+  /* ── Radii ──────────────────────────────────────────────────────────────
+   * Small. A field-guide plate has corners, not pillows.
+   */
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  /* ── Shadows ────────────────────────────────────────────────────────────
+   * Short, tight, slightly warm. A print lying on a table, lit from above.
+   */
+  --shadow-plate: 0 1px 2px rgb(26 24 21 / 0.06), 0 2px 8px rgb(26 24 21 / 0.04);
+  --shadow-plate-lift:
+    0 2px 4px rgb(26 24 21 / 0.07), 0 8px 24px rgb(26 24 21 / 0.07);
+  --shadow-inset-mat: inset 0 1px 3px rgb(26 24 21 / 0.07);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Paper. Warm, but not yellow — a hint of ochre keeps it from reading
+   * digital-white while staying neutral enough to mat any screenshot. */
+  --paper: #faf8f5;
+  --paper-raised: #fffefc;
+  --paper-sunken: #f2eee6;
+  --paper-deep: #e8e3d9;
+
+  /* Ink. Never pure #000 — real ink on real paper has a warm cast, and pure
+   * black against warm paper reads as a hole rather than a mark. */
+  --ink: #1a1815;
+  --ink-muted: #6b6459;
+  --ink-faint: #9c948a;
+
+  --rule: #e2ddd3;
+  --rule-strong: #cbc3b5;
+
+  --brand: #b4462f;
+  --brand-deep: #8d3422;
+  --brand-wash: #f8ece8;
+
+  /* Paper grain. Just enough to kill the flatness of a solid fill; any more
+   * and it fights the stipple artwork, which is itself made of dots. */
+  --grain-opacity: 0.022;
+
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    /* Default every border to the hairline rule, so a component only names a
+       border colour when it wants a different one. */
+    @apply border-rule;
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: light;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    /* Old-style figures in running prose read as part of the sentence; the
+     * tabular ones are opted into per-component where numbers align. */
+    font-variant-numeric: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* The grain sits above the background and below everything else. Fixed, so
+   * it behaves like the texture of the page rather than scrolling content. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.011em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+
+  /* Honour the reader. Every motion in this app is decorative. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* ── Editorial eyebrow ──────────────────────────────────────────────────
+   * The small letterspaced label above a heading. Used constantly, so it
+   * earns a class rather than six utilities repeated everywhere.
+   */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-micro);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ── Display heading ──────────────────────────────────────────────────── */
+  .display {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  /* ── Location chip ──────────────────────────────────────────────────────
+   * Renders a route / screen / command. Monospace because these are literal
+   * strings a reader may need to copy character-for-character.
+   */
+  .locator {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: -0.01em;
+    color: var(--ink-muted);
+    background-color: var(--paper-sunken);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+    padding: 0.0625rem 0.375rem;
+    white-space: nowrap;
+  }
+
+  /* ── Capture mat ────────────────────────────────────────────────────────
+   * The recessed well a screenshot sits in. This is the one inset shadow in
+   * the system: it reads as a window cut into the page, which is exactly
+   * what a screenshot of another app is.
+   */
+  .mat {
+    background-color: var(--paper-sunken);
+    box-shadow: var(--shadow-inset-mat);
+    border: 1px solid var(--rule);
+  }
+
+  /* ── Hairline rule with a printed feel ────────────────────────────────── */
+  .rule-h {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--rule-strong) 0%,
+      var(--rule) 60%,
+      transparent 100%
+    );
+  }
+
+  /* ── Prose ──────────────────────────────────────────────────────────────
+   * Walkthrough copy is markdown authored by a capture agent. It renders
+   * through <Prose>; these rules are the typographic defaults it inherits.
+   */
+  .prose-walkthrough {
+    color: var(--ink-muted);
+  }
+  .prose-walkthrough strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .prose-block > :first-child {
+    margin-top: 0;
+  }
+  .prose-block > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@layer utilities {
+  /* Numbers that must line up column-to-column: stats, counts, shas, dates. */
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* Text-shortening that keeps the *end* of a string, which is what matters
+   * for file paths and long routes — the tail carries the identity. */
+  /* Truncate a long path from the START, so the informative tail stays
+     visible: `…/settings/billing` rather than `/very/long/pa…`.
+     `direction: rtl` is what moves the ellipsis to the left — but on its own
+     it also REORDERS the string. A leading `/` is bidi-neutral, so in an RTL
+     paragraph it migrates to the visual end and `/wiki/Main_Page` renders as
+     `wiki/Main_Page/`. Every location in this app is a path, so the class was
+     quietly corrupting every one of them.
+     The `::before` inserts U+200E LEFT-TO-RIGHT MARK, a strong LTR character.
+     That sandwiches the leading neutral between two LTR characters, which
+     pins it in place. `unicode-bidi: plaintext` also fixes the order, but it
+     flips the ellipsis back to the end and defeats the whole class. */
+  .truncate-start {
+    direction: rtl;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .truncate-start::before {
+    content: "\200E";
+  }
+
+  /* Content sits above the fixed grain layer. */
+  .above-grain {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   The library chart
+   ─────────────────────────────────────────────────────────────────────────────
+   Type inside an SVG can't inherit the page's Tailwind classes, so the chart's
+   labels are styled here. Sizes are absolute px rather than the type scale
+   because the SVG has its own viewBox coordinate system — a `rem` inside it
+   would scale with the root font size but not with the chart, and the two
+   would drift apart at different viewport widths.
+
+   The intro animations exist to make the chart assemble itself once on arrival
+   rather than snapping into place. They run on first paint only; there is no
+   re-entry animation on selection, because a chart that re-animates every time
+   you click a star is a chart you can't use.
+*/
+
+.constellation-territory-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.constellation-territory-empty {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.constellation-star-label {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+.constellation-star-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.constellation-fan-initial {
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.constellation-star circle,
+.constellation-star line,
+.constellation-star text {
+  transition:
+    r 180ms ease-out,
+    opacity 180ms ease-out,
+    stroke-width 180ms ease-out,
+    fill 180ms ease-out;
+}
+
+@keyframes constellation-ink {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes constellation-strike {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.constellation-graticule {
+  animation: constellation-ink 900ms ease-out both;
+}
+
+.constellation-territory {
+  animation: constellation-ink 700ms ease-out both;
+}
+
+.constellation-edges {
+  animation: constellation-ink 900ms ease-out 520ms both;
+}
+
+/* Scaling from the element's own centre keeps a star from sliding across the
+   chart as it pops in — `transform-box: fill-box` makes the SVG group's own
+   bounding box the origin, which is not the default. */
+.constellation-star {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: constellation-strike 520ms cubic-bezier(0.2, 0.9, 0.25, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .constellation-graticule,
+  .constellation-territory,
+  .constellation-edges,
+  .constellation-star {
+    animation: none;
+  }
+}

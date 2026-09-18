@@ -1,0 +1,12 @@
+{
+  "name": "walkthrough",
+  "version": "1.0.0",
+  "description": "Walk an app end to end and publish what you actually saw — web, iOS, Android, desktop or CLI. Drives the real app, captures every state, and writes a catalog, per-feature walkthroughs, persona journeys, verified fixes and an append-only run log into a Walkthrough Studio hub. Use when the user says /walkthrough, or wants to document, record, screenshot, demo or QA their app, generate onboarding guides, walk a user journey, verify a bug fix holds, or open a PR showing what a change does for the user.",
+  "author": { "name": "Walkthrough Studio" },
+  "keywords": [
+    "walkthrough", "documentation", "screenshots", "video", "qa",
+    "playwright", "ios-simulator", "android", "electron", "cli",
+    "onboarding", "personas", "regression"
+  ],
+  "skills": "./skills/"
+}

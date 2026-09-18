@@ -1,0 +1,79 @@
+{
+  "journeyId": "review-a-change",
+  "personaId": "copy-editor",
+  "voice": "kokoro · af_heart",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 69432,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 6817,
+      "narration": "Tom opens the revision history, tracing each changed word back to the argument that produced it.",
+      "image": "personas/copy-editor-scene.png"
+    },
+    {
+      "kind": "moment",
+      "startMs": 6817,
+      "durMs": 5857,
+      "narration": "I check the talk page first to understand why editors disagree about this change.",
+      "image": "personas/copy-editor-moment-setting-out.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 12674,
+      "durMs": 7009,
+      "narration": "Tom sees the article’s current published revision, without any visible record of debate or age.",
+      "image": "personas/review-a-change/01-article.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 19683,
+      "durMs": 6476,
+      "narration": "Tom reads each revision: a date, an author, a byte change, and the reason for the edit.",
+      "image": "personas/review-a-change/02-history.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 26159,
+      "durMs": 7479,
+      "narration": "Tom selects the current revision and an older one; the radio columns prevent invalid comparisons.",
+      "image": "personas/review-a-change/03-revisions-selected.png"
+    },
+    {
+      "kind": "moment",
+      "startMs": 33638,
+      "durMs": 7095,
+      "narration": "I compare sources, revisions, and talk-page arguments before deciding whether the change holds up.",
+      "image": "personas/copy-editor-moment-deciding.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 40733,
+      "durMs": 7223,
+      "narration": "Tom sees the single changed word inside the sentence, without searching through the unchanged paragraph.",
+      "image": "personas/review-a-change/04-diff.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 47956,
+      "durMs": 7244,
+      "narration": "Tom opens the talk page, where editors explain changes instead of arguing inside the article.",
+      "image": "personas/review-a-change/05-talk.png"
+    },
+    {
+      "kind": "moment",
+      "startMs": 55200,
+      "durMs": 5559,
+      "narration": "I leave with the reasoning behind the edit, not just the article’s current wording.",
+      "image": "personas/copy-editor-moment-payoff.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 60759,
+      "durMs": 8673,
+      "narration": "He can see exactly which words changed, who changed them, and the reason they gave — without leaving the article's own namespace.",
+      "image": "personas/copy-editor.png"
+    }
+  ]
+}

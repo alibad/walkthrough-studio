@@ -1,0 +1,55 @@
+{
+  "featureId": "article",
+  "featureName": "Reading an article",
+  "type": "feature",
+  "location": "/wiki/Pointillism",
+  "category": "reading",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "A document with apparatus, not an app with content",
+  "overview": "The page a reader actually came for. The lead answers first; contents, inline citations and the other-language versions sit around it without competing for attention.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Lead section first, apparatus around it",
+      "action": "Opened /wiki/Pointillism.",
+      "description": "The lead answers the question before any navigation appears. Contents, references and language links are all present but subordinate — the page is a document with apparatus, not an app with content in it.",
+      "screenshotFilename": "article/mobile/step-01-lead.png",
+      "screenshotAlt": "The lead section of the Pointillism article",
+      "location": "/wiki/Pointillism",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Sections carry their own citations",
+      "action": "Scrolled to the first substantive section.",
+      "description": "Every claim is footnoted at the point it's made rather than in a bibliography at the end. On a long article that's the difference between a reader being able to check one sentence and having to trust the whole page.",
+      "screenshotFilename": "article/mobile/step-02-section.png",
+      "screenshotAlt": "A body section of the article with inline citations",
+      "location": "/wiki/Pointillism",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The same article, in every language that has one",
+      "action": "Opened the language selector.",
+      "description": "Each language is a separate article with its own editors and its own revision history, not a translation of the English one. They're linked as siblings rather than derived from a source — which is why the list is a navigation surface and not a locale toggle.",
+      "screenshotFilename": "article/mobile/step-03-languages.png",
+      "screenshotAlt": "The language selector listing other-language versions",
+      "location": "/wiki/Pointillism",
+      "verificationStatus": "live-walked",
+      "annotations": [
+        {
+          "type": "tip",
+          "text": "Captured as a step inside this feature, not as a separate `article-fr` feature. A locale is an axis through a feature; cataloguing it separately would inflate the feature count without documenting anything new."
+        }
+      ]
+    }
+  ],
+  "tips": [
+    "Each language version is an independent article with its own history — the language list is navigation between siblings, not a translation switch."
+  ],
+  "generatedAt": "2026-09-18T07:10:04.020Z",
+  "capturedAt": "2026-09-18T07:10:04.020Z"
+}

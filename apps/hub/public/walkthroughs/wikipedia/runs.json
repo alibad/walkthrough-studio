@@ -1,0 +1,114 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-18T07:10:15.788Z",
+      "startedAt": "2026-09-18T07:09:43.267Z",
+      "completedAt": "2026-09-18T07:10:15.788Z",
+      "skill": "walkthrough",
+      "agent": "walk-wikipedia.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "",
+        "dirty": false,
+        "commitSubject": "Third-party site — no local checkout to diff against"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://en.wikipedia.org",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Live public site, article \"Pointillism\". Fundraising banners and site notices were hidden via injected CSS so captures are comparable between runs; nothing else was altered."
+      },
+      "coverage": {
+        "features": [
+          "search",
+          "article",
+          "revision-history"
+        ],
+        "personas": [],
+        "screenshots": 15,
+        "videos": 0,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-18T07:41:59.642Z",
+      "startedAt": "2026-09-18T07:41:22.537Z",
+      "completedAt": "2026-09-18T07:41:59.642Z",
+      "skill": "walkthrough",
+      "agent": "walk-wikipedia-personas.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "—",
+        "dirty": false,
+        "commitDate": "2026-09-18T07:41:59.642Z",
+        "commitSubject": "Third-party site — no local checkout to diff against",
+        "watchPath": ""
+      },
+      "config": {
+        "baseUrl": "https://en.wikipedia.org",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Persona journeys. Fundraising banners and site notices suppressed via CSS so runs are comparable; the mobile scene is captured on en.m.wikipedia.org, which is a different skin (Minerva) rather than the desktop layout at a narrow viewport."
+      },
+      "coverage": {
+        "features": [
+          "fact-checker/verify-a-claim",
+          "copy-editor/review-a-change"
+        ],
+        "screenshots": 10,
+        "videos": 0,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-18T07:43:56.730Z",
+      "startedAt": "2026-09-18T07:43:30.194Z",
+      "completedAt": "2026-09-18T07:43:56.730Z",
+      "skill": "walkthrough",
+      "agent": "walk-wikipedia-personas.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "—",
+        "dirty": false,
+        "commitDate": "2026-09-18T07:43:56.730Z",
+        "commitSubject": "Third-party site — no local checkout to diff against",
+        "watchPath": ""
+      },
+      "config": {
+        "baseUrl": "https://en.wikipedia.org",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Persona journeys. Fundraising banners and site notices suppressed via CSS so runs are comparable; the mobile scene is captured on en.m.wikipedia.org, which is a different skin (Minerva) rather than the desktop layout at a narrow viewport."
+      },
+      "coverage": {
+        "features": [
+          "fact-checker/verify-a-claim",
+          "copy-editor/review-a-change"
+        ],
+        "screenshots": 10,
+        "videos": 0,
+        "issues": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "walkthrough",
+  "version": "1.0.0",
+  "description": "Walk an app end to end and publish what you actually saw — web, iOS, Android, desktop or CLI. Drives the real app, captures every state, and writes a catalog, per-feature walkthroughs, persona journeys, verified fixes and an append-only run log into a Walkthrough Studio hub. Use when the user says /walkthrough, or wants to document, record, screenshot, demo or QA their app, generate onboarding guides, walk a user journey, verify a bug fix holds, or open a PR showing what a change does for the user.",
+  "author": { "name": "Walkthrough Studio" },
+  "keywords": [
+    "walkthrough", "documentation", "screenshots", "video", "qa",
+    "playwright", "ios-simulator", "android", "electron", "cli"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Walkthrough",
+    "shortDescription": "Walk any app — web, mobile, desktop or CLI — and publish what you saw.",
+    "longDescription": "Drives a real application the way a person would and writes down what it saw. Discovers features, captures each state on every surface, walks persona journeys, verifies that bug fixes hold, and records every run against a git commit so you always know whether the documentation still matches the product.",
+    "developerName": "Walkthrough Studio",
+    "category": "Documentation",
+    "capabilities": ["Read", "Write", "Shell"],
+    "defaultPrompt": [
+      "Walk this app and document it.",
+      "Capture a walkthrough of the checkout flow on mobile.",
+      "Walk the product as a new user and write up the journey.",
+      "Verify the bug fixes from the last two weeks still hold."
+    ],
+    "brandColor": "#B4462F"
+  }
+}

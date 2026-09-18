@@ -1,0 +1,92 @@
+{
+  "personaId": "fact-checker",
+  "journeyId": "verify-a-claim",
+  "headline": "Following a claim down to the source",
+  "overview": "A student will not cite an encyclopedia, but she will use one to find out *who* to cite. This is the path from a sentence she does not trust to the reference behind it — and what changes when she does the same thing on a phone.",
+  "payoff": "Four taps from an unattributed sentence to a named source, without ever losing her place in the paragraph.",
+  "platform": "web",
+  "surface": "desktop",
+  "capturedAt": "2026-09-18T07:43:48.680Z",
+  "scenes": [
+    {
+      "id": "arrive",
+      "title": "A sentence she does not want to take on trust",
+      "narrative": "Maya is writing about late-19th-century technique and has a claim she needs to attribute. She starts where every reader starts — the search box — and the site offers completions before she has finished the word.",
+      "frames": [
+        "personas/verify-a-claim/01-search.png"
+      ],
+      "location": "/wiki/Main_Page",
+      "surface": "desktop",
+      "sourceFeature": "search",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "lead",
+      "title": "The lead tells her what, but not who says so",
+      "narrative": "The opening paragraphs define the term and name the painters. Useful for orientation, useless for a citation — the lead deliberately summarises the body rather than sourcing it.",
+      "frames": [
+        "personas/verify-a-claim/02-lead.png"
+      ],
+      "location": "/wiki/Pointillism",
+      "surface": "desktop",
+      "sourceFeature": "article",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "marker",
+      "title": "A numbered marker, and a preview on hover",
+      "narrative": "Every sourced statement in the body carries a bracketed number. Hovering one raises a preview of the reference without leaving the paragraph, so she can judge whether it is worth following before she loses her place.",
+      "frames": [
+        "personas/verify-a-claim/03-citation-hover.png"
+      ],
+      "location": "/wiki/Pointillism",
+      "surface": "desktop",
+      "sourceFeature": "article",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "reference",
+      "title": "The footnote lands her in the reference list",
+      "narrative": "Clicking the marker jumps to the numbered entry at the foot of the article and highlights it. This is the end of Wikipedia's own responsibility and the start of hers: the entry is a pointer to a book or a paper, not the evidence itself.",
+      "frames": [
+        "personas/verify-a-claim/04-reference-list.png"
+      ],
+      "location": "/wiki/Pointillism#References",
+      "surface": "desktop",
+      "sourceFeature": "article",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "mobile-drawer",
+      "title": "On a phone the same footnote slides up instead",
+      "narrative": "Later, away from her desk, she checks a second claim on her phone. The mobile skin answers the same tap differently — the reference rises in a drawer over the article rather than scrolling her to the bottom of it, so she keeps her place in the sentence.",
+      "frames": [
+        "personas/verify-a-claim/05-mobile-reference.png"
+      ],
+      "location": "en.wikipedia.org/wiki/Pointillism",
+      "surface": "mobile",
+      "sourceFeature": "article",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "moments": [
+    {
+      "id": "setting-out",
+      "image": "personas/fact-checker-moment-setting-out.png",
+      "caption": "I’m checking who first made this claim, then I’ll read the sources they cite.",
+      "afterScene": -1
+    },
+    {
+      "id": "deciding",
+      "image": "personas/fact-checker-moment-deciding.png",
+      "caption": "I’m checking the footnotes now; the article’s claims matter less than where they lead.",
+      "afterScene": 2
+    },
+    {
+      "id": "payoff",
+      "image": "personas/fact-checker-moment-payoff.png",
+      "caption": "I find the original article, then check its references before deciding what to read.",
+      "afterScene": 4
+    }
+  ]
+}

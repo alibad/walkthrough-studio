@@ -1,0 +1,57 @@
+{
+  "featureId": "revision-history",
+  "featureName": "Revision history",
+  "type": "feature",
+  "location": "/w/index.php?title=Pointillism&action=history",
+  "category": "inspect",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Nothing is overwritten, so every change is checkable",
+  "overview": "The feature that makes the rest trustworthy. Every revision keeps its own URL, any two can be compared, and the diff is word-level — so a reader can establish what changed without taking anyone's word for it.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Every version, addressable",
+      "action": "Opened the revision history for Pointillism.",
+      "description": "Each row is a revision: who, when, the size delta, and their edit summary. Nothing is overwritten — the current article is just the newest row, and every earlier one is still a URL you can link someone to.",
+      "screenshotFilename": "revision-history/desktop/step-01-history.png",
+      "screenshotAlt": "The revision history list",
+      "location": "/w/index.php?title=Pointillism&action=history",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Pick any two points in time",
+      "action": "Selected a revision from a few edits back and the current one.",
+      "description": "The comparison is between arbitrary revisions, not just consecutive ones — so a reader can ask *what changed since the version I read last month* rather than stepping through every edit in between.",
+      "screenshotFilename": "revision-history/desktop/step-02-selected.png",
+      "screenshotAlt": "Two revisions selected for comparison",
+      "location": "/w/index.php?title=Pointillism&action=history",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The change itself, word by word",
+      "action": "Compared the selected revisions.",
+      "description": "Removed text on the left, added on the right, changed words highlighted within the line. **This is the artifact this whole tool is trying to produce for software** — the difference being that a wiki's content and its diff are the same medium, whereas a running app's behaviour has to be captured before it can be compared.",
+      "screenshotFilename": "revision-history/desktop/step-03-diff.png",
+      "screenshotAlt": "A word-level diff between two revisions",
+      "location": "/w/index.php?title=Pointillism&diff=next",
+      "verificationStatus": "live-walked",
+      "annotations": [
+        {
+          "type": "important",
+          "text": "Wikipedia makes drift visible by making every version addressable. A deployed app can't do that, which is why this hub records the commit each capture was taken at instead."
+        }
+      ]
+    }
+  ],
+  "keyFeatures": [
+    "Every revision is permanently addressable",
+    "Arbitrary pairs compare, not just consecutive edits",
+    "Word-level diffs rather than line-level"
+  ],
+  "generatedAt": "2026-09-18T07:10:14.557Z",
+  "capturedAt": "2026-09-18T07:10:14.557Z"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "walkthrough-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Walk any app \u2014 web, mobile, desktop or CLI \u2014 and publish what you saw.",
+  "scripts": {
+    "dev": "pnpm --filter hub dev",
+    "build": "pnpm --filter hub build",
+    "start": "pnpm --filter hub start",
+    "typecheck": "pnpm --filter hub typecheck",
+    "creatives": "node scripts/generate-creatives.mjs && node scripts/optimize-art.mjs && node scripts/audit-art.mjs",
+    "new-project": "node scripts/new-project.mjs",
+    "audit:art": "node scripts/audit-art.mjs",
+    "walk:sample": "node scripts/walk-wikipedia.mjs",
+    "walk:personas": "node scripts/walk-wikipedia-personas.mjs",
+    "persona:art": "node scripts/generate-persona-art.mjs",
+    "persona:moments": "node scripts/generate-persona-moments.mjs",
+    "persona:story": "node scripts/render-persona-story.mjs",
+    "tts:sample": "node scripts/tts-sample.mjs",
+    "reset:demo": "node scripts/reset-demo.mjs"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "packageManager": "pnpm@10.33.4",
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "tsx": "^4.23.13"
+  }
+}
