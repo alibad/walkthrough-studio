@@ -543,10 +543,9 @@ adb shell am broadcast -a com.android.systemui.demo -e command network -e wifi s
 adb shell am broadcast -a com.android.systemui.demo -e command notifications -e visible false
 ```
 
-`adb shell screenrecord` is documented as: **180-second hard cap**, **no
-audio**, native display resolution, MPEG-4, 20 Mbps default, and rotation
-mid-recording unsupported. `adb exec-out screencap -p` gives PNG (`exec-out`,
-not `shell`, or the LF→CRLF translation corrupts the file).
+`adb shell screenrecord`: **no audio**, H.264/MP4, 20 Mbps default,
+display-resolution by default. ⚠️ **Two things developer.android.com still says
+are false** — see Addendum 5. `adb exec-out screencap -p` gives PNG.
 
 **A caveat on simulator video, measured here with `ffprobe`:**
 
@@ -696,3 +695,65 @@ capabilities. Treat iOS support as absent until demonstrated.
 
 WebDriver BiDi is not an option here: Safari 27.0 currently passes **0 of 4631**
 BiDi web-platform subtests.
+
+---
+
+# Addendum 5 — Android, from AOSP source rather than the docs page
+
+The Android notes in Addendum 2 were taken from `developer.android.com`. Checked
+against AOSP by diffing release tags, **two load-bearing statements on that page
+are stale**, and both were repeated here before being caught.
+
+## `screenrecord`'s 180-second cap was removed in Android 14
+
+The docs still say *"The default and maximum value is 180 (3 minutes)."*
+Diffing `frameworks/av/cmds/screenrecord/screenrecord.cpp`:
+
+| Release | Behaviour |
+|---|---|
+| Android 13 | `if (gTimeLimitSec == 0 \|\| gTimeLimitSec > kMaxTimeLimitSec) { … "outside acceptable range [1,180]"; return 2; }` — a real hard cap |
+| Android 14 → main | Cap **removed**. `--time-limit 0` means unlimited; 180 survives only as the *default* |
+
+## Rotation during recording was fixed in Android 14
+
+The docs say rotation *"is not supported… some of the screen is cut off."*
+`updateDisplayProjection()` is now called every encoder-loop iteration and
+re-applies the projection when orientation changes — 0 occurrences in Android
+13, 3 in Android 14 and later.
+
+**The pattern is the finding.** Twice now, a current vendor documentation page
+has asserted a limitation that the source contradicts. For anything that
+determines whether an artifact is capturable, check the source for the version
+you actually target.
+
+## Things worth knowing that the docs do not say
+
+- **`screencap` returns the *logical* display size, not the panel's.** They
+  diverge whenever `wm size` has been overridden, and `screencap` returns the
+  override. Run `adb shell wm size` before trusting a golden image.
+- **Colour profile travels with the PNG.** `screencap -p` compresses at quality
+  100 and passes the display's dataspace through, so a Display-P3 panel yields a
+  P3-tagged PNG. Cross-device byte comparison fails on this alone — which
+  matters directly for a duplicate-capture guard.
+- Android 16 adds `-j` (JPEG) which attaches an **HDR gainmap**. Prefer `-p`.
+- **`FLAG_SECURE` content captures as black** and no adb-reachable permission
+  changes that. Android 15+ debuggable builds only have an escape hatch in
+  `Settings.Secure.disable_secure_windows`; it silently no-ops on user builds.
+- **`am instrument --no-window-animation` beats `settings put global`** for
+  animation freezing: it zeroes all three scales and restores them in a
+  `finally`, so a crashed run does not leave the device permanently altered.
+  The `settings put` form leaks broken state.
+- **Demo Mode needs `DUMP`, not root.** `com.android.shell` holds it and shares
+  UID 2000, so plain `adb shell am broadcast` qualifies; the `adb root` in
+  AOSP's own example is habit, not requirement. `sysui_demo_allowed` is a hard
+  gate — without it every broadcast is silently swallowed. Demo mode does **not**
+  survive a SystemUI restart.
+- **On emulators, prefer host-side capture.** `screencap` runs in the guest
+  against SurfaceFlinger, so host window size, zoom and skin are irrelevant and
+  resolution parity holds. But guest `screenrecord` goes through the emulated
+  H.264 encoder, which is where emulator recording failures originate —
+  `adb emu screenrecord screenshot` and the emulator's gRPC
+  `EmulatorController/getScreenshot` bypass it.
+- ⚠️ **Security note if the gRPC route is used:** starting the emulator with
+  `-grpc <port>` binds **all interfaces with authentication off**. The
+  auto-assigned default binds loopback with token auth. Add `-grpc-use-token`.
