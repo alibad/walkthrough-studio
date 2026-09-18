@@ -570,3 +570,51 @@ checking the same two properties on `screenrecord` before relying on it.
 - Retina behaviour of Scribe, Guidde, Tango and Supademo's screenshot mode —
   none publish it, and the `captureVisibleTab` inference is from permission
   sets rather than documentation.
+
+---
+
+# Addendum 3 — real-device clouds, and an inconvenient endorsement
+
+If real devices beat emulation, the device clouds are where you would go. They
+were checked. The result is more equivocal than expected.
+
+**No vendor — BrowserStack, Sauce Labs, Firebase Test Lab, AWS Device Farm —
+documents the resolution, codec or compression of its platform-generated
+screenshots or video.** Not one page states a native resolution, a scale factor
+or a re-encode policy. For a system that measures the artifact rather than
+trusting the tool, four vendors offering unspecified fidelity is a poor
+foundation.
+
+The defensible pattern is therefore the same one this project already uses:
+**take the capture yourself, with a call whose output you can measure, and
+retrieve the file byte-for-byte.** Two clouds support that end to end —
+AWS Device Farm (your test writes to `$DEVICEFARM_SCREENSHOT_PATH`, retrieved
+via presigned S3, 400-day retention) and Firebase Test Lab (AndroidX
+`Screenshot.capture()` into a GCS bucket you own). BrowserStack's Espresso
+screenshots are genuine on-device PNGs with **no documented download API** —
+visible in the dashboard, unreachable programmatically. Sauce caps
+platform screenshots at 150 and offers none at all for XCUITest.
+
+Other constraints worth knowing before choosing this path: Firebase Test Lab
+**cannot record video on iOS 18 or later**; AWS Device Farm truncates video
+beyond 1 GB and may drop artifacts beyond 4 GB per run; Sauce documents
+"approximately 99% reliability" for real-device video, and its live-view stream
+is lossy JPEG.
+
+## The endorsement that cuts against the real-device argument
+
+Firebase Test Lab's own documentation, on screenshot-comparison testing:
+
+> Such tests may be more brittle on some device types than others. We recommend
+> targeting Arm (`*.arm`) **emulator** devices for these kinds of tests.
+
+Google, who sell access to physical devices, advise using **emulators** when the
+thing you care about is comparing screenshots. That is the determinism-versus-
+reach trade-off stated by a source with every commercial incentive to say the
+opposite, and it is the clearest external support for the position this document
+arrived at independently: real hardware wins on reach and on last-mile engine
+behaviour, and *loses* on reproducibility — which is the property an artifact
+archive is built on.
+
+Retention, for planning: Sauce 30 days, BrowserStack 30 (video) / 60 (text
+logs), Firebase 90 in the default bucket and unlimited in your own, AWS 400.
