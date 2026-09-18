@@ -25,3 +25,6 @@ Thumbs.db
 
 # Narration voices are generated locally; the comparison MP3s are throwaway.
 voice-sample-*.mp3
+
+# vercel
+.vercel
