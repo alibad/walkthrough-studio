@@ -4,8 +4,8 @@
   "platform": "web",
   "driver": "playwright",
   "capturedAgainst": "http://localhost:3000",
-  "discoveredAt": "2026-09-18T20:37:51.063Z",
-  "updatedAt": "2026-09-18T20:39:07.432Z",
+  "discoveredAt": "2026-09-18T21:06:07.031Z",
+  "updatedAt": "2026-09-18T21:07:08.982Z",
   "features": [
     {
       "featureId": "gallery",
@@ -18,7 +18,7 @@
         "mobile": "done"
       },
       "issueCount": 2,
-      "lastWalkthroughAt": "2026-09-18T20:39:07.432Z"
+      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
     },
     {
       "featureId": "deck-scroll",
@@ -30,8 +30,8 @@
         "desktop": "done",
         "mobile": "done"
       },
-      "issueCount": 2,
-      "lastWalkthroughAt": "2026-09-18T20:39:07.432Z"
+      "issueCount": 1,
+      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
     },
     {
       "featureId": "deck-slides",
@@ -43,7 +43,7 @@
         "desktop": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-18T20:39:07.432Z"
+      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
     },
     {
       "featureId": "deck-draft-unlisted",
@@ -55,8 +55,8 @@
         "desktop": "done",
         "mobile": "done"
       },
-      "issueCount": 1,
-      "lastWalkthroughAt": "2026-09-18T20:39:07.432Z"
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
     },
     {
       "featureId": "admin-dashboard",
@@ -69,7 +69,7 @@
         "desktop": "done"
       },
       "issueCount": 1,
-      "lastWalkthroughAt": "2026-09-18T20:39:07.432Z"
+      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
     },
     {
       "featureId": "share-link",

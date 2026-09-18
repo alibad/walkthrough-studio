@@ -278,3 +278,59 @@ presenting a broken frame as documentation.
 
 No persona art: this repo has no `OPENAI_API_KEY`, so `pnpm persona:art` cannot
 run. Not worth borrowing a key from another project without being asked.
+
+---
+
+## Three follow-ups, all shipped
+
+### 1. The openstage decks were broken on phones — fixed in that repo
+
+Not a walkthrough fix; a real bug in the app, fixed properly in `openstage`
+with its own changelog and build. A 393px phone was being handed a **560px
+layout viewport**, so the browser scaled every deck down to fit.
+
+Three causes, found by bisecting the live DOM rather than reading code:
+`EditorialGrid` had no mobile collapse (its twelve `minmax(0,1fr)` tracks
+computed to literally `0px` and the cells overflowed them); `Spectrum` put
+`sr-only` on a `<table>`, which ignores `width: 1px` because a table is never
+narrower than its min-content, so the screen-reader table measured 432px; and a
+text animation lays its string out on one line at first paint, expanding the
+viewport permanently.
+
+`awwwards-flagship` 560→393, `ai-patterns` 456→393, `sample-scroll` 490→393.
+
+**The reason this is worth dwelling on:** the walkthrough found it by measuring
+the layout viewport. The mobile screenshots looked like ordinary narrow renders.
+Nobody would have caught it by eye.
+
+### 2. Captures now show responsiveness
+
+The viewer showed one surface at a time behind a tab switcher, so a reader could
+see desktop, could see mobile, and could never see the *relationship* — which is
+the only thing "is this responsive?" actually asks. There is now a **Compare
+surfaces** mode that puts the same moment on every surface side by side, each in
+its own true aspect ratio.
+
+Steps are paired **by title** and only fall back to position, because a surface
+legitimately skips steps; index matching would shift every later pairing by one
+and silently compare unrelated screens. A surface with no matching step says so
+rather than rendering a blank cell that reads as breakage.
+
+### 3. An empty capture is now retried, not rejected
+
+`waitForReady` watches text, loading indicators and images. It cannot see a
+`<canvas>`, so a WebGL hero reports a settled DOM while still painting black —
+which is how the persona journey shipped empty scenes even after the content
+check was added. The check was right and the timing was wrong.
+
+`shot()` now re-captures up to three times while the frame is empty, waiting
+between attempts. That is what a person does: look, see nothing, wait, look
+again. Only a screen still empty after all three is a finding. On the re-walk:
+`scene-02-open.png still empty (25%), waiting for it to paint…` then passed at
+0.41, and the journey went from 1 scene back to 3.
+
+**And one more claim that contradicted its own screenshot.** With the deck
+finally rendering, scene 2's capture showed "§ 08 · THE CLOSE" while the
+narrative said the deck "opens straight onto its hero". The walk now scrolls to
+top and asserts the position rather than trusting it. Second time this exact
+class of error has appeared — writing the sentence before looking at the frame.

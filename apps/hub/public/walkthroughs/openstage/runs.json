@@ -1,17 +1,17 @@
 {
   "runs": [
     {
-      "id": "2026-09-18T20:39:07.448Z",
-      "startedAt": "2026-09-18T20:37:51.063Z",
-      "completedAt": "2026-09-18T20:39:07.448Z",
+      "id": "2026-09-18T21:07:08.998Z",
+      "startedAt": "2026-09-18T21:06:07.031Z",
+      "completedAt": "2026-09-18T21:07:08.998Z",
       "skill": "walkthrough",
       "agent": "walk-openstage.mjs",
       "target": {
-        "sha": "eb4abd9c19b90a54a010d967fd8a37bb1539ed8a",
-        "shaShort": "eb4abd9",
+        "sha": "0029a0c452d97f7da792c4005f681fc6ccf3c172",
+        "shaShort": "0029a0c",
         "branch": "main",
         "dirty": false,
-        "commitSubject": "fix: brand Openstage as Human Quest and stop showing the public a setup wizard"
+        "commitSubject": "fix: decks were rendering zoomed out on every phone (see todo/2026-09-18.md)"
       },
       "config": {
         "platform": "web",
@@ -24,7 +24,7 @@
         "locales": [
           "en"
         ],
-        "notes": "backend: Playwright (launched Chromium) · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext · dev-server error overlays (Next.js / Vite) hidden; the console errors behind them are still collected and reported · surface \"mobile\": the page overflows horizontally — content is 560px wide on a 393px surface, so the layout viewport expanded to 560px and a real phone renders this zoomed out with a sideways scroll · surface \"mobile\": the page overflows horizontally — content is 456px wide on a 393px surface, so the layout viewport expanded to 456px and a real phone renders this zoomed out with a sideways scroll"
+        "notes": "backend: Playwright (launched Chromium) · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext · dev-server error overlays (Next.js / Vite) hidden; the console errors behind them are still collected and reported"
       },
       "coverage": {
         "features": [
@@ -37,9 +37,9 @@
         "personas": [
           "reader"
         ],
-        "screenshots": 25,
+        "screenshots": 26,
         "videos": 1,
-        "issues": 6
+        "issues": 4
       }
     }
   ]

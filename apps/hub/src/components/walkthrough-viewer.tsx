@@ -2,12 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { Info, Lightbulb, Maximize2, Play, TriangleAlert } from "lucide-react";
+import { Columns2, Info, Lightbulb, Maximize2, Play, TriangleAlert } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Prose } from "@/components/prose";
 import { SurfaceFrame } from "@/components/surface-frame";
 import { VerificationBadge } from "@/components/status";
 import { Lightbox } from "@/components/lightbox";
+import { ResponsiveCompare } from "@/components/responsive-compare";
 import { formatLocation } from "@/lib/platforms";
 import { isHandheld } from "@/lib/surfaces";
 import type {
@@ -57,6 +58,10 @@ export function WalkthroughViewer({
   const walkthrough = surface ? walkthroughs[surface.id] : undefined;
 
   const [lightbox, setLightbox] = useState<{ files: string[]; index: number } | null>(null);
+  /* "Compare" is only meaningful with something to compare against, so the
+     control appears at two surfaces and not before. */
+  const canCompare = surfaces.length > 1;
+  const [compare, setCompare] = useState(false);
 
   if (!surface || !walkthrough) {
     return (
@@ -73,7 +78,7 @@ export function WalkthroughViewer({
         <div
           role="tablist"
           aria-label="Capture surface"
-          className="mb-7 flex flex-wrap gap-1"
+          className="mb-7 flex flex-wrap items-center gap-1"
         >
           {surfaces.map((s) => {
             const isActive = s.id === surface.id;
@@ -102,11 +107,40 @@ export function WalkthroughViewer({
               </button>
             );
           })}
+
+          {canCompare && (
+            <button
+              type="button"
+              onClick={() => setCompare((c) => !c)}
+              aria-pressed={compare}
+              className={cn(
+                "ml-2 inline-flex items-center gap-1.5 rounded-sm border px-2.5 py-1 text-label font-medium transition-colors",
+                compare
+                  ? "border-ink bg-ink text-paper"
+                  : "border-rule bg-paper-raised text-ink-muted hover:border-rule-strong hover:text-ink",
+              )}
+            >
+              <Columns2 className="size-3.5" strokeWidth={1.75} aria-hidden />
+              Compare surfaces
+            </button>
+          )}
         </div>
       )}
 
+      {/* Every surface, one moment at a time. The tabs above answer "what does
+          this look like on a phone"; this answers "what changed between them",
+          which is the question a reader actually has about responsiveness. */}
+      {compare && (
+        <ResponsiveCompare
+          slug={slug}
+          walkthroughs={walkthroughs}
+          surfaces={surfaces}
+          featureName={featureName}
+        />
+      )}
+
       {/* Overview */}
-      <div className="mb-10 grid gap-8 lg:grid-cols-[1fr_16rem]">
+      <div className={cn("mb-10 grid gap-8 lg:grid-cols-[1fr_16rem]", compare && "hidden")}>
         <div>
           {walkthrough.headline && (
             <h2 className="display mb-3 text-head max-w-[34ch]">{walkthrough.headline}</h2>
@@ -146,7 +180,7 @@ export function WalkthroughViewer({
       </div>
 
       {/* Steps */}
-      <ol className="space-y-14">
+      <ol className={cn("space-y-14", compare && "hidden")}>
         {walkthrough.steps.map((step) => (
           <li key={step.stepNumber}>
             <Step

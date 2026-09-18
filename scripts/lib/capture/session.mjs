@@ -224,32 +224,51 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
       const rel = `${featureId}/${surface.id}/${file}`;
       const abs = join(outDir, rel);
       mkdirSync(dirname(abs), { recursive: true });
-      await ctx.screenshot(abs);
 
-      // Measure the file, don't trust the flag.
-      assertRetina(abs, surface);
-
-      // ── Is there anything on this screen? ────────────────────────────
+      // ── Capture, and retry while the screen is still empty ───────────
       //
-      // This check exists because everything above it passed on a capture
-      // showing a clipped title over 90% empty space. Pixel density,
-      // animation state and byte-uniqueness are all properties of *how* a
-      // capture was taken; none of them notices that nothing rendered.
+      // `waitForReady` watches text, loading indicators and images. It cannot
+      // see a <canvas>: a WebGL hero reports a settled DOM while it is still
+      // painting black, so the gate passes and the capture is of nothing. That
+      // is exactly how a persona journey shipped three empty scenes.
+      //
+      // Retrying rather than rejecting is the honest response, because it is
+      // what a person would do — look, see nothing, wait a beat, look again.
+      // Only a screen that is *still* empty after several tries is a real
+      // finding, and then it is reported as one.
       let content = null;
-      try {
-        content = measureContent(abs);
-      } catch {
-        report.skipped.push("content check (unsupported PNG variant)");
+      let attempt = 0;
+      const maxAttempts = o.sparse ? 1 : 3;
+      while (attempt < maxAttempts) {
+        attempt++;
+        await ctx.screenshot(abs);
+        assertRetina(abs, surface);
+        try {
+          content = measureContent(abs);
+        } catch {
+          report.skipped.push("content check (unsupported PNG variant)");
+          break;
+        }
+        if (o.sparse || content.occupiedCells >= CONTENT_THRESHOLDS.minOccupiedCells) break;
+        if (attempt < maxAttempts) {
+          console.log(
+            `    · ${file} still empty (${Math.round(content.occupiedCells * 100)}%), waiting for it to paint…`,
+          );
+          await new Promise((r) => setTimeout(r, 1200));
+          await freezeAnimations(ctx);
+        }
       }
+
       if (content && !o.sparse && content.occupiedCells < CONTENT_THRESHOLDS.minOccupiedCells) {
         const detail =
-          `${rel} looks empty — content in only ${Math.round(content.occupiedCells * 100)}% of the frame ` +
+          `${rel} looks empty after ${attempt} attempts — content in only ` +
+          `${Math.round(content.occupiedCells * 100)}% of the frame ` +
           `(threshold ${Math.round(CONTENT_THRESHOLDS.minOccupiedCells * 100)}%). ` +
-          `Usually this means the page had not finished rendering, or the interaction did not land. ` +
-          `If the screen really is this sparse, pass { sparse: true } to say so deliberately.`;
+          `Either the screen never rendered, or the interaction did not land. ` +
+          `If it really is this sparse, pass { sparse: true } to say so deliberately.`;
         report.rejected.push({ file: rel, reason: "empty", occupiedCells: content.occupiedCells });
         if (o.optional) {
-          console.log(`    · skipped ${file} — nothing rendered`);
+          console.log(`    · skipped ${file} — nothing rendered after ${attempt} attempts`);
           return null;
         }
         throw new InvariantViolation("contentful", detail);

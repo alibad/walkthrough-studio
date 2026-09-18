@@ -526,6 +526,13 @@ async function walkReaderJourney() {
 
   if (await walk.ctx.clickText("The Grammar of Attention", { role: "link" })) {
     await walk.ctx.settle();
+    // Land at the top, deliberately. The scene's claim is that the deck opens
+    // onto its hero, and a deck that restores a scroll position would have the
+    // capture quietly contradict the sentence next to it — which is the exact
+    // failure this system exists to prevent. Asserting the position is cheaper
+    // than trusting it.
+    await walk.ctx.evaluate("window.scrollTo({ top: 0, behavior: 'instant' })");
+    await walk.ctx.settle();
     const file = await walk.shot("scene-02-open.png", { optional: true });
     if (file) {
       scenes.push({
