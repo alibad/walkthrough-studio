@@ -618,3 +618,81 @@ archive is built on.
 
 Retention, for planning: Sauce 30 days, BrowserStack 30 (video) / 60 (text
 logs), Firebase 90 in the default bucket and unlimited in your own, AWS 400.
+
+---
+
+# Addendum 4 — retracting "Playwright's WebKit is close enough to iOS Safari"
+
+Addendum 1 concluded, from one page that rendered identically in both, that
+"mobile-web engine fidelity does not require a simulator." **That conclusion is
+withdrawn.** The page tested happened not to exercise any of the axes where the
+two diverge, and generalising from it was exactly the mistake this project
+exists to prevent: a single agreeing measurement is not evidence of general
+agreement.
+
+## The measurement that retracts it
+
+A page that reads the dynamic viewport units directly, run in both:
+
+| | Playwright WebKit (`iPhone 14 Pro` descriptor) | Real iOS Safari (iPhone 17 Simulator) |
+|---|---|---|
+| `100svh` | 660 | **714** |
+| `100lvh` | 660 | **754** |
+| `lvh − svh` | **0** | **40px** |
+| `navigator.platform` | `MacIntel` | `iPhone` |
+| `navigator.maxTouchPoints` | **0** (despite `hasTouch: true`) | **5** |
+| `env(safe-area-inset-bottom)` | `0px` | `0px` *(matched here)* |
+
+`lvh − svh` is the height of the Safari URL bar. Playwright has one fixed
+viewport and no browser chrome, so the small and large viewport units **collapse
+to a single number**. Every layout bug that appears when the URL bar retracts —
+a sticky footer that jumps, a full-height hero that clips, a modal whose action
+row slides under the chrome — is **structurally invisible** to it. Not
+"sometimes missed": it cannot be expressed.
+
+`maxTouchPoints: 0` while `hasTouch: true` is its own trap, since feature
+detection written as `navigator.maxTouchPoints > 0` takes the desktop branch.
+
+## Why the gap exists
+
+Playwright's own documentation is explicit:
+
+> Playwright's WebKit is derived from the latest WebKit main branch sources,
+> often before these updates are incorporated into Apple Safari. […] **Playwright
+> doesn't work with the branded version of Safari since it relies on patches.**
+
+The patch set over upstream WebKit `main` is roughly 20,000 lines across 361
+files, and on Linux it runs the **GTK and WPE** ports rather than anything Apple
+ships. Text is shaped by Uniscribe or FreeType rather than CoreText, which alone
+makes pixel-diffing its output against iOS unreliable by construction.
+
+By contrast the iOS Simulator runtime ships a real `MobileSafari.app` and a
+`WebKit.framework` built for `PLATFORM_IOSSIMULATOR` — **the same Safari source,
+recompiled**, running arm64 natively. That is a categorically different artifact
+from a patched desktop port, and the `svh`/`lvh` result is the behavioural proof.
+
+## The corrected position
+
+- **Playwright WebKit**: good for logic, standards behaviour and WebKit-specific
+  JavaScript regressions. **Not evidence about how a page looks on an iPhone.**
+- **iOS Simulator**: real Safari, real WebKit, real device pixels, real dynamic
+  viewport behaviour. The right tool for a mobile-web *screenshot*. Still a poor
+  proxy for performance, GPU, colour gamut and DRM.
+- **`safaridriver` against a tethered iPhone** is the Apple-supported,
+  standards-based path to the real thing: `platformName: "iOS"` with
+  `safari:deviceUDID`, and W3C `Take Screenshot` returning CSS px × DPR.
+
+So the mobile recommendation in Addendum 1 inverts. **For mobile-web captures
+that are meant to be looked at, prefer the Simulator over Playwright's WebKit.**
+Keep Playwright for the desktop surface and for logic.
+
+## Also worth knowing, found in the same pass
+
+Apple shipped a first-party browser-automation MCP server — `safaridriver --mcp`
+— stable in Safari 27.0. Its `screenshot` tool writes a PNG to a path you choose
+and supports `full_page`. It appears to be **macOS-only**: none of its tool
+schemas exposes a device or UDID parameter, unlike classic safaridriver's
+capabilities. Treat iOS support as absent until demonstrated.
+
+WebDriver BiDi is not an option here: Safari 27.0 currently passes **0 of 4631**
+BiDi web-platform subtests.
