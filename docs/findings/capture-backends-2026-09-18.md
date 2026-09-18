@@ -14,6 +14,13 @@ capture boundary does not fall between "agent" and "Playwright" at all. It
 falls between backends that speak the Chrome DevTools Protocol — which
 includes an agent-driven one — and backends that can only look at a screen.
 
+> **⚠️ Read the addendum at the bottom before acting on this document.** Three
+> claims below were corrected the same day: the extension is *display-bound*
+> rather than capped at 1x, an extension **can** reach CDP-grade via the
+> `chrome.debugger` permission, and this document never tested real mobile at
+> all — the iOS Simulator turns out to meet the determinism invariant with no
+> injection whatsoever. The ordering of the conclusion changed as a result.
+
 ---
 
 ## How this was measured
@@ -38,7 +45,7 @@ Raw measurements: [`measurements.json`](./measurements-2026-09-18.json).
 
 | Invariant | Playwright | chrome-devtools MCP (CDP) | Claude-in-Chrome extension | Built-in browser pane | computer use |
 |---|---|---|---|---|---|
-| **Retina deviceScaleFactor** | ✅ 2880×1800 | ✅ 2880×1800 | ❌ 1512×775, dpr 1 | ❌ dpr 1 | ❌ display-bound |
+| **Retina deviceScaleFactor** | ✅ 2880×1800 | ✅ 2880×1800 | ⚠️ display-bound (see addendum) | ❌ dpr 1 | ❌ display-bound |
 | **Lossless format** | ✅ PNG | ✅ PNG | ❌ JPEG | ❌ no file | ❌ no file |
 | **Animations disabled** | ✅ native flag | ⚠️ not native, injectable | ❌ no control | ❌ no control | ❌ |
 | **Time frozen** | ✅ `clock` API | ❌ no equivalent | ❌ | ❌ | ❌ |
@@ -54,12 +61,19 @@ Playwright at `1440×900` with `deviceScaleFactor: 2` produced a **2880×1800**
 PNG. chrome-devtools MCP with `emulate viewport: "1440x900x2"` produced the
 same 2880×1800 PNG on disk.
 
-The Chrome extension produced **1512×775 JPEG** — exactly CSS pixels, at the
-display's own `devicePixelRatio` of 1. There is no `deviceScaleFactor`
-parameter anywhere in its surface, so this is not a setting that was missed; it
-is a capability that does not exist. The format matters independently: JPEG
-re-encoding softens UI text, and a lossy artifact is a poor thing to hand a
-reader who is deciding whether to trust it.
+The Chrome extension produced **1512×775 JPEG** — exactly CSS pixels, at this
+display's `devicePixelRatio` of 1.
+
+⚠️ **The original conclusion drawn from this was wrong; see Correction 1 in the
+addendum.** `captureVisibleTab` returns `innerWidth × devicePixelRatio`, so this
+was 1x because the window sat on a non-Retina external monitor, not because the
+API caps there. The real defect is that there is no parameter to *choose* the
+ratio: the artifact's resolution follows whichever display the window is on, so
+the same walk yields different resolutions docked and undocked.
+
+The format finding stands independently: JPEG re-encoding softens UI text, and a
+lossy artifact is a poor thing to hand a reader who is deciding whether to trust
+it.
 
 ### Animations disabled
 
@@ -285,3 +299,274 @@ backend and prints the table. It is the regression test for all of the above.
   from one machine on one day. Re-run `scripts/verify-capture-layer.mjs`
   before trusting this document — which is the same standard this project
   applies to everything else it publishes.
+
+---
+
+# Addendum, same day — three corrections and the mobile question
+
+Written after a challenge to the conclusion above: *"computer use and the Chrome
+browser extensions are the most powerful."* That challenge was substantially
+right about something the original document got wrong, and it exposed two
+factual errors. Both are corrected here rather than quietly edited above,
+because a silently-fixed document teaches nothing.
+
+## Correction 1 — the extension is not "1x". It is *display-bound*, which is worse.
+
+The original said the extension captures at 1x. The measurement was real
+(1512×775, dpr 1) but the **conclusion drawn from it was wrong**.
+`chrome.tabs.captureVisibleTab` returns an image of `innerWidth × innerHeight ×
+devicePixelRatio`. It produced 1x here because this machine's browser window sat
+on a non-Retina external display (3840×1080, dpr 1). On a Retina laptop screen
+the same call returns 2x.
+
+The real limitation is not the ceiling, it is the **lack of a floor**: there is
+no parameter to *choose* the pixel ratio, so the resolution of an artifact
+depends on which monitor the window happened to be on. Two runs of the same walk
+on the same machine produce different resolutions if the laptop was docked for
+one of them. For a system whose premise is comparable artifacts, an
+uncontrollable capture density is a worse property than a low one.
+
+## Correction 2 — an extension *can* reach CDP-grade. This one does not.
+
+The original treated "Chrome extension" as a capability tier. It is not. An
+extension that requests the `chrome.debugger` permission gets the DevTools
+Protocol, including `Page.captureScreenshot` and
+`Emulation.setDeviceMetricsOverride` — the exact two calls that carry every
+pixel invariant. So a purpose-built capture extension could sit in the top tier.
+
+The cost is that Chrome shows an unsuppressible infobar — *"This tab is being
+controlled by automated test software"* — for as long as the debugger is
+attached. For a general-purpose assistant extension that is a bad trade, which
+is presumably why the one measured here uses `captureVisibleTab` instead.
+
+**So the correct statement is about the API a tool chose, not about the
+category it belongs to.** "Extensions are screenshot-grade" was wrong;
+"this extension is screenshot-grade, and the category's ceiling is CDP" is right.
+
+## Correction 3 — the original never tested real mobile at all
+
+The most substantive gap. The document compared *mobile emulation inside a
+desktop browser* and never touched a simulator or a device, then concluded about
+"real mobile emulation" as if that settled mobile. It did not.
+
+Measured on the iOS Simulator (iPhone 17, iOS 26.5), against production:
+
+| | Result |
+|---|---|
+| `xcrun simctl io <udid> screenshot` | **1206×2622 PNG**, native 3x Retina, **0.46 s** |
+| `xcrun simctl io <udid> recordVideo --codec h264` | h264 `.mp4`, works |
+| Two captures 4 s apart, page loaded | **byte-identical** |
+| Injection required to achieve that | **none** |
+| Engine | real WebKit, real iOS Safari, real Safari chrome |
+| Driving | tap by device points works; navigated into a deck and captured the result |
+
+The determinism result deserves emphasis. On the web side, byte-identical
+captures required injecting freeze CSS, finishing Web Animations *and* pinning
+the clock. On iOS, `simctl status_bar override --time "09:41"` freezes the
+status bar — Apple built it for App Store screenshots — and the rest followed
+with no injection at all. **A platform-native feature did for free what the web
+path needed three mechanisms to approximate.**
+
+## But the fidelity argument for real devices is weaker than expected
+
+Having built the case for simulators, the fair test undercuts part of it. The
+same production page, rendered by Chromium mobile emulation and by Playwright's
+**real WebKit** build:
+
+```
+chromium-emulated   innerWidth 393, dpr 3, scrollWidth 393, no overflow, 9 links
+webkit              innerWidth 393, dpr 3, scrollWidth 393, no overflow, 9 links
+```
+
+Identical on every measured axis, and the WebKit screenshot matches the
+simulator's page area. Playwright ships a real WebKit build, so **mobile-web
+engine fidelity does not require a simulator.** Published guidance puts
+Playwright WebKit at roughly 80–90% of WebKit-specific bugs, with real devices
+needed for iOS-specific scrolling, fixed positioning, viewport resize behaviour
+around the address bar, GPU and memory pressure.
+
+So the simulator's unique contributions to *mobile web* are narrower than they
+first appear: the real Safari chrome, the real status bar, iOS viewport
+behaviour, and the last 10–20% of engine quirks. Its unique contribution to
+**native mobile apps** is total — nothing else can capture them at all.
+
+## What this changes in the conclusion
+
+The original ordered its questions badly. It asked "which backend produces the
+best artifact?" first, when the first question is **"can you reach the app at
+all?"** and the second is **"can you get past the front door?"**. Fidelity is
+third. A perfect capture of an app you cannot reach is worth nothing, and on
+reach the challenge was correct: simulator and desktop control are not
+fallbacks, they are the only option for native apps and for gates only a human
+can pass.
+
+The revised rule is a ladder, not a verdict:
+
+1. **Native app, desktop app, or CLI** → simulator / emulator / desktop control.
+   Nothing else can reach it. Not a fallback — the only path.
+2. **Web behind a gate no script can pass** (SSO with a hardware key, MFA push)
+   → attach to a browser session a human has already authenticated. The CDP
+   driver exists for this.
+3. **Web, otherwise** → CDP-grade automation. Playwright by default for video
+   and the clock API; Playwright's WebKit build for mobile-web fidelity.
+4. **Anything screenshot-grade** (`captureVisibleTab`-class extensions, desktop
+   screen capture of a browser) → good for looking, navigating, exploring and
+   reporting. Never the source of a published artifact, because the surface
+   cannot be pinned and the state cannot be isolated.
+
+The one unchanged conclusion: whichever rung you are on, the invariants are
+enforced and verified by the layer, not trusted from the tool.
+
+## Method note — an error this exercise caught
+
+The registry entry written earlier that day gave openstage's production host as
+`present.openstage.humanquest.net`. Loading it on the simulator returned
+*"Safari can't open the page because the server can't be found."* It is
+NXDOMAIN; the real host is `present.humanquest.net`. The hostname had been
+inferred from a changelog line rather than resolved, which is precisely the
+class of invented fact this project exists to prevent. Corrected in
+`apps/hub/projects.json`.
+
+A second near-miss: the openstage **dev server** never finished loading in real
+mobile Safari — a spinner still turning after 30 seconds — which looked like a
+serious WebKit bug. Production loaded perfectly. The difference was the dev
+server, not the app. Testing production before writing it up is the only reason
+that is a note here instead of a false finding in `issues.json`.
+
+---
+
+# Addendum 2 — what the APIs actually guarantee, and what the industry chose
+
+Researched against Chromium source and vendor documentation rather than
+measured locally. This section supersedes the loose language about
+"extensions" in the original.
+
+## `chrome.tabs.captureVisibleTab` — the hard ceiling, from the source
+
+- Captures at **physical device pixels** = CSS px × `devicePixelRatio`. The
+  implementation passes an empty output size to `CopyFromSurface`, meaning "no
+  rescale", so you get the compositor surface at its native device scale.
+- The undocumented `scale` parameter is **not an upscaler** — it only converts
+  a supplied `rect` from CSS px to device px for cropping. There is no way to
+  ask for more pixels than the window physically occupies on screen.
+- **Default format is JPEG at quality 90**, not PNG. This explains the JPEG
+  measured earlier: nothing had chosen it, it is simply the default.
+- **Viewport only.** No full-page capture; scroll-and-stitch is the only
+  non-debugger route.
+- Throttled to 2 calls/second, *except* that a user-gesture-initiated call
+  bypasses the quota entirely.
+
+So the ceiling is "whatever this monitor is", and the floor is "no control at
+all". Both matter for a system that wants comparable artifacts.
+
+## `chrome.debugger` — the ceiling is CDP, and the price is a banner
+
+An extension declaring `"debugger"` gets the real DevTools Protocol:
+`Page.captureScreenshot` (png/jpeg/**webp**, `clip.scale`,
+`captureBeyondViewport` for single-shot full page) and
+`Emulation.setDeviceMetricsOverride` with an **arbitrary `deviceScaleFactor`,
+independent of the physical display** — a 1× monitor can produce a 2560×1600
+capture of a 1280×800 viewport. It is the same mechanism Puppeteer uses.
+
+The price is not subtle:
+
+- A `GlobalConfirmInfoBar` across **every** tab: *"⟨Extension⟩ started debugging
+  this browser"*. Chromium's own string description notes it does not disappear
+  until dismissed, **even after the debugger detaches**. Suppressible only with
+  a launch flag unavailable to a normally-installed extension.
+- The two harshest install warnings Chrome issues: *"Access the page debugger
+  backend"* and *"Read and change all your data on all websites."*
+- Opening DevTools on the attached tab force-detaches the extension.
+- **Chrome 155 (stable 2026-10-06, roughly three weeks from this writing)**
+  begins enforcing `runtime_blocked_hosts`, `DisableScreenshots` and DLP
+  against `chrome.debugger`. Unmanaged consumer Chrome is unaffected; managed
+  fleets are.
+
+There is **no** way to set `deviceScaleFactor` or emulate a mobile device
+without it. `chrome.system.display` only reads; `chrome.tabs.setZoom` raises
+`devicePixelRatio` while enlarging CSS pixels by the same factor, netting zero
+extra physical pixels; UA spoofing via `declarativeNetRequest` changes the
+header and `navigator.userAgent` and triggers none of viewport-meta handling,
+touch emulation, overlay scrollbars or text autosizing.
+
+## What the companies who do this for a living actually chose
+
+Seven products examined — Scribe, Arcade, Supademo, Guidde, Tango, Loom,
+Screen Studio. **Not one of them declares the `debugger` permission.** Every
+browser-side capture among them is therefore viewport-only, at the display's
+own pixel ratio.
+
+The sharpest single piece of evidence is Loom's own encoding documentation:
+
+| | Codec / container | Ceiling |
+|---|---|---|
+| Loom **extension** | VP8/VP9, DASH/WebM | 1080p |
+| Loom **desktop app** | H.264, HLS/TS | 4K |
+
+VP8-in-WebM is exactly what `MediaRecorder` over a `tabCapture` stream
+produces. The extension is on the browser-API path; the desktop app is not.
+Screen Studio goes further and ships **no extension at all** — macOS only,
+on ScreenCaptureKit.
+
+**This is the strongest argument for the challenge, and it deserves stating
+plainly:** the industry's high-quality path is a *native app capturing the
+screen*, not a headless browser. Nobody building product-walkthrough tooling
+reaches for Playwright.
+
+## Why this project still should
+
+Because the products above answer a different question. Scribe, Arcade and
+Tango exist to record **what this person did, in their real session, with their
+real data** — and for that, capturing the operator's actual browser is not a
+compromise, it is the requirement. Shared profile, display-native resolution
+and browser chrome in the frame are all *correct* for that job.
+
+This project's artifacts have to be **comparable across runs and isolated from
+whoever ran them**: same surface every time, no operator identity in the
+pixels, a duplicate check that means something. Those need a pinned
+`deviceScaleFactor`, a fresh context per feature and a frozen clock — three
+things the screenshot-grade path cannot provide and the native-app path does
+not try to.
+
+Different goal, different tool. Neither choice is wrong in general.
+
+## Mobile, completed
+
+The Android side has the equivalent of the iOS status-bar trick, which the
+original document assumed did not exist:
+
+```bash
+adb shell settings put global sysui_demo_allowed 1
+adb shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm 1231
+adb shell am broadcast -a com.android.systemui.demo -e command battery -e level 100 -e plugged false
+adb shell am broadcast -a com.android.systemui.demo -e command network -e wifi show -e level 4
+adb shell am broadcast -a com.android.systemui.demo -e command notifications -e visible false
+```
+
+`adb shell screenrecord` is documented as: **180-second hard cap**, **no
+audio**, native display resolution, MPEG-4, 20 Mbps default, and rotation
+mid-recording unsupported. `adb exec-out screencap -p` gives PNG (`exec-out`,
+not `shell`, or the LF→CRLF translation corrupts the file).
+
+**A caveat on simulator video, measured here with `ffprobe`:**
+
+```
+codec h264 · 1206x2622 · pix_fmt yuv420p
+r_frame_rate 25/2 · avg_frame_rate 420/373 (~1.13 fps) · 7 frames over ~6s
+```
+
+`yuv420p` means 4:2:0 chroma subsampling — lossy on exactly the coloured UI
+text these artifacts are made of — and the frame rate is **variable**, with a
+near-static screen emitting almost no frames. Simulator video is fine as
+illustration of a flow and is **not** evidence at the level a PNG is. Worth
+checking the same two properties on `screenrecord` before relying on it.
+
+## Unverified, and left that way
+
+- Whether SystemUI Demo Mode still works unmodified on Android 14/15/16, and
+  whether it now needs DUMP permission or root.
+- Real-device cloud vendors (BrowserStack, Sauce, Firebase Test Lab, AWS Device
+  Farm): whether raw high-fidelity files can be extracted, or only viewed.
+- Retina behaviour of Scribe, Guidde, Tango and Supademo's screenshot mode —
+  none publish it, and the `captureVisibleTab` inference is from permission
+  sets rather than documentation.
