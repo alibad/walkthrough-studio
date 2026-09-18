@@ -24,8 +24,13 @@ import { join } from "node:path";
 import { createCaptureSession } from "./session.mjs";
 import { playwrightDriver } from "./driver-playwright.mjs";
 import { cdpDriver } from "./driver-cdp.mjs";
+import { simulatorDriver, simulatorAvailable, bootedSimulators } from "./driver-simulator.mjs";
+import { chooseDriver, detectCapabilities, describeCapabilities } from "./capabilities.mjs";
 
 export { INVARIANTS, InvariantViolation, pngSize, md5 } from "./invariants.mjs";
+export { measureContent, diffCells, CONTENT_THRESHOLDS } from "./pixels.mjs";
+export { detectCapabilities, describeCapabilities, chooseDriver } from "./capabilities.mjs";
+export { simulatorAvailable, bootedSimulators, SIMULATOR_SURFACES } from "./driver-simulator.mjs";
 
 /**
  * Standard surfaces. Dimensions are real devices, not round numbers: a
@@ -56,8 +61,8 @@ export function playwrightBrowserInstalled() {
   return false;
 }
 
-export async function openCapture({ outDir, videoDir = null, driver = "auto", cdpEndpoint } = {}) {
-  const chosen = await pickDriver(driver, cdpEndpoint);
+export async function openCapture({ outDir, videoDir = null, driver = "auto", cdpEndpoint, job } = {}) {
+  const chosen = await pickDriver(driver, cdpEndpoint, job);
   console.log(`  capture backend: ${chosen.label}`);
   const missing = Object.entries(chosen.declares)
     .filter(([, v]) => !v)
@@ -66,13 +71,29 @@ export async function openCapture({ outDir, videoDir = null, driver = "auto", cd
   return createCaptureSession({ driver: chosen, outDir, videoDir });
 }
 
-async function pickDriver(which, cdpEndpoint) {
+async function pickDriver(which, cdpEndpoint, job) {
   if (which === "playwright") return playwrightDriver();
   if (which === "cdp") return cdpDriver({ endpoint: cdpEndpoint });
+  if (which === "ios-simulator") return simulatorDriver();
   if (which && typeof which === "object") return which; // a caller-supplied driver
 
-  if (playwrightBrowserInstalled()) return playwrightDriver();
-  console.log("  Playwright's Chromium is not installed — trying an attached Chrome over CDP.");
-  console.log("  (`npx playwright install chromium` restores the default backend, which also records video.)");
-  return cdpDriver({ endpoint: cdpEndpoint });
+  // "auto": probe the machine, pick for the job, and SAY WHY. A run that
+  // quietly fell back to a weaker backend produces artifacts that look
+  // identical and mean less, so the reasoning is printed and recorded.
+  const decision = chooseDriver(job ?? {}, detectCapabilities());
+  if (decision.driver) console.log(`  chose ${decision.driver}: ${decision.why}`);
+  for (const r of decision.alsoConsidered) console.log(`  · ${r}`);
+
+  switch (decision.driver) {
+    case "ios-simulator":
+      return simulatorDriver();
+    case "cdp":
+      return cdpDriver({ endpoint: cdpEndpoint });
+    case "playwright":
+      return playwrightDriver();
+    default:
+      throw new Error(
+        `${decision.why}\n\nWhat this machine has:\n${describeCapabilities(decision.capabilities)}`,
+      );
+  }
 }

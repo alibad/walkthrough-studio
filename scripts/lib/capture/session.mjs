@@ -135,11 +135,11 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
     // ── Verify the page is actually still ───────────────────────────────
     //
     // Declaring "animations frozen" is cheap; proving it costs one expression.
-    await freezeAnimations(ctx);
+    if (hasDomBridge(driver)) await freezeAnimations(ctx);
 
-    const running = await ctx
+    const running = hasDomBridge(driver) ? await ctx
       .evaluate("document.getAnimations ? document.getAnimations().filter(a => a.playState === 'running').length : -1")
-      .catch(() => -1);
+      .catch(() => -1) : -1;
     if (running === 0) {
       report.verified.animationsFrozen = true;
     } else if (running > 0) {
@@ -148,13 +148,20 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
       );
     }
 
-    // Two reads of the clock, a real pause apart. If they agree, the page's
-    // notion of time is pinned and a live timestamp cannot silently disarm
-    // the duplicate guard.
-    const t1 = await ctx.evaluate("Date.now()").catch(() => null);
-    await new Promise((r) => setTimeout(r, 120));
-    const t2 = await ctx.evaluate("Date.now()").catch(() => null);
-    if (t1 != null && t2 != null) {
+    // Two reads of the clock, a real pause apart. Only meaningful when the
+    // driver can actually evaluate script in the page — a simulator pins its
+    // clock through the platform's status-bar override instead, which this
+    // check cannot see and must not contradict.
+    // If the two reads agree, the page's notion of time is pinned and a live
+    // timestamp cannot silently disarm the duplicate guard.
+    const hasDom = hasDomBridge(driver);
+    const t1 = hasDom ? await ctx.evaluate("Date.now()").catch(() => null) : null;
+    if (hasDom) await new Promise((r) => setTimeout(r, 120));
+    const t2 = hasDom ? await ctx.evaluate("Date.now()").catch(() => null) : null;
+    if (!hasDom) {
+      report.skipped.push("timeFrozen / animationsFrozen checks (backend has no DOM bridge)");
+    }
+    if (typeof t1 === "number" && typeof t2 === "number") {
       if (t1 === t2) {
         report.verified.timeFrozen = true;
       } else if (driver.declares.timeFrozen) {
@@ -483,4 +490,9 @@ async function waitForReady(ctx, { timeoutMs = 10_000, quietMs = 220 } = {}) {
     await new Promise((r) => setTimeout(r, quietMs));
   }
   return { ready: false, reason: lastReason, waitedMs: Date.now() - started };
+}
+
+/** Can this backend evaluate script in the page? */
+function hasDomBridge(driver) {
+  return driver.declares.domBridge !== false;
 }

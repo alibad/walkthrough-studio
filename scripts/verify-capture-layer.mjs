@@ -39,7 +39,10 @@ for (const id of DRIVERS) {
 
       // A real navigation. This capture must differ from the first.
       await walk.ctx.goto(URL_ + "/page2");
-      const b = await walk.shot("step-02-page-two.png");
+      // `/page2` really is one line of text on a plain ground. Declaring it
+      // sparse is the honest use of the escape hatch — and the fact that the
+      // content check caught it unprompted is the check working, not failing.
+      const b = await walk.shot("step-02-page-two.png", { sparse: true });
       console.log(`  ${surface.id}: ${b} after a real navigation`);
 
       // Now capture the SAME static screen again with nothing in between.
@@ -48,7 +51,7 @@ for (const id of DRIVERS) {
       // with a live clock produces byte-different captures of an unchanged
       // screen, which is precisely the hole `timeFrozen` exists to close.
       try {
-        await walk.shot("step-03-nothing-happened.png");
+        await walk.shot("step-03-nothing-happened.png", { sparse: true });
         console.log("  !! DUPLICATE NOT CAUGHT — the distinctness guard is not doing its job");
       } catch (err) {
         if (err instanceof InvariantViolation) console.log(`  duplicate correctly refused (${err.invariant})`);

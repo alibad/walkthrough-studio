@@ -334,3 +334,41 @@ finally rendering, scene 2's capture showed "§ 08 · THE CLOSE" while the
 narrative said the deck "opens straight onto its hero". The walk now scrolls to
 top and asserts the position rather than trusting it. Second time this exact
 class of error has appeared — writing the sentence before looking at the frame.
+
+### 4. A simulator driver, and the machine picks for itself
+
+The measurements said Playwright's WebKit is not a faithful stand-in for iOS
+Safari, so the system now has a backend that is one — and, more importantly,
+knows when to reach for it.
+
+**`driver-simulator.mjs`** drives real `MobileSafari.app` through `simctl`.
+Verified end to end: two captures of production through the full invariant
+layer, `retina`, `realMobile` and `contentful` all confirmed, with the status
+bar pinned to 9:41. It declares honestly what it cannot do — no console or
+network without the Web Inspector protocol, no CSS injection, and a new
+`domBridge: false` flag so the session **skips** the checks that need to
+evaluate script rather than reporting nonsense for them. Before that flag, the
+run reported "the clock advanced NaNms", which is worse than saying nothing.
+
+**`capabilities.mjs`** probes the machine and picks per job, in the order that
+actually matters — reach, then auth, then fidelity:
+
+```
+mobile web (screenshots) -> ios-simulator  real Safari on SD iPhone 17 — Playwright's
+                                           WebKit cannot express the URL-bar band
+mobile web + selectors   -> playwright     · a simulator is booted, but this walk drives
+                                             by CSS selector and simctl has no DOM bridge
+mobile web + video       -> playwright     · a simulator is booted, but its video is 4:2:0
+                                             and variable-frame-rate
+behind an SSO gate       -> cdp            reusing the Chrome you are already signed into
+native iOS app           -> ios-simulator  iOS is only reachable through a simulator
+```
+
+**Every fallback states its reason, out loud and in the run manifest.** A run
+that quietly dropped to a weaker backend produces artifacts that look identical
+and mean less; that silence is the thing worth engineering against.
+
+`safaridriver` is detected but not yet driven — it is the Apple-supported route
+to a *tethered iPhone* (`platformName: "iOS"`, `safari:deviceUDID`), and
+enabling it needs an admin password, so it is reported as available rather than
+assumed usable.
