@@ -18,8 +18,24 @@
 import { useEffect, useState } from "react";
 import { Film, X } from "lucide-react";
 
-export function StoryPlayer({ src, title }: { src: string; title: string }) {
+/**
+ * `kind` decides what this claims about the clip, and the two claims are not
+ * interchangeable — one is an assembled film with a synthetic voice, the other
+ * is the browser's own recording of the walk with no audio at all. Captioning
+ * a silent recording with a line about its voice-over is a lie the player
+ * tells on the page's behalf, so the caption is chosen here rather than fixed.
+ */
+export function StoryPlayer({
+  src,
+  title,
+  kind = "story",
+}: {
+  src: string;
+  title: string;
+  kind?: "story" | "recording";
+}) {
   const [open, setOpen] = useState(false);
+  const isRecording = kind === "recording";
 
   useEffect(() => {
     if (!open) return;
@@ -43,7 +59,7 @@ export function StoryPlayer({ src, title }: { src: string; title: string }) {
         className="flex items-center gap-2 rounded-full border border-ink bg-ink px-4 py-2 text-label text-paper transition-colors hover:bg-ink/90"
       >
         <Film className="size-3.5" strokeWidth={1.75} aria-hidden />
-        Watch the story
+        {isRecording ? "Watch the walk" : "Watch the story"}
       </button>
 
       {open && (
@@ -64,9 +80,10 @@ export function StoryPlayer({ src, title }: { src: string; title: string }) {
               <X className="size-5" />
             </button>
           </div>
-          {/* eslint-disable-next-line jsx-a11y/media-has-caption -- the
-              narration is generated from the scene text already on this page,
-              so the transcript is the page itself. */}
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption -- a walk
+              recording has no audio to caption, and the narrated variant is
+              generated from the scene text already on this page, so the
+              transcript is the page itself. */}
           <video
             src={src}
             controls
@@ -75,8 +92,9 @@ export function StoryPlayer({ src, title }: { src: string; title: string }) {
             className="max-h-[78vh] w-full max-w-[1600px] rounded bg-black"
           />
           <p className="max-w-[70ch] text-center text-label text-paper/70">
-            Real captures. The voice-over is synthesized from the scene narrative on this page —
-            it is not the product&rsquo;s own audio.
+            {isRecording
+              ? "The browser's own recording of this walk, unedited and silent. Nothing was staged for it and nothing was cut."
+              : "Real captures. The voice-over is synthesized from the scene narrative on this page — it is not the product's own audio."}
           </p>
         </div>
       )}

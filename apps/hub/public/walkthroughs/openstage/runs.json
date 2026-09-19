@@ -41,6 +41,48 @@
         "videos": 1,
         "issues": 4
       }
+    },
+    {
+      "id": "2026-09-19T11:52:17.816Z",
+      "startedAt": "2026-09-19T11:51:14.505Z",
+      "completedAt": "2026-09-19T11:52:17.816Z",
+      "skill": "walkthrough",
+      "agent": "walk-openstage.mjs",
+      "target": {
+        "sha": "0029a0c452d97f7da792c4005f681fc6ccf3c172",
+        "shaShort": "0029a0c",
+        "branch": "main",
+        "dirty": false,
+        "commitSubject": "fix: decks were rendering zoomed out on every phone (see todo/2026-09-18.md)"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "http://localhost:3000",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "backend: Playwright (launched Chromium) · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext · dev-server error overlays (Next.js / Vite) hidden; the console errors behind them are still collected and reported"
+      },
+      "coverage": {
+        "features": [
+          "gallery",
+          "deck-scroll",
+          "deck-slides",
+          "deck-draft-unlisted",
+          "admin-dashboard"
+        ],
+        "personas": [
+          "reader"
+        ],
+        "screenshots": 26,
+        "videos": 1,
+        "issues": 4
+      }
     }
   ]
 }

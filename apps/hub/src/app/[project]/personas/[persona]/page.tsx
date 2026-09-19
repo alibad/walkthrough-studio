@@ -100,8 +100,16 @@ export default async function PersonaPage({
                           </p>
                         )}
                       </div>
-                      {journey.storyVideo && (
+                      {journey.storyVideo ? (
                         <StoryPlayer src={journey.storyVideo} title={journey.headline} />
+                      ) : (
+                        journey.walkRecording && (
+                          <StoryPlayer
+                            src={journey.walkRecording}
+                            title={journey.headline}
+                            kind="recording"
+                          />
+                        )
                       )}
                     </div>
 

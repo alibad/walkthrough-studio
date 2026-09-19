@@ -736,8 +736,23 @@ export interface PersonaJourney {
   surface?: string;
   capturedAt?: string;
   targetSha?: string;
-  /** Generated story video, relative to `/walkthroughs/{slug}/`. */
+  /**
+   * The narrated film assembled by `render-persona-story.mjs`: persona art,
+   * scene text, and a synthesized voice-over. Relative to
+   * `/walkthroughs/{slug}/`.
+   */
   storyVideo?: string;
+  /**
+   * The browser's own screen recording of the walk — silent, unedited, and
+   * evidence in a way the story video is not.
+   *
+   * Deliberately a separate field. It was briefly written into `storyVideo`,
+   * where the player captions every clip "the voice-over is synthesized from
+   * the scene narrative" — a sentence that is false about a silent recording.
+   * Two different artifacts making two different claims need two different
+   * slots.
+   */
+  walkRecording?: string;
   /** Generated illustration between scenes. Always synthetic — see the type. */
   moments?: JourneyMoment[];
 }

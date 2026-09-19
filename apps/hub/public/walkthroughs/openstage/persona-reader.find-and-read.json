@@ -48,31 +48,11 @@
       "location": "/awwwards-flagship",
       "surface": "mobile",
       "sourceFeature": "deck-scroll",
-      "verificationStatus": "live-walked",
-      "note": "Measured during this run: the document is 560px wide on a 393px phone, so the browser zooms out to fit and this page can be scrolled sideways. She would not know why it looks slightly small — she would just pinch."
+      "verificationStatus": "live-walked"
     }
   ],
   "platform": "web",
   "surface": "mobile",
-  "capturedAt": "2026-09-18T21:07:08.960Z",
-  "moments": [
-    {
-      "id": "setting-out",
-      "image": "personas/reader-moment-setting-out.png",
-      "caption": "I open the link to see the deck everyone is discussing.",
-      "afterScene": -1
-    },
-    {
-      "id": "deciding",
-      "image": "personas/reader-moment-deciding.png",
-      "caption": "I can see the deck now and decide whether it answers my question.",
-      "afterScene": 1
-    },
-    {
-      "id": "payoff",
-      "image": "personas/reader-moment-payoff.png",
-      "caption": "I open the link and find the deck already on the right slide.",
-      "afterScene": 2
-    }
-  ]
+  "capturedAt": "2026-09-19T11:52:17.772Z",
+  "walkRecording": "video/page@64c833f27697f397ccbbd20f90af9691.webm"
 }

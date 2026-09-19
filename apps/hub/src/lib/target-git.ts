@@ -23,7 +23,24 @@ const GIT_TIMEOUT_MS = 3_000;
  * resolve against the repository root or `../openstage` would mean
  * `apps/openstage`.
  */
-const REPO_ROOT = path.resolve(process.cwd(), "..", "..");
+/**
+ * A registry path is relative to the repository, not to `apps/hub` where the
+ * hub renders from, so `../openstage` has to resolve two levels up.
+ *
+ * This makes the build emit one warning: a path escaping the app directory
+ * tells the bundler it may need to trace the whole project into the function.
+ * The warning is accepted rather than worked around — two attempts to hide the
+ * traversal from static analysis (an ignore comment, then a non-literal
+ * segment array) did not silence it and both made the code worse than the
+ * thing they were hiding. The traversal is correct, deliberate and reached
+ * only when a registry entry uses a relative path.
+ *
+ * On a deployed hub it resolves to a directory that does not exist, which
+ * every caller already handles.
+ */
+function repoRoot(): string {
+  return path.resolve(process.cwd(), "..", "..");
+}
 
 /**
  * Resolve a registry path to something on disk.
@@ -44,7 +61,7 @@ export function expandHome(p: string): string {
   if (!p) return p;
   if (p.startsWith("~/")) return path.join(os.homedir(), p.slice(2));
   if (p === "~") return os.homedir();
-  if (!path.isAbsolute(p)) return path.resolve(REPO_ROOT, p);
+  if (!path.isAbsolute(p)) return path.resolve(repoRoot(), p);
   return p;
 }
 

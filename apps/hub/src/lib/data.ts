@@ -260,12 +260,16 @@ export function getPersonaJourneys(slug: string, personaId: string): PersonaJour
       (rel): rel is string => Boolean(rel) && assetExists(slug, rel as string),
     );
 
+    const recording =
+      raw.walkRecording && assetExists(slug, raw.walkRecording) ? raw.walkRecording : null;
+
     journeys.push({
       ...raw,
       personaId,
       scenes,
       moments: moments.length > 0 ? moments : undefined,
       storyVideo: story ? assetUrl(slug, story) : undefined,
+      walkRecording: recording ? assetUrl(slug, recording) : undefined,
     });
   }
   return journeys;

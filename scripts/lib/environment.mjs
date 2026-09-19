@@ -44,6 +44,31 @@ function have(bin) {
   }
 }
 
+/**
+ * "ffmpeg is installed" is not the fact anyone needs.
+ *
+ * Homebrew ships ffmpeg builds with text rendering compiled out — no
+ * libfreetype, no libharfbuzz, no libass — and the story renderer burns its
+ * caption into the frame with `drawtext`, deliberately, so the video stays
+ * legible with the sound off. On such a build every capability probe passes,
+ * the doctor reports narration ready, and the render dies with
+ * "No such filter: 'drawtext'" several minutes into synthesising speech.
+ *
+ * That is precisely the class of failure this file exists to prevent, and it
+ * got through once because the check stopped at the binary's name.
+ */
+function ffmpegHasFilters(filters = []) {
+  if (filters.length === 0) return { ok: true, missing: [] };
+  let listing;
+  try {
+    listing = execSync("ffmpeg -hide_banner -filters 2>/dev/null", { encoding: "utf8" });
+  } catch {
+    return { ok: false, missing: filters };
+  }
+  const missing = filters.filter((f) => !new RegExp(`\\b${f}\\b`).test(listing));
+  return { ok: missing.length === 0, missing };
+}
+
 /** Which of a provider's variables are present. Names only — never values. */
 function envState(names = [], env) {
   const missing = names.filter((n) => !env[n] || !String(env[n]).trim());
@@ -188,7 +213,28 @@ export async function resolveEnvironment(root, opts = {}) {
   };
 }
 
-async function resolveProvider(p, { cap, env, capture, host, hostImages, verify, root }) {
+/**
+ * A provider is only as ready as the pipeline it feeds.
+ *
+ * The ffmpeg gate is applied here rather than inside the local-tool branch
+ * because it is not a property of the provider's kind: a cloud TTS key and a
+ * local neural model are equally unable to produce a story video when the
+ * ffmpeg on PATH cannot draw text. Checking it in one branch is how the
+ * OpenAI row reported "ready" for a render that could not run.
+ */
+async function resolveProvider(p, ctx) {
+  const result = await resolveProviderInner(p, ctx);
+  if (result.state !== "ready") return result;
+  const filters = ffmpegHasFilters(p.requiresFfmpegFilters ?? []);
+  if (filters.ok) return result;
+  return {
+    ...result,
+    state: "partial",
+    detail: `${result.detail ? `${result.detail}; ` : ""}but ffmpeg was built without ${filters.missing.join(", ")}, so the video cannot be rendered — reinstall one with text rendering (brew reinstall ffmpeg)`,
+  };
+}
+
+async function resolveProviderInner(p, { cap, env, capture, host, hostImages, verify, root }) {
   const base = { id: p.id, name: p.name, kind: p.kind, note: p.note, env: p.env ?? [] };
 
   // The host itself.
@@ -219,6 +265,7 @@ async function resolveProvider(p, { cap, env, capture, host, hostImages, verify,
     if (absent.length > 0) {
       return { ...base, state: "missing", detail: `not on PATH: ${absent.join(", ")}` };
     }
+
     return { ...base, state: "ready", detail: bins.length ? `${bins.join(", ")} on PATH` : "available" };
   }
 

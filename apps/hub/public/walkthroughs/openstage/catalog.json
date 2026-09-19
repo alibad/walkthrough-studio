@@ -4,8 +4,8 @@
   "platform": "web",
   "driver": "playwright",
   "capturedAgainst": "http://localhost:3000",
-  "discoveredAt": "2026-09-18T21:06:07.031Z",
-  "updatedAt": "2026-09-18T21:07:08.982Z",
+  "discoveredAt": "2026-09-19T11:51:14.505Z",
+  "updatedAt": "2026-09-19T11:52:17.798Z",
   "features": [
     {
       "featureId": "gallery",
@@ -18,7 +18,7 @@
         "mobile": "done"
       },
       "issueCount": 2,
-      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
+      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
     },
     {
       "featureId": "deck-scroll",
@@ -31,7 +31,7 @@
         "mobile": "done"
       },
       "issueCount": 1,
-      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
+      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
     },
     {
       "featureId": "deck-slides",
@@ -43,7 +43,7 @@
         "desktop": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
+      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
     },
     {
       "featureId": "deck-draft-unlisted",
@@ -56,7 +56,7 @@
         "mobile": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
+      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
     },
     {
       "featureId": "admin-dashboard",
@@ -69,7 +69,7 @@
         "desktop": "done"
       },
       "issueCount": 1,
-      "lastWalkthroughAt": "2026-09-18T21:07:08.982Z"
+      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
     },
     {
       "featureId": "share-link",

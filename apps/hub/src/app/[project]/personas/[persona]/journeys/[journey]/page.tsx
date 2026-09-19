@@ -54,8 +54,16 @@ export default async function JourneyPage({
               <p className="eyebrow">{persona.authRole ?? "Journey"}</p>
               <h1 className="display mt-1.5 max-w-[24ch] text-balance">{journey.headline}</h1>
             </div>
-            {journey.storyVideo && (
+            {journey.storyVideo ? (
               <StoryPlayer src={journey.storyVideo} title={journey.headline} />
+            ) : (
+              journey.walkRecording && (
+                <StoryPlayer
+                  src={journey.walkRecording}
+                  title={journey.headline}
+                  kind="recording"
+                />
+              )
             )}
           </div>
 

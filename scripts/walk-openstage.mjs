@@ -511,7 +511,12 @@ async function walkAdmin(surface) {
 // second, divergent account of the same UI. The one scene that needs its own
 // capture gets one.
 async function walkReaderJourney() {
-  const walk = await cap.feature("journey-reader", SURFACES.mobile, { url: BASE });
+  // Video, on the journey above all. A feature walk is a set of states and a
+  // still frame says everything about each one. A journey is the *movement*
+  // between them — the claim here is literally "she is reading within a second
+  // of tapping", which a sequence of stills can illustrate and only a clip can
+  // show. This asked for no video at all until it was noticed missing.
+  const walk = await cap.feature("journey-reader", SURFACES.mobile, { url: BASE, video: true });
   const scenes = [];
 
   scenes.push({
@@ -556,6 +561,16 @@ async function walkReaderJourney() {
   await walk.ctx.evaluate("window.scrollTo({ top: window.innerHeight * 2.2, behavior: 'instant' })");
   await walk.ctx.settle();
   const reading = await walk.shot("scene-03-reading.png", { optional: true });
+
+  // Ask the page, do not remember the answer.
+  const layout = await walk.ctx.evaluate(
+    `(() => ({ doc: document.documentElement.scrollWidth, view: window.innerWidth }))()`,
+  );
+  const overflow =
+    layout && layout.doc > layout.view + 1
+      ? `Measured during this run: the document is ${layout.doc}px wide on a ${layout.view}px phone, so the browser zooms out to fit and this page can be scrolled sideways. She would not know why it looks slightly small — she would just pinch.`
+      : null;
+
   if (reading) {
     scenes.push({
       id: "reading",
@@ -568,11 +583,19 @@ async function walkReaderJourney() {
       surface: "mobile",
       sourceFeature: "deck-scroll",
       verificationStatus: "live-walked",
-      // The honest footnote. This is the finding from the capture layer, in
-      // the persona's terms, and a journey that omitted it would be selling
-      // rather than documenting.
-      note:
-        "Measured during this run: the document is 560px wide on a 393px phone, so the browser zooms out to fit and this page can be scrolled sideways. She would not know why it looks slightly small — she would just pinch.",
+      // The honest footnote — measured, now that it says it is.
+      //
+      // This was a hardcoded sentence reading "Measured during this run: the
+      // document is 560px wide on a 393px phone". Nothing measured it. It was
+      // written while that was true, the app was fixed the same night, and the
+      // note kept asserting a defect the product no longer had — with the word
+      // "Measured" lending it authority it had not earned. A walkthrough that
+      // invents a measurement is worse than one that omits it, and this is the
+      // exact failure the project exists to prevent.
+      //
+      // So the number comes from the page, and the note only exists when the
+      // condition does.
+      ...(overflow ? { note: overflow } : {}),
     });
   }
 
@@ -590,7 +613,11 @@ async function walkReaderJourney() {
     platform: "web",
     surface: "mobile",
     capturedAt: new Date().toISOString(),
-    ...(video ? { storyVideo: `video/${video.split("/").pop()}` } : {}),
+    // The walk's own recording, NOT the narrated story. `storyVideo` is the
+    // slot for `render-persona-story.mjs` output, and the player captions that
+    // one as having a synthesized voice-over — a false sentence about a silent
+    // screen capture. Different artifact, different claim, different field.
+    ...(video ? { walkRecording: `video/${video.split("/").pop()}` } : {}),
   });
 
   return scenes.length;

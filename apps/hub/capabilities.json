@@ -153,7 +153,7 @@
         "pnpm persona:story",
         "pnpm tts:sample"
       ],
-      "without": "The story video is not rendered. The journey page it summarises is unaffected.",
+      "without": "The story video is not rendered. The journey page it summarises is unaffected, and the walk's own screen recording is still attached to it.",
       "providers": [
         {
           "id": "openai-tts",
@@ -163,7 +163,10 @@
             "OPENAI_API_KEY"
           ],
           "verify": "openai-tts",
-          "note": "Chosen automatically the moment OPENAI_API_KEY is present. The same key as illustration — there is only one."
+          "note": "Chosen automatically the moment OPENAI_API_KEY is present. The same key as illustration — there is only one.",
+          "requiresFfmpegFilters": [
+            "drawtext"
+          ]
         },
         {
           "id": "kokoro",
@@ -173,7 +176,10 @@
             "uv",
             "ffmpeg"
           ],
-          "note": "Weights download on first use to ~/.cache/walkthrough-studio. No key, no account, nothing 350 MB in the repo."
+          "note": "Weights download on first use to ~/.cache/walkthrough-studio. No key, no account. The ffmpeg on PATH must also have been built with text rendering — Homebrew ships builds without libfreetype, and the story renderer burns its caption into the frame.",
+          "requiresFfmpegFilters": [
+            "drawtext"
+          ]
         }
       ]
     },
