@@ -169,9 +169,24 @@ for (const slot of slots(journey.scenes.length)) {
   const abs = join(ART_DIR, file);
 
   const existing = (journey.moments ?? []).find((m) => m.id === slot.id);
-  if (existsSync(abs) && !FORCE && existing) {
-    console.log(`· ${file} — exists, skipped`);
-    moments.push({ ...existing, afterScene: slot.afterScene });
+
+  // A plate that is already on disk is never redrawn.
+  //
+  // This used to also require the journey file to still *reference* it, which
+  // meant losing the metadata meant paying to regenerate the art. That is
+  // exactly what happened: re-walking the journey rewrote its JSON from
+  // scratch, dropped `moments`, and the next run would have redrawn three
+  // images that were sitting right there. The pixels are the expensive part
+  // and the caption is a sentence — so reuse the first and rewrite the second.
+  if (existsSync(abs) && !FORCE) {
+    const line = existing?.caption ?? (await caption(slot));
+    console.log(`· ${file} — plate exists, ${existing ? "kept" : "re-captioned"}`);
+    moments.push({
+      id: slot.id,
+      image: `personas/${file}`,
+      caption: line,
+      afterScene: slot.afterScene,
+    });
     continue;
   }
 

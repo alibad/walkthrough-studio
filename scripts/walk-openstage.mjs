@@ -101,6 +101,17 @@ function writeJson(file, data) {
   writeFileSync(join(OUT, file), JSON.stringify(data, null, 2) + "\n");
 }
 
+/** The previous contents of an artifact, so a rewrite can preserve what it did not make. */
+function readJsonIfExists(file) {
+  const path = join(OUT, file);
+  if (!existsSync(path)) return null;
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
 const cap = await openCapture({ outDir: OUT, videoDir: join(OUT, "video"), driver: DRIVER });
 
 // ── The gallery ────────────────────────────────────────────────────────────
@@ -602,7 +613,21 @@ async function walkReaderJourney() {
   const { video } = await walk.finish();
   recordConsole(walk, "journey-reader", "/awwwards-flagship");
 
+  // Carry forward everything the walk did not produce.
+  //
+  // This file is rewritten from scratch on every walk, which silently deleted
+  // `moments` and `storyVideo` — media that costs real money to generate, is
+  // still sitting on disk, and has nothing to do with what the browser just
+  // did. The plates stayed in the repo and the page stopped showing them,
+  // which reads as broken art rather than as a walk overwriting its neighbours.
+  const previous = readJsonIfExists("persona-reader.find-and-read.json") ?? {};
+  const carried = {};
+  for (const key of ["moments", "storyVideo"]) {
+    if (previous[key] !== undefined) carried[key] = previous[key];
+  }
+
   writeJson("persona-reader.find-and-read.json", {
+    ...carried,
     personaId: "reader",
     journeyId: "find-and-read",
     headline: "From a shared link to reading the thing, with nothing in between",

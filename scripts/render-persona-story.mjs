@@ -409,6 +409,27 @@ writeFileSync(
   ) + "\n",
 );
 
+// 5. Record the path in the journey itself.
+//
+// It used to be discovered by convention — `personas/{journeyId}-story.mp4` —
+// which meant the hub had to probe the filesystem to know whether a story
+// existed. That probe cannot work on the deploy: next.config.ts deliberately
+// excludes `**/*.mp4` from the serverless bundle to keep functions small, so
+// `fs.existsSync` answers false for a file the CDN is serving perfectly well.
+// The story rendered, deployed, played on a local production build, and was
+// invisible in production.
+//
+// The producer knows what it wrote. It says so, and nothing has to guess.
+// Reuses the file this run already resolved, rather than rebuilding the name:
+// two journey naming schemes are supported and guessing at one of them here
+// would write the reference into a file nobody reads.
+{
+  const journeyPath = join(PROJECT_DIR, journeyFile);
+  const doc = JSON.parse(readFileSync(journeyPath, "utf8"));
+  doc.storyVideo = `personas/${journey.journeyId}-story.mp4`;
+  writeFileSync(journeyPath, JSON.stringify(doc, null, 2) + "\n");
+}
+
 const finalDur = duration(outPath);
 const sizeMb = (readFileSync(outPath).length / 1024 / 1024).toFixed(1);
 console.log(`\n✓ ${outPath.replace(ROOT + "/", "")}`);

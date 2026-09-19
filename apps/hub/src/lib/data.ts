@@ -251,17 +251,31 @@ export function getPersonaJourneys(slug: string, personaId: string): PersonaJour
       .filter((m) => m.afterScene >= -1 && m.afterScene < scenes.length)
       .map((m) => ({ ...m, image: assetUrl(slug, m.image) }));
 
-    // Convention: `personas/{personaId}-story.mp4`, or the journey id when a
-    // persona has more than one.
-    const declaredStory = raw.storyVideo;
-    const byJourney = `personas/${raw.journeyId}-story.mp4`;
-    const byPersona = `personas/${personaId}-story.mp4`;
-    const story = [declaredStory, byJourney, byPersona].find(
-      (rel): rel is string => Boolean(rel) && assetExists(slug, rel as string),
-    );
+    // ── Video is declared, never probed ───────────────────────────────────
+    //
+    // Everything else here is gated on `assetExists`, deliberately: the hub
+    // should not claim an artifact it cannot find. Video is the one exception,
+    // and it has to be.
+    //
+    // `next.config.ts` excludes `**/*.mp4` from the serverless bundle to keep
+    // functions small — the files are large, and the CDN serves them perfectly
+    // well from `public/`. So at runtime on the deploy `fs.existsSync` answers
+    // *false* for a video that exists and is being served. The story rendered,
+    // committed, deployed, played on a local production build, and was
+    // invisible in production for exactly this reason — while the `.webm` walk
+    // recording beside it appeared, because the exclusion names only `.mp4`.
+    //
+    // A probe that is guaranteed to lie is worse than no probe. So the
+    // producer records what it wrote and the reader trusts that line. The
+    // failure mode this gives up is a broken player for a deleted file, which
+    // is visible and self-correcting; the one it removes is a silently missing
+    // artifact, which is neither.
+    const story = raw.storyVideo;
 
-    const recording =
-      raw.walkRecording && assetExists(slug, raw.walkRecording) ? raw.walkRecording : null;
+    // Same rule, same reason. It happens to be a `.webm` today, which the
+    // tracing exclusion does not name — but making one video field depend on
+    // the current contents of an exclusion list is how the other one broke.
+    const recording = raw.walkRecording;
 
     journeys.push({
       ...raw,
