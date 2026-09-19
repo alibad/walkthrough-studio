@@ -52,6 +52,13 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chat, loadEnv, stripMarkdown } from "./lib/models.mjs";
 import { defaultEngine, defaultVoice, synthesizeAll } from "./lib/tts.mjs";
+import { ffmpegBin, ffprobeBin } from "./lib/ffmpeg.mjs";
+
+// Resolved once, up front: the caption is burned into the frame with
+// `drawtext`, and discovering that the chosen binary lacks it AFTER paying for
+// speech synthesis is how this failed the first time.
+const FFMPEG = ffmpegBin(["drawtext"]);
+const FFPROBE = ffprobeBin(["drawtext"]);
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
@@ -101,7 +108,7 @@ const sh = (bin, args) =>
 /** Seconds, as a float. */
 function duration(file) {
   return parseFloat(
-    sh("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]).trim(),
+    sh(FFPROBE, ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]).trim(),
   );
 }
 
@@ -287,7 +294,7 @@ for (const [i, line] of lines.entries()) {
   const wav = join(TMP, `a${i}.wav`);
   // Pad the speech out to the beat's exact length so concatenating the audio
   // reproduces the video timeline with no drift to correct for.
-  sh("ffmpeg", [
+  sh(FFMPEG, [
     "-y", "-loglevel", "error", "-i", clip.out,
     "-af", `apad=whole_dur=${beatDur.toFixed(3)}`,
     "-t", beatDur.toFixed(3), "-ar", "44100", "-ac", "2", wav,
@@ -336,7 +343,7 @@ for (const [i, beat] of timeline.entries()) {
     `fade=t=out:st=${(beat.dur - FADE).toFixed(3)}:d=${FADE}:color=${PAPER}`,
   ].join(",");
 
-  sh("ffmpeg", [
+  sh(FFMPEG, [
     "-y", "-loglevel", "error",
     "-loop", "1", "-framerate", String(FPS), "-i", beat.image,
     "-t", beat.dur.toFixed(3),
@@ -361,12 +368,12 @@ writeFileSync(aList, timeline.map((b) => `file '${b.wav}'`).join("\n") + "\n");
 
 const videoCat = join(TMP, "video.mp4");
 const audioCat = join(TMP, "audio.wav");
-sh("ffmpeg", ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", vList, "-c", "copy", videoCat]);
-sh("ffmpeg", ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", aList, "-c", "copy", audioCat]);
+sh(FFMPEG, ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", vList, "-c", "copy", videoCat]);
+sh(FFMPEG, ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", aList, "-c", "copy", audioCat]);
 
 const outPath = join(ART_DIR, `${journey.journeyId}-story.mp4`);
 mkdirSync(ART_DIR, { recursive: true });
-sh("ffmpeg", [
+sh(FFMPEG, [
   "-y", "-loglevel", "error",
   "-i", videoCat, "-i", audioCat,
   "-c:v", "copy", "-c:a", "aac", "-b:a", "128k",

@@ -29,6 +29,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
+import { ffmpegBin, ffprobeBin } from "./ffmpeg.mjs";
 
 /** Weights live outside the repo — 350 MB of model has no business in git. */
 const CACHE = join(homedir(), ".cache", "walkthrough-studio", "kokoro");
@@ -192,7 +193,7 @@ function sayAll(items, { voice, dir }) {
     // No `--data-format`: AIFF is big-endian, so a little-endian format string
     // is rejected with the uninformative `Opening output file failed: fmt?`.
     sh("say", ["-v", voice, "-o", aiff, item.text]);
-    sh("ffmpeg", ["-y", "-loglevel", "error", "-i", aiff, "-ar", "24000", "-ac", "1", out]);
+    sh(ffmpegBin(), ["-y", "-loglevel", "error", "-i", aiff, "-ar", "24000", "-ac", "1", out]);
     results.push({ id: String(item.id), out, seconds: wavSeconds(out) });
   }
   return results;
@@ -202,7 +203,7 @@ function sayAll(items, { voice, dir }) {
 
 function wavSeconds(file) {
   return parseFloat(
-    sh("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]).trim(),
+    sh(ffprobeBin(), ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]).trim(),
   );
 }
 

@@ -29,6 +29,7 @@ import { detectHost, hostImageSupport, illustrationOptedOut } from "./host.mjs";
 
 const OPENAI_API = "https://api.openai.com/v1";
 import { DEFAULT_IMAGE_MODEL, DEFAULT_TEXT_MODEL, loadEnv } from "./models.mjs";
+import { findFfmpeg } from "./ffmpeg.mjs";
 
 /** Read the model that the hub's /setup page also renders. */
 export function loadModel(root) {
@@ -47,26 +48,24 @@ function have(bin) {
 /**
  * "ffmpeg is installed" is not the fact anyone needs.
  *
- * Homebrew ships ffmpeg builds with text rendering compiled out — no
- * libfreetype, no libharfbuzz, no libass — and the story renderer burns its
- * caption into the frame with `drawtext`, deliberately, so the video stays
- * legible with the sound off. On such a build every capability probe passes,
- * the doctor reports narration ready, and the render dies with
+ * Homebrew's `ffmpeg` formula ships with text rendering compiled out — no
+ * libfreetype, no libharfbuzz, no libass, and therefore no `drawtext`. The
+ * story renderer burns its caption into the frame deliberately, so the video
+ * stays legible with the sound off, and on that build it dies with
  * "No such filter: 'drawtext'" several minutes into synthesising speech.
  *
- * That is precisely the class of failure this file exists to prevent, and it
- * got through once because the check stopped at the binary's name.
+ * The capable build is `ffmpeg-full`, which Homebrew installs keg-only — so it
+ * is not on PATH and `which ffmpeg` keeps answering with the one that cannot
+ * do the job. lib/ffmpeg.mjs searches for a binary that actually has the
+ * filters; this reports what it found, so the doctor and the renderer agree
+ * about which ffmpeg is in play.
  */
 function ffmpegHasFilters(filters = []) {
-  if (filters.length === 0) return { ok: true, missing: [] };
-  let listing;
-  try {
-    listing = execSync("ffmpeg -hide_banner -filters 2>/dev/null", { encoding: "utf8" });
-  } catch {
-    return { ok: false, missing: filters };
-  }
-  const missing = filters.filter((f) => !new RegExp(`\\b${f}\\b`).test(listing));
-  return { ok: missing.length === 0, missing };
+  if (filters.length === 0) return { ok: true, missing: [], bin: null };
+  const found = findFfmpeg(filters);
+  if (!found) return { ok: false, missing: filters, bin: null };
+  if (found.incomplete) return { ok: false, missing: filters, bin: found.bin };
+  return { ok: true, missing: [], bin: found.bin };
 }
 
 /** Which of a provider's variables are present. Names only — never values. */
@@ -226,11 +225,16 @@ async function resolveProvider(p, ctx) {
   const result = await resolveProviderInner(p, ctx);
   if (result.state !== "ready") return result;
   const filters = ffmpegHasFilters(p.requiresFfmpegFilters ?? []);
-  if (filters.ok) return result;
+  if (filters.ok) {
+    return filters.bin
+      ? { ...result, detail: `${result.detail ?? "available"}; rendering via ${filters.bin}` }
+      : result;
+  }
+  const where = filters.bin ? `the ffmpeg at ${filters.bin}` : "no ffmpeg found; it";
   return {
     ...result,
     state: "partial",
-    detail: `${result.detail ? `${result.detail}; ` : ""}but ffmpeg was built without ${filters.missing.join(", ")}, so the video cannot be rendered — reinstall one with text rendering (brew reinstall ffmpeg)`,
+    detail: `${result.detail ? `${result.detail}; ` : ""}but ${where} lacks ${filters.missing.join(", ")}, so the video cannot be rendered — \`brew install ffmpeg-full\` (keg-only; this repo finds it on its own)`,
   };
 }
 

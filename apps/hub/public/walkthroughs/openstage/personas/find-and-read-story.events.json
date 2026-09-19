@@ -1,0 +1,44 @@
+{
+  "journeyId": "find-and-read",
+  "personaId": "reader",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 30550,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 4900,
+      "narration": "She opens the link on her phone and begins reading.",
+      "image": "personas/reader-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 4900,
+      "durMs": 6200,
+      "narration": "Two minutes before the talk, she opens the link and finds the four dated decks.",
+      "image": "journey-reader/mobile/scene-01-arrive.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 11100,
+      "durMs": 5650,
+      "narration": "She taps the interesting title, and the deck opens directly to its first page.",
+      "image": "journey-reader/mobile/scene-02-open.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 16750,
+      "durMs": 7050,
+      "narration": "She scrolls as usual, reading each page without buttons, counts, or new gestures.",
+      "image": "journey-reader/mobile/scene-03-reading.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 23800,
+      "durMs": 6750,
+      "narration": "She is reading the deck within a second of tapping the link, on a phone, with no account.",
+      "image": "personas/reader.png"
+    }
+  ]
+}

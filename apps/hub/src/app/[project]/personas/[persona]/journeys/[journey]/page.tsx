@@ -54,16 +54,21 @@ export default async function JourneyPage({
               <p className="eyebrow">{persona.authRole ?? "Journey"}</p>
               <h1 className="display mt-1.5 max-w-[24ch] text-balance">{journey.headline}</h1>
             </div>
-            {journey.storyVideo ? (
+            {/* Both, when both exist — they are not alternatives.
+             *
+             * The story is an assembled film with a synthetic voice; the
+             * recording is what the browser actually did, silent and uncut.
+             * Offering only the produced one would hide the evidence behind
+             * the narration, which is the wrong way round for this project. */}
+            {journey.storyVideo && (
               <StoryPlayer src={journey.storyVideo} title={journey.headline} />
-            ) : (
-              journey.walkRecording && (
-                <StoryPlayer
-                  src={journey.walkRecording}
-                  title={journey.headline}
-                  kind="recording"
-                />
-              )
+            )}
+            {journey.walkRecording && (
+              <StoryPlayer
+                src={journey.walkRecording}
+                title={journey.headline}
+                kind="recording"
+              />
             )}
           </div>
 
