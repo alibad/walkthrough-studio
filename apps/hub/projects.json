@@ -43,7 +43,7 @@
         "production": "https://present.humanquest.net"
       },
       "codebase": {
-        "local": "/Users/alibadereddin/Code/GitHub/openstage",
+        "local": "../openstage",
         "github": "alibad/openstage",
         "githubBranch": "main",
         "stack": "nextjs-app-router"

@@ -45,10 +45,27 @@ export function Library({ summaries, nodes, edges, personasBySlug }: LibraryProp
   // rather than during render so the server and first client paint agree —
   // reading localStorage during render is a hydration mismatch waiting to
   // happen.
+  //
+  // ── Why a phone lands on the list instead ────────────────────────────────
+  //
+  // The chart is a fixed 1000x700 viewBox scaled to the column width. On a
+  // 375px phone that is a scale factor of 0.375, which was measured, not
+  // guessed: the "Openstage" label is authored at 17px and paints at 6.4px,
+  // and the whole map renders 32px wide. It is not blank, which is what makes
+  // it worse — it reads as a rendering failure rather than as a small map.
+  //
+  // Shrinking the labels' authored size would fix legibility and break the
+  // desktop composition, so the honest fix is to send narrow viewports to the
+  // view that answers the same question without a spatial metaphor. The toggle
+  // is still there for anyone who wants to pinch into it.
   const [view, setView] = useState<View>("chart");
   useEffect(() => {
     const saved = window.localStorage.getItem(VIEW_KEY);
-    if (saved === "list" || saved === "chart") setView(saved);
+    if (saved === "list" || saved === "chart") {
+      setView(saved);
+      return;
+    }
+    if (!window.matchMedia("(min-width: 1024px)").matches) setView("list");
   }, []);
 
   const chooseView = useCallback((next: View) => {
@@ -101,7 +118,11 @@ export function Library({ summaries, nodes, edges, personasBySlug }: LibraryProp
 
       {view === "chart" ? (
         <div className="relative mt-2 flex min-h-0 flex-1">
-          <div className="relative mx-auto min-h-[26rem] w-full max-w-[1180px] px-2">
+          {/* The SVG letterboxes itself to its viewBox ratio, so a fixed
+              min-height leaves dead paper above and below it on a narrow
+              column. Match the ratio there and let the desktop keep its
+              generous floor. */}
+          <div className="relative mx-auto aspect-[10/7] w-full max-w-[1180px] px-2 lg:aspect-auto lg:min-h-[26rem]">
             <ConstellationChart
               nodes={nodes}
               edges={edges}

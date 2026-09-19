@@ -1,5 +1,6 @@
 import { GitCommitHorizontal, RefreshCw } from "lucide-react";
 import Link from "next/link";
+import { isLocalHub } from "@/lib/capabilities";
 import { cn } from "@/lib/utils";
 import { StalenessPill } from "@/components/status";
 import { Plate } from "@/components/plate";
@@ -71,14 +72,29 @@ export function WhatsNew({
           </div>
         )}
 
-        {staleness.verdict === "unknown" && (
-          <p className="text-small leading-relaxed text-ink-muted">
-            Can&apos;t measure drift — {staleness.reason ?? "no readable local checkout"}. Set{" "}
-            <code className="font-mono text-[0.8125rem] text-ink">codebase.local</code> in{" "}
-            <code className="font-mono text-[0.8125rem] text-ink">projects.json</code> to a
-            git checkout and this card starts working.
-          </p>
-        )}
+        {/* Two audiences, two different true statements.
+         *
+         * Drift is measured by diffing the target repo against the commit a
+         * walk captured, which needs that repo on disk. A published hub has no
+         * checkout and never will, so on the deployed copy this is not a
+         * misconfiguration to fix — it is a fact about where the measurement
+         * can happen. Printing "set codebase.local in projects.json" to a
+         * stranger was addressing the maintainer in front of the audience. */}
+        {staleness.verdict === "unknown" &&
+          (isLocalHub() ? (
+            <p className="text-small leading-relaxed text-ink-muted">
+              Can&apos;t measure drift — {staleness.reason ?? "no readable local checkout"}. Set{" "}
+              <code className="font-mono text-[0.8125rem] text-ink">codebase.local</code> in{" "}
+              <code className="font-mono text-[0.8125rem] text-ink">projects.json</code> to a
+              git checkout and this card starts working.
+            </p>
+          ) : (
+            <p className="text-small leading-relaxed text-ink-muted">
+              Drift is measured against the app&apos;s own repository, on the machine that runs
+              the walk. This published copy has no checkout to compare against, so it reports
+              what was captured and when — not how far the app has moved since.
+            </p>
+          ))}
 
         {(staleness.verdict === "fresh" ||
           staleness.verdict === "stale" ||

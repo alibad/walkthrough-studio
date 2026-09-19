@@ -18,10 +18,33 @@ import type { CommitSummary } from "./types";
 
 const GIT_TIMEOUT_MS = 3_000;
 
+/**
+ * The hub renders from `apps/hub`, so a relative path in the registry has to
+ * resolve against the repository root or `../openstage` would mean
+ * `apps/openstage`.
+ */
+const REPO_ROOT = path.resolve(process.cwd(), "..", "..");
+
+/**
+ * Resolve a registry path to something on disk.
+ *
+ * Three accepted forms, and the order matters:
+ *
+ *   `~/Code/thing`   expanded against $HOME
+ *   `../thing`       resolved against the REPOSITORY root, not the cwd
+ *   `/abs/path`      used as-is
+ *
+ * The relative form is the one to prefer and the reason this function grew.
+ * `projects.json` is committed and published — an absolute path in it puts
+ * somebody's home directory, and usually their real name, on a public web
+ * page. `../openstage` says the same thing to every machine that has the
+ * sibling checkout and says nothing to a stranger.
+ */
 export function expandHome(p: string): string {
   if (!p) return p;
   if (p.startsWith("~/")) return path.join(os.homedir(), p.slice(2));
   if (p === "~") return os.homedir();
+  if (!path.isAbsolute(p)) return path.resolve(REPO_ROOT, p);
   return p;
 }
 

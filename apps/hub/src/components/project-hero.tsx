@@ -1,4 +1,5 @@
 import { ExternalLink, Folder, Play, Terminal } from "lucide-react";
+import { isLocalHub } from "@/lib/capabilities";
 import { PlatformBadge } from "@/components/platform-badge";
 import { Plate } from "@/components/plate";
 import { StalenessPill } from "@/components/status";
@@ -54,7 +55,15 @@ export function ProjectHero({ summary }: { summary: ProjectSummary }) {
               {DRIVER_LABELS[driver] ?? driver}
             </dd>
           </div>
-          {project.codebase?.local && (
+          {/* Local only, deliberately.
+           *
+           * A checkout path answers "where do I run the walk from", which is a
+           * question for the person running it and nobody else. Published, it
+           * is at best noise and at worst a home directory — this row used to
+           * print an absolute one, putting a username on a public page. The
+           * registry now stores a repo-relative path, and this renders it only
+           * where it means something. */}
+          {isLocalHub() && project.codebase?.local && (
             <div className="min-w-0">
               <dt className="text-micro text-ink-faint">Checkout</dt>
               <dd className="mt-0.5 flex items-center gap-1.5 font-mono text-[0.8125rem] text-ink">

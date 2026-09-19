@@ -40,7 +40,10 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
 const SLUG = "openstage";
 const OUT = resolve(ROOT, "apps/hub/public/walkthroughs", SLUG);
-const TARGET_REPO = "/Users/alibadereddin/Code/GitHub/openstage";
+// Relative to this repo, not absolute: this file is committed, and an absolute
+// path here publishes somebody's home directory and usually their real name.
+// Assumes openstage is checked out alongside walkthrough-studio.
+const TARGET_REPO = resolve(ROOT, "..", "openstage");
 
 const argv = Object.fromEntries(
   process.argv.slice(2).map((a) => {
