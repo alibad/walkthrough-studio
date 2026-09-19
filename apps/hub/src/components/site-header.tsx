@@ -129,6 +129,13 @@ export function SiteFooter({ className }: { className?: string }) {
           </Link>
           <span aria-hidden>·</span>
           <Link
+            href="/setup"
+            className="text-ink-muted underline decoration-rule-strong underline-offset-2 transition-colors hover:text-ink"
+          >
+            What it needs
+          </Link>
+          <span aria-hidden>·</span>
+          <Link
             href={REPO.url}
             target="_blank"
             rel="noopener noreferrer"

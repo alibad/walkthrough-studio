@@ -34,7 +34,7 @@
       "slug": "openstage",
       "name": "Openstage",
       "tag": "Human Quest \u00b7 presentation platform",
-      "description": "The deck platform behind present.openstage.humanquest.net \u2014 a gallery, scroll and slide decks, a share gate and an admin studio, walked against the local dev server.",
+      "description": "The deck platform behind present.humanquest.net \u2014 a gallery, scroll and slide decks, a share gate and an admin studio, walked against the local dev server.",
       "longDescription": "Openstage turns a repository into a presentation: authors register decks, the gallery filters and groups them, and each deck renders as either a long-form scroll or a fixed slide deck. It is walked here because it is the app the Walkthrough pattern is demonstrated on at AI Tinkerers Doha Round 3 \u2014 and because it exercises the parts of this schema that Wikipedia cannot: an authenticated area, a draft/unlisted surface, and interactive controls that are features of a page rather than pages of their own.",
       "target": {
         "platform": "web",

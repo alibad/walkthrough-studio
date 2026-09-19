@@ -4,6 +4,7 @@
   "private": true,
   "description": "Walk any app \u2014 web, mobile, desktop or CLI \u2014 and publish what you saw.",
   "scripts": {
+    "doctor": "node scripts/doctor.mjs",
     "dev": "pnpm --filter hub dev",
     "build": "pnpm --filter hub build",
     "start": "pnpm --filter hub start",

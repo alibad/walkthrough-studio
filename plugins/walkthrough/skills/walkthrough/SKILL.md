@@ -424,11 +424,40 @@ all generated, all labelled as illustration in the UI because none of them is
 evidence of anything. Recipe, costs and the failures that shaped it:
 [`references/persona-media.md`](references/persona-media.md).
 
+**Check whether you need a key before you reach for one.** You are a model
+already: you write every persona bio, step description and finding here with no
+API key at all. The only artifacts you may not be able to produce are a PNG of a
+face and an MP3 of a voice — so those, and nothing else, are what a provider is
+for.
+
+```bash
+pnpm doctor          # what this machine has, and what each gap actually costs
+```
+
+Read the illustration line before running the scripts below:
+
+- **You can generate images.** Write the plates directly to
+  `public/walkthroughs/<slug>/personas/<id>.png` (2:3) and `<id>-scene.png`
+  (3:2) and skip `persona:art` entirely. No provider is configured, nothing is
+  charged twice.
+- **You cannot** (Claude Code returns text and tool calls, not image files) and
+  a provider **is** configured — run the scripts.
+- **You cannot and no provider is configured** — stop. The persona card falls
+  back to a typographic panel showing where that persona enters the product and
+  how many journeys have been walked, which is more useful than a cropped face
+  anyway. That is a complete, honest project page. Do **not** treat missing art
+  as a blocker, and do **not** go looking for a key in another repository to
+  borrow.
+
 ```bash
 pnpm persona:art     --project=<slug>                    # portrait + scene
 pnpm persona:moments --project=<slug> --persona=<id>     # 3 moment plates
 pnpm persona:story   --project=<slug> --persona=<id>     # narrated mp4
 ```
+
+Narration needs no key either: with no `OPENAI_API_KEY`, `persona:story` speaks
+through a local Kokoro model whose weights download on first use. `pnpm doctor`
+says which engine is live.
 
 A declared persona with no walked journey is flagged by the hub as
 `persona-without-journey`. Declaring one is free; only walking one is evidence.
