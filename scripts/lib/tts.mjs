@@ -5,7 +5,7 @@
  *
  * OpenAI's `gpt-4o-mini-tts` is the right tool and it was not reachable from
  * the machine this was built on: no `OPENAI_API_KEY` in the environment, and
- * an Azure resource with no speech deployment — sixteen plausible deployment
+ * a resource with no speech model available — sixteen plausible model
  * names probed, every one `DeploymentNotFound`, and provisioning one needs
  * portal access nobody had.
  *

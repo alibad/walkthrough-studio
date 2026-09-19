@@ -6,9 +6,9 @@
  *
  * Before this, every capability failed at the point of use and nowhere else. A
  * walk would run for six minutes and then die on `missing in .env.local:
- * AZURE_OPENAI_API_KEY`, which tells you the name of a variable and nothing
- * about whether you needed it. Worse, a *set but revoked* key failed the same
- * way and looked like a different problem.
+ * OPENAI_API_KEY`, which tells you the name of a variable and nothing about
+ * whether you needed it. Worse, a *set but revoked* key failed the same way and
+ * looked like a different problem.
  *
  * So: one command, run before anything, that answers three questions the old
  * error messages never separated —

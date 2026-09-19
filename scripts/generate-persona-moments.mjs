@@ -121,7 +121,9 @@ Journey overview: ${stripMarkdown(journey.overview).slice(0, 400)}
 
 Describe ONE photograph of this person ${slot.phase}. They are NOT at a computer in this shot — this is the moment around the work, not the work.
 
-Give me 3 to 4 sentences of pure visual description: the room or place, the time of day, the light, what their body is doing, and one specific object in frame. Be concrete and ordinary. No feelings, no abstractions, no interface, no screens.`,
+Give me 3 to 4 sentences of pure visual description: the room or place, the time of day, the light, what their body is doing, and one specific object in frame. Be concrete and ordinary. No feelings, no abstractions, no interface, no screens.
+
+The object must be one that carries NO writing. Never name a titled book, a branded cup, a lanyard, a poster, a printed programme, a signboard or anything else whose identity is its text — the plate is rendered without letterforms, so a described title comes back either as invented words that claim something untrue about the product, or as convincing nonsense. Choose a thing with a shape instead: a folded jacket, a key, a paper cup, a stacked chair, a door handle, a cable.`,
     { system: SYSTEM, maxTokens: 1200, effort: "none" },
   );
   return stripMarkdown(out);
@@ -181,7 +183,12 @@ for (const slot of slots(journey.scenes.length)) {
 A WIDE environmental plate of the SAME PERSON as in the attached reference image.
 Keep their face, age, build, hair and manner of dress exactly as the reference. This must read as one more plate of the same individual.
 
-${description}`,
+${description}
+
+FINAL CONSTRAINT, overriding anything above: this plate contains NO LETTERFORMS ANYWHERE.
+No title on a book, no word on a cup, no sign, no poster, no badge, no screen text, no signature.
+If the description names an object that would normally carry writing, draw the object with its surface blank.
+A plate with invented words on it is worse than a plate with nothing on it: the words read as a claim about a real product, and they are not one.`,
     size: "1536x1024",
     reference: portrait,
   });

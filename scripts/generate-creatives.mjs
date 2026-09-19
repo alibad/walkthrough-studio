@@ -2,7 +2,7 @@
 /**
  * generate-creatives.mjs — Walkthrough Studio brand illustration generator.
  *
- * Renders the repo's illustrative creatives with Azure OpenAI `gpt-image-2`.
+ * Renders the repo's illustrative creatives with the OpenAI image model.
  * UI chrome (logo, favicon, icons) is hand-authored SVG and deliberately NOT
  * generated here — a raster model can't give you a crisp 16px mark, and the
  * mark has to be recolourable from CSS tokens. This script owns the things a
@@ -20,35 +20,20 @@
  *   node scripts/generate-creatives.mjs --force        # re-render everything
  *   node scripts/generate-creatives.mjs --list         # print the manifest
  *
- * Requires in .env.local: AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT,
- * AZURE_OPENAI_IMAGE_DEPLOYMENT (and optionally AZURE_OPENAI_IMAGE_API_VERSION).
+ * Requires in .env.local: OPENAI_API_KEY. Override the model with
+ * OPENAI_IMAGE_MODEL; `pnpm doctor` reports whether the key actually works.
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { image, loadEnv, openai } from "./lib/models.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
 const OUT_DIR = resolve(ROOT, "apps/hub/public/art");
 
-// ─── env ──────────────────────────────────────────────────────────────────
-function loadEnv() {
-  const path = resolve(ROOT, ".env.local");
-  if (!existsSync(path)) return;
-  for (const line of readFileSync(path, "utf8").split("\n")) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith("#") || !trimmed.includes("=")) continue;
-    const [k, ...rest] = trimmed.split("=");
-    if (!process.env[k]) process.env[k] = rest.join("=").trim();
-  }
-}
-loadEnv();
-
-const ENDPOINT = (process.env.AZURE_OPENAI_ENDPOINT || "").replace(/\/$/, "");
-const API_KEY = process.env.AZURE_OPENAI_API_KEY;
-const DEPLOYMENT = process.env.AZURE_OPENAI_IMAGE_DEPLOYMENT;
-const API_VERSION = process.env.AZURE_OPENAI_IMAGE_API_VERSION || "2025-04-01-preview";
+loadEnv(ROOT);
 
 // ─── the shared house style ───────────────────────────────────────────────
 // Changing this changes the entire brand. Keep the three hard constraints
@@ -393,63 +378,29 @@ function buildPrompt(entry) {
 }
 
 async function generate(entry) {
-  const outDirForRef = entry.dir ? resolve(ROOT, entry.dir) : OUT_DIR;
+  const outDir = entry.dir ? resolve(ROOT, entry.dir) : OUT_DIR;
 
-  // With a reference, go through `images/edits` (multipart) so the model can
-  // see the plate it must stay consistent with. Without one, plain generation.
-  let res;
+  // With a reference, the shared helper routes through `images/edits` so the
+  // model can see the plate it must stay consistent with. Without one, plain
+  // generation. Both live in lib/models.mjs so there is one place that knows
+  // which model is current — this script used to carry its own copy, and the
+  // two drifted the moment the image line moved.
+  let reference;
   if (entry.reference) {
-    const refPath = resolve(outDirForRef, entry.reference);
-    if (!existsSync(refPath)) {
+    reference = resolve(outDir, entry.reference);
+    if (!existsSync(reference)) {
       throw new Error(
         `reference ${entry.reference} not found — generate it before this entry ` +
           `(manifest order matters for referenced plates)`,
       );
     }
-    const form = new FormData();
-    form.append("size", entry.size);
-    form.append("quality", "high");
-    form.append("prompt", buildPrompt(entry));
-    form.append(
-      "image[]",
-      new Blob([readFileSync(refPath)], { type: "image/png" }),
-      entry.reference,
-    );
-    res = await fetch(
-      `${ENDPOINT}/openai/deployments/${DEPLOYMENT}/images/edits?api-version=${API_VERSION}`,
-      { method: "POST", headers: { "api-key": API_KEY }, body: form },
-    );
-  } else {
-    res = await fetch(
-      `${ENDPOINT}/openai/deployments/${DEPLOYMENT}/images/generations?api-version=${API_VERSION}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "api-key": API_KEY },
-        body: JSON.stringify({
-          prompt: buildPrompt(entry),
-          // No `model` field: on Azure the deployment in the URL selects the
-          // model, and naming a different one in the body is rejected. Point
-          // AZURE_OPENAI_IMAGE_DEPLOYMENT at the deployment you want.
-          size: entry.size,
-          n: 1,
-          quality: "high",
-          output_format: "png",
-        }),
-      },
-    );
   }
 
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status} — ${(await res.text()).slice(0, 400)}`);
-  }
-  const json = await res.json();
-  const b64 = json?.data?.[0]?.b64_json;
-  if (!b64) throw new Error(`no b64_json in response: ${JSON.stringify(json).slice(0, 300)}`);
+  const png = await image({ prompt: buildPrompt(entry), size: entry.size, reference });
 
-  const outDir = entry.dir ? resolve(ROOT, entry.dir) : OUT_DIR;
   mkdirSync(outDir, { recursive: true });
   const target = resolve(outDir, entry.file);
-  writeFileSync(target, Buffer.from(b64, "base64"));
+  writeFileSync(target, png);
   return target;
 }
 
@@ -466,11 +417,11 @@ if (args.includes("--list")) {
   process.exit(0);
 }
 
-for (const key of ["AZURE_OPENAI_API_KEY", "AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_IMAGE_DEPLOYMENT"]) {
-  if (!process.env[key]) {
-    console.error(`✗ Missing ${key}. Populate it in .env.local — the model won't auto-provision.`);
-    process.exit(1);
-  }
+try {
+  openai();
+} catch (e) {
+  console.error(`✗ ${e.message}`);
+  process.exit(1);
 }
 
 const queue = MANIFEST.filter((e) => (only ? e.id.startsWith(only) : true));

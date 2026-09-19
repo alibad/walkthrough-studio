@@ -45,25 +45,26 @@ defensible. Delete the generator before you delete the label.
 ## Setup
 
 ```
-AZURE_OPENAI_ENDPOINT=https://<resource>.openai.azure.com/
-AZURE_OPENAI_API_KEY=…
-AZURE_OPENAI_IMAGE_DEPLOYMENT=<image deployment name>
-AZURE_OPENAI_TEXT_DEPLOYMENT=<chat deployment name>
+OPENAI_API_KEY=…
 ```
 
-**Deployment names are not model names.** On Azure the deployment in the URL
-selects the model, and naming a model in the request body is rejected. Point
-these at whatever is actually provisioned; there is no default, because a
-default would be a guess about somebody else's resource.
+One key. Images, chat and speech all come from it, and `pnpm doctor` will tell
+you whether it works before a walk depends on it.
 
-To find out what exists, try a call — the data-plane deployments list needs ARM
-credentials the API key doesn't carry, so a `404 DeploymentNotFound` is the
-cheapest discovery mechanism available.
+**Model ids move, so they are checked rather than remembered.** `gpt-image-2`
+shipped in April 2026 and was superseded by `gpt-image-2.5` in September — five
+months, and notes written in between were wrong by the time anyone read them.
+The defaults in `scripts/lib/models.mjs` were confirmed against `GET /v1/models`
+with a real key, `pnpm doctor` re-checks that your key can reach whichever model
+is configured, and `OPENAI_IMAGE_MODEL` / `OPENAI_TEXT_MODEL` override them
+without touching code.
 
-If you route model calls through a gateway rather than straight to a
-provider, add an engine to `scripts/lib/models.mjs` instead of changing each
-script — everything there goes to Azure directly because that was the only
-endpoint available, not because it is the only sensible one.
+Before trusting any model name in this document, list `/v1/models` and sort by
+`created`. Including the ones above.
+
+If you route model calls through a gateway rather than straight to OpenAI, add
+an engine to `scripts/lib/models.mjs` instead of teaching each script its own
+way to call a model.
 
 ---
 
@@ -167,12 +168,11 @@ refreshes it.
 | `openai` | `gpt-4o-mini-tts` | automatically, the moment `OPENAI_API_KEY` exists |
 | `say` | the macOS built-in | only if you ask for it |
 
-**OpenAI's TTS is the right tool and was not reachable where this was built.**
-Worth recording so nobody re-litigates it: no `OPENAI_API_KEY` in the
-environment, and an Azure resource with no speech deployment — sixteen
-plausible deployment names probed across two sweeps, every one
-`DeploymentNotFound`, and provisioning one needs portal access nobody had. The
-`openai` engine is implemented anyway and self-selects the moment a key
+**OpenAI's TTS is the right tool and was unreachable for the first two weeks of
+this project.** Worth recording so nobody re-litigates it: there was no key in
+the environment at all, and the local Kokoro path exists because of it — which
+turned out to be worth having, since it means narration works on a clone with
+no account. The `openai` engine self-selects the moment a key
 appears, because at that point it is the better option and nobody should have
 to come back here to switch.
 

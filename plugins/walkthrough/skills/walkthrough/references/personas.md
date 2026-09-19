@@ -75,7 +75,7 @@ page masthead. Generating them as two independent calls from the same
 description yields two different people, which a reader spots immediately.
 
 Generate the **portrait first**, then generate the scene with the portrait
-attached as a visual reference (Azure's `images/edits` endpoint rather than
+attached as a visual reference (the `images/edits` endpoint rather than
 `images/generations`), and say so in the prompt: *the exact same person as the
 reference — same face, same age, same hair, same skin tone.*
 

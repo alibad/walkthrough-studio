@@ -54,5 +54,25 @@
   ],
   "platform": "web",
   "surface": "mobile",
-  "capturedAt": "2026-09-18T21:07:08.960Z"
+  "capturedAt": "2026-09-18T21:07:08.960Z",
+  "moments": [
+    {
+      "id": "setting-out",
+      "image": "personas/reader-moment-setting-out.png",
+      "caption": "I open the link to see the deck everyone is discussing.",
+      "afterScene": -1
+    },
+    {
+      "id": "deciding",
+      "image": "personas/reader-moment-deciding.png",
+      "caption": "I can see the deck now and decide whether it answers my question.",
+      "afterScene": 1
+    },
+    {
+      "id": "payoff",
+      "image": "personas/reader-moment-payoff.png",
+      "caption": "I open the link and find the deck already on the right slide.",
+      "afterScene": 2
+    }
+  ]
 }

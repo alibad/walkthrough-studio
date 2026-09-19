@@ -139,7 +139,7 @@ different people** — and a reader looking at a persona page sees one face in
 the avatar and another in the masthead. It's the kind of defect that's
 invisible while you're generating and obvious the moment the page renders.
 
-The fix is reference conditioning: the scene goes through Azure's
+The fix is reference conditioning: the scene goes through the
 `images/edits` endpoint with the portrait attached as a visual reference, and
 the prompt states the constraint explicitly ("THE EXACT SAME PERSON as the
 reference image — same face, same age, same hair, same skin tone"). In the

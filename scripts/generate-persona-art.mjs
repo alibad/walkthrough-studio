@@ -30,8 +30,8 @@
  * but it is only defensible while the UI says so, which is why every render
  * site for these files prints "illustration". See `components/journey/moment.tsx`.
  *
- * Requires in .env.local: AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT,
- * AZURE_OPENAI_IMAGE_DEPLOYMENT (and optionally AZURE_OPENAI_IMAGE_API_VERSION).
+ * Requires in .env.local: OPENAI_API_KEY. The model defaults to a value
+ * verified against /v1/models; override with OPENAI_IMAGE_MODEL.
  *
  * Usage:
  *   node scripts/generate-persona-art.mjs --project=wikipedia
@@ -42,7 +42,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { azure, image, loadEnv, stripMarkdown } from "./lib/models.mjs";
+import { image, loadEnv, openai, stripMarkdown } from "./lib/models.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
@@ -130,7 +130,7 @@ if (personas.length === 0) {
 }
 
 mkdirSync(ART_DIR, { recursive: true });
-console.log(`persona art · ${PROJECT} · deployment ${azure().image}\n`);
+console.log(`persona art · ${PROJECT} · ${openai().imageModel}\n`);
 
 let made = 0;
 let skipped = 0;

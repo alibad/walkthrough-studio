@@ -26,7 +26,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { resolve } from "node:path";
 import { detectHost, hostImageSupport, illustrationOptedOut } from "./host.mjs";
-import { loadEnv } from "./models.mjs";
+
+const OPENAI_API = "https://api.openai.com/v1";
+import { DEFAULT_IMAGE_MODEL, DEFAULT_TEXT_MODEL, loadEnv } from "./models.mjs";
 
 /** Read the model that the hub's /setup page also renders. */
 export function loadModel(root) {
@@ -50,55 +52,46 @@ function envState(names = [], env) {
 
 // ── Live verification ──────────────────────────────────────────────────────
 
-async function verifyOpenAi(env) {
+/**
+ * One call to `GET /v1/models` answers both questions worth asking: is the key
+ * accepted, and does the model this repo is about to name actually exist for
+ * this account?
+ *
+ * The second half matters more than it looks. Model ids move — `gpt-image-2`
+ * was superseded by `gpt-image-2.5` five months after shipping — and a stale id
+ * fails at generation time, which here is after a walk has already run. Listing
+ * is free, so the check is free.
+ */
+async function verifyOpenAi(env, wanted = []) {
   try {
-    const res = await fetch("https://api.openai.com/v1/models", {
+    const res = await fetch(`${OPENAI_API}/models`, {
       headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}` },
       signal: AbortSignal.timeout(10_000),
     });
-    if (res.ok) return { state: "ready", detail: "the key was accepted" };
     if (res.status === 401) return { state: "rejected", detail: "401 — the key was refused" };
-    if (res.status === 429) return { state: "ready", detail: "429 — accepted, but rate limited or out of quota" };
-    return { state: "rejected", detail: `HTTP ${res.status}` };
-  } catch (e) {
-    return { state: "unreachable", detail: shortError(e) };
-  }
-}
+    if (res.status === 429) {
+      return { state: "ready", detail: "429 — accepted, but rate limited or out of quota" };
+    }
+    if (!res.ok) return { state: "rejected", detail: `HTTP ${res.status}` };
 
-async function verifyAzure(env) {
-  const endpoint = String(env.AZURE_OPENAI_ENDPOINT || "").replace(/\/$/, "");
-  const version = env.AZURE_OPENAI_API_VERSION || env.AZURE_OPENAI_IMAGE_API_VERSION || "2025-04-01-preview";
-  try {
-    // The data-plane deployments list: it exercises the same key + endpoint the
-    // generators use, costs nothing, and is the only cheap way to learn whether
-    // the DEPLOYMENT names in .env.local are real. Deployment names are not
-    // model names on Azure, and a wrong one fails only at generation time.
-    const res = await fetch(`${endpoint}/openai/deployments?api-version=${version}`, {
-      headers: { "api-key": env.AZURE_OPENAI_API_KEY },
-      signal: AbortSignal.timeout(10_000),
-    });
-    if (res.status === 401 || res.status === 403) {
-      return { state: "rejected", detail: `${res.status} — the key was refused by this endpoint` };
-    }
-    if (!res.ok) {
-      // Older api-versions do not expose the list. The key still reached a real
-      // resource, which is most of what was being asked.
-      return { state: "ready", detail: `reachable (deployments list returned HTTP ${res.status}, so names are unverified)` };
-    }
     const body = await res.json().catch(() => null);
-    const names = (body?.data ?? []).map((d) => d.id ?? d.model).filter(Boolean);
-    if (names.length === 0) {
-      return { state: "ready", detail: "the key was accepted; no deployments are listed on this resource" };
-    }
-    const wanted = [env.AZURE_OPENAI_IMAGE_DEPLOYMENT, env.AZURE_OPENAI_TEXT_DEPLOYMENT].filter(Boolean);
-    const absent = wanted.filter((w) => !names.includes(w));
+    const ids = new Set((body?.data ?? []).map((m) => m.id));
+    if (ids.size === 0) return { state: "ready", detail: "the key was accepted" };
+
+    const absent = wanted.filter((m) => m && !ids.has(m));
     if (absent.length > 0) {
       return {
         state: "partial",
-        detail: `the key works, but ${absent.length === 1 ? "this deployment does" : "these deployments do"} not exist on the resource: ${absent.join(", ")}`,
+        detail: `the key works, but this account cannot reach ${absent.join(", ")} — set a model this key has, or unset the override`,
       };
     }
-    return { state: "ready", detail: `the key works and ${names.length} deployment${names.length === 1 ? "" : "s"} ${names.length === 1 ? "is" : "are"} provisioned` };
+    const named = wanted.filter(Boolean);
+    return {
+      state: "ready",
+      detail: named.length
+        ? `the key works and ${named.join(", ")} ${named.length === 1 ? "is" : "are"} available`
+        : "the key was accepted",
+    };
   } catch (e) {
     return { state: "unreachable", detail: shortError(e) };
   }
@@ -124,7 +117,17 @@ function shortError(e) {
   return detail.slice(0, 120);
 }
 
-const VERIFIERS = { "openai-models": verifyOpenAi, "azure-deployments": verifyAzure };
+/**
+ * Each verifier is handed the models the capability will actually name, so a
+ * key that works but cannot reach the configured model reads as `partial`
+ * rather than as ready.
+ */
+const VERIFIERS = {
+  "openai-image": (env) => verifyOpenAi(env, [env.OPENAI_IMAGE_MODEL || DEFAULT_IMAGE_MODEL]),
+  "openai-text": (env) => verifyOpenAi(env, [env.OPENAI_TEXT_MODEL || DEFAULT_TEXT_MODEL]),
+  "openai-tts": (env) => verifyOpenAi(env, [env.OPENAI_TTS_MODEL || "gpt-4o-mini-tts"]),
+  "openai-models": (env) => verifyOpenAi(env),
+};
 
 // ── Resolution ─────────────────────────────────────────────────────────────
 
