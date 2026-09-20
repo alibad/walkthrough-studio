@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# next
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env — target-app credentials and API keys live here, never in git
+.env
+.env.local
+.env*.local
+
+# capture scratch space
+.tmp-*/
+test-results/
+playwright-report/
+*storageState.json
+
+# os
+.DS_Store
+Thumbs.db
+
+# Narration voices are generated locally; the comparison MP3s are throwaway.
+voice-sample-*.mp3
+
+# vercel
+.vercel

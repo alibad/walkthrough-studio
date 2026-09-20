@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Wikipedia",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://en.wikipedia.org",
+  "discoveredAt": "2026-09-18T07:09:43.267Z",
+  "updatedAt": "2026-09-18T07:43:56.729Z",
+  "features": [
+    {
+      "featureId": "search",
+      "featureName": "Search",
+      "location": "/wiki/Main_Page",
+      "category": "search",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "lastWalkthroughAt": "2026-09-18T07:09:48.457Z"
+    },
+    {
+      "featureId": "article",
+      "featureName": "Reading an article",
+      "location": "/wiki/Pointillism",
+      "category": "reading",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "lastWalkthroughAt": "2026-09-18T07:09:59.277Z"
+    },
+    {
+      "featureId": "revision-history",
+      "featureName": "Revision history",
+      "location": "/w/index.php?title=Pointillism&action=history",
+      "category": "inspect",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done"
+      },
+      "lastWalkthroughAt": "2026-09-18T07:10:14.557Z"
+    }
+  ],
+  "personas": [
+    {
+      "id": "fact-checker",
+      "name": "Maya",
+      "description": "A second-year history-of-art student. She reads Wikipedia constantly and cites it never — her use of the site is to find out **whose** work to read next. Fast, sceptical, and more interested in the reference list than the article.",
+      "authRole": "Reader",
+      "entryPoint": "/wiki/Main_Page",
+      "keyJourneys": [
+        "verify-a-claim"
+      ]
+    },
+    {
+      "id": "copy-editor",
+      "name": "Tom",
+      "description": "A long-time volunteer editor who watches a handful of articles. He spends most of his time in the surfaces readers never open — revision histories, diffs, and talk pages — deciding whether a change was an improvement.",
+      "authRole": "Editor",
+      "entryPoint": "/w/index.php?title=Pointillism&action=history",
+      "keyJourneys": [
+        "review-a-change"
+      ]
+    }
+  ],
+  "attribution": "Captures are of Wikipedia, whose article text is available under CC BY-SA 4.0. Included as a reproducible sample; not affiliated with or endorsed by the Wikimedia Foundation."
+}

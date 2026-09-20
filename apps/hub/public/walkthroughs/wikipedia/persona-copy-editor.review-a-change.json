@@ -1,0 +1,91 @@
+{
+  "personaId": "copy-editor",
+  "journeyId": "review-a-change",
+  "headline": "Reading the argument behind the article",
+  "overview": "The article is the output. For someone who maintains one, the interesting surfaces are the ones readers never open: the revision list, the word-level diff, and the page where the disagreement is recorded.",
+  "payoff": "He can see exactly which words changed, who changed them, and the reason they gave — without leaving the article's own namespace.",
+  "platform": "web",
+  "surface": "desktop",
+  "capturedAt": "2026-09-18T07:43:56.707Z",
+  "scenes": [
+    {
+      "id": "published",
+      "title": "The version the world is reading",
+      "narrative": "Tom watches this article. What he sees first is what everyone sees — the current published revision, with no indication on the page of how contested or how recent any of it is.",
+      "frames": [
+        "personas/review-a-change/01-article.png"
+      ],
+      "location": "/wiki/Pointillism",
+      "surface": "desktop",
+      "sourceFeature": "article",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "history",
+      "title": "Every edit, with a name and a reason attached",
+      "narrative": "The history is the article's real content: a dated list of revisions, each with an author, a byte delta, and an edit summary. Nothing here is anonymous to the system, and nothing is deleted — only superseded.",
+      "frames": [
+        "personas/review-a-change/02-history.png"
+      ],
+      "location": "/w/index.php?title=Pointillism&action=history",
+      "surface": "desktop",
+      "sourceFeature": "revision-history",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "select",
+      "title": "Two revisions, picked by hand",
+      "narrative": "He marks the current revision and one from a few edits back. The radio columns enforce direction — you cannot compare a revision with itself, and the older column locks out everything newer than your pick.",
+      "frames": [
+        "personas/review-a-change/03-revisions-selected.png"
+      ],
+      "location": "/w/index.php?title=Pointillism&action=history",
+      "surface": "desktop",
+      "sourceFeature": "revision-history",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "diff",
+      "title": "The change, down to the word",
+      "narrative": "The comparison is not a file diff — it highlights the changed words inside the changed sentences, so a one-word substitution in a long paragraph is visible immediately instead of being buried in a wall of identical text.",
+      "frames": [
+        "personas/review-a-change/04-diff.png"
+      ],
+      "location": "/w/index.php?diff=…&oldid=…",
+      "surface": "desktop",
+      "sourceFeature": "revision-history",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "talk",
+      "title": "The disagreement has its own page",
+      "narrative": "Edits that need justifying get argued on the talk page rather than in the article. For Tom this is the difference between reverting a change and understanding it — the reasoning is a click away from the text it produced.",
+      "frames": [
+        "personas/review-a-change/05-talk.png"
+      ],
+      "location": "/wiki/Talk:Pointillism",
+      "surface": "desktop",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "moments": [
+    {
+      "id": "setting-out",
+      "image": "personas/copy-editor-moment-setting-out.png",
+      "caption": "I check the talk page first to understand why editors disagree about this change.",
+      "afterScene": -1
+    },
+    {
+      "id": "deciding",
+      "image": "personas/copy-editor-moment-deciding.png",
+      "caption": "I compare sources, revisions, and talk-page arguments before deciding whether the change holds up.",
+      "afterScene": 2
+    },
+    {
+      "id": "payoff",
+      "image": "personas/copy-editor-moment-payoff.png",
+      "caption": "I leave with the reasoning behind the edit, not just the article’s current wording.",
+      "afterScene": 4
+    }
+  ]
+}

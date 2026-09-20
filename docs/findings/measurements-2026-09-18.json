@@ -1,0 +1,50 @@
+{
+  "measuredOn": "2026-09-18",
+  "probe": "self-reporting page (devicePixelRatio, innerWidth, UA, maxTouchPoints, pointer:coarse, localStorage marker, cookie, console lines, a 200 and a deliberate 500) + a CSS-animation-only page",
+  "backends": {
+    "playwright": {
+      "version": "1.63.0",
+      "retina": { "measured": "1440x900 CSS @ deviceScaleFactor 2 -> PNG 2880x1800", "verdict": "MET" },
+      "mobile": { "measured": "devices['iPhone 14 Pro'] -> dpr 3, PNG 1179x1980, UA iPhone, maxTouchPoints 1, pointer:coarse true", "verdict": "MET" },
+      "animationFreeze": { "measured": "CSS-only page, 2 captures 900ms apart: animations:'disabled' -> byte-identical; without the flag -> different", "verdict": "MET, flag is load-bearing" },
+      "timeFreeze": { "measured": "page.clock.install + pauseAt -> a page with a 37ms setInterval clock captures byte-identical 1.2s apart", "verdict": "MET (stronger than animations flag; not currently used by the reference script)" },
+      "freshContext": { "measured": "two newContext() -> markers ctx-mf3xvu92 / ctx-lele2ebs (distinct); same context twice -> same marker (probe proven sound)", "verdict": "MET" },
+      "video": { "measured": "recordVideo -> 140084-byte webm covering a 2-page flow", "verdict": "MET" },
+      "consoleNetwork": { "measured": "console error line captured; network 200 /api/ok and 500 /api/boom captured with path+status", "verdict": "MET" },
+      "byteAddressable": { "measured": "screenshot({path}) writes PNG at a chosen path; md5 computed", "verdict": "MET" },
+      "setupCost": "94.3 MiB chromium download on a cold machine"
+    },
+    "chrome-devtools-mcp (CDP over real Chrome)": {
+      "retina": { "measured": "emulate viewport '1440x900x2' -> PNG 2880x1800 on disk", "verdict": "MET" },
+      "mobile": { "measured": "emulate '393x852x3,mobile,touch' + iPhone UA -> dpr 3, innerWidth 393, maxTouchPoints 1, pointer:coarse true, max-width:768 true", "verdict": "MET" },
+      "animationFreeze": { "measured": "CSS-only page: two raw captures DIFFERENT; after injecting animation:none/transition:none -> byte-IDENTICAL", "verdict": "NOT NATIVE, ENFORCEABLE BY CALLER" },
+      "freshContext": { "measured": "new_page isolatedContext A/B -> markers ctx-h2vhrdr5 / ctx-m56idut6 distinct; document.cookie length 21 (own cookie only) vs the shared profile's analytics cookie payload", "verdict": "MET" },
+      "video": { "measured": "no video tool in the surface (performance traces only)", "verdict": "NOT MET" },
+      "consoleNetwork": { "measured": "console error captured; network list shows GET /api/boom [500]", "verdict": "MET" },
+      "byteAddressable": { "measured": "take_screenshot{format:png,filePath} wrote 2880x1800 PNG; refused a path outside the configured workspace roots", "verdict": "MET, constrained to workspace roots" }
+    },
+    "claude-in-chrome extension": {
+      "retina": { "measured": "dpr 1; full-scale capture 1512x775 = CSS pixels; no deviceScaleFactor parameter exists", "verdict": "NOT MET" },
+      "format": { "measured": "save_to_disk returned 'Successfully captured screenshot (1512x775, jpeg) - ID: ss_45593e82w'", "verdict": "JPEG, lossy" },
+      "mobile": { "measured": "resize_window 393x852 reported success; after a 2s wait innerWidth/outerWidth still 1512, maxTouchPoints 0, pointer:coarse false, max-width:768 false. The API has width/height only: no dpr, UA or touch parameters", "verdict": "NOT MET" },
+      "animationFreeze": { "measured": "no animation-control parameter in the surface", "verdict": "NOT MET (no page-level JS injection guarantee before paint)" },
+      "freshContext": { "measured": "the probe page rendered the operator's real profile cookies (analytics/product-analytics/session classes) — a shared profile, not an isolated context", "verdict": "NOT MET" },
+      "video": { "documented": "gif_creator only; defaults include a Claude watermark, orange click indicators, action labels and a progress bar", "verdict": "NOT MET for clean evidence (annotated GIF, not video)" },
+      "consoleNetwork": { "measured": "console error line and GET /api/boom -> 500 both captured", "verdict": "MET" },
+      "byteAddressable": { "measured": "save_to_disk returns an opaque ID, not a filesystem path — the bytes cannot be hashed or placed at {featureId}/{surfaceId}/step-NN.png", "verdict": "NOT MET" }
+    },
+    "built-in browser pane": {
+      "retina": { "measured": "dpr 1 on desktop; screenshot returns a scaled in-context image, no file", "verdict": "NOT MET" },
+      "mobile": { "measured": "preset mobile -> dpr 2, maxTouchPoints 5, pointer:coarse true, UA Pixel 8, screen+visualViewport 375x812 and CSS media queries resolve mobile (max-width:768 true) BUT window.innerWidth reports 893x1934", "verdict": "PARTIAL — CSS correct, JS width wrong" },
+      "freshContext": { "measured": "one shared pane session", "verdict": "NOT MET" },
+      "video": { "verdict": "NOT MET" },
+      "consoleNetwork": { "measured": "console error and 500 captured", "verdict": "MET" },
+      "byteAddressable": { "measured": "no save-to-disk parameter in the tool surface", "verdict": "NOT MET" }
+    },
+    "computer-use (desktop)": {
+      "webDriving": { "measured": "request_access for Google Chrome refused: 'browser applications can only ever be granted in read mode, so you cannot use them to interact with websites... For all other browser interaction you must use the Claude in Chrome extension MCP instead'", "verdict": "STRUCTURALLY DISQUALIFIED for web capture" },
+      "byteAddressable": { "measured": "app_screenshot has no filePath parameter; returns an image plus an accessibility summary", "verdict": "NOT MET" },
+      "note": "Remains the right driver for native desktop apps, which is a different platform in this schema, not a web backend."
+    }
+  }
+}

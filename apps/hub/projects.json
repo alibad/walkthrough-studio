@@ -1,0 +1,34 @@
+{
+  "$comment": [
+    "The app registry. One entry per app-on-a-platform.",
+    "",
+    "Wikipedia is the shipped sample because it costs nothing to reproduce: no",
+    "account, no local build, no secrets. Delete this entry and the matching",
+    "public/walkthroughs/wikipedia directory to start from empty —",
+    "`pnpm reset:demo` does both.",
+    "",
+    "Never put a literal secret in this file. Use a $ENV_VAR placeholder in",
+    "auth.roles.<role>.password and set the variable in .env.local."
+  ],
+  "projects": [
+    {
+      "slug": "wikipedia",
+      "name": "Wikipedia",
+      "tag": "Sample · public site",
+      "description": "The shipped sample: search, reading an article, and the revision history — walked live against the public site.",
+      "longDescription": "Included because anyone who clones this repo can re-run the walk and get comparable output: no account, no local build, no secrets. It also happens to be the clearest available example of the problem this tool addresses — Wikipedia makes drift visible by keeping every revision addressable and every change diffable, which a deployed application cannot do. Article text is available under CC BY-SA 4.0; this is a sample, not an affiliation.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://en.wikipedia.org"
+      },
+      "codebase": {
+        "github": "wikimedia/mediawiki",
+        "githubBranch": "master"
+      },
+      "auth": {
+        "type": "none"
+      }
+    }
+  ]
+}

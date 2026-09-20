@@ -1,0 +1,50 @@
+{
+  "featureId": "search",
+  "featureName": "Search",
+  "type": "feature",
+  "location": "/wiki/Main_Page",
+  "category": "search",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Type a title, land on the thing",
+  "overview": "The primary navigation path. A typeahead disambiguates with a thumbnail and a short description before the reader commits, and an exact title goes straight to the article rather than to a results page.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The front door",
+      "action": "Opened the main page.",
+      "description": "The entry point puts a search field in the header and the day's editorial selections below it. Nothing is personalised and nothing is gated — the fastest route to any of six million articles is to type its name.",
+      "screenshotFilename": "search/mobile/step-01-main-page.png",
+      "screenshotAlt": "The Wikipedia main page",
+      "location": "/wiki/Main_Page",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Suggestions arrive as you type",
+      "action": "Typed \"pointillism\" into the search field.",
+      "description": "A typeahead request returns candidate articles with a thumbnail and a one-line description, so the reader disambiguates **before** committing to a page. The description is what does the work here — several candidates often share a name.",
+      "screenshotFilename": "search/mobile/step-02-suggestions.png",
+      "screenshotAlt": "Search suggestions for \"pointillism\"",
+      "location": "/wiki/Main_Page",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Straight to the article",
+      "action": "Pressed Enter to accept the top suggestion.",
+      "description": "Submitting an exact title navigates directly rather than to a results page. That one decision is why search here feels like addressing a thing instead of querying a database.",
+      "screenshotFilename": "search/mobile/step-03-article.png",
+      "screenshotAlt": "The Pointillism article",
+      "location": "/wiki/Pointillism",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Typeahead with thumbnails and disambiguating descriptions",
+    "Exact-title submission navigates directly, skipping a results page"
+  ],
+  "generatedAt": "2026-09-18T07:09:53.652Z",
+  "capturedAt": "2026-09-18T07:09:53.652Z"
+}

@@ -1,0 +1,206 @@
+{
+  "$comment": [
+    "What this system can do, what each thing needs, and what happens when it",
+    "is missing. Read by BOTH `pnpm run doctor` and the hub's /setup page so the",
+    "command and the page can never describe different systems.",
+    "",
+    "Lives inside apps/hub because that is the Vercel root directory — a file",
+    "at the monorepo root is not uploaded to the build. Same reason as",
+    "projects.json.",
+    "",
+    "No secret ever belongs here. This file names ENVIRONMENT VARIABLES, never",
+    "their values."
+  ],
+  "principle": {
+    "headline": "A key is only needed for what the agent cannot do itself.",
+    "body": "The walk is driven by an agent, and an agent is already a model. It writes the persona bios, the step descriptions and the findings with no API key at all — asking a second model to do that would be paying twice for the same sentence. The gaps are the things a coding agent genuinely cannot produce from a tool call: a PNG of a face, and an MP3 of a voice. Those, and only those, are what a provider is for. An agent that CAN produce them — a host with native image generation — should produce them and skip the key entirely. When a key is needed it is one key, OPENAI_API_KEY, covering both."
+  },
+  "hosts": [
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "detectEnv": "CLAUDECODE",
+      "detectNote": "Set to 1 for every child process Claude Code spawns, so a script started by the agent sees it. Verified in this environment.",
+      "canGenerateImages": false,
+      "canGenerateSpeech": false,
+      "consequence": "Needs an image provider for persona art and a TTS provider for narration. Everything else runs with no key."
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "detectEnv": "CODEX_SANDBOX",
+      "detectNote": "Codex sets CODEX_SANDBOX (and CODEX_SANDBOX_NETWORK_DISABLED) for sandboxed child processes — confirmed by inspecting the shipped binary. It is NOT set when Codex runs with the sandbox bypassed, so absence proves nothing; use WALKTHROUGH_IMAGE_PROVIDER to state it outright.",
+      "canGenerateImages": "ask",
+      "canGenerateSpeech": false,
+      "consequence": "If the host can produce an image file itself, it should write the plate directly and no image provider is needed."
+    },
+    {
+      "id": "unknown",
+      "name": "A shell, CI, or an agent that sets no marker",
+      "detectEnv": null,
+      "detectNote": "No marker found. Nothing is assumed about what the caller can do.",
+      "canGenerateImages": false,
+      "canGenerateSpeech": false,
+      "consequence": "Treated as a plain shell: capabilities come from configured providers only."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "capture",
+      "name": "Capture",
+      "required": true,
+      "for": "Driving the app and photographing it. This is the walk.",
+      "usedBy": [
+        "pnpm walk:sample",
+        "any walk script",
+        "the skill itself"
+      ],
+      "without": "Nothing can be walked. This is the only hard requirement.",
+      "providers": [
+        {
+          "id": "playwright",
+          "name": "Playwright Chromium",
+          "kind": "local",
+          "install": "npx playwright install chromium",
+          "note": "The default. The only backend that does video and a pinned clock."
+        },
+        {
+          "id": "cdp",
+          "name": "A Chrome on port 9222",
+          "kind": "local",
+          "note": "The way past an SSO or MFA gate: it reuses a browser a human already signed into."
+        },
+        {
+          "id": "ios-simulator",
+          "name": "iOS Simulator",
+          "kind": "local",
+          "note": "Real MobileSafari. The only backend where lvh − svh is the actual URL-bar height."
+        },
+        {
+          "id": "android-adb",
+          "name": "Android platform-tools",
+          "kind": "local",
+          "note": "adb screencap and screenrecord against an emulator or a tethered device."
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "name": "Writing",
+      "required": false,
+      "for": "Persona bios, step descriptions, captions, findings, the narration script.",
+      "usedBy": [
+        "the skill, inline",
+        "pnpm persona:story (script only)"
+      ],
+      "without": "Nothing degrades when no key is set — the agent writes it.",
+      "providers": [
+        {
+          "id": "host-agent",
+          "name": "The agent running the walk",
+          "kind": "host",
+          "note": "Always available, by definition. This is why the system asks for no key to produce prose."
+        },
+        {
+          "id": "openai-text",
+          "name": "OpenAI text model",
+          "kind": "api",
+          "env": [
+            "OPENAI_API_KEY"
+          ],
+          "verify": "openai-text",
+          "note": "Only for the unattended scripts that run with no agent in the loop. Override the model with OPENAI_TEXT_MODEL."
+        }
+      ]
+    },
+    {
+      "id": "illustration",
+      "name": "Generated illustration",
+      "required": false,
+      "for": "Persona portraits, scene-setters, moment shots and the shared stipple plates. All invented, all labelled 'illustration' in the UI, none of it evidence.",
+      "usedBy": [
+        "pnpm persona:art",
+        "pnpm persona:moments",
+        "pnpm creatives"
+      ],
+      "without": "A persona card renders as a typographic panel carrying the two facts that actually identify one — where they enter the product, and how many of their journeys have been walked — and the journey masthead simply omits the portrait. Every page still works, and none of them claims a face that was never drawn.",
+      "providers": [
+        {
+          "id": "host-agent",
+          "name": "The agent running the walk",
+          "kind": "host",
+          "requiresHostImages": true,
+          "note": "A host that can generate an image writes the plate directly to public/walkthroughs/<slug>/personas/ and no provider is configured at all."
+        },
+        {
+          "id": "openai-image",
+          "name": "OpenAI image model",
+          "kind": "api",
+          "env": [
+            "OPENAI_API_KEY"
+          ],
+          "verify": "openai-image",
+          "note": "One key, one endpoint. The default model is checked against /v1/models rather than remembered — ids move, and a stale one fails only at generation time. Override with OPENAI_IMAGE_MODEL."
+        }
+      ]
+    },
+    {
+      "id": "narration",
+      "name": "Narration",
+      "required": false,
+      "for": "The spoken track on a persona story video.",
+      "usedBy": [
+        "pnpm persona:story",
+        "pnpm tts:sample"
+      ],
+      "without": "The story video is not rendered. The journey page it summarises is unaffected, and the walk's own screen recording is still attached to it.",
+      "providers": [
+        {
+          "id": "openai-tts",
+          "name": "OpenAI gpt-4o-mini-tts",
+          "kind": "api",
+          "env": [
+            "OPENAI_API_KEY"
+          ],
+          "verify": "openai-tts",
+          "note": "Chosen automatically the moment OPENAI_API_KEY is present. The same key as illustration — there is only one.",
+          "requiresFfmpegFilters": [
+            "drawtext"
+          ]
+        },
+        {
+          "id": "kokoro",
+          "name": "Local Kokoro model",
+          "kind": "local",
+          "requiresBinaries": [
+            "uv",
+            "ffmpeg"
+          ],
+          "note": "Weights download on first use to ~/.cache/walkthrough-studio. No key, no account. The ffmpeg on PATH must also have been built with text rendering — Homebrew ships builds without libfreetype, and the story renderer burns its caption into the frame.",
+          "requiresFfmpegFilters": [
+            "drawtext"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "target-credentials",
+      "name": "Target-app credentials",
+      "required": false,
+      "for": "Reaching gated features in the app being walked.",
+      "usedBy": [
+        "any walk against an app with an auth gate"
+      ],
+      "without": "The gated feature is recorded as pending with the reason, and a finding is filed. It is never unblocked by editing the app.",
+      "fromRegistry": true,
+      "providers": [
+        {
+          "id": "env-placeholder",
+          "name": "A $VAR placeholder in projects.json",
+          "kind": "api",
+          "note": "projects.json is committed, so it names the variable and .env.local holds the value."
+        }
+      ]
+    }
+  ]
+}

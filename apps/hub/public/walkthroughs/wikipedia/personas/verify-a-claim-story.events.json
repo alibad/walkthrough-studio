@@ -1,0 +1,79 @@
+{
+  "journeyId": "verify-a-claim",
+  "personaId": "fact-checker",
+  "voice": "kokoro · af_heart",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 64355,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 8268,
+      "narration": "Maya follows a doubtful sentence through its footnote, finding the original source instead of citing the encyclopedia.",
+      "image": "personas/fact-checker-scene.png"
+    },
+    {
+      "kind": "moment",
+      "startMs": 8268,
+      "durMs": 5047,
+      "narration": "I’m checking who first made this claim, then I’ll read the sources they cite.",
+      "image": "personas/fact-checker-moment-setting-out.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13315,
+      "durMs": 6753,
+      "narration": "Maya types the claim’s key term, and the search box offers possible pages before she finishes.",
+      "image": "personas/verify-a-claim/01-search.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 20068,
+      "durMs": 6625,
+      "narration": "The lead names the painters and defines the term, but does not identify who supports the claim.",
+      "image": "personas/verify-a-claim/02-lead.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 26693,
+      "durMs": 6967,
+      "narration": "A numbered marker opens a source preview on hover, letting Maya assess it without leaving the paragraph.",
+      "image": "personas/verify-a-claim/03-citation-hover.png"
+    },
+    {
+      "kind": "moment",
+      "startMs": 33660,
+      "durMs": 5495,
+      "narration": "I’m checking the footnotes now; the article’s claims matter less than where they lead.",
+      "image": "personas/fact-checker-moment-deciding.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 39155,
+      "durMs": 6220,
+      "narration": "The highlighted reference names a source, but Maya must open it to examine the evidence.",
+      "image": "personas/verify-a-claim/04-reference-list.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 45375,
+      "durMs": 5431,
+      "narration": "On her phone, the footnote rises in a drawer, leaving the sentence in place.",
+      "image": "personas/verify-a-claim/05-mobile-reference.png"
+    },
+    {
+      "kind": "moment",
+      "startMs": 50806,
+      "durMs": 5964,
+      "narration": "I find the original article, then check its references before deciding what to read.",
+      "image": "personas/fact-checker-moment-payoff.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 56770,
+      "durMs": 7585,
+      "narration": "Four taps from an unattributed sentence to a named source, without ever losing her place in the paragraph.",
+      "image": "personas/fact-checker.png"
+    }
+  ]
+}
