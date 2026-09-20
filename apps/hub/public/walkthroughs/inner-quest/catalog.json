@@ -3,9 +3,9 @@
   "projectName": "Inner Quest",
   "platform": "web",
   "driver": "playwright",
-  "capturedAgainst": "authenticated Inner Quest web app + MCP connector + rebuilt local protocol proof",
+  "capturedAgainst": "authenticated Inner Quest web app + production MCP connector",
   "discoveredAt": "2026-09-20T12:35:41.552Z",
-  "updatedAt": "2026-09-20T14:01:09.000Z",
+  "updatedAt": "2026-09-20T16:34:47.000Z",
   "brand": {
     "primaryColor": "#8b5cf6",
     "accentColor": "#ec4899",
@@ -16,13 +16,13 @@
   },
   "scope": {
     "status": "bounded",
-    "note": "Product proof used the authenticated owner app and one fictional action that was removed after capture. The protocol repair remains a local fixture proof and is not claimed as deployed."
+    "note": "Product proof used the authenticated owner app, official strengths evidence and one synthetic private reflection. Unrelated private records were excluded, and the synthetic reflection was removed after capture."
   },
   "features": [
     {
       "featureId": "repaired-write-path",
-      "featureName": "MCP action in the real app",
-      "location": "Inner Quest app → Connect → My Action Items",
+      "featureName": "Evidence-backed self knowledge",
+      "location": "Inner Quest → Connect → Strengths in practice → My Reflections",
       "category": "mcp",
       "requiresAuth": true,
       "surfaceStatus": {
@@ -30,8 +30,8 @@
         "desktop": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-20T14:01:09.000Z",
-      "notes": "The desktop surface shows Connect, the exact authenticated MCP-created action in My Action Items, and its app detail. The terminal surface separately proves the local generator repair."
+      "lastWalkthroughAt": "2026-09-20T16:34:47.000Z",
+      "notes": "The walkthrough retrieves official CliftonStrengths evidence with provenance, shows how Inner Quest turns themes into testable practices, and proves a private reflection write through exact read-back and the real My Reflections screen."
     }
   ],
   "personas": [],

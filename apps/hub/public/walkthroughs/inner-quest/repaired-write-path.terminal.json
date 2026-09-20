@@ -1,79 +1,68 @@
 {
   "featureId": "repaired-write-path",
-  "featureName": "Repaired write path",
+  "featureName": "Evidence-backed self knowledge",
   "type": "feature",
-  "location": "node packages/mcp-server/dist/index.js",
+  "location": "Authenticated Inner Quest MCP connector",
   "category": "mcp",
   "surface": "terminal",
   "platform": "cli",
   "locale": "en",
-  "headline": "A private reflection tool that can finally carry its body",
-  "overview": "Inner Quest already generated a formidable Personal OS surface. The hard part was finding a quiet generator defect inside it: six required free-form bodies vanished. This walk drives the repaired executable, sends fictional values data through one of those tools, and finds it again with a separate read.",
-  "targetAudience": "Operators deciding whether an agent-facing product surface is trustworthy",
+  "headline": "Retrieve who I am, then help me learn from what happens",
+  "overview": "The protocol surface mirrors the product story. An authenticated search finds official strengths evidence, a narrow profile read preserves its provenance, a private reflection turns that context into practice, and three independent reads plus the real app confirm the write.",
+  "targetAudience": "Operators deciding whether a Personal OS gives an agent trustworthy, useful context",
   "steps": [
     {
       "stepNumber": 1,
-      "title": "A Personal OS becomes a typed surface",
-      "action": "Connected with the official MCP SDK and called `tools/list` on the rebuilt Inner Quest stdio server.",
-      "description": "The rebuilt server completes discovery with **143 tools** across the Personal OS: 73 writes and 70 reads.",
+      "title": "Search finds the relevant self knowledge",
+      "action": "Searched the authenticated Personal OS for CliftonStrengths.",
+      "description": "The result connects the canonical profile to a supporting reflection and returns the official Top 5 without exposing unrelated private profile fields.",
       "screenshotFilename": "repaired-write-path/terminal/step-01-repaired-write-path.png",
-      "screenshotAlt": "Terminal showing the Inner Quest MCP server returning 143 valid tools",
-      "location": "node packages/mcp-server/dist/index.js",
+      "screenshotAlt": "Terminal showing Inner Quest Personal OS search finding the official CliftonStrengths profile and supporting reflection",
+      "location": "Authenticated Inner Quest MCP connector",
       "verificationStatus": "live-walked"
     },
     {
       "stepNumber": 2,
-      "title": "The six silent writes are open again",
-      "action": "Inspected all six tools whose required free-form bodies had previously been dropped by code generation.",
-      "description": "All six previously dead write tools now publish open input schemas and build request bodies, so the model can send the fields those endpoints store.",
+      "title": "The source travels with the result",
+      "action": "Fetched the safe strengths and provenance fields from the self profile.",
+      "description": "The connector reports Gallup, the completion date, coverage of all 34 themes and the user-confirmed transcription, while keeping an earlier partial archive separate.",
       "screenshotFilename": "repaired-write-path/terminal/step-02-repaired-write-path.png",
-      "screenshotAlt": "Terminal showing six repaired Inner Quest write tools with open input schemas",
-      "location": "node packages/mcp-server/dist/index.js",
+      "screenshotAlt": "Terminal showing the source and provenance of the official Inner Quest strengths result",
+      "location": "Authenticated Inner Quest MCP connector",
       "verificationStatus": "live-walked"
     },
     {
       "stepNumber": 3,
-      "title": "A values check-in crosses the generated boundary",
-      "action": "Called `inner_quest_create_values_check_in` with fictional values data against the recording fixture.",
-      "description": "The values check-in call reaches the exact v1 API route with the fictional note intact. This is an observed request, not a claim inferred from generated source.",
+      "title": "Context becomes a private reflection",
+      "action": "Created one clearly labelled private insight through the production connector.",
+      "description": "The reflection asks how the owner can make their strengths useful in a complex decision, then records a concrete practice grounded in the five official themes.",
       "screenshotFilename": "repaired-write-path/terminal/step-03-repaired-write-path.png",
-      "screenshotAlt": "Terminal showing a fictional Inner Quest values check-in reaching the API fixture",
-      "location": "node packages/mcp-server/dist/index.js",
+      "screenshotAlt": "Terminal showing a private Inner Quest reflection created from official strengths evidence",
+      "location": "Authenticated Inner Quest MCP connector",
       "verificationStatus": "live-walked"
     },
     {
       "stepNumber": 4,
-      "title": "A separate read finds the exact result",
-      "action": "Called the read-only values check-in list tool after the write returned.",
-      "description": "A separate list call finds the exact stored ID and note. That closes the loop from MCP write to API state to MCP read.",
+      "title": "Independent reads and the app close the loop",
+      "action": "Fetched the reflection by ID, listed it by exact title, searched the Personal OS, and opened the same result in My Reflections.",
+      "description": "Every path returned the same prompt, body and tags. After the visual proof was saved, the synthetic reflection was deleted and a final fetch confirmed it was gone.",
       "screenshotFilename": "repaired-write-path/terminal/step-04-repaired-write-path.png",
-      "screenshotAlt": "Terminal showing the Inner Quest write found by an independent read tool",
-      "location": "node packages/mcp-server/dist/index.js",
-      "verificationStatus": "live-walked"
-    },
-    {
-      "stepNumber": 5,
-      "title": "Private production data stays behind consent",
-      "action": "Probed the public Inner Quest MCP endpoint without an OAuth session.",
-      "description": "The public production endpoint is alive and properly gated, but private-account proof stops at the owner-consent boundary.",
-      "screenshotFilename": "repaired-write-path/terminal/step-05-repaired-write-path.png",
-      "screenshotAlt": "Terminal showing the Inner Quest production MCP endpoint protected by OAuth",
-      "location": "node packages/mcp-server/dist/index.js",
+      "screenshotAlt": "Terminal showing exact reflection read-back through get, list, search and the Inner Quest app",
+      "location": "Authenticated Inner Quest MCP connector",
       "verificationStatus": "live-walked"
     }
   ],
   "keyFeatures": [
-    "143 SDK-validated tools",
-    "Six repaired free-form write bodies",
-    "Observed API request",
-    "Independent exact read-back"
+    "Authenticated Personal OS search",
+    "Assessment provenance",
+    "Private reflection write",
+    "Independent get, list and search read-back",
+    "The exact result visible in My Reflections"
   ],
   "tips": [
-    "The fixture records only the synthetic request used by this run; it contains no Inner Quest account data."
+    "The public transcript contains only official strengths evidence and one synthetic proof reflection; all unrelated private data is excluded."
   ],
-  "note": "Captured from the local dirty Inner Quest working copy against a recording fixture. The production endpoint check proves OAuth discovery only; the repair is not claimed as deployed.",
-  "generatedAt": "2026-09-20T12:35:41.552Z",
-  "capturedAt": "2026-09-20T12:35:41.552Z",
-  "targetSha": "d2cde25375451250f3d165b9fa14cabfa2a992d5",
-  "targetCommitDate": "2026-09-08T14:21:27+03:00"
+  "note": "Observed through the authenticated production Inner Quest connector and app. The synthetic private reflection was removed after exact read-back and capture.",
+  "generatedAt": "2026-09-20T16:34:47.000Z",
+  "capturedAt": "2026-09-20T16:34:47.000Z"
 }

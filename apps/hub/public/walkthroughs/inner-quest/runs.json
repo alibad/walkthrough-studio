@@ -117,6 +117,44 @@
         "videos": 0,
         "issues": 0
       }
+    },
+    {
+      "id": "2026-09-20T16:34:47.000Z",
+      "startedAt": "2026-09-20T16:20:00.000Z",
+      "completedAt": "2026-09-20T16:34:47.000Z",
+      "skill": "walkthrough",
+      "agent": "codex",
+      "target": {
+        "app": "Inner Quest",
+        "ref": "authenticated production web app and MCP connector"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "authenticated Chrome + Inner Quest MCP connector",
+        "capturedAgainst": "Inner Quest Connect, Strengths in practice and My Reflections",
+        "env": {
+          "data": "official assessment evidence plus one synthetic private reflection",
+          "privateBackgroundData": "excluded from captures",
+          "cleanup": "synthetic reflection removed after verification"
+        },
+        "surfaces": [
+          "desktop",
+          "terminal"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Authenticated self-profile search, provenance, testable strength hypotheses, private reflection write, exact get/list/search read-back, and visible app result"
+      },
+      "coverage": {
+        "features": [
+          "repaired-write-path"
+        ],
+        "personas": [],
+        "screenshots": 10,
+        "videos": 0,
+        "issues": 0
+      }
     }
   ]
 }

@@ -86,8 +86,8 @@
       "slug": "inner-quest",
       "name": "Inner Quest",
       "tag": "Human Quest · private Personal OS",
-      "description": "A private Personal OS spanning character, relationships, career and wellbeing. Its MCP feature now connects inside the app and lands an action in My Action Items.",
-      "longDescription": "Inner Quest brings goals, relationships, career, wellbeing and reading into one private Personal OS. The product walkthrough shows the secure in-app Codex connection, an authenticated fictional MCP write, and the exact resulting action in My Action Items. A separate terminal surface retains the local generator-repair proof and its independent read-back.",
+      "description": "A private Personal OS spanning character, relationships, career and wellbeing. Its MCP walkthrough turns assessment-backed self knowledge into a private reflection.",
+      "longDescription": "Inner Quest brings goals, relationships, career, wellbeing and reading into one private Personal OS. The walkthrough starts with secure OAuth, retrieves an official CliftonStrengths profile with provenance, shows how the product converts those themes into testable practices, and closes the loop with an authenticated private reflection visible in My Reflections.",
       "target": {
         "platform": "web",
         "driver": "playwright",

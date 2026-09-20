@@ -1,57 +1,88 @@
 {
   "featureId": "repaired-write-path",
-  "featureName": "MCP action in the real app",
+  "featureName": "Evidence-backed self knowledge",
   "type": "feature",
-  "location": "Inner Quest app → Connect → My Action Items",
+  "location": "Inner Quest → Connect → Strengths in practice → My Reflections",
   "category": "mcp",
   "surface": "desktop",
   "platform": "web",
   "locale": "en",
-  "headline": "Connect securely, create an action, see it in Inner Quest",
-  "overview": "This is the product-facing half of the Inner Quest MCP story. The app explains its secure Codex connection, an authenticated MCP call creates a fictional action, and the exact result appears in My Action Items with its details intact.",
-  "targetAudience": "People deciding whether Inner Quest MCP reaches the actual Personal OS",
+  "headline": "Ask what Inner Quest knows. Turn evidence into practice.",
+  "overview": "Inner Quest MCP is valuable because it can retrieve the context that makes help personal, not because it can perform generic CRUD. This walkthrough connects securely, finds an official CliftonStrengths result with provenance, shows how the app turns those themes into testable practices, then creates one private reflection through MCP and finds the exact record in My Reflections.",
+  "targetAudience": "People deciding whether a Personal OS gives an agent meaningfully better context",
   "steps": [
     {
       "stepNumber": 1,
-      "title": "Connection is a product flow, not a copied secret",
+      "title": "Connection begins inside the private Personal OS",
       "action": "Opened Inner Quest Connect and expanded the developer setup.",
-      "description": "The recommended flow is install, connect, and approve: Codex handles the secure sign-in and can refresh or disconnect access. The advanced section keeps public endpoints available for other clients without making raw keys the default experience.",
+      "description": "The default path is install, connect and approve through OAuth. Inner Quest keeps refresh and disconnect controls in the product, while advanced endpoints remain available for other clients without making copied secrets the normal experience.",
       "screenshotFilename": "repaired-write-path/desktop/step-01-connect-settings.png",
-      "screenshotAlt": "Inner Quest Connect screen showing the secure Codex connection and advanced developer setup",
+      "screenshotAlt": "Inner Quest Connect screen showing secure Codex connection controls and advanced developer setup",
       "location": "Inner Quest → Connect",
       "verificationStatus": "live-walked"
     },
     {
       "stepNumber": 2,
-      "title": "The MCP action lands in My Action Items",
-      "action": "Created a high-priority fictional action through the authenticated Inner Quest MCP connector, then filtered the real app to that title.",
-      "description": "The exact result appears in the Backlog lane of My Action Items. The filter isolates the fictional proof record so no unrelated private action titles are published in the walkthrough.",
-      "screenshotFilename": "repaired-write-path/desktop/step-02-action-in-app.png",
-      "screenshotAlt": "Inner Quest My Action Items showing the exact fictional action created through MCP",
-      "location": "Inner Quest → My Action Items",
+      "title": "The agent can retrieve an operating pattern, not just a profile card",
+      "action": "Queried the authenticated Personal OS for the owner profile and official CliftonStrengths evidence.",
+      "description": "The MCP response identified Arranger, Belief, Strategic, Achiever and Learner. The live app turns those themes into an operating pattern: coordinate moving parts around a meaningful outcome, then test that hypothesis against lived evidence instead of treating a personality label as destiny.",
+      "screenshotFilename": "repaired-write-path/desktop/step-02-profile-operating-pattern.png",
+      "screenshotAlt": "Inner Quest Strengths in practice showing the Arranger and Belief operating pattern, top themes, leading domain and lived evidence",
+      "location": "Inner Quest → Strengths in practice",
       "verificationStatus": "live-walked"
     },
     {
       "stepNumber": 3,
-      "title": "The action arrives with usable product detail",
-      "action": "Opened the MCP-created action in the normal Inner Quest editor.",
-      "description": "The title, To Do status, High priority, and fictional provenance note are all present in the app. This is the same editable record a person would work with, not a protocol response rendered as a fake screen.",
-      "screenshotFilename": "repaired-write-path/desktop/step-03-action-detail.png",
-      "screenshotAlt": "Inner Quest action detail showing the MCP-created title, status, priority, and fictional note",
-      "location": "Inner Quest → My Action Items → Action detail",
+      "title": "Provenance keeps self knowledge honest",
+      "action": "Inspected the ranked themes and their source before using them.",
+      "description": "Inner Quest identifies this as the Gallup assessment completed on September 7, 2026, covering all 34 themes via a user-confirmed transcription. That source is kept distinct from an earlier partial archive, so an agent can tell official evidence from supporting notes.",
+      "screenshotFilename": "repaired-write-path/desktop/step-03-assessment-provenance.png",
+      "screenshotAlt": "Inner Quest ranked strengths showing Gallup source, assessment date, all 34 themes and user-confirmed transcription",
+      "location": "Inner Quest → Strengths in practice → Results",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Inner Quest turns assessment labels into hypotheses to test",
+      "action": "Opened the generated strength combinations in the authenticated app.",
+      "description": "The product explicitly labels these as Inner Quest hypotheses, not claims copied from the assessment. Arranger plus Strategic becomes a question about coordinating change; Belief plus Achiever becomes a check that effort is producing a meaningful outcome.",
+      "screenshotFilename": "repaired-write-path/desktop/step-04-strength-combinations.png",
+      "screenshotAlt": "Inner Quest Strength combinations showing testable hypotheses for Arranger plus Strategic and Belief plus Achiever",
+      "location": "Inner Quest → Strengths in practice → Insights",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Insight becomes a private practice, not a static report",
+      "action": "Opened the guided experiment that asks what to rearrange, who must agree and how to learn from the result.",
+      "description": "The form can save a private reflection and optionally create a linked Action Item. This is the bridge from personality evidence to a decision, an experiment and a feedback loop inside the same Personal OS.",
+      "screenshotFilename": "repaired-write-path/desktop/step-05-guided-reflection.png",
+      "screenshotAlt": "Inner Quest guided strengths experiment with reflection prompts and a Save experiment button",
+      "location": "Inner Quest → Strengths in practice → Experiences",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 6,
+      "title": "A private MCP reflection appears in the real app",
+      "action": "Created one clearly labelled private reflection through the authenticated MCP connector, read it back three ways, then filtered My Reflections to the exact title.",
+      "description": "The prompt, practice and five supporting strengths arrive intact in My Reflections. The exact search filter excludes unrelated private records from the capture, and the synthetic proof record was removed after the walkthrough was verified.",
+      "screenshotFilename": "repaired-write-path/desktop/step-06-reflection-in-app.png",
+      "screenshotAlt": "Inner Quest My Reflections showing the exact private strengths reflection created through MCP",
+      "location": "Inner Quest → My Reflections",
       "verificationStatus": "live-walked"
     }
   ],
   "keyFeatures": [
     "In-app OAuth connection guidance",
-    "Authenticated MCP write",
-    "The exact result visible in My Action Items",
-    "Private background records excluded from captures"
+    "Official assessment evidence with provenance",
+    "Strength combinations framed as testable hypotheses",
+    "Authenticated private reflection write",
+    "Exact MCP read-back and visible app result"
   ],
   "tips": [
-    "The proof action is explicitly fictional and was removed from the private account after capture."
+    "Only official strengths evidence and the synthetic proof reflection appear in these captures; unrelated private Personal OS records are excluded."
   ],
-  "note": "Live-walked in the authenticated owner app with a single fictional action. Captures were isolated to that record and contain no unrelated private action titles.",
-  "generatedAt": "2026-09-20T14:01:09.000Z",
-  "capturedAt": "2026-09-20T14:01:09.000Z"
+  "note": "Live-walked in the authenticated owner app and through the production Inner Quest MCP connector. One clearly labelled private reflection was created for proof, independently read back, captured in My Reflections, and removed after verification.",
+  "generatedAt": "2026-09-20T16:34:47.000Z",
+  "capturedAt": "2026-09-20T16:34:47.000Z"
 }
