@@ -1,0 +1,49 @@
+{
+  "featureId": "strengths",
+  "featureName": "Strengths Assessment",
+  "type": "feature",
+  "location": "/strengths",
+  "category": "career",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Strengths Assessment, from entry to detail",
+  "overview": "Rank 34 strength themes across 4 domains — Executing, Influencing, Relationship Building, and Strategic Thinking — to discover your top talent themes.",
+  "targetAudience": "Users interested in career tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Strengths Assessment — Landing State",
+      "description": "The landing page of the Strengths Assessment tool showing the initial state and main interface.",
+      "screenshotFilename": "strengths/step-1-landing.png",
+      "screenshotAlt": "Strengths Assessment landing page on desktop",
+      "action": "Opened /strengths.",
+      "location": "/strengths",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Strengths Assessment — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "strengths/step-2-below-fold.png",
+      "screenshotAlt": "Strengths Assessment below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/strengths",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Ranks 34 strength themes across 4 domains: Executing, Influencing, Relationship Building, and Strategic Thinking",
+    "Identifies your top talent themes — natural patterns of thought, feeling, and behavior",
+    "Inspired by the Gallup CliftonStrengths framework used by millions worldwide",
+    "Guidance on how to apply your top strengths to boost performance and satisfaction at work"
+  ],
+  "tips": [
+    "Focus on your top 5 themes first — these are your most powerful natural talents and the highest-leverage areas for development.",
+    "Strengths work best when you build complementary partnerships: find team members whose top themes balance your bottom themes rather than trying to fix your weaknesses."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

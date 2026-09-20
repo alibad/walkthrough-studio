@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "id": "horizontal-overflow-interview-gym-mobile",
+      "featureId": "interview-gym",
+      "location": "/gym",
+      "surface": "mobile",
+      "severity": "major",
+      "title": "interview-gym overflows on mobile",
+      "detail": "Measured 508px of content on a 393px surface.",
+      "foundAt": "2026-09-20T13:46:51.784Z",
+      "status": "open"
+    }
+  ],
+  "updatedAt": "2026-09-20T13:46:51.784Z"
+}

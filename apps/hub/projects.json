@@ -34,8 +34,8 @@
       "slug": "openstage",
       "name": "Openstage",
       "tag": "Human Quest \u00b7 presentation platform",
-      "description": "The deck platform behind present.humanquest.net \u2014 a gallery, scroll and slide decks, a share gate and an admin studio, walked against the local dev server.",
-      "longDescription": "Openstage turns a repository into a presentation: authors register decks, the gallery filters and groups them, and each deck renders as either a long-form scroll or a fixed slide deck. It is walked here because it is the app the Walkthrough pattern is demonstrated on at AI Tinkerers Doha Round 3 \u2014 and because it exercises the parts of this schema that Wikipedia cannot: an authenticated area, a draft/unlisted surface, and interactive controls that are features of a page rather than pages of their own.",
+      "description": "A presentation platform walked from repository skill and terminal brief through built source to the finished scroll and slide experience.",
+      "longDescription": "Openstage turns a repository into a presentation. The walkthrough now follows both sides of the product: readers browse and open scroll or slide decks, while authors use the repository's planning, slide, component and quality skills through Claude Code or Codex, review ordinary React source, pass the production build and open the generated deck at a stable route. The resulting Proof Before Promise presentation is linked directly from the walkthrough alongside the existing flagship examples.",
       "target": {
         "platform": "web",
         "driver": "playwright",
@@ -86,8 +86,8 @@
       "slug": "inner-quest",
       "name": "Inner Quest",
       "tag": "Human Quest · private Personal OS",
-      "description": "A private Personal OS spanning character, relationships, career and wellbeing. Its MCP walkthrough turns assessment-backed self knowledge into a private reflection.",
-      "longDescription": "Inner Quest brings goals, relationships, career, wellbeing and reading into one private Personal OS. The walkthrough starts with secure OAuth, retrieves an official CliftonStrengths profile with provenance, shows how the product converts those themes into testable practices, and closes the loop with an authenticated private reflection visible in My Reflections.",
+      "description": "A private Personal OS spanning character, relationships, career and wellbeing. Its walkthrough combines broad historical product coverage with a current MCP journey from assessment-backed self knowledge to a private reflection.",
+      "longDescription": "Inner Quest brings goals, relationships, career, wellbeing and reading into one private Personal OS. The current MCP walkthrough starts with secure OAuth, retrieves an official CliftonStrengths profile with provenance, turns those themes into testable practices, and closes the loop with an authenticated private reflection visible in My Reflections. A separate persona journey connects that proof to the wider product while marking legacy captures as historical rather than fresh.",
       "target": {
         "platform": "web",
         "driver": "playwright",
@@ -103,6 +103,94 @@
       },
       "meta": {
         "driverLabel": "Authenticated app + MCP connector"
+      }
+    },
+    {
+      "slug": "yoga-quest",
+      "name": "Yoga Quest",
+      "tag": "Human Quest · native class design",
+      "description": "The actual Yoga Quest iPhone app: first-run onboarding through the native studio home, captured from a freshly built and cleared simulator install.",
+      "target": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "bundleId": "com.humanquest.yogaquest",
+        "appPath": "../yoga_quest/build/ios/simulator-walkthrough/Build/Products/Debug-iphonesimulator/Runner.app",
+        "device": "iPhone 17 Pro"
+      },
+      "codebase": {
+        "local": "../yoga_quest",
+        "stack": "flutter"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "yoga-quest-web",
+      "name": "Yoga Quest Web",
+      "tag": "Human Quest · public class library",
+      "description": "The public Yoga Quest class library in a browser, walked on desktop and responsive mobile as a separate web product surface.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://yogaquest.app"
+      },
+      "codebase": {
+        "local": "../yq-web",
+        "stack": "nextjs-app-router"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "globe-quest",
+      "name": "Globe Quest",
+      "tag": "Human Quest · world discovery",
+      "description": "Bounded event showcase: the public world explorer, walked live on desktop and mobile. Quests, circles, journals, relocation, accounts, and paid access are outside this catalog.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://www.globequest.app"
+      },
+      "codebase": {
+        "local": "../globe_quest",
+        "stack": "nextjs-app-router"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "polytyper",
+      "name": "Polytyper",
+      "tag": "Human Quest · multilingual typing",
+      "description": "Bounded event showcase: switching between two public language keyboards, walked live on desktop and mobile. Training, phrasebook, map, speech, and accounts are outside this catalog.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://www.polytyper.com"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "system-designer",
+      "name": "System Designer",
+      "tag": "Human Quest · engineering learning",
+      "description": "A product-level learning journey across daily lessons, capacity modeling, interview practice, and knowledge checks, walked live on desktop and mobile with video. The wider curriculum and authenticated creation tools remain visible as pending or blocked.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://www.systemdesigner.net"
+      },
+      "codebase": {
+        "local": "../systemdesigner",
+        "stack": "nextjs-app-router"
+      },
+      "auth": {
+        "type": "none"
       }
     }
   ]

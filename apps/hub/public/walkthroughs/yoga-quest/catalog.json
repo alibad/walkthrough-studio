@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Yoga Quest",
+  "platform": "ios",
+  "driver": "ios-simulator",
+  "capturedAgainst": "com.humanquest.yogaquest 1.0.1+12 · iPhone 17 Pro · iOS 27.0",
+  "discoveredAt": "2026-09-20T12:38:48Z",
+  "updatedAt": "2026-09-20T12:41:15Z",
+  "scope": {
+    "status": "bounded",
+    "note": "This showcase walks the actual native first-run onboarding and resulting studio home. Building or editing a sequence, Teach Mode playback, accounts, sync, imports, and physical-device behavior are outside this run and are not counted as covered."
+  },
+  "features": [
+    {
+      "featureId": "native-first-run",
+      "featureName": "Native first run",
+      "location": "OnboardingScreen → HomeShell",
+      "category": "onboarding",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "iphone": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T12:38:48Z",
+      "notes": "Fresh app state through the first native studio screen; later teaching and account flows remain intentionally outside this bounded walkthrough."
+    }
+  ],
+  "personas": []
+}

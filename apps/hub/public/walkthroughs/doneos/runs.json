@@ -119,6 +119,54 @@
         "videos": 0,
         "issues": 0
       }
+    },
+    {
+      "id": "2026-09-20T16:54:15.077Z",
+      "startedAt": "2026-09-20T16:48:31.785Z",
+      "completedAt": "2026-09-20T16:54:15.077Z",
+      "skill": "walkthrough",
+      "agent": "walk-doneos-product.mjs",
+      "target": {
+        "sha": "d55480b96b515042aa8adb907646d3d1676dde68",
+        "shaShort": "d55480b9",
+        "branch": "main",
+        "dirty": false,
+        "commitDate": "2026-09-20T17:09:23+03:00",
+        "commitSubject": "fix(mcp): keep emulator calls inside local suite",
+        "watchPath": "."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "Playwright + Flutter store-preview harness",
+        "capturedAgainst": "http://127.0.0.1:5322",
+        "env": {
+          "data": "fictional committed preview data",
+          "productionAuth": "none"
+        },
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Core product story only; no production account or native binary was used."
+      },
+      "coverage": {
+        "features": [
+          "focus-stack",
+          "shared-queue",
+          "activity-ledger",
+          "slack-status",
+          "goal-progress"
+        ],
+        "personas": [
+          "execution-lead"
+        ],
+        "screenshots": 10,
+        "videos": 1,
+        "issues": 0
+      }
     }
   ]
 }

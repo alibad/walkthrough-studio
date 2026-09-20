@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Globe Quest",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.globequest.app",
+  "discoveredAt": "2026-09-20T08:40:49.214Z",
+  "updatedAt": "2026-09-20T14:11:08.437Z",
+  "scope": {
+    "status": "bounded",
+    "note": "This bounded journey follows the public explorer into Copenhagen's public language guide. Quests, circles, journals, saved places, accounts, and paid access remain outside this run."
+  },
+  "features": [
+    {
+      "featureId": "world-explorer",
+      "featureName": "World explorer",
+      "location": "/explore",
+      "category": "discovery",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T08:41:10.809Z",
+      "notes": "This event showcase walks the public world explorer only. Quests, circles, the journal, city relocation guides, accounts, and paid access are outside this run and are not counted as covered."
+    }
+  ],
+  "personas": [
+    {
+      "id": "curious-traveler",
+      "name": "Mira Patel",
+      "description": "A curious traveler considering Copenhagen and looking things up on her phone between errands. She wants one concrete thread to follow into the place; she does not want to join a community or build a detailed itinerary yet.",
+      "portrait": "personas/curious-traveler.png",
+      "entryPoint": "/explore",
+      "keyJourneys": [
+        "copenhagen-to-first-phrases"
+      ],
+      "navItems": [
+        {
+          "label": "Explore",
+          "location": "/explore"
+        },
+        {
+          "label": "Copenhagen",
+          "location": "/explore?place=copenhagen"
+        },
+        {
+          "label": "Danish phrases",
+          "location": "/relocate/copenhagen/language"
+        }
+      ]
+    }
+  ]
+}

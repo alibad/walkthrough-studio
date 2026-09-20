@@ -1,0 +1,39 @@
+{
+  "featureId": "inner-mapping",
+  "featureName": "Inner Mapping",
+  "type": "feature",
+  "location": "/inner-mapping",
+  "category": "growth",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Inner Mapping, from entry to detail",
+  "overview": "Enter personal profile information and map responses onto a grid in an AI-powered session to gain clarity on your inner landscape.",
+  "targetAudience": "Users interested in growth tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Inner Mapping — Landing State",
+      "description": "The landing page showing the personal profile input form and grid mapping interface for the AI-powered session.",
+      "screenshotFilename": "inner-mapping/step-1-landing.png",
+      "screenshotAlt": "Inner Mapping landing page on desktop",
+      "action": "Opened /inner-mapping.",
+      "location": "/inner-mapping",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Enter detailed personal profile information",
+    "Map responses onto a visual grid for clarity",
+    "AI-powered session for deeper self-understanding",
+    "Gain a holistic view of your inner landscape"
+  ],
+  "tips": [
+    "Be as specific and honest as possible when entering your profile information.",
+    "Use the AI assistant to ask follow-up questions about patterns you notice on your map."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

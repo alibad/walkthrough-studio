@@ -1,0 +1,72 @@
+{
+  "journeyId": "find-a-next-step",
+  "personaId": "personal-os-owner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 63750,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 5600,
+      "narration": "Samira reviews her life records and identifies one next action she can take today.",
+      "image": "personas/personal-os-owner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 5600,
+      "durMs": 5900,
+      "narration": "Samira enters a private account before recording anything she does not want published.",
+      "image": "signup/step-1-landing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 11500,
+      "durMs": 6550,
+      "narration": "Samira enters the Character hub, where each tool supports one practice of self-understanding.",
+      "image": "character/step-1-landing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 18050,
+      "durMs": 6850,
+      "narration": "Samira uses the Values Wheel to compare her priorities with how she spends her week.",
+      "image": "values-wheel/step-1-landing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 24900,
+      "durMs": 7350,
+      "narration": "Samira keeps each relationship’s notes and growth work together, then sees what needs attention next.",
+      "image": "my-relationships/step-1-landing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 32250,
+      "durMs": 7950,
+      "narration": "Samira sees career as one chapter, linking strengths, values, fit, and one next action.",
+      "image": "career-dashboard/step-1-landing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 40200,
+      "durMs": 8500,
+      "narration": "Samira brings physical, emotional, and environmental signals together, finding patterns while her reflections remain private.",
+      "image": "holistic-health/step-1-landing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 48700,
+      "durMs": 6900,
+      "narration": "Samira turns reflection into a short list of next steps she chooses.",
+      "image": "action-items/step-1-landing.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 55600,
+      "durMs": 8150,
+      "narration": "Samira turns cross-pillar reflection into a concrete action without moving her private context into another tool.",
+      "image": "personas/personal-os-owner.png"
+    }
+  ]
+}

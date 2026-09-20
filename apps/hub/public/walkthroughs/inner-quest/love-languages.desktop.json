@@ -1,0 +1,49 @@
+{
+  "featureId": "love-languages",
+  "featureName": "Love Languages",
+  "type": "feature",
+  "location": "/love-languages",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Love Languages, from entry to detail",
+  "overview": "Answer 30 questions to rank all 5 love languages by preference: Words of Affirmation, Acts of Service, Receiving Gifts, Quality Time, and Physical Touch.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Love Languages — Landing State",
+      "description": "The landing page of the Love Languages tool showing the initial state and main interface.",
+      "screenshotFilename": "love-languages/step-1-landing.png",
+      "screenshotAlt": "Love Languages landing page on desktop",
+      "action": "Opened /love-languages.",
+      "location": "/love-languages",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Love Languages — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "love-languages/step-2-below-fold.png",
+      "screenshotAlt": "Love Languages below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/love-languages",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "30-question assessment ranking all 5 love languages by personal preference",
+    "Covers Words of Affirmation, Acts of Service, Receiving Gifts, Quality Time, and Physical Touch",
+    "Reveals both how you prefer to receive love and how you tend to express it",
+    "Practical guidance for communicating love more effectively in your relationships"
+  ],
+  "tips": [
+    "Answer based on what makes you feel most loved, not what you most frequently give — your giving style and receiving style can differ.",
+    "Share your results with your partner or close friends: knowing each other's love languages is one of the most actionable relationship improvements you can make."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

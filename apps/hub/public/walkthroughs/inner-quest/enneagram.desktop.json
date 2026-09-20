@@ -1,0 +1,49 @@
+{
+  "featureId": "enneagram",
+  "featureName": "Enneagram",
+  "type": "feature",
+  "location": "/enneagram",
+  "category": "personality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Enneagram, from entry to detail",
+  "overview": "Answer 144 questions to find your core type (1-9), wing, and instinctual subtype. Get your core fear, desire, integration/disintegration paths, and growth tips.",
+  "targetAudience": "Users interested in personality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Enneagram — Landing State",
+      "description": "The landing page of the Enneagram tool showing the initial state and main interface.",
+      "screenshotFilename": "enneagram/step-1-landing.png",
+      "screenshotAlt": "Enneagram landing page on desktop",
+      "action": "Opened /enneagram.",
+      "location": "/enneagram",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Enneagram — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "enneagram/step-2-below-fold.png",
+      "screenshotAlt": "Enneagram below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/enneagram",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "144-question assessment identifying your core Enneagram type (1-9), wing, and instinctual subtype",
+    "Reveals your core fear and core desire — the deep motivations driving your behavior",
+    "Integration and disintegration paths showing how you behave under growth vs. stress",
+    "Personalized growth tips tailored to your specific type and wing combination"
+  ],
+  "tips": [
+    "The Enneagram is about motivation, not just behavior — choose answers that reflect why you do things, not just what you do.",
+    "Pay attention to your integration path: understanding how you grow helps you intentionally move toward healthier patterns."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

@@ -1,0 +1,49 @@
+{
+  "featureId": "daily-check-in",
+  "featureName": "Daily Check-In",
+  "type": "feature",
+  "location": "/daily-check-in",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Daily Check-In, from entry to detail",
+  "overview": "Quick daily wellness check covering sleep quality, mood, energy, hydration, and movement. Build a holistic picture of your daily health patterns with a fast, approachable check-in that takes under a minute.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Daily Check-In — Landing State",
+      "description": "The landing page showing the daily check-in form with wellness dimensions: sleep quality, mood, energy, hydration, and movement.",
+      "screenshotFilename": "daily-check-in/step-1-landing.png",
+      "screenshotAlt": "Daily Check-In landing page on desktop",
+      "action": "Opened /daily-check-in.",
+      "location": "/daily-check-in",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Daily Check-In — Below the Fold",
+      "description": "Additional content visible after scrolling, including historical check-in data, trends over time, and wellness insights.",
+      "screenshotFilename": "daily-check-in/step-2-below-fold.png",
+      "screenshotAlt": "Daily Check-In below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/daily-check-in",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Quick daily check-in covering 5 key wellness dimensions",
+    "Track sleep quality, mood, energy, hydration, and movement",
+    "Visualize wellness trends over time",
+    "Identify correlations between different wellness factors"
+  ],
+  "tips": [
+    "Do your check-in at the same time each day — morning works well for sleep and energy, evening for a full-day review.",
+    "Look at your weekly trends rather than individual days to spot meaningful patterns in your health."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

@@ -1,0 +1,123 @@
+{
+  "personaId": "class-planning-teacher",
+  "journeyId": "find-and-export-balance-program",
+  "headline": "From a crowded class library to a validated three-week balance plan",
+  "overview": "Nadia narrows the public teacher library to balance work, switches from individual classes to programs, inspects the progression, then carries the structured program into Yoga Quest's importer for review.",
+  "payoff": "She reaches a real import preview confirming the complete eight-session program, 33 exercises, and six workouts before anything is saved.",
+  "scenes": [
+    {
+      "id": "arrive",
+      "title": "Nadia starts with the whole teacher library",
+      "narrative": "Tomorrow's class needs balance work, but Nadia does not want to assemble it from memory. The public library gives her duration, level, focus, and format before she commits to anything.",
+      "frames": [
+        "journey-class-planning-teacher/desktop/scene-01-library.png"
+      ],
+      "frameCaptions": [
+        "Nadia starts with the whole teacher library"
+      ],
+      "location": "/classes",
+      "surface": "desktop",
+      "sourceFeature": "class-library",
+      "action": "Opened the public teacher library.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "search",
+      "title": "She names the teaching need, not a pose",
+      "narrative": "Typing **balance** reduces the class inventory to relevant sessions. She can compare foundations, supported practice, and longer flows without knowing the library's exact titles.",
+      "frames": [
+        "journey-class-planning-teacher/desktop/scene-02-balance-search.png"
+      ],
+      "frameCaptions": [
+        "She names the teaching need, not a pose"
+      ],
+      "location": "/classes",
+      "surface": "desktop",
+      "sourceFeature": "class-library",
+      "action": "Searched for \"balance\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "programs",
+      "title": "She switches from sessions to progression",
+      "narrative": "Nadia needs a sequence that develops over time, not one isolated class. The Programs tab turns the same intent into multi-week paths with session counts and pacing.",
+      "frames": [
+        "journey-class-planning-teacher/desktop/scene-03-programs.png"
+      ],
+      "frameCaptions": [
+        "She switches from sessions to progression"
+      ],
+      "location": "/classes",
+      "surface": "desktop",
+      "sourceFeature": "class-library",
+      "action": "Selected the \"Programs\" tab.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "open",
+      "title": "The balance plan explains its promise",
+      "narrative": "The detail view names the three-week goal, the eight-session cadence, and the role of wall and chair support. Nadia can judge whether the plan fits her group before looking at individual days.",
+      "frames": [
+        "journey-class-planning-teacher/desktop/scene-04-program.png"
+      ],
+      "frameCaptions": [
+        "The balance plan explains its promise"
+      ],
+      "location": "/classes",
+      "surface": "desktop",
+      "sourceFeature": "class-library",
+      "action": "Opened \"Build a balance practice\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "path",
+      "title": "She checks how the challenge actually grows",
+      "narrative": "The path moves from supports and an easy step-down to standing foundations, hinges, recovery, and a final integrated flow. Rest days are part of the plan rather than missing content.",
+      "frames": [
+        "journey-class-planning-teacher/desktop/scene-05-path.png"
+      ],
+      "frameCaptions": [
+        "She checks how the challenge actually grows"
+      ],
+      "location": "/classes",
+      "surface": "desktop",
+      "sourceFeature": "class-library",
+      "action": "Scrolled through the eight-session path.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "import",
+      "title": "The copied plan lands in the real importer",
+      "narrative": "Nadia moves the generated JSON into the product's own import surface. The interface explains that this draft stays in the tab and can be reviewed before it changes her library.",
+      "frames": [
+        "journey-class-planning-teacher/desktop/scene-06-import.png"
+      ],
+      "frameCaptions": [
+        "The copied plan lands in the real importer"
+      ],
+      "location": "/import",
+      "surface": "desktop",
+      "action": "Opened JSON import mode and pasted the copied program payload.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "preview",
+      "title": "The product validates the complete teaching plan",
+      "narrative": "The importer confirms **33 exercises · 6 workouts · 1 program** and names the eight-session balance path. Nadia can inspect the first session and every downstream workout before deciding whether to save it.",
+      "frames": [
+        "journey-class-planning-teacher/desktop/scene-07-preview.png"
+      ],
+      "frameCaptions": [
+        "The product validates the complete teaching plan"
+      ],
+      "location": "/import",
+      "surface": "desktop",
+      "action": "Clicked \"Preview import\" and observed the parsed program summary.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "platform": "web",
+  "surface": "desktop",
+  "capturedAt": "2026-09-20T14:10:48.600Z",
+  "walkRecording": "video/page@cb76f61206fc38f277a820d13707b565.mp4"
+}

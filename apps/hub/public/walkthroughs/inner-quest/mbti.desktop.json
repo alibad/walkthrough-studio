@@ -1,0 +1,49 @@
+{
+  "featureId": "mbti",
+  "featureName": "MBTI / 16 Personalities",
+  "type": "feature",
+  "location": "/mbti",
+  "category": "personality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "MBTI / 16 Personalities, from entry to detail",
+  "overview": "Answer 64 questions to get your 4-letter type (e.g., INFJ) with preference clarity scores, cognitive function stack, strengths, weaknesses, and career suggestions.",
+  "targetAudience": "Users interested in personality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "MBTI / 16 Personalities — Landing State",
+      "description": "The landing page of the MBTI / 16 Personalities tool showing the initial state and main interface.",
+      "screenshotFilename": "mbti/step-1-landing.png",
+      "screenshotAlt": "MBTI / 16 Personalities landing page on desktop",
+      "action": "Opened /mbti.",
+      "location": "/mbti",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "MBTI / 16 Personalities — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "mbti/step-2-below-fold.png",
+      "screenshotAlt": "MBTI / 16 Personalities below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/mbti",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "64-question assessment that yields your 4-letter MBTI type (e.g., INFJ, ENTP)",
+    "Preference clarity scores showing how strongly you lean toward each dimension",
+    "Cognitive function stack revealing your dominant, auxiliary, tertiary, and inferior functions",
+    "Personalized strengths, weaknesses, and career suggestions based on your type"
+  ],
+  "tips": [
+    "Answer based on your natural tendencies rather than how you think you should behave — the most accurate results come from honest, instinctive responses.",
+    "After getting your type, explore the cognitive function stack to deepen your self-understanding beyond the 4-letter label."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

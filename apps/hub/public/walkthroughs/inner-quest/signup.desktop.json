@@ -1,0 +1,75 @@
+{
+  "featureId": "signup",
+  "featureName": "Create Account & Sign In",
+  "type": "feature",
+  "location": "/signup",
+  "category": "onboarding",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Create Account & Sign In, from entry to detail",
+  "overview": "Inner Quest lets you create an account in seconds using either your email or Google account. Once signed in, you unlock the full experience — your progress is tracked, your data syncs across devices, and you get a personalized home page with daily gratitude prompts, an AI guide, and progress stats.\n\nYou can also explore the app as a guest without creating an account, but signing up ensures your journey is saved and your insights build over time.",
+  "targetAudience": "New users visiting Inner Quest for the first time who want to create an account to start their self-discovery journey, or returning users who need to sign back in.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Sign Up Page — Choose Your Method",
+      "description": "Navigate to /signup (or tap \"Get Started\" from the home page) to see the account creation form. You have two options:\n\n1. **Continue with Google** — one-tap signup using your Google account. Your name and profile photo are imported automatically.\n2. **Email & Password** — enter your name, email, and a password (minimum 6 characters).\n\nAt the bottom, you'll also find links to sign in if you already have an account, or continue as a guest.",
+      "screenshotFilename": "signup/step-1-landing.png",
+      "screenshotAlt": "Sign up page showing Continue with Google button and email registration form with Name, Email, and Password fields",
+      "action": "Opened /signup.",
+      "location": "/signup",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Fill In Your Details",
+      "description": "Enter your name, email address, and choose a password. The password must be at least 6 characters. Your name will be used to greet you throughout the app and personalize your experience.\n\nOnce everything is filled in, tap the purple \"Create Account\" button to register.",
+      "screenshotFilename": "signup/step-2-form-filled.png",
+      "screenshotAlt": "Sign up form filled with name and email, password masked, ready to submit",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/signup",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Welcome Home — Your Journey Begins",
+      "description": "After creating your account, you're immediately taken to your personalized home page. Here you'll see:\n\n- A **greeting** with your name and an inspirational quote of the day\n- **Today's Gratitude** — a daily prompt with space to write three things you're grateful for\n- **AI Guide** — your personal AI assistant ready to help you explore the app\n- **Progress Dashboard** — tracks your total activities, active days, tools used, and overall journey progress\n- **Continue Your Journey** — quick links to recommended tools like Growth Tracker, Breathing Practice, and Wolf Reflection\n\nEverything starts at zero — as you use the app, your dashboard fills up with meaningful data.",
+      "screenshotFilename": "signup/step-3-home-after-signup.png",
+      "screenshotAlt": "Authenticated home page showing Good morning greeting, Today's Gratitude prompt, and AI Guide section",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/signup",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Sign In — Returning Users",
+      "description": "If you already have an account, navigate to /signin (or tap \"Sign In\" from the sign up page). The sign in page offers the same two methods:\n\n1. **Continue with Google** — one tap if you signed up with Google\n2. **Email & Password** — enter your registered email and password\n\nYou can also create a new account from here, or continue browsing as a guest.",
+      "screenshotFilename": "signup/step-4-signin-page.png",
+      "screenshotAlt": "Sign in page showing Welcome Back heading, Google sign-in button, and email/password form",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/signup",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Two sign-up methods: Google OAuth and email/password",
+    "Instant account creation with no email verification required",
+    "Anonymous guest access for exploring before committing",
+    "Automatic profile sync — name and photo imported from Google",
+    "Account linking — upgrade from guest to full account without losing data",
+    "Personalized home page immediately after signup",
+    "Privacy-first design — your data stays yours"
+  ],
+  "tips": [
+    "Google sign-up is the fastest — one tap and you're in with your name and photo imported",
+    "If you started as a guest, you can link your account later without losing any progress",
+    "Use a strong password — minimum 6 characters, but longer is better",
+    "Your first stop after signing up should be the gratitude prompt on your home page",
+    "Check out the AI Guide on the home page if you're not sure where to start"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-12T06:25:00.000Z",
+  "capturedAt": "2026-03-12T06:25:00.000Z",
+  "synthetic": false
+}

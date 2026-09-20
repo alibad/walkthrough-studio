@@ -1,0 +1,39 @@
+{
+  "featureId": "decision-matrix",
+  "featureName": "Career Decision Matrix",
+  "type": "feature",
+  "location": "/career/decision-matrix",
+  "category": "career",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Career Decision Matrix, from entry to detail",
+  "overview": "Create weighted decision matrices to compare job offers or career paths. Assign weights to criteria that matter most to you, score each option, and let the math reveal your best choice.",
+  "targetAudience": "Users interested in career tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Career Decision Matrix — Landing State",
+      "description": "The landing page of the Career Decision Matrix tool showing the initial state and main interface.",
+      "screenshotFilename": "decision-matrix/step-1-landing.png",
+      "screenshotAlt": "Career Decision Matrix landing page on desktop",
+      "action": "Opened /career/decision-matrix.",
+      "location": "/career/decision-matrix",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Create custom weighted criteria for any career decision (job offers, role changes, company choices)",
+    "Score multiple options against each criterion and see weighted totals automatically calculated",
+    "Visual comparison making it easy to see which option aligns best with your priorities",
+    "Saves matrices for future reference — track your decision reasoning over time"
+  ],
+  "tips": [
+    "Weight your criteria before scoring any options — deciding what matters most upfront prevents you from reverse-engineering weights to justify the option you already prefer.",
+    "If the top-scoring option feels wrong, trust that feeling — the matrix surfaces hidden preferences you may not have consciously recognized, making it worth examining why you're resisting the result."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

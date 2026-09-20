@@ -1,0 +1,93 @@
+{
+  "personaId": "multiscript-learner",
+  "journeyId": "compare-arabic-and-russian",
+  "headline": "From an empty Arabic editor to a Russian sample without leaving the workspace",
+  "overview": "Elena uses real sample text to understand one script, opens the keyboard-aware language switcher, and lands in a second script with another usable sample.",
+  "payoff": "She has produced visible sample text in both Arabic and Russian and confirmed the matching layouts without installing anything.",
+  "scenes": [
+    {
+      "id": "arrive",
+      "title": "Elena starts in a right-to-left workspace",
+      "narrative": "The Arabic editor, native layout, speech controls, and physical-keyboard guidance are ready without sign-in. She can see the writing direction before typing a character.",
+      "frames": [
+        "journey-multiscript-learner/desktop/scene-01-arabic.png"
+      ],
+      "frameCaptions": [
+        "Elena starts in a right-to-left workspace"
+      ],
+      "location": "/keyboard/arabic",
+      "surface": "desktop",
+      "sourceFeature": "language-keyboards",
+      "action": "Opened the Arabic keyboard.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "arabic-sample",
+      "title": "A complete Arabic sentence fills the editor",
+      "narrative": "One click produces a real Arabic sentence in the right-to-left field. Elena can inspect spacing, letter joining, and the matching on-screen key layout instead of practising against placeholder text.",
+      "frames": [
+        "journey-multiscript-learner/desktop/scene-02-arabic-sample.png"
+      ],
+      "frameCaptions": [
+        "A complete Arabic sentence fills the editor"
+      ],
+      "location": "/keyboard/arabic",
+      "surface": "desktop",
+      "sourceFeature": "language-keyboards",
+      "action": "Clicked \"Sample\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "switcher",
+      "title": "Every other script stays one command away",
+      "narrative": "The language picker keeps the Arabic workspace behind it and lists destinations by both English and native names. Switching scripts is a workspace action, not a return to the homepage.",
+      "frames": [
+        "journey-multiscript-learner/desktop/scene-03-language-picker.png"
+      ],
+      "frameCaptions": [
+        "Every other script stays one command away"
+      ],
+      "location": "/keyboard/arabic",
+      "surface": "desktop",
+      "sourceFeature": "language-keyboards",
+      "action": "Opened \"Jump to language\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "russian",
+      "title": "The workspace genuinely becomes Russian",
+      "narrative": "The route, editor label, direction, help copy, and full on-screen layout now describe Russian. Elena did not merely change a heading over the same keys.",
+      "frames": [
+        "journey-multiscript-learner/desktop/scene-04-russian.png"
+      ],
+      "frameCaptions": [
+        "The workspace genuinely becomes Russian"
+      ],
+      "location": "/keyboard/russian",
+      "surface": "desktop",
+      "sourceFeature": "language-keyboards",
+      "action": "Selected \"Russian keyboard\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "russian-sample",
+      "title": "A second script produces a second real sentence",
+      "narrative": "The Russian sample fills the editor above its matching Cyrillic keys. Elena has now compared two functioning writing surfaces, not two screenshots in a language menu.",
+      "frames": [
+        "journey-multiscript-learner/desktop/scene-05-russian-sample.png"
+      ],
+      "frameCaptions": [
+        "A second script produces a second real sentence"
+      ],
+      "location": "/keyboard/russian",
+      "surface": "desktop",
+      "sourceFeature": "language-keyboards",
+      "action": "Clicked \"Sample\" on the Russian keyboard.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "platform": "web",
+  "surface": "desktop",
+  "capturedAt": "2026-09-20T14:11:34.926Z",
+  "walkRecording": "video/page@d7f1e06430121ffff74c8d70d7a97626.mp4"
+}

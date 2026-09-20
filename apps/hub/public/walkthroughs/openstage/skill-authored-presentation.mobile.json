@@ -1,0 +1,58 @@
+{
+  "featureId": "skill-authored-presentation",
+  "featureName": "Skill-authored presentation",
+  "type": "feature",
+  "location": "/proof-before-promise",
+  "category": "authoring",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "The generated source becomes a presenter-driven deck",
+  "overview": "After the terminal proof, this walkthrough opens the generated result and advances it with the presenter keyboard path on desktop and compact web surfaces.",
+  "targetAudience": "Presentation authors verifying the result of an agent-assisted build",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The generated deck opens on its thesis",
+      "action": "Opened the route produced by the skill-authored source.",
+      "description": "The title slide leads with the walkthrough standard instead of explaining the framework. Speaker notes, controls, and export actions remain available without entering the composition.",
+      "screenshotFilename": "skill-authored-presentation/mobile/step-01-opening.png",
+      "screenshotAlt": "Proof Before Promise opening slide in OpenStage",
+      "location": "/proof-before-promise",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The evidence chain becomes a diagram",
+      "action": "Pressed the right arrow key.",
+      "description": "The fixed slide frame advances in place and preserves the composition. This state was reached through the actual presenter keyboard path, not a deep link to a screenshot.",
+      "screenshotFilename": "skill-authored-presentation/mobile/step-02-slide-2.png",
+      "screenshotAlt": "Proof Before Promise slide 2 on undefined",
+      "location": "/proof-before-promise",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Coverage becomes a visual hierarchy",
+      "action": "Pressed the right arrow key.",
+      "description": "The fixed slide frame advances in place and preserves the composition. This state was reached through the actual presenter keyboard path, not a deep link to a screenshot.",
+      "screenshotFilename": "skill-authored-presentation/mobile/step-03-slide-3.png",
+      "screenshotAlt": "Proof Before Promise slide 3 on undefined",
+      "location": "/proof-before-promise",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Seven fixed-height slides",
+    "Speaker notes",
+    "Per-slide transitions",
+    "Desktop and compact browser surfaces"
+  ],
+  "tips": [
+    "[Open Proof Before Promise directly](http://localhost:3000/proof-before-promise).",
+    "[Compare the component-rich scroll showcase](http://localhost:3000/sample-scroll)."
+  ],
+  "note": "Live-walked against the local OpenStage server; no external deployment was performed.",
+  "generatedAt": "2026-09-20T16:41:53.455Z",
+  "capturedAt": "2026-09-20T16:41:53.455Z"
+}

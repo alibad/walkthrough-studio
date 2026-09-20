@@ -1,0 +1,65 @@
+{
+  "journeyId": "build-and-present",
+  "personaId": "presentation-author",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 57000,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7000,
+      "narration": "Noor turns a terminal brief into a browser deck, checking source files and the repository build.",
+      "image": "personas/presentation-author-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7000,
+      "durMs": 6750,
+      "narration": "Noor reads the repository rules before planning a client deck with its built-in skills.",
+      "image": "skill-authored-presentation/terminal/step-01-authoring.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13750,
+      "durMs": 8250,
+      "narration": "Noor carries the same brief into another agent, keeping the source contract and review bar unchanged.",
+      "image": "skill-authored-presentation/terminal/step-02-authoring.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 22000,
+      "durMs": 5450,
+      "narration": "Noor reviews source changes she can edit, diff, or hand to another engineer.",
+      "image": "skill-authored-presentation/terminal/step-03-authoring.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 27450,
+      "durMs": 7350,
+      "narration": "The repository compiles the deck, checks TypeScript, and generates the route before Noor delivers it.",
+      "image": "skill-authored-presentation/terminal/step-04-authoring.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 34800,
+      "durMs": 7050,
+      "narration": "The browser opens on a composed title slide, making Noor’s thesis visible as a presentation.",
+      "image": "skill-authored-presentation/desktop/step-01-opening.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 41850,
+      "durMs": 7450,
+      "narration": "Noor reaches the terminal slide, where both agent workflows document the deck’s creation for local review.",
+      "image": "skill-authored-presentation/desktop/step-05-slide-5.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 49300,
+      "durMs": 7700,
+      "narration": "Noor has a built, keyboard-driven presentation with a stable local link and inspectable source.",
+      "image": "personas/presentation-author.png"
+    }
+  ]
+}

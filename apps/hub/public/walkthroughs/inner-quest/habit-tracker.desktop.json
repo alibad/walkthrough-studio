@@ -1,0 +1,39 @@
+{
+  "featureId": "habit-tracker",
+  "featureName": "Habit Tracker",
+  "type": "feature",
+  "location": "/habit-tracker",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Habit Tracker, from entry to detail",
+  "overview": "Create named habits and check them off daily. Track streaks and build lasting routines to support your personal growth.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Habit Tracker — Landing State",
+      "description": "The landing page showing the habit list with daily check-off interface and current streak indicators.",
+      "screenshotFilename": "habit-tracker/step-1-landing.png",
+      "screenshotAlt": "Habit Tracker landing page on desktop",
+      "action": "Opened /habit-tracker.",
+      "location": "/habit-tracker",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Create and name custom habits to track",
+    "Check off completed habits each day",
+    "Track current streaks and personal records",
+    "View habit completion history and consistency"
+  ],
+  "tips": [
+    "Start with just 2-3 habits to avoid overwhelm and build momentum before adding more.",
+    "Check in at the same time each day to make the habit review a ritual in itself."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

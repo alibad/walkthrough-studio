@@ -1,0 +1,49 @@
+{
+  "featureId": "character",
+  "featureName": "Character Hub",
+  "type": "feature",
+  "location": "/character",
+  "category": "growth",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Character Hub, from entry to detail",
+  "overview": "Central hub for all character and identity tools, providing a unified view of your personality assessments, strengths, and self-discovery journey.",
+  "targetAudience": "Users interested in growth tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Character Hub — Landing State",
+      "description": "The landing page showing the central hub with all character and identity tools organized by category.",
+      "screenshotFilename": "character/step-1-landing.png",
+      "screenshotAlt": "Character Hub landing page on desktop",
+      "action": "Opened /character.",
+      "location": "/character",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Character Hub — Below the Fold",
+      "description": "Additional content visible after scrolling, showing more character tools and your progress across assessments.",
+      "screenshotFilename": "character/step-2-below-fold.png",
+      "screenshotAlt": "Character Hub below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/character",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Unified hub for all character and identity tools",
+    "Track progress across multiple personality assessments",
+    "Navigate easily between interconnected self-discovery tools",
+    "See a holistic view of your character development journey"
+  ],
+  "tips": [
+    "Start with the foundational assessments like MBTI or Big Five before exploring deeper tools.",
+    "Return to the Character Hub regularly to see how your completed assessments connect."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

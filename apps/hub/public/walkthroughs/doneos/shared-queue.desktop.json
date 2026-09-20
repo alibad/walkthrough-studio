@@ -1,0 +1,31 @@
+{
+  "featureId": "shared-queue",
+  "featureName": "Shared Queue",
+  "type": "feature",
+  "location": "DoneOS → Shared Queue",
+  "category": "product",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "One ordered queue for people and agents",
+  "overview": "Queue places human and agent work in one priority order, with ownership and urgency visible before anybody claims the next item.",
+  "targetAudience": "Operators coordinating accountable human and agent execution",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Shared Queue, ready",
+      "action": "Opened the committed DoneOS store-preview harness with screen=queue.",
+      "description": "Queue places human and agent work in one priority order, with ownership and urgency visible before anybody claims the next item.",
+      "screenshotFilename": "shared-queue/desktop/step-01-ready.png",
+      "screenshotAlt": "Shared Queue in the DoneOS Flutter product on undefined",
+      "location": "DoneOS → Shared Queue",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "One ordered queue for people and agents"
+  ],
+  "note": "Live-rendered from DoneOS's committed store-preview entry point with fictional showcase data. This proves the Flutter product surface, not a production account or a signed iOS/Android store binary.",
+  "generatedAt": "2026-09-20T16:50:09.890Z",
+  "capturedAt": "2026-09-20T16:50:09.890Z"
+}

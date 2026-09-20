@@ -1,0 +1,58 @@
+{
+  "featureId": "knowledge-quizzes",
+  "featureName": "Knowledge quizzes",
+  "type": "feature",
+  "location": "/quiz",
+  "category": "assessment",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Find a topic, answer it, and get immediate evidence",
+  "overview": "The assessment hub spans the whole curriculum. This walk narrows it to fundamentals, opens the system-design quiz, and answers a real question correctly so the artifact contains feedback rather than an untouched question form.",
+  "targetAudience": "A learner checking whether the fundamentals have stuck",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The assessment map mirrors the curriculum",
+      "action": "Opened the Knowledge Assessment Hub.",
+      "description": "Topic counts and category filters expose quizzes across ML, fundamentals, GenAI, technology, case studies, practice, reference, and tools.",
+      "screenshotFilename": "knowledge-quizzes/mobile/step-01-quiz-hub.png",
+      "screenshotAlt": "System Designer's knowledge assessment hub",
+      "location": "/quiz",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Fifty-two fundamentals checks",
+      "action": "Selected the \"Fundamentals\" category.",
+      "description": "The hub narrows to system-design foundations such as scalability, reliability, databases, APIs, queues, and architecture.",
+      "screenshotFilename": "knowledge-quizzes/mobile/step-02-fundamentals-filter.png",
+      "screenshotAlt": "The quiz hub filtered to fundamentals",
+      "location": "/quiz",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "One question, four explicit trade-offs",
+      "action": "Opened the \"What is System Design?\" quiz.",
+      "description": "The first question asks for the field's primary goal and exposes four plausible choices, progress, score, and keyboard navigation.",
+      "screenshotFilename": "knowledge-quizzes/mobile/step-03-question.png",
+      "screenshotAlt": "The first question in the What is System Design quiz",
+      "location": "/quiz",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The answer is checked immediately",
+      "action": "Selected the scalable, reliable, and maintainable systems answer.",
+      "description": "The chosen answer turns green and the answered count advances to **1 of 4**. The walkthrough records the assessed outcome, not just a ready-to-submit state.",
+      "screenshotFilename": "knowledge-quizzes/mobile/step-04-correct-answer.png",
+      "screenshotAlt": "The first system-design quiz answer marked correct",
+      "location": "/quiz",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T13:45:50.313Z",
+  "generatedAt": "2026-09-20T13:45:50.313Z",
+  "note": "Live production evidence. Discovery used Codex computer control; recording used the cross-runtime capture contract so Claude can rerun the same script."
+}

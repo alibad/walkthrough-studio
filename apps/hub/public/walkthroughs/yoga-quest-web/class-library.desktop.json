@@ -1,0 +1,53 @@
+{
+  "featureId": "class-library",
+  "featureName": "Class library",
+  "type": "feature",
+  "location": "/classes",
+  "category": "practice",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "From a full library to one teachable program",
+  "overview": "The public library separates workouts, programs, and individual exercises, then opens a program without leaving the page. This walk uses the same controls a teacher uses to move from browsing to a concrete sequence.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The class inventory at rest",
+      "action": "Opened the public class library.",
+      "description": "Programs, workouts, and exercises share one library, with counts visible before a teacher chooses a format.",
+      "screenshotFilename": "class-library/desktop/step-01-library.png",
+      "screenshotAlt": "The Yoga Quest class library showing workouts and format counts",
+      "location": "/classes",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Programs, not isolated workouts",
+      "action": "Selected the \"Programs\" tab.",
+      "description": "The grid changes to multi-session paths and shows duration and session counts, so the distinction is visible in the content rather than only in a label.",
+      "screenshotFilename": "class-library/desktop/step-02-programs.png",
+      "screenshotAlt": "Yoga Quest filtered to multi-session programs",
+      "location": "/classes",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The program opens with its path",
+      "action": "Opened \"Build a balance practice\".",
+      "description": "The detail view names the program's sequence and progression in place, preserving the library context behind it.",
+      "screenshotFilename": "class-library/desktop/step-03-program-detail.png",
+      "screenshotAlt": "The Build a balance practice program detail",
+      "location": "/classes",
+      "verificationStatus": "live-walked",
+      "videoFilename": "video/page@6e925cd790eaf4369fc70d4ed03ffc97.webm"
+    }
+  ],
+  "keyFeatures": [
+    "Public class inventory",
+    "Programs separated from workouts",
+    "Program detail opens in context"
+  ],
+  "capturedAt": "2026-09-20T08:42:26.630Z",
+  "generatedAt": "2026-09-20T08:42:26.630Z",
+  "note": "Captured from the public production URL. The deployment does not expose a source commit, so this evidence is intentionally not pinned to the local checkout's HEAD."
+}

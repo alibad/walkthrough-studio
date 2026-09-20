@@ -2,13 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { Columns2, Info, Lightbulb, Maximize2, Play, TriangleAlert } from "lucide-react";
+import { Columns2, Info, Lightbulb, Maximize2, TriangleAlert } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Prose } from "@/components/prose";
 import { SurfaceFrame } from "@/components/surface-frame";
 import { VerificationBadge } from "@/components/status";
 import { Lightbox } from "@/components/lightbox";
 import { ResponsiveCompare } from "@/components/responsive-compare";
+import { StoryPlayer } from "@/components/journey/story-player";
 import { formatLocation } from "@/lib/platforms";
 import { isHandheld } from "@/lib/surfaces";
 import type {
@@ -56,6 +57,7 @@ export function WalkthroughViewer({
   const [surfaceId, setSurfaceId] = useState(surfaces[0]?.id);
   const surface = surfaces.find((s) => s.id === surfaceId) ?? surfaces[0];
   const walkthrough = surface ? walkthroughs[surface.id] : undefined;
+  const primaryVideo = walkthrough?.steps.find((step) => step.videoFilename)?.videoFilename;
 
   const [lightbox, setLightbox] = useState<{ files: string[]; index: number } | null>(null);
   /* "Compare" is only meaningful with something to compare against, so the
@@ -151,6 +153,19 @@ export function WalkthroughViewer({
             <div className="mt-4 flex items-start gap-2.5 rounded-sm border border-note/25 bg-note-wash px-3 py-2.5 text-small text-note">
               <Info className="mt-0.5 size-4 shrink-0" aria-hidden />
               <Prose className="text-small [&_*]:text-note">{walkthrough.note}</Prose>
+            </div>
+          )}
+
+          {primaryVideo && (
+            <div className="mt-5 max-w-[32rem]">
+              <StoryPlayer
+                src={`/walkthroughs/${slug}/${primaryVideo}`}
+                title={`${featureName} — recorded walkthrough`}
+                kind="recording"
+                variant="card"
+                label="Play the recorded walkthrough"
+                detail="Watch the captured interaction from start to finish"
+              />
             </div>
           )}
         </div>
@@ -354,15 +369,15 @@ function Step({
       {caption && <p className="mt-2 text-micro leading-relaxed text-ink-faint">{caption}</p>}
 
       {step.videoFilename && (
-        <a
-          href={`/walkthroughs/${slug}/${step.videoFilename}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2.5 inline-flex items-center gap-1.5 text-micro font-medium text-ink-muted transition-colors hover:text-brand"
-        >
-          <Play className="size-3" aria-hidden />
-          Watch this interaction
-        </a>
+        <StoryPlayer
+          src={`/walkthroughs/${slug}/${step.videoFilename}`}
+          title={`${featureName} — ${step.title}`}
+          kind="recording"
+          variant="card"
+          className="mt-3"
+          label="Play this recorded interaction"
+          detail="Unedited screen recording · opens here"
+        />
       )}
     </div>
   );

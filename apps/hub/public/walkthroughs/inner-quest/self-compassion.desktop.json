@@ -1,0 +1,49 @@
+{
+  "featureId": "self-compassion",
+  "featureName": "Self-Compassion",
+  "type": "feature",
+  "location": "/self-compassion",
+  "category": "psychology",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Self-Compassion, from entry to detail",
+  "overview": "The Self-Compassion assessment, based on Dr. Kristin Neff's research, measures how you treat yourself when you struggle, fail, or feel inadequate. It evaluates three core components — self-kindness vs. self-judgment, common humanity vs. isolation, and mindfulness vs. over-identification. Your profile reveals whether your inner voice is a supportive ally or a harsh critic, and provides guidance for cultivating the kind of self-compassion that supports genuine resilience and wellbeing.",
+  "targetAudience": "Users interested in psychology tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Self-Compassion — Landing State",
+      "description": "The landing page showing the initial state and main interface, with the self-compassion questionnaire and an introduction to the three core components.",
+      "screenshotFilename": "self-compassion/step-1-landing.png",
+      "screenshotAlt": "Self-Compassion landing page on desktop",
+      "action": "Opened /self-compassion.",
+      "location": "/self-compassion",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Self-Compassion — Below the Fold",
+      "description": "Additional content visible after scrolling, including your scores across self-kindness, common humanity, and mindfulness dimensions.",
+      "screenshotFilename": "self-compassion/step-2-below-fold.png",
+      "screenshotAlt": "Self-Compassion below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/self-compassion",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Research-validated assessment based on Dr. Kristin Neff's Self-Compassion Scale",
+    "Scores across three dimensions: self-kindness, common humanity, and mindfulness",
+    "Insights on how self-criticism patterns undermine wellbeing and resilience",
+    "Practical guidance for shifting from self-judgment to self-compassion"
+  ],
+  "tips": [
+    "Answer based on how you actually respond to yourself when things go wrong, not how you think you should respond",
+    "Low self-compassion scores are extremely common — this is a skill that can be cultivated, not a fixed trait"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

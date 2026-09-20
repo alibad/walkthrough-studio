@@ -1,0 +1,104 @@
+{
+  "featureId": "feelings-wheel",
+  "featureName": "Feelings Wheel",
+  "type": "feature",
+  "location": "/reflections?tab=feelings",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Feelings Wheel, from entry to detail",
+  "overview": "The Feelings Wheel is an interactive emotion-logging tool embedded in the My Reflections page. Users select from 6 core emotions (Joy, Sadness, Anger, Fear, Disgust, Surprise), then drill down into 36+ specific sub-emotions via an expanding SVG wheel.\n\nAfter selecting a specific emotion, users set an intensity level (1-5) and optionally add notes. The tool tracks check-ins over time with a history panel grouped by date, and integrates with the achievement system.",
+  "targetAudience": "Anyone wanting to build emotional awareness through regular check-ins — from beginners learning to name emotions to experienced practitioners tracking patterns.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Feelings Tab — Landing State",
+      "description": "Navigate to the Reflections page and select the **Feelings** tab. The page shows the interactive emotion wheel with 6 color-coded core emotions: **Joy** (amber), **Sadness** (blue), **Anger** (red), **Fear** (purple), **Disgust** (emerald), and **Surprise** (pink). The center reads \"How do you feel?\" and the right panel shows a target icon with instructions to select an emotion.\n\nThe **History** and **Info** toggle buttons appear above the wheel.",
+      "screenshotFilename": "feelings-wheel/step-1-landing.png",
+      "screenshotAlt": "Feelings Wheel landing page showing the 6-segment emotion wheel with Joy, Sadness, Anger, Fear, Disgust, and Surprise",
+      "action": "Opened /reflections?tab=feelings.",
+      "location": "/reflections?tab=feelings",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Select Primary Emotion — Joy Expanded",
+      "description": "Click a primary emotion segment (e.g., **Joy**) and the wheel expands to reveal 6 sub-emotions in the outer ring: **Optimistic**, **Playful**, **Excited**, **Grateful**, **Content**, **Peaceful**. The instruction text updates to \"Choose a **specific emotion** from the outer ring.\"\n\nThe expansion animation is smooth and the sub-emotion labels are displayed at angles following the arc of the wheel.",
+      "screenshotFilename": "feelings-wheel/step-2-primary-selected.png",
+      "screenshotAlt": "Feelings Wheel with Joy segment expanded showing 6 sub-emotions: Optimistic, Playful, Excited, Grateful, Content, Peaceful",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=feelings",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Select Sub-Emotion — Grateful",
+      "description": "Click a specific sub-emotion (e.g., **Grateful**) to open the check-in form. The right panel updates to show:\n\n- **Emotion name** (\"Grateful\") in the primary emotion's color\n- **Category label** (\"A form of Joy\")\n- **Intensity slider** — 5 blocks, defaulting to 3/5\n- **Notes textarea** (optional) with placeholder \"What's on your mind?\"\n- **Save Check-in** button\n\nThe selected sub-emotion is highlighted on the wheel with a darker shade.",
+      "screenshotFilename": "feelings-wheel/step-3-secondary-selected.png",
+      "screenshotAlt": "Feelings Wheel showing Grateful selected with intensity slider at 3/5, notes field, and Save Check-in button",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=feelings",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Fill In Details & Save",
+      "description": "Adjust the **intensity** by clicking one of the 5 blocks (here set to 4/5) and optionally add **notes** describing what triggered the emotion. Click **Save Check-in** to log the entry.\n\nThe intensity blocks fill with the primary emotion's color up to the selected level.",
+      "screenshotFilename": "feelings-wheel/step-4-filled-form.png",
+      "screenshotAlt": "Feelings Wheel check-in form filled with Grateful at 4/5 intensity and a note about project progress",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=feelings",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Achievement Unlocked — Emotional Awareness",
+      "description": "First-time emotion loggers earn the **Emotional Awareness** achievement — a bronze-tier character milestone worth **+10 points**. The achievement popup features a smiling emoji with star eyes and an \"Awesome!\" dismiss button.",
+      "screenshotFilename": "feelings-wheel/step-5-achievement.png",
+      "screenshotAlt": "Achievement popup showing Emotional Awareness badge with smiling emoji, +10 points, bronze tier",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=feelings",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 6,
+      "title": "Saved State — Today's Check-ins",
+      "description": "After saving, the **Today's Check-ins** section appears above the wheel showing a count badge and emotion path (\"Joy -> Grateful\"). The wheel resets to its initial state, ready for another check-in. The form retains the previous selection for quick re-logging.",
+      "screenshotFilename": "feelings-wheel/step-6-saved.png",
+      "screenshotAlt": "Feelings Wheel after saving showing Today's Check-ins with Joy to Grateful badge above the wheel",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=feelings",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 7,
+      "title": "Emotion History Panel",
+      "description": "Click the **History** button to open a slide-out panel showing all logged emotions grouped by date. Each entry displays:\n\n- **Emotion path** (Joy -> Grateful) color-coded\n- **Timestamp** (04:04 AM)\n- **Intensity bars** (visual blocks)\n- **Notes** in italics\n\nThe panel can be dismissed with the X button.",
+      "screenshotFilename": "feelings-wheel/step-7-history.png",
+      "screenshotAlt": "Emotion History panel showing logged entry for March 19 with Joy to Grateful, intensity bars, and notes",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=feelings",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Interactive SVG wheel with 6 core emotions and 36+ sub-emotions",
+    "Expanding animation reveals sub-emotions on primary selection",
+    "1-5 intensity scale with visual block indicators",
+    "Optional notes for emotional context",
+    "Today's Check-ins counter with emotion path badges",
+    "History panel with date-grouped entries",
+    "Achievement system integration (Emotional Awareness badge)"
+  ],
+  "tips": [
+    "Be specific — choosing a sub-emotion like 'Grateful' is more insightful than just 'Joy'",
+    "Use the notes field to record what triggered the emotion for better pattern tracking",
+    "Log multiple emotions throughout the day to build a complete emotional picture",
+    "Check your History regularly to notice recurring patterns"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T01:10:00.000Z",
+  "capturedAt": "2026-03-19T01:10:00.000Z",
+  "synthetic": false
+}

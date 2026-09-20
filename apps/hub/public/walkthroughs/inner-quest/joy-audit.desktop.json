@@ -1,0 +1,39 @@
+{
+  "featureId": "joy-audit",
+  "featureName": "Joy Audit",
+  "type": "feature",
+  "location": "/joy-audit",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Joy Audit, from entry to detail",
+  "overview": "Log joy-inducing activities with category, frequency, and joy level to audit what brings genuine happiness into your life.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Joy Audit — Landing State",
+      "description": "The landing page showing the joy activity logging form with category, frequency, and joy level inputs.",
+      "screenshotFilename": "joy-audit/step-1-landing.png",
+      "screenshotAlt": "Joy Audit landing page on desktop",
+      "action": "Opened /joy-audit.",
+      "location": "/joy-audit",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Log activities that bring you joy with category tags",
+    "Rate the joy level each activity generates",
+    "Record how frequently you engage in each activity",
+    "Discover patterns and invest more in high-joy activities"
+  ],
+  "tips": [
+    "Include both big and small activities — joy often hides in everyday moments.",
+    "Review your audit monthly and deliberately schedule more of your highest-joy activities."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

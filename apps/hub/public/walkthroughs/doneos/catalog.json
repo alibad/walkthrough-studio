@@ -3,9 +3,9 @@
   "projectName": "DoneOS",
   "platform": "web",
   "driver": "playwright",
-  "capturedAgainst": "committed DoneOS Flutter web app + Firebase emulators + official MCP SDK",
+  "capturedAgainst": "http://127.0.0.1:5322 · committed Flutter store-preview harness",
   "discoveredAt": "2026-09-20T12:35:41.552Z",
-  "updatedAt": "2026-09-20T13:58:53.280Z",
+  "updatedAt": "2026-09-20T16:54:15.047Z",
   "brand": {
     "primaryColor": "#ff6b5f",
     "accentColor": "#39d98a",
@@ -15,8 +15,14 @@
     "fontFamily": "Inter"
   },
   "scope": {
-    "status": "bounded",
-    "note": "Product proof uses a disposable fictional account in Firebase emulators. The terminal surface remains isolated fixture proof; neither flow writes to DoneOS production."
+    "status": "partial",
+    "note": "Core execution, goals, status, and audit surfaces are live-rendered from committed Flutter code on desktop and compact web surfaces. The MCP loop is independently proven. Groups, Account, and signed native store binaries remain outside this run.",
+    "excluded": [
+      "Groups",
+      "Account",
+      "Signed iOS binary",
+      "Signed Android binary"
+    ]
   },
   "features": [
     {
@@ -45,8 +51,118 @@
       "issueCount": 0,
       "lastWalkthroughAt": "2026-09-20T13:58:53.280Z",
       "notes": "Flutter UI and MCP shared the same emulator-backed state; the exact task was visible in Queue and attributed in Activity."
+    },
+    {
+      "featureId": "focus-stack",
+      "featureName": "Focus Stack",
+      "location": "DoneOS → Focus Stack",
+      "category": "product",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T16:54:15.047Z",
+      "notes": "Committed Flutter store-preview surface with synthetic showcase data."
+    },
+    {
+      "featureId": "shared-queue",
+      "featureName": "Shared Queue",
+      "location": "DoneOS → Shared Queue",
+      "category": "product",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T16:54:15.047Z",
+      "notes": "Committed Flutter store-preview surface with synthetic showcase data."
+    },
+    {
+      "featureId": "activity-ledger",
+      "featureName": "Activity Ledger",
+      "location": "DoneOS → Activity Ledger",
+      "category": "product",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T16:54:15.047Z",
+      "notes": "Committed Flutter store-preview surface with synthetic showcase data."
+    },
+    {
+      "featureId": "slack-status",
+      "featureName": "Slack Status",
+      "location": "DoneOS → Slack Status",
+      "category": "product",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T16:54:15.047Z",
+      "notes": "Committed Flutter store-preview surface with synthetic showcase data."
+    },
+    {
+      "featureId": "goal-progress",
+      "featureName": "Goal Progress",
+      "location": "DoneOS → Goal Progress",
+      "category": "product",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T16:54:15.047Z",
+      "notes": "Committed Flutter store-preview surface with synthetic showcase data."
     }
   ],
-  "personas": [],
+  "personas": [
+    {
+      "id": "execution-lead",
+      "name": "Maya Torres",
+      "description": "Maya is coordinating a product launch where people and agents share the work. She needs one answer to what is moving, what is blocked, and who changed it. She does not care which client or model performed the action once accountability is preserved.",
+      "authRole": "member",
+      "entryPoint": "DoneOS → Focus Stack",
+      "keyJourneys": [
+        "coordinate-launch"
+      ],
+      "portrait": "personas/execution-lead.png",
+      "scene": "personas/execution-lead-scene.png",
+      "navItems": [
+        {
+          "label": "Focus Stack",
+          "location": "DoneOS → Focus Stack"
+        },
+        {
+          "label": "Shared Queue",
+          "location": "DoneOS → Shared Queue"
+        },
+        {
+          "label": "Activity Ledger",
+          "location": "DoneOS → Activity Ledger"
+        },
+        {
+          "label": "Slack Status",
+          "location": "DoneOS → Slack Status"
+        },
+        {
+          "label": "Goal Progress",
+          "location": "DoneOS → Goal Progress"
+        }
+      ]
+    }
+  ],
   "synthetic": false
 }

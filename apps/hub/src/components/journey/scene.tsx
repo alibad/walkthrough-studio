@@ -22,13 +22,14 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { Maximize2, Play } from "lucide-react";
+import { Maximize2 } from "lucide-react";
 import type { JourneyScene, JourneySceneLayout, Surface } from "@/lib/types";
 import { SurfaceFrame } from "@/components/surface-frame";
 import { isHandheld } from "@/lib/surfaces";
 import { VerificationBadge } from "@/components/status";
 import { Prose } from "@/components/prose";
 import { cn } from "@/lib/utils";
+import { StoryPlayer } from "@/components/journey/story-player";
 
 /**
  * The fallback cycle. Deliberately not `index % 4` over all four layouts:
@@ -193,13 +194,14 @@ function SceneCapture({
           <Maximize2 className="size-3.5" strokeWidth={1.75} aria-hidden />
         </button>
         {scene.video && (
-          <a
-            href={scene.video}
-            className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded border border-rule bg-paper/90 px-2 py-1 font-mono text-micro text-ink-muted backdrop-blur transition-colors hover:text-ink"
-          >
-            <Play className="size-3" strokeWidth={2} aria-hidden />
-            video
-          </a>
+          <StoryPlayer
+            src={scene.video}
+            title={scene.title}
+            kind="recording"
+            variant="overlay"
+            label="Play this scene"
+            detail="Recorded interaction"
+          />
         )}
       </div>
 

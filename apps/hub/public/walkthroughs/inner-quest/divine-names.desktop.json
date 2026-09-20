@@ -1,0 +1,39 @@
+{
+  "featureId": "divine-names",
+  "featureName": "The 99 Names of God",
+  "type": "feature",
+  "location": "/divine-names",
+  "category": "spirituality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "The 99 Names of God, from entry to detail",
+  "overview": "Draw a divine name each day for spiritual reflection and guidance. Explore the 99 Names of God (Asma ul-Husna) with meanings, pronunciation, and contemplative prompts to deepen spiritual awareness.",
+  "targetAudience": "Users interested in spirituality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The 99 Names of God — Landing State",
+      "description": "The landing page showing today's drawn divine name with its meaning, pronunciation, and reflection prompts.",
+      "screenshotFilename": "divine-names/step-1-landing.png",
+      "screenshotAlt": "The 99 Names of God landing page on desktop",
+      "action": "Opened /divine-names.",
+      "location": "/divine-names",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Draw a divine name each day for spiritual contemplation",
+    "Explore all 99 Names of God with Arabic text, transliteration, and meaning",
+    "Receive daily reflection prompts inspired by each name's essence",
+    "Track your journey through the names over time"
+  ],
+  "tips": [
+    "Sit quietly for a few minutes after drawing your daily name — let its meaning settle before reading the reflection prompt.",
+    "Try to carry the essence of the day's name with you throughout the day as an intention or mantra."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

@@ -1,0 +1,79 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T08:41:44.016Z",
+      "startedAt": "2026-09-20T08:41:26.444Z",
+      "completedAt": "2026-09-20T08:41:44.016Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.systemdesigner.net/fundamentals/what-is-system-design",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "lesson-reading"
+        ],
+        "personas": [],
+        "screenshots": 6,
+        "videos": 0,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-20T13:46:51.784Z",
+      "startedAt": "2026-09-20T13:43:16.171Z",
+      "completedAt": "2026-09-20T13:46:51.784Z",
+      "skill": "walkthrough",
+      "agent": "codex-recon + walk-system-designer.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.systemdesigner.net",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "live reconnaissance performed with Codex computer control · deterministic evidence recorded through the cross-runtime driver contract · production deployment SHA not exposed; no local checkout commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext · feature \"daily-learning-path\" on desktop: 1 loading indicator(s) still visible after 15174ms — captures may show a loading state · feature \"daily-learning-path\" on mobile: 1 loading indicator(s) still visible after 15175ms — captures may show a loading state · surface \"mobile\": the page overflows horizontally — content is 508px wide on a 393px surface, so the layout viewport expanded to 508px and a real phone renders this zoomed out with a sideways scroll · feature \"journey-interview-candidate\" on desktop: 1 loading indicator(s) still visible after 15200ms — captures may show a loading state"
+      },
+      "coverage": {
+        "features": [
+          "daily-learning-path",
+          "capacity-planning-lab",
+          "interview-gym",
+          "knowledge-quizzes"
+        ],
+        "personas": [
+          "interview-candidate"
+        ],
+        "screenshots": 33,
+        "videos": 5,
+        "issues": 1
+      }
+    }
+  ]
+}

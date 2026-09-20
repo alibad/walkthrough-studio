@@ -46,7 +46,7 @@ export function openai() {
   const key = process.env.OPENAI_API_KEY;
   if (!key) {
     throw new Error(
-      "missing OPENAI_API_KEY in .env.local — run `pnpm doctor` to see what that blocks",
+      "missing OPENAI_API_KEY in .env.local — run `pnpm run doctor` to see what that blocks",
     );
   }
   return {

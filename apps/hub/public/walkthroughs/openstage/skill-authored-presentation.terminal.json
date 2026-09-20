@@ -1,0 +1,80 @@
+{
+  "featureId": "skill-authored-presentation",
+  "featureName": "Skill-authored presentation",
+  "type": "feature",
+  "location": "OpenStage skills → npm run build → /proof-before-promise",
+  "category": "authoring",
+  "surface": "terminal",
+  "platform": "cli",
+  "locale": "en",
+  "headline": "From one terminal brief to a built, browser-ready deck",
+  "overview": "This is the author workflow itself: inspect the repository skills, give Claude or Codex the same brief, review the generated source, run the real build, and hand the result to the browser walkthrough.",
+  "targetAudience": "Presentation authors using OpenStage with Claude Code or Codex",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The skills are part of the repository",
+      "action": "Listed the OpenStage skill directories and verified each required SKILL.md file.",
+      "description": "OpenStage does not depend on a hidden prompt. Narrative planning, fixed-slide constraints, the component catalog, and the quality bar all live beside the product source.",
+      "screenshotFilename": "skill-authored-presentation/terminal/step-01-authoring.png",
+      "screenshotAlt": "The skills are part of the repository",
+      "location": "ls .claude/skills/{plan-presentation,slide-mode,component-reference,quality-standards}/SKILL.md",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Claude and Codex receive the same brief",
+      "action": "Prepared the agent prompt against the same repository instruction files.",
+      "description": "The terminal syntax differs only in the executable name. Both agents read the same skill files and are asked to leave the same reviewable source, route, registry entry, and build proof.",
+      "screenshotFilename": "skill-authored-presentation/terminal/step-02-authoring.png",
+      "screenshotAlt": "Claude and Codex receive the same brief",
+      "location": "claude  # or: codex",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The skill leaves normal application code",
+      "action": "Verified the generated content module, route, and presentation registry entry on disk.",
+      "description": "The result is not trapped inside an agent session. It is a typed React presentation with speaker notes and a stable route registered in the gallery.",
+      "screenshotFilename": "skill-authored-presentation/terminal/step-03-authoring.png",
+      "screenshotAlt": "The skill leaves normal application code",
+      "location": "git diff -- src/content/proof-before-promise.tsx src/app/proof-before-promise/page.tsx src/content/registry.ts",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The production build accepts the deck",
+      "action": "Ran the repository build after generating and registering the presentation.",
+      "description": "Compilation, TypeScript, and static route generation all complete. A deck that only looks plausible in source is not considered generated successfully.",
+      "screenshotFilename": "skill-authored-presentation/terminal/step-04-authoring.png",
+      "screenshotAlt": "The production build accepts the deck",
+      "location": "npm run build",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The route answers before we call it done",
+      "action": "Requested the rendered deck from the live local OpenStage server.",
+      "description": "The terminal proof ends at a real HTTP route. The next surface in this walkthrough is that route, driven with the same keyboard a presenter uses.",
+      "screenshotFilename": "skill-authored-presentation/terminal/step-05-authoring.png",
+      "screenshotAlt": "The route answers before we call it done",
+      "location": "curl -I http://localhost:3000/proof-before-promise",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Repository-owned narrative and quality skills",
+    "Same source contract for Claude and Codex",
+    "Typed content module, route, registry entry, and speaker notes",
+    "Build and live HTTP verification before browser capture"
+  ],
+  "tips": [
+    "Use plan-presentation before a builder skill.",
+    "Use slide-mode for fixed decks and new-deck for scroll narratives.",
+    "[Open the generated Proof Before Promise deck](http://localhost:3000/proof-before-promise).",
+    "[Compare the existing flagship scroll deck](http://localhost:3000/awwwards-flagship)."
+  ],
+  "note": "The deck was built and served locally. It was not deployed or published externally.",
+  "generatedAt": "2026-09-20T16:41:53.455Z",
+  "capturedAt": "2026-09-20T16:41:53.455Z"
+}

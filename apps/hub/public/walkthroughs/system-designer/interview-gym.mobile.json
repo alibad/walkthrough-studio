@@ -1,0 +1,48 @@
+{
+  "featureId": "interview-gym",
+  "featureName": "Interview gym",
+  "type": "feature",
+  "location": "/gym",
+  "category": "practice",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "From six prompts to one timed design session",
+  "overview": "The gym offers focused system-design prompts with difficulty and skill filters. This walk chooses the URL shortener, reads the rubric and expectations, then starts the 45-minute session.",
+  "targetAudience": "An interview candidate rehearsing under realistic constraints",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Six interview rooms, each with a purpose",
+      "action": "Opened the Interview Gym.",
+      "description": "The candidate can compare URL shortener, chat, feed, streaming, cache, and search prompts by difficulty and focus before committing to a timed session.",
+      "screenshotFilename": "interview-gym/mobile/step-01-gym.png",
+      "screenshotAlt": "System Designer Interview Gym with six practice prompts",
+      "location": "/gym",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The URL shortener brief sets the bar",
+      "action": "Opened the URL Shortener Service prompt.",
+      "description": "The brief states the problem, expectations, components to consider, notes area, interview tips, and the 45-minute constraint before the timer begins.",
+      "screenshotFilename": "interview-gym/mobile/step-02-url-shortener-brief.png",
+      "screenshotAlt": "The URL Shortener interview problem and expectations",
+      "location": "/gym/url-shortener",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The rehearsal is now live",
+      "action": "Clicked \"Start 45-Minute Session\".",
+      "description": "The session enters its timed state with the prompt and working notes still in view. The candidate has crossed from browsing practice material into doing the interview.",
+      "screenshotFilename": "interview-gym/mobile/step-03-session-running.png",
+      "screenshotAlt": "The URL Shortener interview session after its timer starts",
+      "location": "/gym/url-shortener",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T13:45:32.853Z",
+  "generatedAt": "2026-09-20T13:45:32.853Z",
+  "note": "Live production evidence. Discovery used Codex computer control; recording used the cross-runtime capture contract so Claude can rerun the same script."
+}

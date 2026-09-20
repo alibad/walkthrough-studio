@@ -1,0 +1,49 @@
+{
+  "featureId": "future-letters",
+  "featureName": "Future Letters",
+  "type": "feature",
+  "location": "/reflections?tab=future-letters",
+  "category": "growth",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Future Letters, from entry to detail",
+  "overview": "Write a letter to your future self and schedule it for delivery via email. Capture your current hopes, fears, and intentions to reconnect with your present mindset at a chosen future date.",
+  "targetAudience": "Users interested in growth tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Future Letters — Landing State",
+      "description": "The landing page showing the letter composition interface where you can write to your future self and set a delivery date.",
+      "screenshotFilename": "future-letters/step-1-landing.png",
+      "screenshotAlt": "Future Letters landing page on desktop",
+      "action": "Opened /reflections?tab=future-letters.",
+      "location": "/reflections?tab=future-letters",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Future Letters — Below the Fold",
+      "description": "Additional content visible after scrolling, including previously scheduled letters and delivery history.",
+      "screenshotFilename": "future-letters/step-2-below-fold.png",
+      "screenshotAlt": "Future Letters below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/reflections?tab=future-letters",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Write heartfelt letters to your future self",
+    "Schedule email delivery for any future date",
+    "Capture current hopes, fears, goals, and intentions",
+    "Review previously sent and scheduled letters"
+  ],
+  "tips": [
+    "Be honest and specific — your future self will appreciate knowing exactly what you were feeling and thinking today.",
+    "Try scheduling letters at meaningful milestones: 6 months, 1 year, or at the start of a new chapter in life."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

@@ -1,0 +1,52 @@
+{
+  "featureId": "world-explorer",
+  "featureName": "World explorer",
+  "type": "feature",
+  "location": "/explore",
+  "category": "discovery",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "A place can be chosen or discovered",
+  "overview": "The explorer begins as a navigable globe with filters and a place index. A surprise selection and flat-map switch are walked as real state changes rather than described from the route tree.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The globe as an index",
+      "action": "Opened the public explorer.",
+      "description": "Filters, layers, saved places, and a searchable place index surround the globe without requiring an account.",
+      "screenshotFilename": "world-explorer/desktop/step-01-globe.png",
+      "screenshotAlt": "Globe Quest's public globe explorer",
+      "location": "/explore",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "A real place is selected",
+      "action": "Clicked \"Surprise me\".",
+      "description": "The URL and explorer state move to an actual place chosen by the product; this capture records the result of the interaction, not the armed button.",
+      "screenshotFilename": "world-explorer/desktop/step-02-surprise.png",
+      "screenshotAlt": "A surprise place selected in Globe Quest",
+      "location": "/explore",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The same discovery, another projection",
+      "action": "Selected \"Flat map\".",
+      "description": "The selected place remains in context while the geographic view changes, making the projection a surface choice rather than a new feature.",
+      "screenshotFilename": "world-explorer/desktop/step-03-flat-map.png",
+      "screenshotAlt": "The selected Globe Quest place on the flat map",
+      "location": "/explore",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Globe and flat-map views",
+    "Public place index",
+    "A surprise discovery updates the selected place"
+  ],
+  "capturedAt": "2026-09-20T08:40:59.754Z",
+  "generatedAt": "2026-09-20T08:40:59.754Z",
+  "note": "Captured from the public production URL. The deployment does not expose a source commit, so this evidence is intentionally not pinned to the local checkout's HEAD."
+}

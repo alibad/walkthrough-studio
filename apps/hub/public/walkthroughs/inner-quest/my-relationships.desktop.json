@@ -1,0 +1,49 @@
+{
+  "featureId": "my-relationships",
+  "featureName": "My Relationships",
+  "type": "feature",
+  "location": "/my-relationships",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "My Relationships, from entry to detail",
+  "overview": "My Relationships is your personal contact directory for meaningful people in your life. Add contacts and then compare personality test results side-by-side to gain insight into compatibility, communication styles, and potential friction points. It bridges your inner self-knowledge with your understanding of the people around you.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "My Relationships — Landing State",
+      "description": "The landing page showing the initial state and main interface, with your contacts list and options to add new people.",
+      "screenshotFilename": "my-relationships/step-1-landing.png",
+      "screenshotAlt": "My Relationships landing page on desktop",
+      "action": "Opened /my-relationships.",
+      "location": "/my-relationships",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "My Relationships — Below the Fold",
+      "description": "Additional content visible after scrolling, including contact cards with personality profile summaries and comparison prompts.",
+      "screenshotFilename": "my-relationships/step-2-below-fold.png",
+      "screenshotAlt": "My Relationships below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/my-relationships",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Add and manage contacts representing meaningful people in your life",
+    "Side-by-side comparison of personality test results between you and a contact",
+    "Insights into compatibility and communication style differences",
+    "Link contacts to your social network graph for a complete relationship picture"
+  ],
+  "tips": [
+    "Add contacts whose personality types you already know for the most useful comparisons",
+    "Use the side-by-side comparison before important conversations to anticipate how they might receive your message"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

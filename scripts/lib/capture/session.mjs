@@ -18,7 +18,8 @@
  */
 
 import { mkdirSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { spawnSync } from "node:child_process";
+import { basename, dirname, extname, join } from "node:path";
 import { CONTENT_THRESHOLDS, diffCells, measureContent } from "./pixels.mjs";
 import {
   DEV_OVERLAY_CSS,
@@ -354,7 +355,12 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
         return ctx.consoleLog.filter((c) => c.type === "error" || c.type === "pageerror").map((c) => c.text);
       },
       async finish() {
-        const video = wantsVideo ? await ctx.finishVideo() : null;
+        const rawVideo = wantsVideo ? await ctx.finishVideo() : null;
+        const normalized = rawVideo ? normalizeVideo(rawVideo) : { video: null };
+        const video = normalized.video;
+        if (normalized.warning && !report.warnings.includes(normalized.warning)) {
+          report.warnings.push(normalized.warning);
+        }
         if (video) report.verified.video = true;
         await ctx.close();
         return { video };
@@ -376,6 +382,40 @@ export async function createCaptureSession({ driver, outDir, videoDir = null, su
     async close() {
       await driver.close();
     },
+  };
+}
+
+/**
+ * Playwright records WebM, which Chromium plays but WebKit-backed app browsers
+ * may reject. Prefer a broadly playable H.264 MP4 when ffmpeg is available;
+ * retain the source WebM as provenance and fall back honestly when it is not.
+ */
+function normalizeVideo(rawVideo) {
+  if (extname(rawVideo).toLowerCase() !== ".webm") return { video: rawVideo };
+  const output = join(dirname(rawVideo), `${basename(rawVideo, extname(rawVideo))}.mp4`);
+  const result = spawnSync(
+    "ffmpeg",
+    [
+      "-y",
+      "-loglevel", "error",
+      "-i", rawVideo,
+      "-c:v", "libx264",
+      "-preset", "fast",
+      "-crf", "23",
+      "-pix_fmt", "yuv420p",
+      "-movflags", "+faststart",
+      "-an",
+      output,
+    ],
+    { encoding: "utf8" },
+  );
+  if (result.status === 0) return { video: output };
+  const reason = result.error?.code === "ENOENT"
+    ? "ffmpeg is unavailable"
+    : `ffmpeg exited ${result.status ?? "without a status"}`;
+  return {
+    video: rawVideo,
+    warning: `video remains WebM because ${reason}; verify playback in the target hub before calling the run showcase-ready`,
   };
 }
 

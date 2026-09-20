@@ -154,6 +154,15 @@ Two things follow for you:
     }
   ],
 
+  // Inventory scope, independent of capture status. "comprehensive" means the
+  // source and live capability lists reconciled. "partial" and "bounded" can
+  // never be presented as 100% product coverage.
+  "scope": {
+    "status": "comprehensive", // comprehensive | partial | bounded
+    "note": "Source routes and live navigation reconciled on 2026-09-17.",
+    "excluded": []
+  },
+
   "personas": [
     {
       "id": "field-surveyor",

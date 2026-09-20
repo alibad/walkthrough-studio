@@ -1,0 +1,49 @@
+{
+  "featureId": "holland-code",
+  "featureName": "Holland Code (RIASEC)",
+  "type": "feature",
+  "location": "/holland-code",
+  "category": "career",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Holland Code (RIASEC), from entry to detail",
+  "overview": "Answer 48 questions to get your 3-letter Holland Code from the RIASEC model: Realistic, Investigative, Artistic, Social, Enterprising, and Conventional.",
+  "targetAudience": "Users interested in career tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Holland Code (RIASEC) — Landing State",
+      "description": "The landing page of the Holland Code (RIASEC) tool showing the initial state and main interface.",
+      "screenshotFilename": "holland-code/step-1-landing.png",
+      "screenshotAlt": "Holland Code (RIASEC) landing page on desktop",
+      "action": "Opened /holland-code.",
+      "location": "/holland-code",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Holland Code (RIASEC) — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "holland-code/step-2-below-fold.png",
+      "screenshotAlt": "Holland Code (RIASEC) below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/holland-code",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "48-question assessment yielding your 3-letter RIASEC Holland Code",
+    "Scores across six types: Realistic, Investigative, Artistic, Social, Enterprising, and Conventional",
+    "One of the most widely used career assessment frameworks — used by the US Department of Labor",
+    "Career path and work environment recommendations matched to your Holland Code combination"
+  ],
+  "tips": [
+    "Your 3-letter code represents your top three types — the order matters, with the first letter being your strongest interest area.",
+    "Use your Holland Code alongside your Strengths Assessment for a fuller picture: RIASEC tells you what environments you thrive in, while Strengths tells you what you're naturally good at."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

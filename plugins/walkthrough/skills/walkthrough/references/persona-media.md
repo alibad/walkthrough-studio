@@ -48,14 +48,14 @@ defensible. Delete the generator before you delete the label.
 OPENAI_API_KEY=…
 ```
 
-One key. Images, chat and speech all come from it, and `pnpm doctor` will tell
+One key. Images, chat and speech all come from it, and `pnpm run doctor` will tell
 you whether it works before a walk depends on it.
 
 **Model ids move, so they are checked rather than remembered.** `gpt-image-2`
 shipped in April 2026 and was superseded by `gpt-image-2.5` in September — five
 months, and notes written in between were wrong by the time anyone read them.
 The defaults in `scripts/lib/models.mjs` were confirmed against `GET /v1/models`
-with a real key, `pnpm doctor` re-checks that your key can reach whichever model
+with a real key, `pnpm run doctor` re-checks that your key can reach whichever model
 is configured, and `OPENAI_IMAGE_MODEL` / `OPENAI_TEXT_MODEL` override them
 without touching code.
 

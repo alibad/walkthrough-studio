@@ -83,6 +83,89 @@
         "videos": 1,
         "issues": 4
       }
+    },
+    {
+      "id": "2026-09-20T14:12:46.630Z",
+      "startedAt": "2026-09-20T14:11:40.763Z",
+      "completedAt": "2026-09-20T14:12:46.630Z",
+      "skill": "walkthrough",
+      "agent": "walk-openstage.mjs",
+      "target": {
+        "sha": "9cef6174726c780e3b43642885c122db8a3e3429",
+        "shaShort": "9cef617",
+        "branch": "main",
+        "dirty": false,
+        "commitSubject": "feat: make MCP stories app-first"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "http://localhost:3000",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "backend: Playwright (launched Chromium) · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext · dev-server error overlays (Next.js / Vite) hidden; the console errors behind them are still collected and reported"
+      },
+      "coverage": {
+        "features": [
+          "gallery",
+          "deck-scroll",
+          "deck-slides",
+          "deck-draft-unlisted",
+          "admin-dashboard"
+        ],
+        "personas": [
+          "reader"
+        ],
+        "screenshots": 28,
+        "videos": 1,
+        "issues": 4
+      }
+    },
+    {
+      "id": "2026-09-20T16:41:53.455Z",
+      "startedAt": "2026-09-20T16:41:53.455Z",
+      "completedAt": "2026-09-20T16:42:28.007Z",
+      "skill": "walkthrough",
+      "agent": "walk-openstage-authoring.mjs",
+      "target": {
+        "sha": "658d076752e342eba0929ddc64ab339f49e63e15",
+        "shaShort": "658d0767",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": "2026-09-20T19:40:08+03:00",
+        "commitSubject": "feat: present Inner Quest MCP self knowledge story",
+        "watchPath": "."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "terminal renderer + Playwright",
+        "capturedAgainst": "http://localhost:3000",
+        "surfaces": [
+          "terminal",
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Repository skills inspected, build executed, HTTP route checked, deck driven with keyboard. No deployment."
+      },
+      "coverage": {
+        "features": [
+          "skill-authored-presentation"
+        ],
+        "personas": [
+          "presentation-author"
+        ],
+        "screenshots": 13,
+        "videos": 1,
+        "issues": 0
+      }
     }
   ]
 }

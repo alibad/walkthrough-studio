@@ -1,0 +1,39 @@
+{
+  "featureId": "action-items",
+  "featureName": "Action Items",
+  "type": "feature",
+  "location": "/action-items",
+  "category": "growth",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Action Items, from entry to detail",
+  "overview": "Action Items is your unified task hub, aggregating all action items generated across the app — from meeting follow-ups and coaching homework to breakthrough commitments. Instead of scattered to-dos buried inside individual modules, everything you've committed to doing appears in one place, linked back to its source so you can always see the context behind each task.",
+  "targetAudience": "Users interested in growth tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Action Items — Landing State",
+      "description": "The landing page showing the initial state and main interface, with the unified list of action items from meetings, coaching, and breakthroughs.",
+      "screenshotFilename": "action-items/step-1-landing.png",
+      "screenshotAlt": "Action Items landing page on desktop",
+      "action": "Opened /action-items.",
+      "location": "/action-items",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Unified view of all action items from meetings, coaching, and breakthrough modules",
+    "Filter and sort by source, status, or due date",
+    "Mark items complete and track overall accountability progress",
+    "Direct links to the source meeting, session, or breakthrough for full context"
+  ],
+  "tips": [
+    "Review your Action Items list at the start of each week to plan your priorities",
+    "Use the source links to revisit the full context before working on a task"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

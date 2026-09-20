@@ -207,6 +207,11 @@ async function walkGallery(surface) {
 
   recordConsole(walk, F, "/");
   const { video } = await walk.finish();
+  if (video && steps.length > 0) {
+    // Video belongs to a step in the contract and the reader only renders it
+    // there. A root-level `videoFilename` was silently ignored by the hub.
+    steps[steps.length - 1].videoFilename = `video/${video.split("/").pop()}`;
+  }
   note(F, surface.id, steps.length > 1 ? "done" : "blocked");
 
   return {
@@ -227,7 +232,6 @@ async function walkGallery(surface) {
       "Type filter with per-category counts",
       "Re-grouping by type, customer, author or date without a page load",
     ],
-    ...(video ? { videoFilename: `video/${video.split("/").pop()}` } : {}),
     generatedAt: new Date().toISOString(),
     capturedAt: new Date().toISOString(),
   };
@@ -610,6 +614,49 @@ async function walkReaderJourney() {
     });
   }
 
+  // A persona journey needs an arc, not three screenshots with a name on
+  // them. The original walk stopped after proving that scrolling worked; it
+  // never showed the reader staying with the argument or reaching its end.
+  // Use document-relative positions so the scenes survive copy-length edits.
+  await walk.ctx.evaluate(`window.scrollTo({
+    top: Math.max(0, (document.documentElement.scrollHeight - innerHeight) * 0.62),
+    behavior: 'instant'
+  })`);
+  await walk.ctx.settle();
+  const deeper = await walk.shot("scene-04-deeper.png", { optional: true });
+  if (deeper) {
+    scenes.push({
+      id: "deeper",
+      title: "The format gets out of the way of the argument",
+      narrative:
+        "By the middle of the deck, she is no longer thinking about Openstage at all. The page behaves like an essay on her phone: the next idea is always below the last one, and the visual rhythm tells her when the argument has turned.",
+      frames: [deeper],
+      frameCaptions: ["Past the opening, where the deck is carrying the argument rather than teaching controls"],
+      location: "/awwwards-flagship",
+      surface: "mobile",
+      sourceFeature: "deck-scroll",
+      verificationStatus: "live-walked",
+    });
+  }
+
+  await walk.ctx.evaluate("window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' })");
+  await walk.ctx.settle();
+  const ending = await walk.shot("scene-05-ending.png", { optional: true });
+  if (ending) {
+    scenes.push({
+      id: "ending",
+      title: "She reaches the close without losing her place",
+      narrative:
+        "The final section arrives in the same continuous reading surface. There was no slide counter to manage and no mode to exit; she finishes with the talk's closing idea, not with a memory of the presentation software.",
+      frames: [ending],
+      frameCaptions: ["The closing section reached through the same ordinary phone scroll"],
+      location: "/awwwards-flagship",
+      surface: "mobile",
+      sourceFeature: "deck-scroll",
+      verificationStatus: "live-walked",
+    });
+  }
+
   const { video } = await walk.finish();
   recordConsole(walk, "journey-reader", "/awwwards-flagship");
 
@@ -633,7 +680,7 @@ async function walkReaderJourney() {
     headline: "From a shared link to reading the thing, with nothing in between",
     overview:
       "The Reader is handed a URL and opens it on a phone. Openstage's job for her is entirely negative — no account, no install, no controls to learn — and the journey is worth walking precisely because a product that does its job this way leaves nothing to screenshot except the absence of obstacles.",
-    payoff: "She is reading the deck within a second of tapping the link, on a phone, with no account.",
+    payoff: "She opens, reads, and finishes the deck on her phone with no account and no presentation controls to learn.",
     scenes,
     platform: "web",
     surface: "mobile",
@@ -864,7 +911,7 @@ existing.runs.push({
     features: Object.keys(surfaceStatus),
     personas: existsSync(join(OUT, "persona-reader.find-and-read.json")) ? ["reader"] : [],
     screenshots: report.captures,
-    videos: walkthroughs.filter((w) => w.videoFilename).length,
+    videos: walkthroughs.flatMap((w) => w.steps).filter((s) => s.videoFilename).length,
     issues: issues.length,
   },
 });

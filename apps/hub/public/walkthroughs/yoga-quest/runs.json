@@ -1,0 +1,38 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T12:38:22Z-native-first-run",
+      "startedAt": "2026-09-20T12:38:22Z",
+      "completedAt": "2026-09-20T12:38:48Z",
+      "skill": "walkthrough",
+      "agent": "Maestro + simctl",
+      "target": {
+        "sha": "892d6695cdd0855e73cbd31e1b720026ab12a2f5",
+        "shaShort": "892d669",
+        "dirty": true,
+        "commitSubject": "docs: record build 12 internal release"
+      },
+      "config": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "capturedAgainst": "com.humanquest.yogaquest 1.0.1+12 · iPhone 17 Pro · iOS 27.0",
+        "surfaces": [
+          "iphone"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Fresh isolated simulator; app data cleared; built from source with cached Swift packages; installed bundle version verified as 1.0.1+12; screenshots captured through Maestro and video through simctl. The target checkout was already dirty from unrelated Makefile and untracked-file changes."
+      },
+      "coverage": {
+        "features": [
+          "native-first-run"
+        ],
+        "personas": [],
+        "screenshots": 4,
+        "videos": 1,
+        "issues": 0
+      }
+    }
+  ]
+}

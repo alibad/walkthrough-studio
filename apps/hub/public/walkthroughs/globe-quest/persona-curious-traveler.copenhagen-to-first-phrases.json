@@ -1,0 +1,107 @@
+{
+  "personaId": "curious-traveler",
+  "journeyId": "copenhagen-to-first-phrases",
+  "headline": "From a name in the search box to useful Danish phrases",
+  "overview": "Mira uses the world explorer to find Copenhagen, changes the geographic view, then follows the place's own language path into public phrases she can actually use.",
+  "payoff": "She leaves the explorer with a visible set of essential Danish phrases tied to the city she chose.",
+  "scenes": [
+    {
+      "id": "arrive",
+      "title": "Mira opens the world with only a city name",
+      "narrative": "She is on her phone and has one question—what thread should she follow into Copenhagen? The explorer offers search, layers, a world view, and a place index without asking her to sign in first.",
+      "frames": [
+        "journey-curious-traveler/mobile/scene-01-explorer.png"
+      ],
+      "frameCaptions": [
+        "Mira opens the world with only a city name"
+      ],
+      "location": "/explore",
+      "surface": "mobile",
+      "sourceFeature": "world-explorer",
+      "action": "Opened the public world explorer.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "search",
+      "title": "The world narrows to one plausible result",
+      "narrative": "The index collapses to **Copenhagen · City · Europe**. Mira gets a specific destination without wrestling with region filters or guessing a category.",
+      "frames": [
+        "journey-curious-traveler/mobile/scene-02-search.png"
+      ],
+      "frameCaptions": [
+        "The world narrows to one plausible result"
+      ],
+      "location": "/explore",
+      "surface": "mobile",
+      "sourceFeature": "world-explorer",
+      "action": "Searched for \"Copenhagen\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "place",
+      "title": "Copenhagen becomes a place, not a pin",
+      "narrative": "The selected-place view gives Mira a concise orientation and three routes forward: language, people, or the full destination guide. The explorer has converted a search result into a decision.",
+      "frames": [
+        "journey-curious-traveler/mobile/scene-03-copenhagen.png"
+      ],
+      "frameCaptions": [
+        "Copenhagen becomes a place, not a pin"
+      ],
+      "location": "/explore",
+      "surface": "mobile",
+      "sourceFeature": "world-explorer",
+      "action": "Opened the Copenhagen place card.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "map",
+      "title": "She changes perspective without losing the place",
+      "narrative": "The projection switches while Copenhagen stays selected. Mira can orient geographically without starting the search again or losing the paths she just found.",
+      "frames": [
+        "journey-curious-traveler/mobile/scene-04-flat-map.png"
+      ],
+      "frameCaptions": [
+        "She changes perspective without losing the place"
+      ],
+      "location": "/explore",
+      "surface": "mobile",
+      "sourceFeature": "world-explorer",
+      "action": "Selected \"Flat map\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "phrases",
+      "title": "The city opens into words she can use",
+      "narrative": "The next page is not a generic language upsell. It is Copenhagen's public guide to essential Danish phrases, organised around daily life, work, culture, and emergencies.",
+      "frames": [
+        "journey-curious-traveler/mobile/scene-05-phrases.png"
+      ],
+      "frameCaptions": [
+        "The city opens into words she can use"
+      ],
+      "location": "/relocate/copenhagen/language",
+      "surface": "mobile",
+      "action": "Opened \"Learn a little of the language\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "daily-life",
+      "title": "She reaches the practical first phrases",
+      "narrative": "Mira finishes with the daily-life section visible on her phone. The journey has moved from curiosity to a concrete first preparation step without requiring an account.",
+      "frames": [
+        "journey-curious-traveler/mobile/scene-06-daily-life.png"
+      ],
+      "frameCaptions": [
+        "She reaches the practical first phrases"
+      ],
+      "location": "/relocate/copenhagen/language",
+      "surface": "mobile",
+      "action": "Scrolled to the Daily life phrase group.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "platform": "web",
+  "surface": "mobile",
+  "capturedAt": "2026-09-20T14:11:08.437Z",
+  "walkRecording": "video/page@89c6328907a9f13508c436ccb9dad1c9.mp4"
+}

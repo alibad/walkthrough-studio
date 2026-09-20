@@ -1,0 +1,39 @@
+{
+  "featureId": "sexual-wellness",
+  "featureName": "Sexual Wellness Training",
+  "type": "feature",
+  "location": "/relationships/sexual-wellness",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Sexual Wellness Training, from entry to detail",
+  "overview": "Sexual Wellness Training is a progressive, structured program focused on developing physical control and psychological confidence in intimate contexts. The curriculum is designed as a sequence of practices that build on each other, helping users develop greater body awareness, emotional regulation, and relational attunement over time.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Sexual Wellness Training — Landing State",
+      "description": "The landing page showing the initial state and main interface, with the training curriculum and progress tracking.",
+      "screenshotFilename": "sexual-wellness/step-1-landing.png",
+      "screenshotAlt": "Sexual Wellness Training landing page on desktop",
+      "action": "Opened /relationships/sexual-wellness.",
+      "location": "/relationships/sexual-wellness",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Progressive training curriculum building physical control and psychological confidence",
+    "Structured practice sessions with clear guidance for each stage",
+    "Session tracking to monitor consistency and progress through the program",
+    "Body awareness and emotional regulation techniques integrated throughout"
+  ],
+  "tips": [
+    "Progress through the curriculum in order — each stage builds on the previous one",
+    "Consistency matters more than intensity; short regular practice is more effective than occasional long sessions"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

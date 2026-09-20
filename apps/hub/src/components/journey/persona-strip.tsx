@@ -87,9 +87,9 @@ export function PersonaStrip({
                   </div>
                 )}
                 {persona.hasStory && (
-                  <span className="absolute right-2 top-2 flex items-center gap-1 rounded-full border border-rule bg-paper/90 px-2 py-0.5 font-mono text-micro text-ink backdrop-blur">
+                  <span className="absolute right-2 top-2 flex items-center gap-1.5 rounded-full border border-paper/40 bg-ink/90 px-2.5 py-1 text-micro font-semibold text-paper shadow-plate backdrop-blur">
                     <Film className="size-3" strokeWidth={2} aria-hidden />
-                    story
+                    Watchable story
                   </span>
                 )}
               </div>

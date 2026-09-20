@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "projectName": "Inner Quest",
   "platform": "web",
-  "driver": "playwright",
-  "capturedAgainst": "authenticated Inner Quest web app + production MCP connector",
+  "driver": "app-owned legacy captures + Playwright MCP proof",
+  "capturedAgainst": "Inner Quest capture library + authenticated MCP product proof",
   "discoveredAt": "2026-09-20T12:35:41.552Z",
-  "updatedAt": "2026-09-20T16:34:47.000Z",
+  "updatedAt": "2026-09-20T17:10:08.645Z",
   "brand": {
     "primaryColor": "#8b5cf6",
     "accentColor": "#ec4899",
@@ -15,10 +15,1341 @@
     "fontFamily": "Inter"
   },
   "scope": {
-    "status": "bounded",
-    "note": "Product proof used the authenticated owner app, official strengths evidence and one synthetic private reflection. Unrelated private records were excluded, and the synthetic reflection was removed after capture."
+    "status": "partial",
+    "note": "83 app-owned product features are represented by 83 deduplicated desktop walkthrough files and 161 captured states. Legacy 1x mobile captures were rejected rather than promoted as completed coverage. The product tree has changed since these captures and the primary checkout contains concurrent work, so this is broad historical desktop coverage plus one fresh MCP product proof, not a current comprehensive re-walk.",
+    "excluded": [
+      "Fresh authenticated re-walk of every private feature",
+      "Retina mobile re-walk",
+      "Concurrent uncommitted feature work"
+    ]
   },
   "features": [
+    {
+      "featureId": "action-items",
+      "featureName": "Action Items",
+      "location": "/action-items",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "archetypes-cards",
+      "featureName": "Archetype Cards",
+      "location": "/archetypes-cards",
+      "category": "spirituality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "archetypes-jung",
+      "featureName": "Jungian Archetypes",
+      "location": "/archetypes-jung",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "attachment-theory",
+      "featureName": "Attachment Style",
+      "location": "/attachment-theory",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "big-five",
+      "featureName": "Big Five Personality",
+      "location": "/big-five",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "body-connection",
+      "featureName": "Body Connection",
+      "location": "/body-connection",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "breakthrough",
+      "featureName": "Breakthrough Blueprint",
+      "location": "/character/breakthrough",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "breathe",
+      "featureName": "Breathwork",
+      "location": "/breathe",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-11T10:58:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "burnout-prevention",
+      "featureName": "Burnout Prevention",
+      "location": "/career/burnout-prevention",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "career-crm",
+      "featureName": "Professional CRM",
+      "location": "/career/crm",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "career-dashboard",
+      "featureName": "Career Dashboard",
+      "location": "/career/dashboard",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "career-projects",
+      "featureName": "Career Projects",
+      "location": "/career/projects",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "character",
+      "featureName": "Character Hub",
+      "location": "/character",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "coaching",
+      "featureName": "Coaching Sessions",
+      "location": "/character/coaching",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "company-match",
+      "featureName": "Company Culture Match",
+      "location": "/career/company-match",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "compare-contacts",
+      "featureName": "Compare Contacts",
+      "location": "/compare-contacts",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "daily-check-in",
+      "featureName": "Daily Check-In",
+      "location": "/daily-check-in",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "decision-matrix",
+      "featureName": "Career Decision Matrix",
+      "location": "/career/decision-matrix",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "declutter-tracker",
+      "featureName": "Declutter Tracker",
+      "location": "/declutter-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "disc",
+      "featureName": "DISC Assessment",
+      "location": "/disc",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "discussion-map",
+      "featureName": "Discussion Map",
+      "location": "/meetings",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "divine-names",
+      "featureName": "The 99 Names of God",
+      "location": "/divine-names",
+      "category": "spirituality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "drama-triangle",
+      "featureName": "Drama Triangle",
+      "location": "/attachment-theory/practices/drama-triangle",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "emotional-intelligence",
+      "featureName": "Emotional Intelligence",
+      "location": "/emotional-intelligence",
+      "category": "psychology",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "energy-audit",
+      "featureName": "Energy Audit",
+      "location": "/career/energy-audit",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "energy-levels",
+      "featureName": "Energy Levels",
+      "location": "/energy-levels",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "energy-tracker",
+      "featureName": "Energy Tracker",
+      "location": "/energy-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "enneagram",
+      "featureName": "Enneagram",
+      "location": "/enneagram",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "exercise-tracker",
+      "featureName": "Exercise Tracker",
+      "location": "/exercise-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "experiences",
+      "featureName": "Experiences",
+      "location": "/experiences",
+      "category": "spirituality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "feelings-wheel",
+      "featureName": "Feelings Wheel",
+      "location": "/reflections?tab=feelings",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T01:10:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "fierce-intimacy",
+      "featureName": "Fierce Intimacy",
+      "location": "/relationships/fierce-intimacy",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "finances",
+      "featureName": "Finances",
+      "location": "/finances",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "future-letters",
+      "featureName": "Future Letters",
+      "location": "/reflections?tab=future-letters",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "gratitude",
+      "featureName": "Gratitude Journal",
+      "location": "/reflections?tab=gratitude",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T00:50:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "grit",
+      "featureName": "Grit Assessment",
+      "location": "/grit",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "habit-tracker",
+      "featureName": "Habit Tracker",
+      "location": "/habit-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "health-doctor",
+      "featureName": "Health Doctor",
+      "location": "/health-doctor",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "holistic-health",
+      "featureName": "Holistic Health Assessment",
+      "location": "/holistic-health",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "holland-code",
+      "featureName": "Holland Code (RIASEC)",
+      "location": "/holland-code",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "home-environment",
+      "featureName": "Home Environment",
+      "location": "/home-environment",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "ikigai",
+      "featureName": "Ikigai Finder",
+      "location": "/career/ikigai",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-12T08:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "inner-mapping",
+      "featureName": "Inner Mapping",
+      "location": "/inner-mapping",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "intentional-dialogue",
+      "featureName": "Intentional Dialogue",
+      "location": "/relationships/intentional-dialogue",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "joy-audit",
+      "featureName": "Joy Audit",
+      "location": "/joy-audit",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "keirsey",
+      "featureName": "Keirsey Temperament",
+      "location": "/keirsey",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "locus-of-control",
+      "featureName": "Locus of Control",
+      "location": "/locus-of-control",
+      "category": "psychology",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "love-languages",
+      "featureName": "Love Languages",
+      "location": "/love-languages",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "mbti",
+      "featureName": "MBTI / 16 Personalities",
+      "location": "/mbti",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "meditate",
+      "featureName": "Meditation Practice",
+      "location": "/meditate",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-12T06:15:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "mindset",
+      "featureName": "Mindset Assessment",
+      "location": "/mindset",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "mood-tracker",
+      "featureName": "Mood Tracker",
+      "location": "/mood-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "movement-log",
+      "featureName": "Movement Log",
+      "location": "/movement-log",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "my-relationships",
+      "featureName": "My Relationships",
+      "location": "/my-relationships",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "narrator",
+      "featureName": "Narrator",
+      "location": "/narrator",
+      "category": "spirituality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "network",
+      "featureName": "My Network",
+      "location": "/network",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "nutrition-tracker",
+      "featureName": "Nutrition Tracker",
+      "location": "/nutrition-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-22T22:15:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "partner-comparison",
+      "featureName": "Partner Comparison",
+      "location": "/relationships/fierce-intimacy/partner-comparison",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "personality",
+      "featureName": "Personality Hub",
+      "location": "/personality",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "pray",
+      "featureName": "Prayer Practice",
+      "location": "/pray",
+      "category": "spirituality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "purification",
+      "featureName": "Purification",
+      "location": "/purification",
+      "category": "spirituality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "recreation-work-balance",
+      "featureName": "Recreation-Work Balance",
+      "location": "/recreation-work-balance",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "reflections",
+      "featureName": "Reflections",
+      "location": "/reflections",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "relationship-compass",
+      "featureName": "Relationship Needs Compass",
+      "location": "/relationships/compass",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "relationship-enrichment",
+      "featureName": "Relationship Enrichment",
+      "location": "/relationships/enrichment",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "resilience",
+      "featureName": "Resilience Assessment",
+      "location": "/resilience",
+      "category": "psychology",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "self-compassion",
+      "featureName": "Self-Compassion",
+      "location": "/self-compassion",
+      "category": "psychology",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "self-esteem",
+      "featureName": "Self-Esteem Foundations",
+      "location": "/character/self-esteem",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "sexual-wellness",
+      "featureName": "Sexual Wellness Training",
+      "location": "/relationships/sexual-wellness",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "signup",
+      "featureName": "Create Account & Sign In",
+      "location": "/signup",
+      "category": "onboarding",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-12T06:25:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "sleep-tracker",
+      "featureName": "Sleep Tracker",
+      "location": "/sleep-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "social-connection-tracker",
+      "featureName": "Social Connection Tracker",
+      "location": "/social-connection-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "space-energy-audit",
+      "featureName": "Space Energy Audit",
+      "location": "/space-energy-audit",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "strengths",
+      "featureName": "Strengths Assessment",
+      "location": "/strengths",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "team-dynamics",
+      "featureName": "Team Dynamics",
+      "location": "/career/team-dynamics",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "team-health",
+      "featureName": "Team Health",
+      "location": "/career/team-health",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "team-values",
+      "featureName": "Team Values Alignment",
+      "location": "/career/team-values",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "tussle",
+      "featureName": "Tussle",
+      "location": "/attachment-theory/practices/tussle",
+      "category": "relationships",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "values-wheel",
+      "featureName": "Values Wheel",
+      "location": "/values-wheel",
+      "category": "growth",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-12T18:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "via-strengths",
+      "featureName": "VIA Character Strengths",
+      "location": "/via-strengths",
+      "category": "personality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "water-tracker",
+      "featureName": "Water Tracker",
+      "location": "/water-tracker",
+      "category": "wellbeing",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "wolf-reflection",
+      "featureName": "Wolf Reflection",
+      "location": "/reflections?tab=wolf",
+      "category": "spirituality",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-12T08:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
+    {
+      "featureId": "work-life-circle",
+      "featureName": "Work-Life Circle",
+      "location": "/career/work-life-circle",
+      "category": "career",
+      "requiresAuth": true,
+      "authRole": "owner",
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-03-19T02:00:00.000Z",
+      "notes": "Imported app-owned desktop capture; freshness is unknown until re-walked. The legacy 1x mobile captures were rejected by the evidence verifier and remain pending."
+    },
     {
       "featureId": "repaired-write-path",
       "featureName": "Evidence-backed self knowledge",
@@ -34,6 +1365,49 @@
       "notes": "The walkthrough retrieves official CliftonStrengths evidence with provenance, shows how Inner Quest turns themes into testable practices, and proves a private reflection write through exact read-back and the real My Reflections screen."
     }
   ],
-  "personas": [],
+  "personas": [
+    {
+      "id": "personal-os-owner",
+      "name": "Samira Haddad",
+      "description": "Samira is trying to connect what she learns about her character, relationships, work, and wellbeing without spreading private notes across five apps. She wants one next action, not another personality label, public profile, or diagnostic claim.",
+      "authRole": "owner",
+      "entryPoint": "/signup",
+      "keyJourneys": [
+        "find-a-next-step"
+      ],
+      "portrait": "personas/personal-os-owner.png",
+      "scene": "personas/personal-os-owner-scene.png",
+      "navItems": [
+        {
+          "label": "Create Account & Sign In",
+          "location": "/signup"
+        },
+        {
+          "label": "Character Hub",
+          "location": "/character"
+        },
+        {
+          "label": "Values Wheel",
+          "location": "/values-wheel"
+        },
+        {
+          "label": "My Relationships",
+          "location": "/my-relationships"
+        },
+        {
+          "label": "Career Dashboard",
+          "location": "/career/dashboard"
+        },
+        {
+          "label": "Holistic Health Assessment",
+          "location": "/holistic-health"
+        },
+        {
+          "label": "Action Items",
+          "location": "/action-items"
+        }
+      ]
+    }
+  ],
   "synthetic": false
 }

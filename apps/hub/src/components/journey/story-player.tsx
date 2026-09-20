@@ -16,7 +16,8 @@
  */
 
 import { useEffect, useState } from "react";
-import { Film, X } from "lucide-react";
+import { Play, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /**
  * `kind` decides what this claims about the clip, and the two claims are not
@@ -29,13 +30,24 @@ export function StoryPlayer({
   src,
   title,
   kind = "story",
+  label,
+  detail,
+  variant = "button",
+  className,
 }: {
   src: string;
   title: string;
   kind?: "story" | "recording";
+  label?: string;
+  detail?: string;
+  variant?: "button" | "card" | "overlay";
+  className?: string;
 }) {
   const [open, setOpen] = useState(false);
   const isRecording = kind === "recording";
+  const buttonLabel = label ?? (isRecording ? "Play the recorded walk" : "Play the story film");
+  const buttonDetail =
+    detail ?? (isRecording ? "Unedited screen recording" : "Narrated from real captures");
 
   useEffect(() => {
     if (!open) return;
@@ -56,18 +68,48 @@ export function StoryPlayer({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="flex items-center gap-2 rounded-full border border-ink bg-ink px-4 py-2 text-label text-paper transition-colors hover:bg-ink/90"
+        className={cn(
+          "group/video text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
+          variant === "button" &&
+            "inline-flex items-center gap-3 rounded-md border border-ink bg-ink px-4 py-2.5 text-paper shadow-plate hover:-translate-y-px hover:bg-ink/90 hover:shadow-plate-lift",
+          variant === "card" &&
+            "flex w-full items-center gap-3 rounded-md border border-brand/30 bg-brand-wash px-3.5 py-3 text-brand-deep shadow-plate hover:-translate-y-px hover:border-brand/55 hover:shadow-plate-lift",
+          variant === "overlay" &&
+            "absolute inset-x-3 bottom-3 z-10 flex items-center gap-2.5 rounded-md border border-paper/20 bg-ink/92 px-3 py-2.5 text-paper shadow-plate backdrop-blur hover:-translate-y-px hover:bg-ink",
+          className,
+        )}
       >
-        <Film className="size-3.5" strokeWidth={1.75} aria-hidden />
-        {isRecording ? "Watch the walk" : "Watch the story"}
+        <span
+          className={cn(
+            "grid size-8 shrink-0 place-items-center rounded-full transition-transform group-hover/video:scale-105",
+            variant === "card" ? "bg-brand text-paper" : "bg-paper text-ink",
+          )}
+          aria-hidden
+        >
+          <Play className="ml-0.5 size-3.5 fill-current" strokeWidth={1.75} />
+        </span>
+        <span className="min-w-0">
+          <span className="block text-label font-semibold leading-tight">{buttonLabel}</span>
+          <span
+            className={cn(
+              "mt-0.5 block text-micro leading-tight",
+              variant === "card" ? "text-brand-deep/70" : "text-paper/65",
+            )}
+          >
+            {buttonDetail}
+          </span>
+        </span>
       </button>
 
+      {/* `backdrop-filter` on an ancestor of a native video surface can make
+          Chromium on macOS promote a black compositor layer even while the
+          video is decoded and playing. Keep this overlay opaque instead. */}
       {open && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`${title} — story video`}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-ink/92 p-4 backdrop-blur-sm sm:p-8"
+          aria-label={`${title} — ${isRecording ? "walk recording" : "story video"}`}
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-ink p-4 sm:p-8"
         >
           <div className="flex w-full max-w-[1600px] items-center justify-between gap-4">
             <p className="truncate font-serif text-title text-paper">{title}</p>

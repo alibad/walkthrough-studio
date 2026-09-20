@@ -1,0 +1,75 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T08:41:10.809Z",
+      "startedAt": "2026-09-20T08:40:49.214Z",
+      "completedAt": "2026-09-20T08:41:10.809Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.globequest.app/explore",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "world-explorer"
+        ],
+        "personas": [],
+        "screenshots": 6,
+        "videos": 0,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-20T14:11:08.437Z",
+      "startedAt": "2026-09-20T14:10:54.552Z",
+      "completedAt": "2026-09-20T14:11:08.437Z",
+      "skill": "walkthrough",
+      "agent": "walk-public-personas.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.globequest.app/explore",
+        "surfaces": [
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "persona-only run; catalog remains explicitly bounded · video normalized to portable H.264 MP4 when ffmpeg was available · invariants verified: retina, realMobile, animationsFrozen, timeFrozen, contentful, consoleNetwork, video"
+      },
+      "coverage": {
+        "features": [
+          "world-explorer"
+        ],
+        "personas": [
+          "curious-traveler"
+        ],
+        "screenshots": 6,
+        "videos": 1,
+        "issues": 0
+      }
+    }
+  ]
+}

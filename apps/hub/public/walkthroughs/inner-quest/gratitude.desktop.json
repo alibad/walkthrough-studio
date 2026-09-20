@@ -1,0 +1,84 @@
+{
+  "featureId": "gratitude",
+  "featureName": "Gratitude Journal",
+  "type": "feature",
+  "location": "/reflections?tab=gratitude",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Gratitude Journal, from entry to detail",
+  "overview": "The Gratitude Journal is a daily practice tool integrated into the My Reflections page. Each day, users log up to three things they're grateful for, guided by a rotating reflection prompt. An optional deeper reflection field encourages meaningful introspection.\n\nAfter saving, AI analyzes the entry to surface themes (e.g., personal growth, work purpose, relationships), assigns a depth score, and offers a concrete follow-up suggestion. The streak tracker gamifies consistency with milestone goals (3-day, 7-day, etc.).",
+  "targetAudience": "Anyone wanting to build a gratitude habit — from beginners looking for daily grounding to experienced practitioners tracking patterns over time.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Gratitude Tab — Empty State",
+      "description": "Navigate to the Reflections page and select the **Gratitude** tab. For new users, an inviting empty state displays a heart icon with the message \"Start your gratitude practice\" and a call-to-action button. The **+ Log Gratitude** button in the top-right corner is also available for returning users.\n\nThe tab bar shows all reflection types: Reflections, Gratitude, Wolves, Feelings, Wins, Letters, and Feedback.",
+      "screenshotFilename": "gratitude/step-1-landing.png",
+      "screenshotAlt": "Gratitude tab showing empty state with heart icon, encouraging message, and Log Your First Gratitude button",
+      "action": "Opened /reflections?tab=gratitude.",
+      "location": "/reflections?tab=gratitude",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Log Gratitude — Entry Form",
+      "description": "Click **+ Log Gratitude** to open the entry modal. The form includes:\n\n- **Today's Reflection** — a rotating daily prompt in a warm yellow banner (e.g., \"What opportunity is available to you that wasn't always?\")\n- **Three gratitude fields** — the first is required, the other two are optional\n- **Deeper reflection** — an optional textarea for exploring why these things matter\n- **Cancel / Save buttons** — Save is disabled until at least one item is entered",
+      "screenshotFilename": "gratitude/step-2-log-form.png",
+      "screenshotAlt": "Gratitude entry modal showing today's reflection prompt, three numbered input fields, and a deeper reflection textarea",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=gratitude",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Filling In Your Gratitude",
+      "description": "Fill in your gratitude items and an optional reflection. The **Save** button activates (turns golden) once at least one item is entered. The form is clean and focused — no distractions from the practice.",
+      "screenshotFilename": "gratitude/step-3-filled-form.png",
+      "screenshotAlt": "Gratitude form filled with three items and a deeper reflection, Save button now active in golden color",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=gratitude",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Entry Saved — Streak & Timeline",
+      "description": "After saving, the entry appears in a chronological timeline grouped by month. Key elements:\n\n- **Streak tracker** — shows \"1 day streak\" with a milestone hint (\"2 more to 3-day milestone!\")\n- **Logged today badge** — green checkmark confirming today's practice\n- **Entry card** — displays the date, reflection prompt, gratitude items with heart icons, the deeper reflection in italics, and AI-generated theme analysis",
+      "screenshotFilename": "gratitude/step-4-entry-saved.png",
+      "screenshotAlt": "Gratitude timeline showing saved entry with streak counter, logged today badge, and entry card with gratitude items",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=gratitude",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Achievement Unlocked — Grateful Heart",
+      "description": "First-time gratitude loggers earn the **Grateful Heart** achievement — a bronze-tier wellbeing milestone worth **+10 points**. The achievement popup features a prayer hands emoji with celebration styling and an \"Awesome!\" dismiss button.",
+      "screenshotFilename": "gratitude/step-5-achievement.png",
+      "screenshotAlt": "Achievement popup showing Grateful Heart badge with prayer hands emoji, +10 points, bronze tier, wellbeing category",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=gratitude",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Daily rotating reflection prompts to guide gratitude practice",
+    "Three gratitude slots with optional deeper reflection",
+    "AI-powered theme analysis with depth scoring",
+    "Streak tracking with milestone goals (3-day, 7-day, etc.)",
+    "Achievement system integration (Grateful Heart badge)",
+    "Chronological timeline grouped by month",
+    "Home page integration showing today's gratitude with AI insights"
+  ],
+  "tips": [
+    "Aim for specificity over generality — 'My teammate's encouragement on the design review' is better than 'good coworkers'",
+    "Use the deeper reflection field to explore why — this boosts your AI depth score",
+    "Try logging at the same time each day to build a lasting habit",
+    "Review your themes over time to discover what consistently grounds you"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T00:50:00.000Z",
+  "capturedAt": "2026-03-19T00:50:00.000Z",
+  "synthetic": false
+}

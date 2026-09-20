@@ -1,0 +1,49 @@
+{
+  "featureId": "drama-triangle",
+  "featureName": "Drama Triangle",
+  "type": "feature",
+  "location": "/attachment-theory/practices/drama-triangle",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Drama Triangle, from entry to detail",
+  "overview": "Identify when you fall into Victim, Persecutor, or Rescuer roles in conflicts. Based on the Karpman Drama Triangle, this tool helps you recognize dysfunctional relationship patterns and shift toward healthier dynamics.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Drama Triangle — Landing State",
+      "description": "The landing page introducing the Drama Triangle model with the three roles: Victim, Persecutor, and Rescuer.",
+      "screenshotFilename": "drama-triangle/step-1-landing.png",
+      "screenshotAlt": "Drama Triangle landing page on desktop",
+      "action": "Opened /attachment-theory/practices/drama-triangle.",
+      "location": "/attachment-theory/practices/drama-triangle",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Drama Triangle — Below the Fold",
+      "description": "Additional content visible after scrolling, including role identification exercises and strategies for shifting out of the drama triangle.",
+      "screenshotFilename": "drama-triangle/step-2-below-fold.png",
+      "screenshotAlt": "Drama Triangle below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/attachment-theory/practices/drama-triangle",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Identify your default role in the Victim, Persecutor, or Rescuer triangle",
+    "Understand the dynamics of the Karpman Drama Triangle",
+    "Recognize conflict patterns in your relationships",
+    "Learn strategies to exit the drama triangle and adopt healthier roles"
+  ],
+  "tips": [
+    "Think of a recent conflict and honestly assess which role you defaulted to — awareness is the first step to change.",
+    "Remember that all three roles are disempowering; the goal is to exit the triangle entirely, not switch roles."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

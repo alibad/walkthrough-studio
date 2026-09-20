@@ -1,0 +1,49 @@
+{
+  "featureId": "locus-of-control",
+  "featureName": "Locus of Control",
+  "type": "feature",
+  "location": "/locus-of-control",
+  "category": "psychology",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Locus of Control, from entry to detail",
+  "overview": "The Locus of Control assessment measures whether you tend to attribute outcomes in your life to your own actions and decisions (internal locus) or to outside forces like luck, fate, or other people (external locus). Understanding your locus of control is foundational to personal agency — it reveals how much ownership you feel over your life and where you might be giving away power you actually have.",
+  "targetAudience": "Users interested in psychology tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Locus of Control — Landing State",
+      "description": "The landing page showing the initial state and main interface, with the assessment questionnaire and an introduction to the concept.",
+      "screenshotFilename": "locus-of-control/step-1-landing.png",
+      "screenshotAlt": "Locus of Control landing page on desktop",
+      "action": "Opened /locus-of-control.",
+      "location": "/locus-of-control",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Locus of Control — Below the Fold",
+      "description": "Additional content visible after scrolling, including your internal/external score, detailed results breakdown, and practical implications.",
+      "screenshotFilename": "locus-of-control/step-2-below-fold.png",
+      "screenshotAlt": "Locus of Control below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/locus-of-control",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Research-based assessment measuring internal vs. external locus of control",
+    "Detailed score showing where you fall on the internal-external spectrum",
+    "Practical insights on how your locus of control affects your decisions and outcomes",
+    "Guidance on cultivating a healthier sense of personal agency"
+  ],
+  "tips": [
+    "Answer based on how you actually think, not how you wish you thought — honesty produces the most useful results",
+    "A strong external locus isn't inherently bad; it often reflects healthy acknowledgment of systemic factors"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

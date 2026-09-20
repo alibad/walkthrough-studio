@@ -77,7 +77,13 @@ captured on different surfaces.
 ```bash
 pnpm install
 pnpm dev          # → http://localhost:3000
+pnpm run doctor   # local providers and target readiness
+pnpm verify       # deterministic local verification, including a production build
 ```
+
+Use `pnpm run doctor`, not `pnpm doctor`: `doctor` is also a pnpm built-in, so
+the shorter spelling can exit successfully without running this repository's
+readiness checks.
 
 The hub ships with **one** registered app: Wikipedia — search, reading an
 article, and the revision history, walked live across desktop and mobile. It's

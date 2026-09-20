@@ -1,0 +1,39 @@
+{
+  "featureId": "body-connection",
+  "featureName": "Body Connection",
+  "type": "feature",
+  "location": "/body-connection",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Body Connection, from entry to detail",
+  "overview": "Practice body scan meditation for physical awareness. Guide your attention systematically through your body to release tension, build somatic awareness, and strengthen the mind-body connection.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Body Connection — Landing State",
+      "description": "The landing page showing the body scan meditation interface with guided instructions and body visualization.",
+      "screenshotFilename": "body-connection/step-1-landing.png",
+      "screenshotAlt": "Body Connection landing page on desktop",
+      "action": "Opened /body-connection.",
+      "location": "/body-connection",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Guided body scan meditation to build somatic awareness",
+    "Systematic attention through body regions to release tension",
+    "Track body connection practice sessions over time",
+    "Strengthen the mind-body connection through regular practice"
+  ],
+  "tips": [
+    "Lie down or sit in a comfortable position before starting — physical comfort helps you focus inward without distraction.",
+    "If your mind wanders during the scan, gently return attention to the body part you were focusing on without judgment."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

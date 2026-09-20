@@ -1,0 +1,31 @@
+{
+  "featureId": "activity-ledger",
+  "featureName": "Activity Ledger",
+  "type": "feature",
+  "location": "DoneOS → Activity Ledger",
+  "category": "product",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Every meaningful transition leaves a trace",
+  "overview": "Activity is the accountability layer: completions, claims, blocks, reviews, and external updates remain attributable after the work moves on.",
+  "targetAudience": "Operators coordinating accountable human and agent execution",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Activity Ledger, ready",
+      "action": "Opened the committed DoneOS store-preview harness with screen=activity.",
+      "description": "Activity is the accountability layer: completions, claims, blocks, reviews, and external updates remain attributable after the work moves on.",
+      "screenshotFilename": "activity-ledger/desktop/step-01-ready.png",
+      "screenshotAlt": "Activity Ledger in the DoneOS Flutter product on undefined",
+      "location": "DoneOS → Activity Ledger",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Every meaningful transition leaves a trace"
+  ],
+  "note": "Live-rendered from DoneOS's committed store-preview entry point with fictional showcase data. This proves the Flutter product surface, not a production account or a signed iOS/Android store binary.",
+  "generatedAt": "2026-09-20T16:51:18.066Z",
+  "capturedAt": "2026-09-20T16:51:18.066Z"
+}

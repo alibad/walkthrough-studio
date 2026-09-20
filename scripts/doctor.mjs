@@ -22,9 +22,11 @@
  * instead of portraits, and says so.
  *
  * Usage:
- *   pnpm doctor                 full report, with live credential checks
- *   pnpm doctor --no-verify     skip the network calls
- *   pnpm doctor --json          machine-readable
+ *   pnpm run doctor                 full report, with live credential checks
+ *   pnpm run doctor --no-verify     skip the network calls
+ *   pnpm run doctor --json          machine-readable
+ *
+ * `pnpm doctor` is pnpm's own built-in command and does not run this script.
  */
 
 import { dirname, resolve } from "node:path";

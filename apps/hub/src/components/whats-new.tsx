@@ -32,7 +32,10 @@ export function WhatsNew({
   const featureName = (id: string) =>
     catalog?.features.find((f) => f.featureId === id)?.featureName ?? id;
 
-  const hasDrift = staleness.commitsSince > 0;
+  const hasDrift = staleness.commitsSince > 0 || staleness.dirty;
+  const targetCommitMissing =
+    staleness.verdict === "unknown" &&
+    staleness.reason === "the walkthrough's recorded target commit is missing from this checkout";
 
   return (
     <section
@@ -81,7 +84,13 @@ export function WhatsNew({
          * can happen. Printing "set codebase.local in projects.json" to a
          * stranger was addressing the maintainer in front of the audience. */}
         {staleness.verdict === "unknown" &&
-          (isLocalHub() ? (
+          (targetCommitMissing ? (
+            <p className="text-small leading-relaxed text-ink-muted">
+              Drift can&apos;t be measured because this walkthrough is not pinned to a target commit
+              that exists in the app&apos;s checkout. The captures remain valid dated evidence, but
+              this card cannot call them fresh or calculate what changed afterward.
+            </p>
+          ) : isLocalHub() ? (
             <p className="text-small leading-relaxed text-ink-muted">
               Can&apos;t measure drift — {staleness.reason ?? "no readable local checkout"}. Set{" "}
               <code className="font-mono text-[0.8125rem] text-ink">codebase.local</code> in{" "}
@@ -140,6 +149,13 @@ export function WhatsNew({
             {!hasDrift && (
               <p className="mt-3.5 text-small text-ink-muted">
                 The app hasn&apos;t changed since this was captured.
+              </p>
+            )}
+
+            {staleness.dirty && staleness.commitsSince === 0 && (
+              <p className="mt-3.5 text-small text-warn">
+                The checkout has uncommitted changes, so this walkthrough cannot be called fresh
+                even though HEAD has not moved.
               </p>
             )}
 

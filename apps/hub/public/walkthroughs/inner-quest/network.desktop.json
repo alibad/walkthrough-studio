@@ -1,0 +1,39 @@
+{
+  "featureId": "network",
+  "featureName": "My Network",
+  "type": "feature",
+  "location": "/network",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "My Network, from entry to detail",
+  "overview": "My Network lets you map your social world visually. Add the people in your life and see them arranged as an interactive graph showing how they connect to each other, or switch to a world map view to see where your relationships are distributed geographically. It helps you understand the structure and diversity of your social ecosystem at a glance.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "My Network — Landing State",
+      "description": "The landing page showing the initial state and main interface, with the interactive network graph or world map view of your social connections.",
+      "screenshotFilename": "network/step-1-landing.png",
+      "screenshotAlt": "My Network landing page on desktop",
+      "action": "Opened /network.",
+      "location": "/network",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Interactive graph visualization of your social network and connections",
+    "World map view showing the geographic distribution of your relationships",
+    "Add and categorize people in your network with relationship context",
+    "Network statistics and insights about the diversity of your social ecosystem"
+  ],
+  "tips": [
+    "Start by adding the 10-15 most important people in your life to get a meaningful picture",
+    "Use the world map view to notice if your network is geographically diverse or concentrated"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

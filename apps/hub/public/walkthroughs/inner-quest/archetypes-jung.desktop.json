@@ -1,0 +1,49 @@
+{
+  "featureId": "archetypes-jung",
+  "featureName": "Jungian Archetypes",
+  "type": "feature",
+  "location": "/archetypes-jung",
+  "category": "personality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Jungian Archetypes, from entry to detail",
+  "overview": "Track daily behaviors across 4 Jungian archetypes: King, Warrior, Magician, and Lover. Discover which archetypes dominate your life and how to bring them into balance.",
+  "targetAudience": "Users interested in personality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Jungian Archetypes — Landing State",
+      "description": "The landing page of the Jungian Archetypes tool showing the initial state and main interface.",
+      "screenshotFilename": "archetypes-jung/step-1-landing.png",
+      "screenshotAlt": "Jungian Archetypes landing page on desktop",
+      "action": "Opened /archetypes-jung.",
+      "location": "/archetypes-jung",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Jungian Archetypes — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "archetypes-jung/step-2-below-fold.png",
+      "screenshotAlt": "Jungian Archetypes below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/archetypes-jung",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Daily behavior tracking across 4 Jungian archetypes: King, Warrior, Magician, and Lover",
+    "Visualizes which archetypes are active, overdeveloped, or underdeveloped in your daily life",
+    "Grounded in Jungian psychology and Robert Moore's four mature masculine/feminine archetypes",
+    "Guides you toward integrating all four archetypes for psychological wholeness and balance"
+  ],
+  "tips": [
+    "Log behaviors daily for at least a week before drawing conclusions — single-day snapshots can be misleading due to situational factors.",
+    "An overdeveloped archetype is as problematic as an underdeveloped one — the goal is balance across all four, not maximizing any single one."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

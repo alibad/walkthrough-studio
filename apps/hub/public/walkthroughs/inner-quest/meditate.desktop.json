@@ -1,0 +1,87 @@
+{
+  "featureId": "meditate",
+  "featureName": "Meditation Practice",
+  "type": "feature",
+  "location": "/meditate",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Meditation Practice, from entry to detail",
+  "overview": "The Meditation Practice tool is your personal meditation space, offering 8 guided meditation techniques in a beautiful, distraction-free environment. From Open Awareness to Loving-Kindness (Metta), Body Scan, Walking Meditation, and more — each technique comes with detailed step-by-step instructions so you can practice even if you've never meditated before.\n\nSessions range from 5 to 30 minutes, and the immersive full-screen timer features a calming animated orb with customizable visual themes and ambient sounds. It's designed to help you build a consistent meditation habit with zero friction.",
+  "targetAudience": "Anyone looking to start or deepen a meditation practice. Whether you're a complete beginner curious about mindfulness or an experienced meditator wanting a simple, beautiful timer — the detailed instructions and variety of techniques make it accessible to all levels.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Landing Page — Your Meditation Space",
+      "description": "When you open the Meditation tool, you'll see a clean, centered interface. A large purple orb displays the current meditation category (\"Simply Be\" for Open Awareness), with the technique name below it. Duration buttons let you choose 5, 10, 15, 20, or 30 minutes — 10 minutes is selected by default.\n\nAt the bottom, \"Instructions\" shows you how to practice the technique, and \"Change\" lets you browse all available meditation styles.",
+      "screenshotFilename": "meditate/step-1-landing.png",
+      "screenshotAlt": "Meditation landing page showing the purple orb with Simply Be label, Open Awareness Meditation title, duration selector, and Start Meditation button",
+      "action": "Opened /meditate.",
+      "location": "/meditate",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Choose a Meditation Technique",
+      "description": "Tap \"Change\" to open the technique selector. You'll see 8 meditation styles to choose from:\n\n- Body Scan Meditation — lying down or seated\n- Loving-Kindness (Metta) — hands on heart\n- Open Awareness Meditation — relaxed alertness\n- Breath & Mantra Meditation — spine erect\n- Walking Meditation — standing, slow walking\n- Gratitude Meditation — prayer position or hands on heart\n- Flame Gazing (Trataka) — flame at eye level\n- Noting Practice — seated comfortably\n\nEach shows the posture recommendation and default duration. The currently selected technique has a purple highlight and checkmark.",
+      "screenshotFilename": "meditate/step-2-technique-selector.png",
+      "screenshotAlt": "Technique selector modal showing 8 meditation options with descriptions, durations, and the currently selected Open Awareness highlighted",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/meditate",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Read the Instructions",
+      "description": "Tap \"Instructions\" to see detailed, numbered guidance for your chosen meditation. For Open Awareness, you'll see 14 steps walking you through posture (sit with back straight but not rigid), preparation (three deep breaths to arrive), the core practice (open awareness without focusing on any one thing), how to handle wandering thoughts (label them gently as \"thinking\" or \"planning\"), and a beautiful reminder: \"You are the sky. Everything else is weather passing through.\"\n\nEvery technique has its own unique instruction set tailored to that practice style.",
+      "screenshotFilename": "meditate/step-3-instructions.png",
+      "screenshotAlt": "Instructions panel showing 14 numbered steps for Open Awareness Meditation, from posture setup to returning to activity",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/meditate",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Active Meditation Session",
+      "description": "Hit \"Start Meditation\" and the screen transforms into an immersive, dark meditation environment. A large animated orb pulses gently at the center with the meditation category label. A prominent countdown timer shows your remaining time in large, easy-to-read digits.\n\nBelow the timer, Pause and Reset buttons give you full control. You can also tap \"Instructions\" during the session if you need a reminder. Press ESC or the X button in the top-right to end early.",
+      "screenshotFilename": "meditate/step-4-active-session.png",
+      "screenshotAlt": "Active meditation session showing the animated green orb with Simply Be label, countdown timer at 04:54, and Pause/Reset controls",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/meditate",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Customize Your Experience",
+      "description": "During an active session, two buttons in the bottom-right corner let you personalize the environment. The theme button reveals 4 visual themes that change the orb's color and animation style. The sound button lets you toggle ambient background sounds to enhance your meditation.\n\nThese customization options let you create the atmosphere that works best for your practice — whether you prefer a minimal, quiet session or a more immersive audiovisual experience.",
+      "screenshotFilename": "meditate/step-5-theme-options.png",
+      "screenshotAlt": "Active session with theme selector showing 4 visual theme options in the bottom-right corner",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/meditate",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "8 meditation techniques spanning mindfulness, compassion, body awareness, and concentration",
+    "Immersive full-screen timer with animated orb visualization",
+    "Flexible session duration from 5 to 30 minutes",
+    "Detailed step-by-step instructions for every technique",
+    "4 visual themes to customize the meditation environment",
+    "Ambient sound options for enhanced immersion",
+    "Pause, reset, and resume controls during sessions",
+    "Posture guidance for each meditation style"
+  ],
+  "tips": [
+    "Start with Open Awareness or Breath & Mantra if you're new to meditation — they're the most accessible",
+    "Begin with 5-minute sessions and gradually increase as your practice develops",
+    "Try Loving-Kindness (Metta) when you're feeling stressed about relationships",
+    "Walking Meditation is a great option when you're too restless to sit still",
+    "Read the instructions before your first session with a new technique, then let the timer guide you",
+    "Gratitude Meditation pairs well with the Gratitude journaling tool in Inner Quest"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-12T06:15:00.000Z",
+  "capturedAt": "2026-03-12T06:15:00.000Z",
+  "synthetic": false
+}

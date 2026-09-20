@@ -1,0 +1,39 @@
+{
+  "featureId": "recreation-work-balance",
+  "featureName": "Recreation-Work Balance",
+  "type": "feature",
+  "location": "/recreation-work-balance",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Recreation-Work Balance, from entry to detail",
+  "overview": "Weekly balance tracker for work, play, rest, social, and personal time. Monitor how you distribute your time across life's essential domains and make intentional adjustments for greater fulfillment.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Recreation-Work Balance — Landing State",
+      "description": "The landing page showing the weekly balance tracker with time allocation across work, play, rest, social, and personal domains.",
+      "screenshotFilename": "recreation-work-balance/step-1-landing.png",
+      "screenshotAlt": "Recreation-Work Balance landing page on desktop",
+      "action": "Opened /recreation-work-balance.",
+      "location": "/recreation-work-balance",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Track weekly time across 5 life domains: work, play, rest, social, and personal",
+    "Visualize your balance profile with charts and trend data",
+    "Identify which areas are over- or under-represented in your week",
+    "Make intentional adjustments to achieve a more fulfilling balance"
+  ],
+  "tips": [
+    "Log your time estimates at the end of each week while the week is still fresh in your memory.",
+    "Don't aim for equal time in all areas — a meaningful balance looks different for everyone. Focus on alignment with your values."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

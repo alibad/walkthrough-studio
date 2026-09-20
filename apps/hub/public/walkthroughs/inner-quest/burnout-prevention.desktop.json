@@ -1,0 +1,49 @@
+{
+  "featureId": "burnout-prevention",
+  "featureName": "Burnout Prevention",
+  "type": "feature",
+  "location": "/career/burnout-prevention",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Burnout Prevention, from entry to detail",
+  "overview": "Rate 8 burnout indicators weekly on a 0-4 scale to track your burnout risk over time. Catch warning signs early and take action before exhaustion sets in.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Burnout Prevention — Landing State",
+      "description": "The landing page of the Burnout Prevention tool showing the initial state and main interface.",
+      "screenshotFilename": "burnout-prevention/step-1-landing.png",
+      "screenshotAlt": "Burnout Prevention landing page on desktop",
+      "action": "Opened /career/burnout-prevention.",
+      "location": "/career/burnout-prevention",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Burnout Prevention — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "burnout-prevention/step-2-below-fold.png",
+      "screenshotAlt": "Burnout Prevention below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/career/burnout-prevention",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Weekly check-in rating 8 key burnout indicators on a 0-4 severity scale",
+    "Tracks burnout risk over time with trend visualization to catch worsening patterns",
+    "Based on established burnout research covering emotional exhaustion, cynicism, and efficacy",
+    "Actionable recovery suggestions triggered when your score crosses risk thresholds"
+  ],
+  "tips": [
+    "Consistency matters more than perfection — a quick weekly check-in is far more valuable than an occasional deep review, because burnout creeps up gradually.",
+    "High scores in emotional exhaustion plus low scores in personal accomplishment is the classic burnout signature — watch both dimensions, not just overall stress."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

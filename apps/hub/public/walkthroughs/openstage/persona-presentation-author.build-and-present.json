@@ -1,0 +1,103 @@
+{
+  "personaId": "presentation-author",
+  "journeyId": "build-and-present",
+  "headline": "From a terminal brief to a deck Noor can actually present",
+  "overview": "Noor uses the OpenStage skills through either Claude Code or Codex, reviews ordinary source, passes the repository build, and opens the finished slide deck in a browser.",
+  "payoff": "Noor has a built, keyboard-driven presentation with a stable local link and inspectable source.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "find-skills",
+      "title": "Noor starts with the repository's rules",
+      "narrative": "Noor needs a client-ready deck but does not want an agent inventing a style from scratch. She finds planning, slide, component, and quality skills inside the same repository that will own the result.",
+      "frames": [
+        "skill-authored-presentation/terminal/step-01-authoring.png"
+      ],
+      "location": "ls .claude/skills/{plan-presentation,slide-mode,component-reference,quality-standards}/SKILL.md",
+      "surface": "terminal",
+      "frameCaptions": [
+        "Noor starts with the repository's rules"
+      ],
+      "sourceFeature": "skill-authored-presentation",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "prompt-agent",
+      "title": "The brief is portable between agents",
+      "narrative": "She can open Claude Code or Codex and issue the same outcome-focused prompt. The agent changes; the instructions, source contract, and review bar do not.",
+      "frames": [
+        "skill-authored-presentation/terminal/step-02-authoring.png"
+      ],
+      "location": "claude  # or: codex",
+      "surface": "terminal",
+      "frameCaptions": [
+        "The brief is portable between agents"
+      ],
+      "sourceFeature": "skill-authored-presentation",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "review-source",
+      "title": "The work lands as ordinary source",
+      "narrative": "Noor reviews a content module, route, and registry change. She can edit it, diff it, or hand it to another engineer without exporting a conversation transcript.",
+      "frames": [
+        "skill-authored-presentation/terminal/step-03-authoring.png"
+      ],
+      "location": "git diff -- src/content/proof-before-promise.tsx src/app/proof-before-promise/page.tsx src/content/registry.ts",
+      "surface": "terminal",
+      "frameCaptions": [
+        "The work lands as ordinary source"
+      ],
+      "sourceFeature": "skill-authored-presentation",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "pass-build",
+      "title": "The repository gets the final word",
+      "narrative": "The build compiles the deck, checks TypeScript, and generates its route. Noor does not accept 'looks right in the prompt' as a delivery state.",
+      "frames": [
+        "skill-authored-presentation/terminal/step-04-authoring.png"
+      ],
+      "location": "npm run build",
+      "surface": "terminal",
+      "frameCaptions": [
+        "The repository gets the final word"
+      ],
+      "sourceFeature": "skill-authored-presentation",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "open-deck",
+      "title": "The thesis is visible in a browser",
+      "narrative": "The generated route opens on a composed title slide. The browser is now evidence of the product result, not merely a viewer for generated text.",
+      "frames": [
+        "skill-authored-presentation/desktop/step-01-opening.png"
+      ],
+      "location": "/proof-before-promise",
+      "surface": "desktop",
+      "frameCaptions": [
+        "The thesis is visible in a browser"
+      ],
+      "sourceFeature": "skill-authored-presentation",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "present",
+      "title": "Noor can present the finished argument",
+      "narrative": "She advances to the terminal slide and sees both agent workflows inside the deck itself. The artifact now explains how it was made and is ready to share locally for review.",
+      "frames": [
+        "skill-authored-presentation/desktop/step-05-slide-5.png"
+      ],
+      "location": "/proof-before-promise",
+      "surface": "desktop",
+      "frameCaptions": [
+        "Noor can present the finished argument"
+      ],
+      "sourceFeature": "skill-authored-presentation",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T16:41:53.455Z",
+  "storyVideo": "personas/build-and-present-story.mp4"
+}

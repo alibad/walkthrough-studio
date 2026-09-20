@@ -1,0 +1,49 @@
+{
+  "featureId": "mindset",
+  "featureName": "Mindset Assessment",
+  "type": "feature",
+  "location": "/mindset",
+  "category": "growth",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Mindset Assessment, from entry to detail",
+  "overview": "Rate yourself across 6 areas to see your fixed-to-growth ratio. Based on Carol Dweck's research, understand where you hold limiting fixed beliefs and where you embrace growth.",
+  "targetAudience": "Users interested in growth tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Mindset Assessment — Landing State",
+      "description": "The landing page of the Mindset Assessment tool showing the initial state and main interface.",
+      "screenshotFilename": "mindset/step-1-landing.png",
+      "screenshotAlt": "Mindset Assessment landing page on desktop",
+      "action": "Opened /mindset.",
+      "location": "/mindset",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Mindset Assessment — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "mindset/step-2-below-fold.png",
+      "screenshotAlt": "Mindset Assessment below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/mindset",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Self-rating across 6 life areas to measure your fixed-to-growth mindset ratio",
+    "Based on Carol Dweck's foundational research on growth mindset from Stanford",
+    "Identifies specific domains where fixed beliefs may be holding you back",
+    "Actionable reframes to shift from a fixed to a growth orientation in each area"
+  ],
+  "tips": [
+    "Be honest about fixed mindset areas — most people have growth mindset in some domains and fixed mindset in others, and that's normal.",
+    "Notice the language you use when you struggle: 'I can't do this' (fixed) vs. 'I can't do this yet' (growth) — that one word makes a measurable difference."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

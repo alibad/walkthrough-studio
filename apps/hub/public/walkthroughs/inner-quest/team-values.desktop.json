@@ -1,0 +1,39 @@
+{
+  "featureId": "team-values",
+  "featureName": "Team Values Alignment",
+  "type": "feature",
+  "location": "/career/team-values",
+  "category": "career",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Team Values Alignment, from entry to detail",
+  "overview": "Team Values Alignment helps you build a values-driven team culture. Define your company's core values, craft a team code of conduct, and then invite team members to rate how well the team is living up to each value. The aggregated results reveal alignment gaps and spark meaningful conversations about culture and expectations.",
+  "targetAudience": "Users interested in career tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Team Values Alignment — Landing State",
+      "description": "The landing page showing the initial state and main interface, with tools to define company values and create a team code.",
+      "screenshotFilename": "team-values/step-1-landing.png",
+      "screenshotAlt": "Team Values Alignment landing page on desktop",
+      "action": "Opened /career/team-values.",
+      "location": "/career/team-values",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Define and articulate company values with supporting descriptions",
+    "Create a team code that translates values into expected behaviors",
+    "Invite team members to rate how well the team embodies each value",
+    "Aggregated alignment scores revealing gaps between stated and lived values"
+  ],
+  "tips": [
+    "Involve the whole team in defining values from the start — co-creation drives buy-in",
+    "Review alignment ratings quarterly to track cultural progress over time"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

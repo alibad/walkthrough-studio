@@ -1,0 +1,104 @@
+{
+  "personaId": "interview-candidate",
+  "journeyId": "learn-model-practice",
+  "headline": "From one request hop to a timed system-design interview",
+  "overview": "Maya uses System Designer as a progression: learn one causal model, stress it with real capacity numbers, and then explain a related design under interview conditions.",
+  "payoff": "She begins a timed URL-shortener design session with a request model and capacity language she has just practised.",
+  "scenes": [
+    {
+      "id": "plan",
+      "title": "Maya starts with today's plan",
+      "narrative": "Maya is a frontend engineer moving toward senior roles. She needs a tractable path through system design, not another unranked reading list. The daily plan gives her one chapter and a visible week.",
+      "frames": [
+        "journey-interview-candidate/desktop/scene-01-plan.png"
+      ],
+      "location": "/learn",
+      "surface": "desktop",
+      "sourceFeature": "daily-learning-path",
+      "action": "Opened the Daily Learning Path.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "lesson",
+      "title": "She opens the smallest useful lesson",
+      "narrative": "The first lesson is only three minutes, but it names the browser, service, and database as one system. That is small enough to begin and concrete enough to rehearse.",
+      "frames": [
+        "journey-interview-candidate/desktop/scene-02-lesson.png"
+      ],
+      "location": "/learn",
+      "surface": "desktop",
+      "sourceFeature": "daily-learning-path",
+      "action": "Opened \"How a web request works\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "request",
+      "title": "She watches causality, one hop at a time",
+      "narrative": "The diagram advances to moment two of five. Maya is not memorising a static architecture; she is following what actually happens after a user action.",
+      "frames": [
+        "journey-interview-candidate/desktop/scene-03-request.png"
+      ],
+      "location": "/learn",
+      "surface": "desktop",
+      "sourceFeature": "daily-learning-path",
+      "action": "Clicked \"Send a request\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "model",
+      "title": "The lesson turns into an operating model",
+      "narrative": "Next she opens the capacity control room. Users, storage, RPS, instances, headroom, and cost put numbers behind the boxes she just learned.",
+      "frames": [
+        "journey-interview-candidate/desktop/scene-04-model.png"
+      ],
+      "location": "/tools/capacity-planning",
+      "surface": "desktop",
+      "sourceFeature": "capacity-planning-lab",
+      "action": "Opened the capacity-planning control room.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "stress",
+      "title": "She breaks the happy-path forecast",
+      "narrative": "A launch spike drives 2.2 times the planned peak through the same fleet. The changed RPS is the moment a design assumption becomes an interview talking point.",
+      "frames": [
+        "journey-interview-candidate/desktop/scene-05-launch-spike.png"
+      ],
+      "location": "/tools/capacity-planning",
+      "surface": "desktop",
+      "sourceFeature": "capacity-planning-lab",
+      "action": "Selected \"Launch spike\".",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "brief",
+      "title": "She chooses the URL shortener rehearsal",
+      "narrative": "The interview brief gives Maya a problem statement, expectations, components, notes, and tips. Her earlier request path and capacity model now have somewhere to be used.",
+      "frames": [
+        "journey-interview-candidate/desktop/scene-06-brief.png"
+      ],
+      "location": "/gym/url-shortener",
+      "surface": "desktop",
+      "sourceFeature": "interview-gym",
+      "action": "Opened the URL Shortener Service prompt.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "practice",
+      "title": "The timer starts; preparation becomes practice",
+      "narrative": "Maya starts the 45-minute session with the rubric and working notes in reach. The payoff is not another completed article: it is a realistic rehearsal where she can explain the system under time pressure.",
+      "frames": [
+        "journey-interview-candidate/desktop/scene-07-practice.png"
+      ],
+      "location": "/gym/url-shortener",
+      "surface": "desktop",
+      "sourceFeature": "interview-gym",
+      "action": "Clicked \"Start 45-Minute Session\".",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "platform": "web",
+  "surface": "desktop",
+  "capturedAt": "2026-09-20T13:46:51.756Z",
+  "walkRecording": "video/page@9ed2c642ca5b3be215df614de68e85fd.mp4"
+}

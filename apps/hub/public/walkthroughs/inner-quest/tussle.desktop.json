@@ -1,0 +1,49 @@
+{
+  "featureId": "tussle",
+  "featureName": "Tussle",
+  "type": "feature",
+  "location": "/attachment-theory/practices/tussle",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Tussle, from entry to detail",
+  "overview": "Tussle is a practice tool for working through attachment-related conflicts. Based on attachment theory, it presents realistic relationship conflict scenarios and guides you through resolving them in ways that build secure connection rather than triggering defensive patterns. It helps you recognize your attachment responses in the heat of conflict and practice more regulated, connected responses.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Tussle — Landing State",
+      "description": "The landing page showing the initial state and main interface, with available conflict scenarios and practice sessions.",
+      "screenshotFilename": "tussle/step-1-landing.png",
+      "screenshotAlt": "Tussle landing page on desktop",
+      "action": "Opened /attachment-theory/practices/tussle.",
+      "location": "/attachment-theory/practices/tussle",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Tussle — Below the Fold",
+      "description": "Additional content visible after scrolling, including scenario details, response options, and reflection on attachment patterns.",
+      "screenshotFilename": "tussle/step-2-below-fold.png",
+      "screenshotAlt": "Tussle below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/attachment-theory/practices/tussle",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Realistic relationship conflict scenarios grounded in attachment theory",
+    "Practice choosing responses that build security rather than triggering defensiveness",
+    "Recognition of your personal attachment patterns in conflict situations",
+    "Guided reflection on how your responses align with secure attachment goals"
+  ],
+  "tips": [
+    "Notice your gut reaction to each scenario before selecting a response — that reaction reveals your attachment style",
+    "Practice regularly; behavioral patterns in conflict change slowly but surely with consistent rehearsal"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

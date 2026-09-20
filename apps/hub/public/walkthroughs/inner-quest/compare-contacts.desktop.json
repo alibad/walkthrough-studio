@@ -1,0 +1,49 @@
+{
+  "featureId": "compare-contacts",
+  "featureName": "Compare Contacts",
+  "type": "feature",
+  "location": "/compare-contacts",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Compare Contacts, from entry to detail",
+  "overview": "Compare Contacts lets you place two contacts side by side and compare their personality profiles across all available assessments — MBTI, Big Five, DISC, Enneagram, and more. The comparison surface highlights similarities, differences, and potential compatibility or tension points, helping you understand the relational dynamics between any two people in your network.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Compare Contacts — Landing State",
+      "description": "The landing page showing the initial state and main interface, with contact selectors to choose the two people to compare.",
+      "screenshotFilename": "compare-contacts/step-1-landing.png",
+      "screenshotAlt": "Compare Contacts landing page on desktop",
+      "action": "Opened /compare-contacts.",
+      "location": "/compare-contacts",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Compare Contacts — Below the Fold",
+      "description": "Additional content visible after scrolling, including the full side-by-side personality comparison table and compatibility insights.",
+      "screenshotFilename": "compare-contacts/step-2-below-fold.png",
+      "screenshotAlt": "Compare Contacts below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/compare-contacts",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Side-by-side comparison of personality profiles for any two contacts",
+    "Covers all available assessments: MBTI, Big Five, DISC, Enneagram, and more",
+    "Highlights key similarities and differences between the two profiles",
+    "Compatibility insights to understand potential dynamics between the pair"
+  ],
+  "tips": [
+    "Use this before mediating a conflict between two people — understanding their personality differences adds important context",
+    "Compare yourself with a contact by adding yourself as a contact with your own assessment results"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

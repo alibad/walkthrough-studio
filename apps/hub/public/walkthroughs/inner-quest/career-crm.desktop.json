@@ -1,0 +1,39 @@
+{
+  "featureId": "career-crm",
+  "featureName": "Professional CRM",
+  "type": "feature",
+  "location": "/career/crm",
+  "category": "career",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Professional CRM, from entry to detail",
+  "overview": "Track customers, partners, and professional contacts. Manage pipeline stages, log interactions, and nurture your professional network with a CRM built for career-focused relationship management.",
+  "targetAudience": "Users interested in career tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Professional CRM — Landing State",
+      "description": "The landing page showing the professional contacts list with pipeline stages and contact management interface.",
+      "screenshotFilename": "career-crm/step-1-landing.png",
+      "screenshotAlt": "Professional CRM landing page on desktop",
+      "action": "Opened /career/crm.",
+      "location": "/career/crm",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Manage customers, partners, and professional contacts in one place",
+    "Track pipeline stages for deals, opportunities, and relationships",
+    "Log interactions and notes to maintain relationship context",
+    "Visualize your professional network and pipeline health"
+  ],
+  "tips": [
+    "Add a brief note after every meaningful professional interaction — even a one-line summary helps you remember context months later.",
+    "Use pipeline stages consistently so you can quickly identify which relationships need attention or follow-up."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

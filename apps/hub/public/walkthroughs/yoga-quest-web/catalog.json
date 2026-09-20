@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Yoga Quest Web",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://yogaquest.app",
+  "discoveredAt": "2026-09-20T08:42:08.780Z",
+  "updatedAt": "2026-09-20T14:10:48.600Z",
+  "scope": {
+    "status": "bounded",
+    "note": "This event showcase walks the public class library only. My Library, imports, AI connections, the authenticated studio, and native apps are outside this run and are not counted as covered."
+  },
+  "features": [
+    {
+      "featureId": "class-library",
+      "featureName": "Class library",
+      "location": "/classes",
+      "category": "practice",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T08:42:44.810Z",
+      "notes": "This event showcase walks the public class library only. My Library, imports, AI connections, the authenticated studio, and native apps are outside this run and are not counted as covered."
+    }
+  ],
+  "personas": [
+    {
+      "id": "class-planning-teacher",
+      "name": "Nadia Rahman",
+      "description": "A yoga teacher planning tomorrow's mixed-level class from a laptop. She needs a progression she can adapt and explain, not another account to maintain or a workout she must follow verbatim.",
+      "portrait": "personas/class-planning-teacher.png",
+      "entryPoint": "/classes",
+      "keyJourneys": [
+        "find-and-export-balance-program"
+      ],
+      "navItems": [
+        {
+          "label": "Browse classes",
+          "location": "/classes"
+        },
+        {
+          "label": "Choose a program",
+          "location": "/classes?type=program"
+        },
+        {
+          "label": "Preview the import",
+          "location": "/import"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "featureId": "keirsey",
+  "featureName": "Keirsey Temperament",
+  "type": "feature",
+  "location": "/keirsey",
+  "category": "personality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Keirsey Temperament, from entry to detail",
+  "overview": "Take a 70-question assessment to find your temperament across the four Keirsey groups: Artisan, Guardian, Idealist, and Rational.",
+  "targetAudience": "Users interested in personality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Keirsey Temperament — Landing State",
+      "description": "The landing page of the Keirsey Temperament tool showing the initial state and main interface.",
+      "screenshotFilename": "keirsey/step-1-landing.png",
+      "screenshotAlt": "Keirsey Temperament landing page on desktop",
+      "action": "Opened /keirsey.",
+      "location": "/keirsey",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Keirsey Temperament — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "keirsey/step-2-below-fold.png",
+      "screenshotAlt": "Keirsey Temperament below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/keirsey",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "70-question assessment identifying your core Keirsey temperament",
+    "Maps to one of four temperament groups: Artisan, Guardian, Idealist, or Rational",
+    "Focuses on observable behavior patterns and communication styles",
+    "Insights into how your temperament shapes your relationships, work preferences, and decision-making"
+  ],
+  "tips": [
+    "Keirsey focuses on what you do rather than why — answer based on your consistent behavioral patterns across different situations.",
+    "Compare your Keirsey temperament with your MBTI type to see how the two frameworks reinforce and complement each other."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

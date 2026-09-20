@@ -21,7 +21,7 @@
  *   node scripts/generate-creatives.mjs --list         # print the manifest
  *
  * Requires in .env.local: OPENAI_API_KEY. Override the model with
- * OPENAI_IMAGE_MODEL; `pnpm doctor` reports whether the key actually works.
+ * OPENAI_IMAGE_MODEL; `pnpm run doctor` reports whether the key actually works.
  */
 
 import { writeFileSync, existsSync, mkdirSync } from "node:fs";

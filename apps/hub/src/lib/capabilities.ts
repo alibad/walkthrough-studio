@@ -18,7 +18,7 @@ import path from "node:path";
  * And "set" is the wrong fact anyway. A revoked key, a rotated key, a key with
  * a trailing newline and a key for the wrong resource are all *set*, and every
  * one of them fails at the first real request. So the page renders the model,
- * and every claim about this machine comes from `pnpm doctor` through the
+ * and every claim about this machine comes from `pnpm run doctor` through the
  * verify route — one implementation, checked live, behind an explicit button.
  *
  * A practical consequence worth recording: the first version of this file read

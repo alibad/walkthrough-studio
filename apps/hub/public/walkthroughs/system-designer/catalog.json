@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 2,
+  "projectName": "System Designer",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.systemdesigner.net",
+  "discoveredAt": "2026-09-20T13:43:16.171Z",
+  "updatedAt": "2026-09-20T13:46:51.784Z",
+  "scope": {
+    "status": "comprehensive",
+    "note": "Top-level capabilities were reconciled from source navigation and live Codex computer-control reconnaissance. Unwalked and authenticated capabilities remain visible as pending or blocked.",
+    "excluded": [
+      "Administrative content-management routes that are not part of the learner product"
+    ]
+  },
+  "features": [
+    {
+      "featureId": "daily-learning-path",
+      "featureName": "Daily learning path",
+      "location": "/learn",
+      "category": "learning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T13:46:51.784Z"
+    },
+    {
+      "featureId": "capacity-planning-lab",
+      "featureName": "Capacity planning lab",
+      "location": "/tools/capacity-planning",
+      "category": "tools",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T13:46:51.784Z"
+    },
+    {
+      "featureId": "interview-gym",
+      "featureName": "Interview gym",
+      "location": "/gym",
+      "category": "practice",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 1,
+      "lastWalkthroughAt": "2026-09-20T13:46:51.784Z"
+    },
+    {
+      "featureId": "knowledge-quizzes",
+      "featureName": "Knowledge quizzes",
+      "location": "/quiz",
+      "category": "assessment",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T13:46:51.784Z"
+    },
+    {
+      "featureId": "lesson-reading",
+      "featureName": "Long-form fundamentals lesson",
+      "location": "/fundamentals/what-is-system-design",
+      "category": "learning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T13:46:51.784Z",
+      "notes": "Existing live walk retained; it reaches the lesson's read-path diagram and opens the AI learning panel without claiming an unobserved model response."
+    },
+    {
+      "featureId": "fundamentals-curriculum",
+      "featureName": "Fundamentals curriculum",
+      "location": "/fundamentals",
+      "category": "learning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "genai-systems",
+      "featureName": "GenAI systems curriculum",
+      "location": "/genai",
+      "category": "learning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "ml-systems",
+      "featureName": "ML systems curriculum",
+      "location": "/ml-systems",
+      "category": "learning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "technology-library",
+      "featureName": "Technology library",
+      "location": "/technology",
+      "category": "learning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "interview-questions",
+      "featureName": "Interview question library",
+      "location": "/practice",
+      "category": "practice",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "case-studies",
+      "featureName": "Case studies",
+      "location": "/case-studies",
+      "category": "learning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "reference-library",
+      "featureName": "Quick reference library",
+      "location": "/reference",
+      "category": "reference",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "tool-library",
+      "featureName": "Engineering tool library",
+      "location": "/tools",
+      "category": "tools",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null
+    },
+    {
+      "featureId": "whiteboard",
+      "featureName": "System design whiteboard",
+      "location": "/whiteboard",
+      "category": "creation",
+      "requiresAuth": true,
+      "authRole": "learner",
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null,
+      "notes": "The live route was reached and displayed a Google sign-in gate. An owner session is required before this can be walked."
+    },
+    {
+      "featureId": "projects",
+      "featureName": "Saved design projects",
+      "location": "/projects",
+      "category": "creation",
+      "requiresAuth": true,
+      "authRole": "learner",
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": null,
+      "notes": "Authenticated creation and saving remain in the inventory; they were not omitted from the denominator."
+    }
+  ],
+  "personas": [
+    {
+      "id": "interview-candidate",
+      "name": "Maya Chen",
+      "description": "A frontend engineer preparing for senior interviews who needs to turn scattered system-design knowledge into explanations she can defend under time pressure.",
+      "portrait": "personas/interview-candidate.png",
+      "entryPoint": "/learn",
+      "keyJourneys": [
+        "learn-model-practice"
+      ],
+      "navItems": [
+        {
+          "label": "Learn",
+          "location": "/learn"
+        },
+        {
+          "label": "Model",
+          "location": "/tools/capacity-planning"
+        },
+        {
+          "label": "Practice",
+          "location": "/gym"
+        },
+        {
+          "label": "Assess",
+          "location": "/quiz"
+        }
+      ]
+    }
+  ]
+}

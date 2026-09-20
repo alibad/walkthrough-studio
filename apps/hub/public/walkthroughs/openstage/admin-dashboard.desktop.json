@@ -36,6 +36,6 @@
     "Live, protected and pending counts"
   ],
   "notes": "Reached unauthenticated because ADMIN_PASSWORD is unset in the walked environment. Not evidence that production is open.",
-  "generatedAt": "2026-09-19T11:52:08.488Z",
-  "capturedAt": "2026-09-19T11:52:08.488Z"
+  "generatedAt": "2026-09-20T14:12:34.668Z",
+  "capturedAt": "2026-09-20T14:12:34.668Z"
 }

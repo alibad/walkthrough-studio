@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Lock } from "lucide-react";
+import { ArrowUpRight, Lock, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CaptureStatusChip } from "@/components/status";
 import { PlateIcon } from "@/components/plate";
@@ -185,6 +185,12 @@ function FeatureRow({
             surfaceLabel={surfaceLabel.get(surfaceId) ?? surfaceId}
           />
         ))}
+        {feature.videoStatus === "done" && (
+          <span className="inline-flex items-center gap-1 rounded-full border border-brand/25 bg-brand-wash px-2 py-0.5 text-micro font-medium text-brand-deep">
+            <Play className="size-2.5 fill-current" strokeWidth={1.75} aria-hidden />
+            Video walkthrough
+          </span>
+        )}
         {feature.requiresAuth && (
           <span
             className="inline-flex items-center gap-1 text-micro text-ink-faint"

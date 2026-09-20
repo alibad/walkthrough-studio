@@ -1,0 +1,39 @@
+{
+  "featureId": "coaching",
+  "featureName": "Coaching Sessions",
+  "type": "feature",
+  "location": "/character/coaching",
+  "category": "growth",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Coaching Sessions, from entry to detail",
+  "overview": "Coaching Sessions is your digital log for tracking work with an external coach. After each session, you can record the key strategies discussed, homework assignments to complete before next time, and reflections on your progress. Over time, this creates a searchable history of your coaching journey, helping you stay accountable and see how far you've come.",
+  "targetAudience": "Users interested in growth tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Coaching Sessions — Landing State",
+      "description": "The landing page showing the initial state and main interface, with the option to log a new coaching session and a summary of recent sessions.",
+      "screenshotFilename": "coaching/step-1-landing.png",
+      "screenshotAlt": "Coaching Sessions landing page on desktop",
+      "action": "Opened /character/coaching.",
+      "location": "/character/coaching",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Log coaching sessions with date, key strategies, and homework assignments",
+    "Track completion of homework items between sessions",
+    "Searchable history of all past coaching sessions and insights",
+    "Reflection prompts to capture what resonated most from each session"
+  ],
+  "tips": [
+    "Log sessions immediately after they happen while the insights are still fresh",
+    "Review past sessions before your next coaching appointment to track progress on homework"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

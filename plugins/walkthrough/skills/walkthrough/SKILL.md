@@ -1,7 +1,6 @@
 ---
 name: walkthrough
 description: "Walk an app end to end and publish what you actually saw — web, iOS, Android, desktop or CLI. Drives the real app (clicking, typing, tapping, running commands), captures each state, and writes a catalog, per-feature walkthroughs, persona journeys, verified fixes and an append-only run log into a Walkthrough Studio hub. Default is the full story; subset modes (catalog, one feature, one persona, verify, fix, pr) exist when a smaller slice is wanted. Use when the user says /walkthrough, or asks to document, record, screenshot, demo or QA their app, generate onboarding guides, walk a user journey, verify that a bug fix holds, find UI bugs, or open a PR whose body shows what a change does for the user. Do NOT use for code review, explaining code logic, architecture discussions, or anything with no observable interface."
-compatibility: "Runtime-agnostic. Works in Claude Code, Codex, and any agent with shell access plus a driver for the target platform. Web needs Playwright (MCP or the npm package) or headless Chrome; iOS needs Xcode and a simulator; Android needs the SDK platform-tools; desktop needs Playwright-Electron or the OS accessibility layer; CLI needs a pseudo-terminal. See drivers/."
 metadata:
   version: 1.0.0
   category: documentation
@@ -9,6 +8,12 @@ metadata:
 ---
 
 # Walkthrough
+
+Runtime-agnostic: works in Claude Code, Codex, and any agent with shell access
+plus a driver for the target platform. Web needs Playwright/CDP, iOS needs Xcode
+and a simulator, Android needs platform-tools, desktop needs Electron or the OS
+accessibility layer, and CLI needs a pseudo-terminal. See `drivers/` and
+`references/runtime-portability.md`.
 
 You drive a real application and write down what you saw. The output is read by
 people deciding whether to trust the documentation, so the bar is not "did I
@@ -19,6 +24,38 @@ observed.** Never describe a screen you didn't reach, never present a described
 state as a captured one, and never write a JSON file you know to be misleading.
 A missing walkthrough is recoverable in ten minutes. A plausible-looking false
 one poisons every decision made from it, and nobody will know to check.
+
+## Definition of done — the full story gate
+
+Full mode is not done when a convenient screen has screenshots. It is done only
+when the artifact explains the product from a user's point of view:
+
+- **Inventory reconciled:** source routes/navigation and live reconnaissance
+  agree on the top-level capabilities. Auth-gated or currently blocked areas
+  stay in the denominator as `pending` or `blocked`; do not omit them to make a
+  percentage look complete.
+- **Meaningful feature walks:** each walked feature crosses at least one real
+  interaction and reaches an outcome or other peak moment. A landing page tour
+  is not a feature walkthrough.
+- **A person, not just screens:** at least one evidence-backed persona has a
+  5–9 scene journey across the product. If the product truly has no distinct
+  user role, explain why in the catalog instead of silently leaving personas
+  empty.
+- **Motion is shown when motion matters:** record at least one clip for flows
+  whose value depends on sequence, animation, streaming, audio, or timing when
+  the capture backend supports video. If it cannot, record the missing
+  invariant in the run and do not call the result showcase-ready.
+- **Evidence inspected:** every capture is opened and checked, the catalog's
+  scope is explicit, and an append-only run manifest names the driver,
+  surfaces, target, and any unverified claims.
+- **Media played, not merely found:** open each referenced clip through the hub
+  on the target host. A file that exists but the browser cannot decode is
+  failed evidence. Prefer H.264 MP4 for portable playback; the capture layer
+  normalizes Playwright WebM when `ffmpeg` is available and records a warning
+  when it is not.
+
+`scope.status: "bounded"` or `"partial"` is an honesty label, never completion.
+The hub must not present a bounded one-of-one slice as 100% product coverage.
 
 ---
 
@@ -48,10 +85,17 @@ useless:
 | `desktop` | `electron` · `macos-native` · `windows-native` | [`drivers/desktop.md`](drivers/desktop.md) |
 | `cli` | `terminal` | [`drivers/cli-terminal.md`](drivers/cli-terminal.md) |
 
-Use the first driver you can actually run. A missing tool is a reason to switch
-drivers, not a reason to stop — but it is **never** a reason to fall back to
-reading source code and writing it up as if you'd seen it. If no driver works,
-say so and stop.
+Choose by capability, not agent brand. Use computer control to explore the
+running product and find robust paths; use the capture layer for deterministic,
+byte-addressable evidence. Codex and Claude expose different control tools, and
+macOS and Windows expose different native drivers, but the quality gate is the
+same. Read [`references/runtime-portability.md`](references/runtime-portability.md)
+before selecting a backend.
+
+Use the first driver that satisfies the required evidence. A missing tool is a
+reason to switch drivers, not a reason to stop — but it is **never** a reason to
+fall back to reading source code and writing it up as if you'd seen it. If no
+driver works, say so and stop.
 
 **3. Which surfaces?**
 
@@ -251,6 +295,18 @@ tree have nothing in common. Follow
 [`references/catalog-discovery.md`](references/catalog-discovery.md), which has a
 section per platform.
 
+Catalog discovery is a reconciliation, not a route dump:
+
+1. Build a source inventory from routes, navigation, command trees, screen
+   registries, and documented entry points.
+2. Explore the live app with the best available computer-control tool and note
+   every top-level capability a user can reach, including gated destinations.
+3. Compare the two lists. Add missing capabilities, collapse variants, and mark
+   inaccessible capabilities `blocked` or `pending` with a reason.
+4. Set `scope.status` to `comprehensive` only when the lists reconcile. Use
+   `partial` when discovery is unfinished and `bounded` only for an explicitly
+   requested slice. Neither may be reported as product completion.
+
 Whatever the platform, produce for each feature:
 
 - `featureId` — stable kebab-case slug. It becomes a URL and a directory name,
@@ -266,6 +322,10 @@ Whatever the platform, produce for each feature:
 
 Then detect personas ([`references/personas.md`](references/personas.md)) and
 the app's brand colours and type, so generated guides can look like the product.
+
+For a full run, an empty `personas` list and a catalog with fewer than three
+top-level capabilities are review triggers, not convenient defaults. Investigate
+and document why before continuing.
 
 Write `apps/hub/public/walkthroughs/{slug}/catalog.json` per
 [`references/output-format.md`](references/output-format.md).
@@ -417,11 +477,12 @@ Archetype to clone:
 — two personas with genuinely different paths through one public site,
 including the cross-surface scene.
 
-### Then the media, if it's worth it
+### Then the media
 
-Portrait, scene-setter, three moment shots, and a narrated MP4 — all optional,
-all generated, all labelled as illustration in the UI because none of them is
-evidence of anything. Recipe, costs and the failures that shaped it:
+Portrait, scene-setter, and generated moment shots remain optional illustration.
+The **walk recording is evidence** and is expected whenever motion or sequence
+is part of the payoff. Narration remains optional. Recipe, costs and the
+failures that shaped generated media:
 [`references/persona-media.md`](references/persona-media.md).
 
 **Check whether you need a key before you reach for one.** You are a model
@@ -431,7 +492,7 @@ face and an MP3 of a voice — so those, and nothing else, are what a provider i
 for.
 
 ```bash
-pnpm doctor          # what this machine has, and what each gap actually costs
+pnpm run doctor      # what this machine has, and what each gap actually costs
 ```
 
 Read the illustration line before running the scripts below:
@@ -456,7 +517,7 @@ pnpm persona:story   --project=<slug> --persona=<id>     # narrated mp4
 ```
 
 Narration needs no key either: with no `OPENAI_API_KEY`, `persona:story` speaks
-through a local Kokoro model whose weights download on first use. `pnpm doctor`
+through a local Kokoro model whose weights download on first use. `pnpm run doctor`
 says which engine is live.
 
 A declared persona with no walked journey is flagged by the hub as

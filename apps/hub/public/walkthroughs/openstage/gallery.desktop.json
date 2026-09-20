@@ -48,7 +48,8 @@
       "screenshotFilename": "gallery/desktop/step-04-group-by-type.png",
       "screenshotAlt": "The gallery grouped into sections by deck type",
       "location": "/",
-      "verificationStatus": "live-walked"
+      "verificationStatus": "live-walked",
+      "videoFilename": "video/page@3b0c2633394b4eef63376528af4d5e8b.mp4"
     }
   ],
   "keyFeatures": [
@@ -56,7 +57,6 @@
     "Type filter with per-category counts",
     "Re-grouping by type, customer, author or date without a page load"
   ],
-  "videoFilename": "video/page@a1bc2858a4d6a766af7b4ad5eda9135d.webm",
-  "generatedAt": "2026-09-19T11:51:22.082Z",
-  "capturedAt": "2026-09-19T11:51:22.082Z"
+  "generatedAt": "2026-09-20T14:11:48.543Z",
+  "capturedAt": "2026-09-20T14:11:48.543Z"
 }

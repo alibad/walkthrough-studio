@@ -1,0 +1,52 @@
+{
+  "featureId": "lesson-reading",
+  "featureName": "Reading a system-design lesson",
+  "type": "feature",
+  "location": "/fundamentals/what-is-system-design",
+  "category": "learning",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "A long lesson with an AI side path",
+  "overview": "The public lesson combines structured teaching, diagrams, a quiz, and an optional AI panel. The walk reads into the lesson and opens that panel without claiming a model answer it did not request.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The lesson begins with the decision problem",
+      "action": "Opened the public system-design lesson.",
+      "description": "The page starts with the forces a design must balance and exposes the wider curriculum in its navigation.",
+      "screenshotFilename": "lesson-reading/mobile/step-01-lesson.png",
+      "screenshotAlt": "The opening of What is System Design",
+      "location": "/fundamentals/what-is-system-design",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The architecture is traced as a request",
+      "action": "Scrolled to \"A simple read path with deliberate boundaries\".",
+      "description": "The lesson moves from definitions to a concrete client, load balancer, service, cache, primary store, and replica path.",
+      "screenshotFilename": "lesson-reading/mobile/step-02-read-path.png",
+      "screenshotAlt": "The system-design lesson's simple read path diagram",
+      "location": "/fundamentals/what-is-system-design",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The AI path is present but unclaimed",
+      "action": "Opened the \"Ask AI\" panel.",
+      "description": "The question composer is visible, but this bounded walk does not submit a prompt or claim an answer it did not observe.",
+      "screenshotFilename": "lesson-reading/mobile/step-03-ai-panel.png",
+      "screenshotAlt": "The Learn with AI panel open beside the lesson",
+      "location": "/fundamentals/what-is-system-design",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Public long-form lesson",
+    "Structured diagrams and trade-offs",
+    "AI panel opened without submitting a prompt"
+  ],
+  "capturedAt": "2026-09-20T08:41:43.996Z",
+  "generatedAt": "2026-09-20T08:41:43.996Z",
+  "note": "Captured from the public production URL. The deployment does not expose a source commit, so this evidence is intentionally not pinned to the local checkout's HEAD."
+}

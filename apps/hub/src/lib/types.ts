@@ -424,6 +424,14 @@ export interface Catalog {
   updatedAt: string;
   features: CatalogFeature[];
   personas?: CatalogPersona[];
+  /** How completely this catalog inventories the product, independent of how
+   * many of those entries have been walked. Bounded/partial are never 100%.
+   */
+  scope?: {
+    status: "comprehensive" | "partial" | "bounded";
+    note: string;
+    excluded?: string[];
+  };
   /** True when the catalog as a whole was authored without live capture. */
   synthetic?: boolean;
   syntheticNote?: string;

@@ -1,0 +1,52 @@
+{
+  "featureId": "language-keyboards",
+  "featureName": "Switching language keyboards",
+  "type": "feature",
+  "location": "/keyboard/arabic",
+  "category": "typing",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "From one writing system to another",
+  "overview": "Polytyper keeps language layouts inside one keyboard workspace. This walk opens the language picker and moves from the Arabic layout to the Russian layout through the real navigation control.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "A right-to-left editor, ready",
+      "action": "Opened the Arabic keyboard.",
+      "description": "The editor, mode control, speech actions, and complete on-screen layout are available without sign-in.",
+      "screenshotFilename": "language-keyboards/mobile/step-01-keyboard.png",
+      "screenshotAlt": "Polytyper's Arabic keyboard before typing",
+      "location": "/keyboard/arabic",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Every language stays in reach",
+      "action": "Opened \"Jump to language\".",
+      "description": "The modal lists keyboard destinations with both English and native-language names, without losing the current Arabic workspace behind it.",
+      "screenshotFilename": "language-keyboards/mobile/step-02-language-picker.png",
+      "screenshotAlt": "Polytyper's language picker over the Arabic keyboard",
+      "location": "/keyboard/arabic",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The Russian layout replaces the Arabic one",
+      "action": "Selected \"Russian keyboard\".",
+      "description": "The route, writing direction, editor label, and complete key layout now describe Russian. This is a different language surface reached through the product's own switcher.",
+      "screenshotFilename": "language-keyboards/mobile/step-03-russian.png",
+      "screenshotAlt": "Polytyper's Russian keyboard after switching languages",
+      "location": "/keyboard/russian",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Right-to-left Arabic layout",
+    "Keyboard-aware language picker",
+    "Russian layout reached without returning home"
+  ],
+  "capturedAt": "2026-09-20T08:45:30.890Z",
+  "generatedAt": "2026-09-20T08:45:30.890Z",
+  "note": "Captured from the public production URL. The deployment does not expose a source commit, so this evidence is intentionally not pinned to the local checkout's HEAD."
+}

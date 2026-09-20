@@ -1,0 +1,49 @@
+{
+  "featureId": "intentional-dialogue",
+  "featureName": "Intentional Dialogue",
+  "type": "feature",
+  "location": "/relationships/intentional-dialogue",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Intentional Dialogue, from entry to detail",
+  "overview": "Learn and practice the Imago Therapy communication method to foster deeper understanding and connection in your relationships.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Intentional Dialogue — Landing State",
+      "description": "The landing page introducing the Imago Therapy communication method and the structured dialogue practice.",
+      "screenshotFilename": "intentional-dialogue/step-1-landing.png",
+      "screenshotAlt": "Intentional Dialogue landing page on desktop",
+      "action": "Opened /relationships/intentional-dialogue.",
+      "location": "/relationships/intentional-dialogue",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Intentional Dialogue — Below the Fold",
+      "description": "Additional content visible after scrolling, showing the dialogue steps, practice exercises, and guidance.",
+      "screenshotFilename": "intentional-dialogue/step-2-below-fold.png",
+      "screenshotAlt": "Intentional Dialogue below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/relationships/intentional-dialogue",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Learn the Imago Therapy communication framework",
+    "Structured dialogue practice for deeper connection",
+    "Step-by-step guidance through mirroring, validation, and empathy",
+    "Build healthier communication patterns in relationships"
+  ],
+  "tips": [
+    "Practice the three steps — mirroring, validation, and empathy — in that order for best results.",
+    "Use this method during calm moments to build the habit before applying it in difficult conversations."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

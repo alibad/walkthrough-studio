@@ -5,6 +5,10 @@
   "description": "Walk any app \u2014 web, mobile, desktop or CLI \u2014 and publish what you saw.",
   "scripts": {
     "doctor": "node scripts/doctor.mjs",
+    "test": "tsx --test tests/*.test.ts",
+    "verify:capture": "node scripts/verify-capture-layer.mjs --driver=playwright",
+    "verify:evidence": "node scripts/verify-evidence.mjs",
+    "verify": "node scripts/verify-local.mjs",
     "walk:mcp-stories": "node scripts/walk-mcp-stories.mjs",
     "walk:mcp-app-stories": "node scripts/walk-mcp-app-stories.mjs",
     "dev": "pnpm --filter hub dev",

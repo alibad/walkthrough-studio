@@ -1,0 +1,49 @@
+{
+  "featureId": "daily-learning-path",
+  "featureName": "Daily learning path",
+  "type": "feature",
+  "location": "/learn",
+  "category": "learning",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "A concept becomes a working request path",
+  "overview": "The daily path turns a large curriculum into a short session. This walk opens the first lesson and drives its browser-to-service-to-database model rather than stopping at the lesson card.",
+  "targetAudience": "A developer beginning structured system-design study",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "A finite plan for the day",
+      "action": "Opened the Daily Learning Path.",
+      "description": "The learner sees one chapter, a seven-part week, an experience-placement option, and a clear first lesson instead of a wall of unrelated articles.",
+      "screenshotFilename": "daily-learning-path/desktop/step-01-daily-plan.png",
+      "screenshotAlt": "System Designer's daily learning path with the first week of lessons",
+      "location": "/learn",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The lesson opens as a system",
+      "action": "Opened \"How a web request works\".",
+      "description": "A three-minute lesson frames the request as an interactive Browser → Service → Database system, with five moments to advance through.",
+      "screenshotFilename": "daily-learning-path/desktop/step-02-lesson-open.png",
+      "screenshotAlt": "The interactive How a web request works lesson",
+      "location": "/learn",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The request moves to its next hop",
+      "action": "Clicked \"Send a request\".",
+      "description": "The diagram advances to **2 of 5** and changes the primary action to **Next hop**. The lesson is demonstrating causality, not merely displaying a finished diagram.",
+      "screenshotFilename": "daily-learning-path/desktop/step-03-request-moving.png",
+      "screenshotAlt": "The lesson after sending a request, at moment two of five",
+      "location": "/learn",
+      "verificationStatus": "live-walked",
+      "videoFilename": "video/page@f6c9211653ad1b5e387a5b92823eb1cf.mp4"
+    }
+  ],
+  "capturedAt": "2026-09-20T13:44:09.028Z",
+  "generatedAt": "2026-09-20T13:44:09.028Z",
+  "note": "Live production evidence. Discovery used Codex computer control; recording used the cross-runtime capture contract so Claude can rerun the same script."
+}

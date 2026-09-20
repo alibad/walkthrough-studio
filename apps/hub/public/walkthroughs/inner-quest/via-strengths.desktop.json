@@ -1,0 +1,49 @@
+{
+  "featureId": "via-strengths",
+  "featureName": "VIA Character Strengths",
+  "type": "feature",
+  "location": "/via-strengths",
+  "category": "personality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "VIA Character Strengths, from entry to detail",
+  "overview": "Rank all 24 character strengths across 6 virtues to discover your signature strengths and how to apply them intentionally in daily life.",
+  "targetAudience": "Users interested in personality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "VIA Character Strengths — Landing State",
+      "description": "The landing page of the VIA Character Strengths tool showing the initial state and main interface.",
+      "screenshotFilename": "via-strengths/step-1-landing.png",
+      "screenshotAlt": "VIA Character Strengths landing page on desktop",
+      "action": "Opened /via-strengths.",
+      "location": "/via-strengths",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "VIA Character Strengths — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "via-strengths/step-2-below-fold.png",
+      "screenshotAlt": "VIA Character Strengths below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/via-strengths",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Ranks all 24 character strengths across 6 virtues: Wisdom, Courage, Humanity, Justice, Temperance, and Transcendence",
+    "Identifies your top signature strengths — the qualities most core to who you are",
+    "Grounded in positive psychology research from the VIA Institute on Character",
+    "Guidance on how to apply your top strengths more intentionally at work and in relationships"
+  ],
+  "tips": [
+    "Your top 5 signature strengths are not just things you're good at — they're the qualities that feel most energizing and authentic when you use them.",
+    "Try using a signature strength in a new way each day: research shows this practice reliably increases happiness and reduces depression."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

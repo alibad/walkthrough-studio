@@ -1,0 +1,49 @@
+{
+  "featureId": "disc",
+  "featureName": "DISC Assessment",
+  "type": "feature",
+  "location": "/disc",
+  "category": "personality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "DISC Assessment, from entry to detail",
+  "overview": "Answer 28 questions to score on four workplace behaviors: Dominance, Influence, Steadiness, and Conscientiousness.",
+  "targetAudience": "Users interested in personality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "DISC Assessment — Landing State",
+      "description": "The landing page of the DISC Assessment tool showing the initial state and main interface.",
+      "screenshotFilename": "disc/step-1-landing.png",
+      "screenshotAlt": "DISC Assessment landing page on desktop",
+      "action": "Opened /disc.",
+      "location": "/disc",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "DISC Assessment — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "disc/step-2-below-fold.png",
+      "screenshotAlt": "DISC Assessment below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/disc",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "28-question assessment focused on workplace and interpersonal behavioral styles",
+    "Scores across four dimensions: Dominance, Influence, Steadiness, and Conscientiousness",
+    "Identifies your primary and secondary behavioral style for team and communication insights",
+    "Practical guidance on how your DISC profile affects collaboration, leadership, and conflict resolution"
+  ],
+  "tips": [
+    "Answer based on how you actually behave at work, not how you wish you behaved — DISC is most useful when it reflects your real patterns.",
+    "Use your DISC profile to understand colleagues better: knowing others' styles helps you adapt your communication for less friction."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

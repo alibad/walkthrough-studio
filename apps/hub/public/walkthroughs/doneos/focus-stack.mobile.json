@@ -1,0 +1,32 @@
+{
+  "featureId": "focus-stack",
+  "featureName": "Focus Stack",
+  "type": "feature",
+  "location": "DoneOS → Focus Stack",
+  "category": "product",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Three commitments, with everything else waiting",
+  "overview": "Focus is the execution boundary: active human and agent commitments share one stack, a visible WIP limit, and explicit ownership.",
+  "targetAudience": "Operators coordinating accountable human and agent execution",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Focus Stack, ready",
+      "action": "Opened the committed DoneOS store-preview harness with screen=focus.",
+      "description": "Focus is the execution boundary: active human and agent commitments share one stack, a visible WIP limit, and explicit ownership.",
+      "screenshotFilename": "focus-stack/mobile/step-01-ready.png",
+      "screenshotAlt": "Focus Stack in the DoneOS Flutter product on undefined",
+      "location": "DoneOS → Focus Stack",
+      "verificationStatus": "live-walked",
+      "videoFilename": "video/page@6596f5470719deb02bd0b8ef0a573799.mp4"
+    }
+  ],
+  "keyFeatures": [
+    "Three commitments, with everything else waiting"
+  ],
+  "note": "Live-rendered from DoneOS's committed store-preview entry point with fictional showcase data. This proves the Flutter product surface, not a production account or a signed iOS/Android store binary.",
+  "generatedAt": "2026-09-20T16:49:40.970Z",
+  "capturedAt": "2026-09-20T16:49:40.970Z"
+}

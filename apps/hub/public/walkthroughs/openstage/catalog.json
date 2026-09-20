@@ -4,9 +4,25 @@
   "platform": "web",
   "driver": "playwright",
   "capturedAgainst": "http://localhost:3000",
-  "discoveredAt": "2026-09-19T11:51:14.505Z",
-  "updatedAt": "2026-09-19T11:52:17.798Z",
+  "discoveredAt": "2026-09-20T14:11:40.763Z",
+  "updatedAt": "2026-09-20T16:41:53.455Z",
   "features": [
+    {
+      "featureId": "skill-authored-presentation",
+      "featureName": "Skill-authored presentation",
+      "location": "OpenStage skills → /proof-before-promise",
+      "category": "authoring",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "terminal": "done",
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T16:41:53.455Z",
+      "notes": "Built locally from repository skills, compiled, served, and driven in the browser."
+    },
     {
       "featureId": "gallery",
       "featureName": "Presentation gallery",
@@ -18,7 +34,7 @@
         "mobile": "done"
       },
       "issueCount": 2,
-      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
+      "lastWalkthroughAt": "2026-09-20T14:12:46.619Z"
     },
     {
       "featureId": "deck-scroll",
@@ -31,7 +47,7 @@
         "mobile": "done"
       },
       "issueCount": 1,
-      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
+      "lastWalkthroughAt": "2026-09-20T14:12:46.619Z"
     },
     {
       "featureId": "deck-slides",
@@ -43,7 +59,7 @@
         "desktop": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
+      "lastWalkthroughAt": "2026-09-20T14:12:46.619Z"
     },
     {
       "featureId": "deck-draft-unlisted",
@@ -56,7 +72,7 @@
         "mobile": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
+      "lastWalkthroughAt": "2026-09-20T14:12:46.619Z"
     },
     {
       "featureId": "admin-dashboard",
@@ -69,7 +85,7 @@
         "desktop": "done"
       },
       "issueCount": 1,
-      "lastWalkthroughAt": "2026-09-19T11:52:17.798Z"
+      "lastWalkthroughAt": "2026-09-20T14:12:46.619Z"
     },
     {
       "featureId": "share-link",
@@ -109,6 +125,8 @@
       "keyJourneys": [
         "find-and-read"
       ],
+      "portrait": "personas/reader.png",
+      "scene": "personas/reader-scene.png",
       "navItems": [
         {
           "label": "Gallery",
@@ -119,6 +137,36 @@
           "location": "/awwwards-flagship"
         }
       ]
+    },
+    {
+      "id": "presentation-author",
+      "name": "Noor Al-Khatib",
+      "description": "Noor turns briefs into client-facing presentations and needs the agent to respect a shared narrative and visual system. She cares that the deck builds, presents, and remains editable source. She does not care whether Claude Code or Codex performed the first draft.",
+      "authRole": "author",
+      "entryPoint": ".claude/skills/plan-presentation/SKILL.md",
+      "keyJourneys": [
+        "build-and-present"
+      ],
+      "portrait": "personas/presentation-author.png",
+      "scene": "personas/presentation-author-scene.png",
+      "navItems": [
+        {
+          "label": "Authoring terminal",
+          "location": "OpenStage skills → npm run build"
+        },
+        {
+          "label": "Finished deck",
+          "location": "/proof-before-promise"
+        }
+      ]
     }
-  ]
+  ],
+  "scope": {
+    "status": "partial",
+    "note": "Gallery, scroll and slide viewers, an unlisted deck, admin, and a complete skill-to-source-to-browser author journey are walked. Share links and password gates remain pending because no valid share record or protected deck exists locally.",
+    "excluded": [
+      "Share link without a real share id",
+      "Password gate without a protected deck"
+    ]
+  }
 }

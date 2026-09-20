@@ -1,0 +1,108 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T08:40:49.213Z",
+      "startedAt": "2026-09-20T08:40:36.022Z",
+      "completedAt": "2026-09-20T08:40:49.213Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://yogaquest.app/classes",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [],
+        "personas": [],
+        "screenshots": 2,
+        "videos": 0,
+        "issues": 2
+      }
+    },
+    {
+      "id": "2026-09-20T08:42:44.810Z",
+      "startedAt": "2026-09-20T08:42:08.780Z",
+      "completedAt": "2026-09-20T08:42:44.810Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://yogaquest.app/classes",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "class-library"
+        ],
+        "personas": [],
+        "screenshots": 6,
+        "videos": 1,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-20T14:10:48.600Z",
+      "startedAt": "2026-09-20T14:10:22.453Z",
+      "completedAt": "2026-09-20T14:10:48.600Z",
+      "skill": "walkthrough",
+      "agent": "walk-public-personas.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://yogaquest.app/classes",
+        "surfaces": [
+          "desktop"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "persona-only run; catalog remains explicitly bounded · video normalized to portable H.264 MP4 when ffmpeg was available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video"
+      },
+      "coverage": {
+        "features": [
+          "class-library"
+        ],
+        "personas": [
+          "class-planning-teacher"
+        ],
+        "screenshots": 7,
+        "videos": 1,
+        "issues": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "featureId": "emotional-intelligence",
+  "featureName": "Emotional Intelligence",
+  "type": "feature",
+  "location": "/emotional-intelligence",
+  "category": "psychology",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Emotional Intelligence, from entry to detail",
+  "overview": "Answer 60 questions to score on 15 EQ subscales across 5 composites: Self-Perception, Self-Expression, Interpersonal, Decision Making, and Stress Management.",
+  "targetAudience": "Users interested in psychology tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Emotional Intelligence — Landing State",
+      "description": "The landing page of the Emotional Intelligence tool showing the initial state and main interface.",
+      "screenshotFilename": "emotional-intelligence/step-1-landing.png",
+      "screenshotAlt": "Emotional Intelligence landing page on desktop",
+      "action": "Opened /emotional-intelligence.",
+      "location": "/emotional-intelligence",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Emotional Intelligence — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "emotional-intelligence/step-2-below-fold.png",
+      "screenshotAlt": "Emotional Intelligence below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/emotional-intelligence",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "60-question assessment measuring emotional intelligence across 5 composite areas",
+    "Scores on 15 EQ subscales including self-regard, empathy, assertiveness, impulse control, and stress tolerance",
+    "Based on the Bar-On EQ-i model, one of the most widely used EQ frameworks in research and organizations",
+    "Pinpoints specific EQ strengths and development areas across emotional and social functioning"
+  ],
+  "tips": [
+    "EQ is more malleable than IQ — use your subscale scores to identify one or two specific areas for focused development rather than trying to improve everything at once.",
+    "Answer based on how you typically feel and behave, not your ideal self — accurate self-awareness is itself a key component of emotional intelligence."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

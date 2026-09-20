@@ -97,11 +97,10 @@ export function AppPanel({
                       </p>
                     </div>
                     {persona.hasStory && (
-                      <Film
-                        className="size-4 shrink-0 text-brand"
-                        strokeWidth={1.75}
-                        aria-label="Has a story video"
-                      />
+                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-brand/25 bg-brand-wash px-2 py-0.5 text-micro font-medium text-brand-deep">
+                        <Film className="size-3" strokeWidth={1.75} aria-hidden />
+                        Story video
+                      </span>
                     )}
                     <ArrowRight
                       className="size-4 shrink-0 text-ink-faint transition-transform group-hover:translate-x-0.5"

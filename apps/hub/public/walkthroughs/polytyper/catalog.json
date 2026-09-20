@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Polytyper",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.polytyper.com",
+  "discoveredAt": "2026-09-20T08:45:13.778Z",
+  "updatedAt": "2026-09-20T14:11:34.926Z",
+  "scope": {
+    "status": "bounded",
+    "note": "This event showcase walks one public Arabic keyboard interaction only. The other language layouts, trainer, phrasebook, map, dictation, speech, and accounts are outside this run and are not counted as covered."
+  },
+  "features": [
+    {
+      "featureId": "language-keyboards",
+      "featureName": "Switching language keyboards",
+      "location": "/keyboard/arabic",
+      "category": "typing",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T08:45:30.913Z",
+      "notes": "This event showcase walks one public Arabic keyboard interaction only. The other language layouts, trainer, phrasebook, map, dictation, speech, and accounts are outside this run and are not counted as covered."
+    }
+  ],
+  "personas": [
+    {
+      "id": "multiscript-learner",
+      "name": "Elena Markovic",
+      "description": "A language learner comparing how Arabic and Russian feel on a physical keyboard. She wants a usable sample and the right layout in seconds; she does not want to configure an operating-system keyboard or create an account first.",
+      "portrait": "personas/multiscript-learner.png",
+      "entryPoint": "/keyboard/arabic",
+      "keyJourneys": [
+        "compare-arabic-and-russian"
+      ],
+      "navItems": [
+        {
+          "label": "Arabic keyboard",
+          "location": "/keyboard/arabic"
+        },
+        {
+          "label": "Switch language",
+          "location": "/keyboard/arabic"
+        },
+        {
+          "label": "Russian keyboard",
+          "location": "/keyboard/russian"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "featureId": "experiences",
+  "featureName": "Experiences",
+  "type": "feature",
+  "location": "/experiences",
+  "category": "spirituality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Experiences, from entry to detail",
+  "overview": "Experiences invites you to step into philosophical dilemmas and moral scenarios as a character, making choices that reveal something about your values, instincts, and worldview. Each experience is a short interactive narrative where your decisions matter — there are no right answers, only honest ones. Afterward, you can reflect on what your choices say about you.",
+  "targetAudience": "Users interested in spirituality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Experiences — Landing State",
+      "description": "The landing page showing the initial state and main interface, with available philosophical dilemma experiences to explore.",
+      "screenshotFilename": "experiences/step-1-landing.png",
+      "screenshotAlt": "Experiences landing page on desktop",
+      "action": "Opened /experiences.",
+      "location": "/experiences",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Experiences — Below the Fold",
+      "description": "Additional content visible after scrolling, including completed experiences and reflections on past choices.",
+      "screenshotFilename": "experiences/step-2-below-fold.png",
+      "screenshotAlt": "Experiences below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/experiences",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Interactive philosophical dilemma scenarios with meaningful choices",
+    "Character-driven narratives that put you in morally complex situations",
+    "Post-experience reflections to explore what your choices reveal about your values",
+    "History of completed experiences and the decisions you made"
+  ],
+  "tips": [
+    "Choose instinctively on your first read — overthinking tends to mask your genuine values",
+    "Revisit the reflection section after completing an experience to deepen your self-understanding"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

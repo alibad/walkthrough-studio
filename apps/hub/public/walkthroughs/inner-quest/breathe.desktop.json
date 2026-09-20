@@ -1,0 +1,76 @@
+{
+  "featureId": "breathe",
+  "featureName": "Breathwork",
+  "type": "feature",
+  "location": "/breathe",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Breathwork, from entry to detail",
+  "overview": "The Breathwork tool is your personal breathing coach, offering guided breathing exercises right in your browser. It features a beautiful animated visual guide that expands and contracts to help you match your breath to the rhythm. Whether you're looking to calm anxiety, improve focus, or just take a mindful pause in your day, there's a breathing pattern here for you.\n\nThe tool comes with 8 breathwork patterns (like Box Breathing, 4-7-8, and Alternate Nostril) plus 8 nervous system exercises (like Horse Stance and Cat-Cow Breathing). Each session can be timed from 1 to 8 minutes, and your practice history is tracked so you can build a consistent habit.",
+  "targetAudience": "Anyone looking to reduce stress, improve focus, or build a daily mindfulness practice. No experience needed — the visual guide and step-by-step instructions make it easy to follow along, even if you've never tried breathwork before.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Landing Page — Choose Your Practice",
+      "description": "When you open the Breathwork tool, you'll see the main breathing interface. At the center is a large animated circle with the current breathing pattern name (defaulting to Box Breathing). Below it, you can select your session duration — 2, 4, 6, or 8 minutes. The \"Start Practice\" button kicks off your session.\n\nAt the bottom, you'll find quick links to your History, Progress stats, a Learn section with breathing science, and custom Sequences you can create.",
+      "screenshotFilename": "breathwork/step-1-landing.png",
+      "screenshotAlt": "Breathwork landing page showing the breathing circle, duration selector, and Start Practice button",
+      "action": "Opened /breathe.",
+      "location": "/breathe",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Choose a Breathing Pattern",
+      "description": "Tap \"Change\" to open the pattern selector. You'll see two categories:\n\n• Breathwork — 8 classic breathing techniques including Simple Breath Awareness, Box Breathing, 4-7-8 Breathing, Diaphragmatic Breathing, Resonant Breathing, Alternate Nostril, Pursed-Lip, and Humming Bee Breath (Brahmari). Each shows the estimated session time.\n\n• Nervous System — 8 body-based exercises like Horse Stance, Standing Meditation (Zhan Zhuang), Cat-Cow Breathing, and Warrior Breath. These include posture descriptions to help you get into the right position.\n\nThe currently selected pattern is highlighted with a checkmark.",
+      "screenshotFilename": "breathwork/step-2-pattern-selector.png",
+      "screenshotAlt": "Breathing pattern selector showing Breathwork and Nervous System categories with multiple options",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/breathe",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Read the Instructions",
+      "description": "Before starting, you can tap \"Instructions\" to see step-by-step guidance for your chosen breathing pattern. For Box Breathing, the instructions walk you through the posture (sit upright, feet flat), preparation (close eyes, exhale fully), and the four-phase cycle: inhale for 4 counts, hold for 4, exhale for 4, hold empty for 4.\n\nThis is especially helpful when trying a new pattern for the first time.",
+      "screenshotFilename": "breathwork/step-3-instructions.png",
+      "screenshotAlt": "Instructions panel showing 8 numbered steps for Box Breathing technique",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/breathe",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Active Breathing Session",
+      "description": "Once you hit \"Start Practice,\" the screen transforms into an immersive, full-screen breathing guide. The background goes dark to minimize distractions, and a large animated shape (matching the breathing pattern — a square for Box Breathing) pulses to guide your breath.\n\nThe current phase is displayed in the center (Inhale, Hold, Exhale, or Hold) with a countdown number. A timer at the bottom shows remaining session time. You can Pause or Reset at any time, and there are buttons in the bottom-right to change the visual theme or toggle ambient sound.\n\nPress ESC or the X button to end the session early.",
+      "screenshotFilename": "breathwork/step-4-active-session.png",
+      "screenshotAlt": "Active breathing session showing animated box shape with Hold phase, countdown timer, and Pause/Reset controls",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/breathe",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "16 breathing patterns across Breathwork and Nervous System categories",
+    "Immersive full-screen guided sessions with animated visual cues",
+    "Customizable session duration (2, 4, 6, or 8 minutes)",
+    "Step-by-step instructions for each breathing technique",
+    "Theme and ambient sound customization during sessions",
+    "Practice history tracking and progress statistics",
+    "Custom breathing sequences you can create and save",
+    "Learn section with the science behind each technique"
+  ],
+  "tips": [
+    "Start with Box Breathing or Simple Breath Awareness if you're new to breathwork",
+    "Use the 2-minute sessions to build a daily habit before increasing duration",
+    "Try the Nervous System exercises if you want something more physical",
+    "Check your Progress page weekly to see your consistency streak",
+    "The 4-7-8 technique is particularly good right before sleep"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-11T10:58:00.000Z",
+  "capturedAt": "2026-03-11T10:58:00.000Z",
+  "synthetic": false
+}

@@ -1,0 +1,49 @@
+{
+  "featureId": "narrator",
+  "featureName": "Narrator",
+  "type": "feature",
+  "location": "/narrator",
+  "category": "spirituality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Narrator, from entry to detail",
+  "overview": "Narrator is an AI-powered storytelling experience where your personal growth journey is woven into an evolving narrative. The AI draws on your reflections, assessments, and milestones to craft a story about you — helping you see your life from a narrative perspective and discover themes, arcs, and meaning that may not be obvious when you're living it day by day.",
+  "targetAudience": "Users interested in spirituality tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Narrator — Landing State",
+      "description": "The landing page showing the initial state and main interface, introducing the AI narrative storytelling experience.",
+      "screenshotFilename": "narrator/step-1-landing.png",
+      "screenshotAlt": "Narrator landing page on desktop",
+      "action": "Opened /narrator.",
+      "location": "/narrator",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Narrator — Below the Fold",
+      "description": "Additional content visible after scrolling, including generated narrative chapters, story themes, and historical entries.",
+      "screenshotFilename": "narrator/step-2-below-fold.png",
+      "screenshotAlt": "Narrator below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/narrator",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "AI-powered narrative that weaves your growth journey into a personal story",
+    "Story chapters generated from your reflections, assessments, and milestones",
+    "Theme and arc identification across your personal growth data",
+    "Evolving narrative that updates as you continue your journey"
+  ],
+  "tips": [
+    "The more data you have across other modules, the richer and more personalized your narrative will be",
+    "Read your narrative periodically to gain perspective on how your story is evolving"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

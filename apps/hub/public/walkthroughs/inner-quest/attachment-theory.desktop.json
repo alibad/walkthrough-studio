@@ -1,0 +1,49 @@
+{
+  "featureId": "attachment-theory",
+  "featureName": "Attachment Style",
+  "type": "feature",
+  "location": "/attachment-theory",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Attachment Style, from entry to detail",
+  "overview": "Answer 36 questions to identify your attachment style: Secure, Anxious, Avoidant, or Fearful-Avoidant. Understand how your early bonding experiences shape your adult relationships.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Attachment Style — Landing State",
+      "description": "The landing page of the Attachment Style tool showing the initial state and main interface.",
+      "screenshotFilename": "attachment-theory/step-1-landing.png",
+      "screenshotAlt": "Attachment Style landing page on desktop",
+      "action": "Opened /attachment-theory.",
+      "location": "/attachment-theory",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Attachment Style — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "attachment-theory/step-2-below-fold.png",
+      "screenshotAlt": "Attachment Style below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/attachment-theory",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "36-question assessment identifying your primary attachment style (Secure, Anxious, Avoidant, or Fearful-Avoidant)",
+    "Explores two dimensions: anxiety about abandonment and avoidance of intimacy",
+    "Reveals how childhood bonding patterns continue to influence adult romantic and platonic relationships",
+    "Practical insights for moving toward more secure attachment in your relationships"
+  ],
+  "tips": [
+    "Think about your patterns across multiple relationships, not just your current one — attachment style is a general tendency, not relationship-specific.",
+    "Attachment styles are not fixed: awareness of your style is the first step toward developing more secure relating patterns."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

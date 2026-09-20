@@ -252,6 +252,8 @@ function PlatformStrip({ platform }: { platform: Platform }) {
 
 function ProjectCard({ summary }: { summary: ProjectSummary }) {
   const { project, catalog, staleness } = summary;
+  const scopeStatus = catalog?.scope?.status ?? "unknown";
+  const canClaimPercentage = scopeStatus === "comprehensive";
   const coverage =
     summary.featureCount > 0
       ? Math.round((summary.walkedCount / summary.featureCount) * 100)
@@ -285,8 +287,8 @@ function ProjectCard({ summary }: { summary: ProjectSummary }) {
 
       <div className="mt-4 flex-1" />
 
-      {/* Coverage rule. A hairline bar is enough — a percentage this coarse
-          doesn't earn a chart, but it does earn a glanceable length. */}
+      {/* A percentage is meaningful only after the product inventory has been
+          reconciled. A bounded one-of-one slice is not 100% of a product. */}
       {summary.featureCount > 0 && (
         <div className="mb-3">
           <div className="mb-1.5 flex items-baseline justify-between text-micro text-ink-faint">
@@ -294,16 +296,32 @@ function ProjectCard({ summary }: { summary: ProjectSummary }) {
               <span className="font-medium text-ink-muted nums">
                 {summary.walkedCount}
               </span>{" "}
-              of <span className="nums">{summary.featureCount}</span> features
+              {canClaimPercentage ? (
+                <>of <span className="nums">{summary.featureCount}</span> features</>
+              ) : scopeStatus === "bounded" ? (
+                <>walked in a bounded slice</>
+              ) : (
+                <>of <span className="nums">{summary.featureCount}</span> catalogued</>
+              )}
             </span>
-            <span className="nums">{coverage}%</span>
+            <span className={cn("nums", !canClaimPercentage && "font-medium text-warn")}>
+              {canClaimPercentage
+                ? `${coverage}%`
+                : scopeStatus === "bounded"
+                  ? "Not product coverage"
+                  : scopeStatus === "partial"
+                    ? "Partial inventory"
+                    : "Scope not declared"}
+            </span>
           </div>
-          <div className="h-[3px] overflow-hidden rounded-full bg-paper-deep">
-            <div
-              className="h-full rounded-full bg-ink/70 transition-[width]"
-              style={{ width: `${coverage}%` }}
-            />
-          </div>
+          {canClaimPercentage && (
+            <div className="h-[3px] overflow-hidden rounded-full bg-paper-deep">
+              <div
+                className="h-full rounded-full bg-ink/70 transition-[width]"
+                style={{ width: `${coverage}%` }}
+              />
+            </div>
+          )}
         </div>
       )}
 

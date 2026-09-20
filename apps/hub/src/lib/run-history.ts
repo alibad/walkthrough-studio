@@ -13,7 +13,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Catalog, Project, RunManifest, RunsFile, StalenessReport } from "./types";
-import { commitsSince, filesChangedSince, getHead, resolveRepo } from "./target-git";
+import { commitsSince, filesChangedSince, getHead, resolveRepo, shaExists } from "./target-git";
 
 const ROOT = process.cwd();
 const STORAGE = path.join(ROOT, "public", "walkthroughs");
@@ -65,6 +65,21 @@ export function appendRun(slug: string, manifest: RunManifest): void {
 const FRESH_MAX_DAYS = 30;
 const VERY_STALE_DAYS = 90;
 const STALE_MAX_COMMITS = 10;
+
+/** Pure policy, exported so boundary behaviour cannot drift without a test. */
+export function stalenessVerdict({
+  commitsSince,
+  ageDays,
+  dirty = false,
+}: {
+  commitsSince: number;
+  ageDays: number;
+  dirty?: boolean;
+}): StalenessReport["verdict"] {
+  if (commitsSince > STALE_MAX_COMMITS || ageDays > VERY_STALE_DAYS) return "very-stale";
+  if (dirty || commitsSince > 0 || ageDays > FRESH_MAX_DAYS) return "stale";
+  return "fresh";
+}
 
 function daysBetween(isoA: string, isoB: string): number {
   return Math.abs(new Date(isoB).getTime() - new Date(isoA).getTime()) / 86_400_000;
@@ -239,6 +254,22 @@ export function computeStaleness(
     };
   }
 
+  // An empty, mistyped, pruned, or foreign SHA is not "zero commits since".
+  // Treating the failed diff as an empty diff made an unprovable run look
+  // fresh — exactly backwards for an evidence system.
+  if (!shaExists(resolved.repoRoot, latest.target.sha)) {
+    return {
+      ...unknown("the walkthrough's recorded target commit is missing from this checkout"),
+      lastRunAt: latest.completedAt,
+      lastRunSha: latest.target.sha || null,
+      lastRunShaShort: latest.target.shaShort || null,
+      currentSha: head.sha,
+      currentShaShort: head.shaShort,
+      dirty: head.dirty,
+      ageDays,
+    };
+  }
+
   const commits = commitsSince(resolved.repoRoot, latest.target.sha, resolved.watchPath, 50);
   const changedFiles = filesChangedSince(
     resolved.repoRoot,
@@ -246,10 +277,7 @@ export function computeStaleness(
     resolved.watchPath,
   );
 
-  let verdict: StalenessReport["verdict"];
-  if (commits.length === 0 && ageDays <= FRESH_MAX_DAYS) verdict = "fresh";
-  else if (commits.length > STALE_MAX_COMMITS || ageDays > VERY_STALE_DAYS) verdict = "very-stale";
-  else verdict = "stale";
+  const verdict = stalenessVerdict({ commitsSince: commits.length, ageDays, dirty: head.dirty });
 
   const affectedFeatures = (catalog?.features ?? [])
     .filter((f) => changedFiles.some((file) => fileAffectsFeature(file, f.location, f.category)))
@@ -268,5 +296,6 @@ export function computeStaleness(
     commits,
     changedFiles,
     affectedFeatures,
+    ...(head.dirty ? { reason: "the target checkout has uncommitted changes" } : {}),
   };
 }

@@ -1,0 +1,39 @@
+{
+  "featureId": "discussion-map",
+  "featureName": "Discussion Map",
+  "type": "feature",
+  "location": "/meetings",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Discussion Map, from entry to detail",
+  "overview": "Discussion Map is a meeting analysis tool that helps you understand the dynamics of group conversations. After logging a meeting, you can map who spoke to whom, track influence patterns, and visualize who drives decisions in your team. The resulting influence graph reveals participation imbalances, dominant voices, and collaboration gaps that are hard to notice in real time.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Discussion Map — Landing State",
+      "description": "The landing page showing the initial state and main interface, with options to start a new meeting analysis or review past sessions.",
+      "screenshotFilename": "discussion-map/step-1-landing.png",
+      "screenshotAlt": "Discussion Map landing page on desktop",
+      "action": "Opened /meetings.",
+      "location": "/meetings",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Visual influence graph showing who drives decisions in meetings",
+    "Track speaking patterns and participation across all meeting participants",
+    "Identify collaboration gaps and dominant voices in group discussions",
+    "Meeting history with comparative analysis across sessions"
+  ],
+  "tips": [
+    "Map discussions immediately after a meeting while the conversation dynamics are fresh",
+    "Look for participants who are rarely connected to others — they may have valuable ideas that aren't being heard"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

@@ -1,7 +1,7 @@
 {
   "$comment": [
     "What this system can do, what each thing needs, and what happens when it",
-    "is missing. Read by BOTH `pnpm doctor` and the hub's /setup page so the",
+    "is missing. Read by BOTH `pnpm run doctor` and the hub's /setup page so the",
     "command and the page can never describe different systems.",
     "",
     "Lives inside apps/hub because that is the Vercel root directory — a file",

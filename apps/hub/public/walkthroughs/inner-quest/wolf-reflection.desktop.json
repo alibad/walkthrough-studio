@@ -1,0 +1,90 @@
+{
+  "featureId": "wolf-reflection",
+  "featureName": "Wolf Reflection",
+  "type": "feature",
+  "location": "/reflections?tab=wolf",
+  "category": "spirituality",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Wolf Reflection, from entry to detail",
+  "overview": "The Wolf Reflection is based on the Cherokee Two Wolves parable — the idea that inside each of us live two wolves: one of light (gratitude, kindness, patience, compassion) and one of shadow (anger, envy, fear, resentment). The wolf that grows is the one you feed.\n\nThis interactive tool lets you log daily choices by tapping behavior buttons for either wolf. Each choice opens a reflection modal where you describe what happened and what you learned. Over time, you build a visual balance showing which wolf you're feeding, with stats tracking across Today, Week, Month, Year, and All Time.\n\nThe tool lives within the My Reflections hub under the Wolves tab, alongside Gratitude, Feelings, Wins, Letters, and other reflection types.",
+  "targetAudience": "Anyone seeking greater self-awareness about their daily choices and emotional patterns. Whether you're working on anger management, building gratitude habits, or simply want a mindful way to track which behaviors you're reinforcing — the Wolf Reflection makes the abstract concept of 'feeding the good wolf' tangible and trackable.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Landing Page — The Two Wolves",
+      "description": "Navigate to /reflections?tab=wolf (or tap the Wolves tab in My Reflections). The page displays the iconic 'THE TWO WOLVES' heading with the subtitle 'Which one grows? The one you feed.'\n\nTwo side-by-side panels show:\n- **Light Wolf** (left, blue/purple) — A serene wolf character at 100% with 8 behavior buttons: Gratitude, Kindness, Patience, Mindfulness, Compassion, Growth, Peace, Joy\n- **Shadow Wolf** (right, red/orange) — A fierce wolf character at 0% with 8 behavior buttons: Anger, Envy, Fear, Judgment, Resentment, Victim mentality, Criticism, Scarcity thinking\n\nAbove the wolves, a toolbar offers History, Info, Customize, and Theme options. Tap any behavior button to log a feeding.",
+      "screenshotFilename": "wolf-reflection/step-1-landing.png",
+      "screenshotAlt": "Wolf Reflection landing page showing THE TWO WOLVES heading, light wolf (blue, 100%) with positive behavior buttons and shadow wolf (red, 0%) with negative behavior buttons",
+      "action": "Opened /reflections?tab=wolf.",
+      "location": "/reflections?tab=wolf",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Feeding a Wolf — Reflection Modal",
+      "description": "Tapping a behavior button (e.g., 'Gratitude' on the light wolf) opens a reflection modal. The modal shows which wolf and behavior you're feeding, and asks you to reflect on the moment:\n\n- What happened?\n- What triggered this choice?\n- What did you learn?\n\nA text area lets you write your reflection. The modal includes a 'Save reflection' button to record your entry.",
+      "screenshotFilename": "wolf-reflection/step-2-wolf-fed.png",
+      "screenshotAlt": "Reflection modal after tapping Gratitude on the light wolf, showing text area for writing a reflection about the choice",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=wolf",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Writing Your Reflection",
+      "description": "Type your reflection in the text area. This is your private space to process the moment — describe what happened, why you made this choice, and what insight you gained.\n\nFor example: 'Today I chose to appreciate the small wins — a good conversation with a colleague, finishing a task I'd been putting off, and the sunset on my walk home.'\n\nTap 'Save reflection' when you're ready to log the entry.",
+      "screenshotFilename": "wolf-reflection/step-3-reflection.png",
+      "screenshotAlt": "Reflection modal with text filled in describing a gratitude moment, with Save reflection button ready to submit",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=wolf",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Wolf Balance View",
+      "description": "After logging entries, the main view updates to show your wolf balance. The light and shadow wolves are sized proportionally to how much you've fed each one:\n\n- **100% LIGHT / 0% SHADOW** means all your logged behaviors have been positive\n- The wolf characters animate to reflect the balance — the fed wolf grows larger\n- Each behavior button is a clickable bubble arranged around a central LIGHT or SHADOW label\n\nThe balance is a powerful visual reminder of your daily choices and patterns.",
+      "screenshotFilename": "wolf-reflection/step-4-balance.png",
+      "screenshotAlt": "Wolf balance view showing 100% LIGHT wolf (large, blue) with positive behavior bubbles and 0% SHADOW wolf (small, red) with negative behavior bubbles",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=wolf",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Stats & Time Filters",
+      "description": "Below the wolf panels, a stats bar shows your feeding history with time filters:\n\n- **Today / Week / Month / Year / All Time** — toggle to see your balance across different periods\n- **Light: N** — total light wolf feedings (left side, purple)\n- **Shadow: N** — total shadow wolf feedings (right side, red)\n- **Percentage bar** — visual split showing 100% / 0% (or whatever your current ratio is)\n\nThis helps you spot trends: Are you feeding the light wolf more on weekdays? Does the shadow wolf spike during stressful months? The data tells the story of your inner journey.",
+      "screenshotFilename": "wolf-reflection/step-5-stats.png",
+      "screenshotAlt": "Full page view showing both wolves, behavior buttons, time filter tabs (Today, Week, Month, Year, All Time), and stats bar with Light: 1, 100%/0%, Shadow: 0",
+      "action": "Advanced to the next state preserved by the app-owned walkthrough.",
+      "location": "/reflections?tab=wolf",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Two wolves metaphor with 8 light and 8 shadow behavior categories",
+    "Reflection modal for each feeding — capture what happened and what you learned",
+    "Real-time balance visualization with proportional wolf sizing",
+    "Time-based filtering: Today, Week, Month, Year, and All Time views",
+    "Stats bar tracking total light vs shadow feedings with percentage split",
+    "History view to review past reflections and patterns",
+    "Customizable wolf themes and appearance",
+    "Integration with the Reflections hub alongside Gratitude, Feelings, and more",
+    "Achievement system — earn badges for consistent positive feeding",
+    "Wolf Balance widget on the home page dashboard"
+  ],
+  "tips": [
+    "Log in the moment — the freshest reflections are the most insightful",
+    "Don't avoid feeding the shadow wolf — acknowledging negative patterns is the first step to changing them",
+    "Use the Week view to spot patterns in your daily choices",
+    "Pair wolf reflections with Gratitude entries for a complete picture of your mindset",
+    "The goal isn't 100% light — it's awareness of which wolf you're feeding and why",
+    "Revisit your reflections weekly to notice growth and recurring themes",
+    "The shadow wolf behaviors aren't 'bad' — they're signals worth examining"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-12T08:00:00.000Z",
+  "capturedAt": "2026-03-12T08:00:00.000Z",
+  "synthetic": false
+}

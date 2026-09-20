@@ -1,0 +1,39 @@
+{
+  "featureId": "space-energy-audit",
+  "featureName": "Space Energy Audit",
+  "type": "feature",
+  "location": "/space-energy-audit",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Space Energy Audit, from entry to detail",
+  "overview": "Evaluate each room for energy, cleanliness, organization, comfort, and lighting. Understand how your physical spaces affect your mental and emotional state, and identify targeted improvements.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Space Energy Audit — Landing State",
+      "description": "The landing page showing the room evaluation interface with dimensions: energy, cleanliness, organization, comfort, and lighting.",
+      "screenshotFilename": "space-energy-audit/step-1-landing.png",
+      "screenshotAlt": "Space Energy Audit landing page on desktop",
+      "action": "Opened /space-energy-audit.",
+      "location": "/space-energy-audit",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Evaluate rooms across 5 energy dimensions: energy, cleanliness, organization, comfort, and lighting",
+    "Generate a comprehensive space energy report for your entire home",
+    "Identify which rooms drain vs. restore your energy",
+    "Receive targeted recommendations for each room's highest-impact improvements"
+  ],
+  "tips": [
+    "Audit a room immediately after spending time in it — your intuitive reaction captures the energy better than a detached analysis.",
+    "Focus first on the rooms where you spend the most time; even small improvements to your bedroom or workspace can have outsized impact."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

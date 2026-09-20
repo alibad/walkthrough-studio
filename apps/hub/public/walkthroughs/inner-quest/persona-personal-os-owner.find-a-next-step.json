@@ -1,0 +1,125 @@
+{
+  "personaId": "personal-os-owner",
+  "journeyId": "find-a-next-step",
+  "headline": "From private reflection across life to one next action",
+  "overview": "Samira uses Inner Quest as a private system of record across character, relationships, career, and wellbeing. The journey follows her from account entry to a next step she can actually take.",
+  "payoff": "Samira turns cross-pillar reflection into a concrete action without moving her private context into another tool.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "signup",
+      "title": "A private front door",
+      "narrative": "Samira arrives at a Personal OS that asks her to create a private account before it asks her to quantify herself. She is not here for another social profile and does not want this material published.",
+      "frames": [
+        "signup/step-1-landing.png"
+      ],
+      "frameCaptions": [
+        "Sign up page showing Continue with Google button and email registration form with Name, Email, and Password fields"
+      ],
+      "location": "/signup",
+      "surface": "desktop",
+      "sourceFeature": "signup",
+      "verificationStatus": "live-walked",
+      "note": "Frame imported from the app-owned legacy walkthrough library; current-state re-walk remains due."
+    },
+    {
+      "id": "character",
+      "title": "The system starts with character",
+      "narrative": "Inside the Character hub, Samira sees the tools as parts of one self-understanding practice rather than a wall of unrelated assessments.",
+      "frames": [
+        "character/step-1-landing.png"
+      ],
+      "frameCaptions": [
+        "Character Hub landing page on desktop"
+      ],
+      "location": "/character",
+      "surface": "desktop",
+      "sourceFeature": "character",
+      "verificationStatus": "live-walked",
+      "note": "Frame imported from the app-owned legacy walkthrough library; current-state re-walk remains due."
+    },
+    {
+      "id": "values-wheel",
+      "title": "Values become a usable map",
+      "narrative": "The Values Wheel turns an abstract question into a concrete place to inspect alignment. Samira can see where her stated priorities and her lived week diverge.",
+      "frames": [
+        "values-wheel/step-1-landing.png"
+      ],
+      "frameCaptions": [
+        "Values Wheel landing page showing 7 values listed with the colorful wheel visualization on the right, stats dashboard showing 5.0 average score and Balanced indicator"
+      ],
+      "location": "/values-wheel",
+      "surface": "desktop",
+      "sourceFeature": "values-wheel",
+      "verificationStatus": "live-walked",
+      "note": "Frame imported from the app-owned legacy walkthrough library; current-state re-walk remains due."
+    },
+    {
+      "id": "my-relationships",
+      "title": "Relationships stay in context",
+      "narrative": "My Relationships keeps people, notes, and growth work attached to the actual relationship. Samira does not have to rebuild that context in a separate journal.",
+      "frames": [
+        "my-relationships/step-1-landing.png"
+      ],
+      "frameCaptions": [
+        "My Relationships landing page on desktop"
+      ],
+      "location": "/my-relationships",
+      "surface": "desktop",
+      "sourceFeature": "my-relationships",
+      "verificationStatus": "live-walked",
+      "note": "Frame imported from the app-owned legacy walkthrough library; current-state re-walk remains due."
+    },
+    {
+      "id": "career-dashboard",
+      "title": "Career becomes one chapter",
+      "narrative": "The Career Dashboard synthesizes strengths, values, fit, and next actions without pretending that work is the whole person.",
+      "frames": [
+        "career-dashboard/step-1-landing.png"
+      ],
+      "frameCaptions": [
+        "Career Dashboard landing page on desktop"
+      ],
+      "location": "/career/dashboard",
+      "surface": "desktop",
+      "sourceFeature": "career-dashboard",
+      "verificationStatus": "live-walked",
+      "note": "Frame imported from the app-owned legacy walkthrough library; current-state re-walk remains due."
+    },
+    {
+      "id": "holistic-health",
+      "title": "Wellbeing joins the same story",
+      "narrative": "Holistic Health brings physical, emotional, and environmental signals into the same private system, where patterns can cross pillars without crossing users.",
+      "frames": [
+        "holistic-health/step-1-landing.png"
+      ],
+      "frameCaptions": [
+        "Holistic Health Assessment landing page on desktop"
+      ],
+      "location": "/holistic-health",
+      "surface": "desktop",
+      "sourceFeature": "holistic-health",
+      "verificationStatus": "live-walked",
+      "note": "Frame imported from the app-owned legacy walkthrough library; current-state re-walk remains due."
+    },
+    {
+      "id": "action-items",
+      "title": "Reflection ends in action",
+      "narrative": "My Action Items is the payoff: the exploration becomes a short set of concrete next steps. Samira leaves with work she chose, not a score she was told to admire.",
+      "frames": [
+        "action-items/step-1-landing.png"
+      ],
+      "frameCaptions": [
+        "Action Items landing page on desktop"
+      ],
+      "location": "/action-items",
+      "surface": "desktop",
+      "sourceFeature": "action-items",
+      "verificationStatus": "live-walked",
+      "note": "Frame imported from the app-owned legacy walkthrough library; current-state re-walk remains due."
+    }
+  ],
+  "capturedAt": "2026-09-20T16:56:36.087Z",
+  "storyVideo": "personas/find-a-next-step-story.mp4"
+}

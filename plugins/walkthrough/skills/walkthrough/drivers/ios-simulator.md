@@ -124,8 +124,8 @@ shade, which is at least an obvious failure.
 
 | Surface id | Device | Points |
 |---|---|---|
-| `iphone` | iPhone 17 Pro | 393 × 852 |
-| `iphone-landscape` | iPhone 17 Pro | 852 × 393 |
+| `iphone` | iPhone 17 Pro | 402 × 874 |
+| `iphone-landscape` | iPhone 17 Pro | 874 × 402 |
 | `ipad` | iPad Pro 11-inch | 834 × 1210 |
 
 Rotate before capturing, never during:

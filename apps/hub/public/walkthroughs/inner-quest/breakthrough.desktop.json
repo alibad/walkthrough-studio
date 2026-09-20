@@ -1,0 +1,39 @@
+{
+  "featureId": "breakthrough",
+  "featureName": "Breakthrough Blueprint",
+  "type": "feature",
+  "location": "/character/breakthrough",
+  "category": "growth",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Breakthrough Blueprint, from entry to detail",
+  "overview": "The Breakthrough Blueprint is a structured framework for tackling your most significant personal challenges. It guides you through identifying a breakthrough challenge, conducting a SWOT analysis to understand your strengths, weaknesses, opportunities, and threats, and then assessing your readiness to commit. Once you've defined your breakthrough, you can log regular check-ins to track progress and momentum over time.",
+  "targetAudience": "Users interested in growth tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Breakthrough Blueprint — Landing State",
+      "description": "The landing page showing the initial state and main interface. You can see the option to define a new breakthrough challenge and an overview of the structured process ahead.",
+      "screenshotFilename": "breakthrough/step-1-landing.png",
+      "screenshotAlt": "Breakthrough Blueprint landing page on desktop",
+      "action": "Opened /character/breakthrough.",
+      "location": "/character/breakthrough",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Define and articulate personal breakthrough challenges with guided prompts",
+    "SWOT analysis framework to map strengths, weaknesses, opportunities, and threats",
+    "Readiness assessment to evaluate your commitment and preparation level",
+    "Regular check-in tracking to monitor progress and maintain momentum"
+  ],
+  "tips": [
+    "Be specific when defining your breakthrough challenge — vague goals are harder to make progress on",
+    "Use the SWOT analysis honestly; identifying weaknesses and threats is just as important as your strengths"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

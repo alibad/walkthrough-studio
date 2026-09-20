@@ -1,0 +1,180 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T08:41:26.444Z",
+      "startedAt": "2026-09-20T08:41:10.809Z",
+      "completedAt": "2026-09-20T08:41:26.444Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.polytyper.com/keyboard/arabic",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "arabic-keyboard"
+        ],
+        "personas": [],
+        "screenshots": 4,
+        "videos": 0,
+        "issues": 1
+      }
+    },
+    {
+      "id": "2026-09-20T08:43:03.472Z",
+      "startedAt": "2026-09-20T08:42:47.648Z",
+      "completedAt": "2026-09-20T08:43:03.472Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.polytyper.com/keyboard/arabic",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "arabic-keyboard"
+        ],
+        "personas": [],
+        "screenshots": 4,
+        "videos": 0,
+        "issues": 1
+      }
+    },
+    {
+      "id": "2026-09-20T08:45:00.949Z",
+      "startedAt": "2026-09-20T08:44:41.364Z",
+      "completedAt": "2026-09-20T08:45:00.949Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.polytyper.com/keyboard/arabic",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "language-keyboards"
+        ],
+        "personas": [],
+        "screenshots": 4,
+        "videos": 0,
+        "issues": 1
+      }
+    },
+    {
+      "id": "2026-09-20T08:45:30.913Z",
+      "startedAt": "2026-09-20T08:45:13.778Z",
+      "completedAt": "2026-09-20T08:45:30.913Z",
+      "skill": "walkthrough",
+      "agent": "walk-humanquest-showcase.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.polytyper.com/keyboard/arabic",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "bounded event showcase; not a complete product catalog · production deployment SHA not exposed; no local commit is claimed · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "language-keyboards"
+        ],
+        "personas": [],
+        "screenshots": 6,
+        "videos": 0,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-20T14:11:34.926Z",
+      "startedAt": "2026-09-20T14:11:23.354Z",
+      "completedAt": "2026-09-20T14:11:34.926Z",
+      "skill": "walkthrough",
+      "agent": "walk-public-personas.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitSubject": "Public production capture; deployed source SHA not exposed"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.polytyper.com/keyboard/arabic",
+        "surfaces": [
+          "desktop"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "persona-only run; catalog remains explicitly bounded · video normalized to portable H.264 MP4 when ffmpeg was available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video"
+      },
+      "coverage": {
+        "features": [
+          "language-keyboards"
+        ],
+        "personas": [
+          "multiscript-learner"
+        ],
+        "screenshots": 5,
+        "videos": 1,
+        "issues": 0
+      }
+    }
+  ]
+}

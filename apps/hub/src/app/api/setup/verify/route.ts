@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
  *
  * ── Why it shells out instead of reimplementing ───────────────────────────
  *
- * `pnpm doctor` already knows how to verify each provider, and a second
+ * `pnpm run doctor` already knows how to verify each provider, and a second
  * implementation in TypeScript would be a second thing to keep true. The
  * failure mode there is specific and nasty: the page says the key works, the
  * command says it does not, and you have no way to tell which one is lying.

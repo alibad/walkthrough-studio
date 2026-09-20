@@ -1,0 +1,39 @@
+{
+  "featureId": "relationship-compass",
+  "featureName": "Relationship Needs Compass",
+  "type": "feature",
+  "location": "/relationships/compass",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Relationship Needs Compass, from entry to detail",
+  "overview": "The Relationship Needs Compass helps you identify and assess 19 core relationship needs — from security and affection to autonomy and shared growth. For each need, you rate how important it is to you and how well it's currently being met in your relationship. The result is a personalized compass showing your needs landscape and highlighting gaps that may be worth exploring with a partner or therapist.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Relationship Needs Compass — Landing State",
+      "description": "The landing page showing the initial state and main interface, introducing the 19 core relationship needs assessment.",
+      "screenshotFilename": "relationship-compass/step-1-landing.png",
+      "screenshotAlt": "Relationship Needs Compass landing page on desktop",
+      "action": "Opened /relationships/compass.",
+      "location": "/relationships/compass",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Assessment of 19 core relationship needs across key dimensions",
+    "Dual rating for both importance and current fulfillment of each need",
+    "Visual compass showing your relationship needs landscape",
+    "Gap analysis highlighting unmet needs that may need attention"
+  ],
+  "tips": [
+    "Answer based on how you actually feel, not how you think you should feel",
+    "Use the results as a starting point for honest conversations with your partner"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

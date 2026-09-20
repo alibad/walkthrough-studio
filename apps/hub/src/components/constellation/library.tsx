@@ -5,9 +5,9 @@
  *
  * The chart is the front door because a library of apps is a *space* you
  * browse, and a table is not that. But a chart is a bad way to answer "which
- * of these is stale" across twenty apps, so the list stays one click away and
- * the preference is remembered per session. Neither view is a lesser version
- * of the other; they answer different questions.
+ * of these is stale" across twenty apps, so the list stays one click away.
+ * Every visit opens on the chart; selecting List is deliberately temporary so
+ * an old browser preference cannot quietly replace the library's front door.
  *
  * Selection lives in the URL (`?app=slug`) so a chart with a panel open is a
  * linkable state — the thing the old globe got right and the reason its deep
@@ -26,8 +26,6 @@ import { AppPanel } from "./app-panel";
 
 type View = "chart" | "list";
 
-const VIEW_KEY = "walkthrough-studio:library-view";
-
 interface LibraryProps {
   summaries: ProjectSummary[];
   nodes: ConstellationNode[];
@@ -41,36 +39,12 @@ export function Library({ summaries, nodes, edges, personasBySlug }: LibraryProp
   const params = useSearchParams();
   const selected = params.get("app");
 
-  // Default to the chart, but honour a previous choice. Read in an effect
-  // rather than during render so the server and first client paint agree —
-  // reading localStorage during render is a hydration mismatch waiting to
-  // happen.
-  //
-  // ── Why a phone lands on the list instead ────────────────────────────────
-  //
-  // The chart is a fixed 1000x700 viewBox scaled to the column width. On a
-  // 375px phone that is a scale factor of 0.375, which was measured, not
-  // guessed: the "Openstage" label is authored at 17px and paints at 6.4px,
-  // and the whole map renders 32px wide. It is not blank, which is what makes
-  // it worse — it reads as a rendering failure rather than as a small map.
-  //
-  // Shrinking the labels' authored size would fix legibility and break the
-  // desktop composition, so the honest fix is to send narrow viewports to the
-  // view that answers the same question without a spatial metaphor. The toggle
-  // is still there for anyone who wants to pinch into it.
+  // The chart is the product's front door on every surface. List remains a
+  // temporary alternate view, but it never changes what the next visit opens.
   const [view, setView] = useState<View>("chart");
-  useEffect(() => {
-    const saved = window.localStorage.getItem(VIEW_KEY);
-    if (saved === "list" || saved === "chart") {
-      setView(saved);
-      return;
-    }
-    if (!window.matchMedia("(min-width: 1024px)").matches) setView("list");
-  }, []);
 
   const chooseView = useCallback((next: View) => {
     setView(next);
-    window.localStorage.setItem(VIEW_KEY, next);
   }, []);
 
   const select = useCallback(

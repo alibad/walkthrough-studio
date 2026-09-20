@@ -1,0 +1,48 @@
+{
+  "featureId": "capacity-planning-lab",
+  "featureName": "Capacity planning lab",
+  "type": "feature",
+  "location": "/tools/capacity-planning",
+  "category": "tools",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Break a capacity plan before production does",
+  "overview": "The control room ties growth, storage, traffic, fleet survival, headroom, and cost together. Scenario buttons make the trade-off visible immediately, so this walk records the changed outputs rather than just the sliders.",
+  "targetAudience": "An engineer sizing a service before a launch",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The baseline has numbers, not adjectives",
+      "action": "Opened the capacity-planning control room and moved to the operational scenarios.",
+      "description": "The baseline quantifies users, replicated storage, scenario RPS, surviving instances, headroom, and monthly cost in one model.",
+      "screenshotFilename": "capacity-planning-lab/mobile/step-01-baseline.png",
+      "screenshotAlt": "Capacity planning baseline and scenario controls",
+      "location": "/tools/capacity-planning",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "A launch more than doubles demand",
+      "action": "Selected \"Launch spike\".",
+      "description": "The same fleet is challenged with **2.2× demand**; the scenario output rises from 87.5K to 192.5K RPS, making the capacity risk concrete.",
+      "screenshotFilename": "capacity-planning-lab/mobile/step-02-launch-spike.png",
+      "screenshotAlt": "Capacity plan under the launch spike scenario",
+      "location": "/tools/capacity-planning",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The plan survives with one zone gone",
+      "action": "Selected \"Zone loss\".",
+      "description": "The model removes a third of the fleet while keeping peak traffic, so the learner can read the new surviving-instance and headroom consequences before touching production.",
+      "screenshotFilename": "capacity-planning-lab/mobile/step-03-zone-loss.png",
+      "screenshotAlt": "Capacity plan after losing one availability zone",
+      "location": "/tools/capacity-planning",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T13:45:16.633Z",
+  "generatedAt": "2026-09-20T13:45:16.633Z",
+  "note": "Live production evidence. Discovery used Codex computer control; recording used the cross-runtime capture contract so Claude can rerun the same script."
+}

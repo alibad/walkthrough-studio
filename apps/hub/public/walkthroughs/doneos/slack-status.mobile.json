@@ -1,0 +1,31 @@
+{
+  "featureId": "slack-status",
+  "featureName": "Slack Status",
+  "type": "feature",
+  "location": "DoneOS → Slack Status",
+  "category": "product",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Execution becomes a daily status automatically",
+  "overview": "The Slack view turns the execution ledger into a scheduled team update rather than asking somebody to reconstruct the day from memory.",
+  "targetAudience": "Operators coordinating accountable human and agent execution",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Slack Status, ready",
+      "action": "Opened the committed DoneOS store-preview harness with screen=slack.",
+      "description": "The Slack view turns the execution ledger into a scheduled team update rather than asking somebody to reconstruct the day from memory.",
+      "screenshotFilename": "slack-status/mobile/step-01-ready.png",
+      "screenshotAlt": "Slack Status in the DoneOS Flutter product on undefined",
+      "location": "DoneOS → Slack Status",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Execution becomes a daily status automatically"
+  ],
+  "note": "Live-rendered from DoneOS's committed store-preview entry point with fictional showcase data. This proves the Flutter product surface, not a production account or a signed iOS/Android store binary.",
+  "generatedAt": "2026-09-20T16:53:05.999Z",
+  "capturedAt": "2026-09-20T16:53:05.999Z"
+}

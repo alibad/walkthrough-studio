@@ -1,0 +1,64 @@
+{
+  "featureId": "native-first-run",
+  "featureName": "Native first run",
+  "type": "feature",
+  "location": "OnboardingScreen → HomeShell",
+  "category": "onboarding",
+  "surface": "iphone",
+  "platform": "ios",
+  "locale": "en",
+  "headline": "From first launch to a ready teaching studio",
+  "overview": "A fresh Yoga Quest install explains visual planning, offline Teach Mode, and local-first privacy before opening the native studio with a prepared class.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Plan the class as an arc",
+      "action": "Launched Yoga Quest from a freshly cleared app container.",
+      "description": "The native onboarding opens with the product's visual class-planning model: build a sequence, shape its arc, then teach from it.",
+      "screenshotFilename": "native-first-run/iphone/step-01-plan.png",
+      "screenshotAlt": "Yoga Quest native onboarding introducing visual class planning on iPhone",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Teach with the next cue ready",
+      "action": "Tapped Continue on the first onboarding screen.",
+      "description": "The second native screen introduces Teach Mode as a glanceable class companion with the current pose, the next pose, and timing kept in view.",
+      "screenshotFilename": "native-first-run/iphone/step-02-teach.png",
+      "screenshotAlt": "Yoga Quest native onboarding explaining offline Teach Mode on iPhone",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "A private studio starts on-device",
+      "action": "Tapped Continue on the Teach Mode screen.",
+      "description": "The final onboarding step makes the local-first model explicit: planning and teaching work without an account, with sync presented as optional.",
+      "screenshotFilename": "native-first-run/iphone/step-03-private.png",
+      "screenshotAlt": "Yoga Quest native onboarding describing local-first privacy on iPhone",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The native studio opens ready to teach",
+      "action": "Tapped Enter studio.",
+      "description": "The app lands on the native Studio tab with a prepared class, a prominent Teach this class action, and bottom navigation to Library, Explore, Learn, and profile.",
+      "screenshotFilename": "native-first-run/iphone/step-04-home.png",
+      "screenshotAlt": "Yoga Quest native studio home with a prepared class and Teach this class action",
+      "videoFilename": "video/native-first-run.mp4",
+      "location": "HomeShell",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Native visual class-planning onboarding",
+    "Offline Teach Mode positioning",
+    "Local-first privacy explanation",
+    "Native studio home with a prepared class"
+  ],
+  "capturedAt": "2026-09-20T12:38:48Z",
+  "generatedAt": "2026-09-20T12:41:15Z",
+  "note": "Captured from a newly built Yoga Quest 1.0.1+12 app on an isolated iPhone 17 Pro simulator running iOS 27.0. The run cleared only that temporary simulator's app container. It did not exercise a physical device, account sync, or a store binary."
+}

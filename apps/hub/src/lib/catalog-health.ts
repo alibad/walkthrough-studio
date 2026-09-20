@@ -188,6 +188,11 @@ export function classifyCatalog(catalog: Catalog | null): CatalogTaxonomy {
 // ── The report ──────────────────────────────────────────────────────────────
 
 export type IssueKind =
+  | "bounded-catalog"
+  | "partial-catalog"
+  | "shallow-catalog"
+  | "no-persona-journey"
+  | "no-video-evidence"
   | "duplicate-captures"
   | "missing-captures"
   | "variants-as-features"
@@ -246,6 +251,34 @@ export function getCatalogHealth(
   if (!catalog) return { issues: issuesOut, taxonomy, walkthroughs, totals };
 
   const platform: Platform = catalog.platform ?? "web";
+
+  if (catalog.scope?.status === "bounded") {
+    issuesOut.push({
+      severity: "warning",
+      kind: "bounded-catalog",
+      title: "This is a bounded showcase, not a complete product inventory",
+      detail: catalog.scope.note,
+    });
+  }
+
+  if (catalog.scope?.status === "partial") {
+    issuesOut.push({
+      severity: "warning",
+      kind: "partial-catalog",
+      title: "Product discovery is incomplete",
+      detail: catalog.scope.note,
+    });
+  }
+
+  if (catalog.features.length < 3 && catalog.scope?.status !== "comprehensive") {
+    issuesOut.push({
+      severity: "warning",
+      kind: "shallow-catalog",
+      title: `Only ${catalog.features.length} top-level ${plural(catalog.features.length, "capability")} catalogued`,
+      detail:
+        "A very small inventory is often a captured slice mistaken for the product. Reconcile source routes/navigation with live reconnaissance, and keep gated or blocked capabilities in the catalog instead of shrinking the denominator.",
+    });
+  }
 
   // 1 — Variants masquerading as features.
   if (taxonomy.variants.length > 0) {
@@ -397,6 +430,26 @@ export function getCatalogHealth(
     });
   }
 
+  if (totals.liveSteps > 0 && (catalog.personas?.length ?? 0) === 0) {
+    issuesOut.push({
+      severity: "warning",
+      kind: "no-persona-journey",
+      title: "Screens were walked, but no user's journey was",
+      detail:
+        "The catalog has live feature evidence but no persona. Add at least one evidence-backed role and a 5–9 scene journey that crosses capabilities and ends at a real payoff; otherwise this remains a screen gallery.",
+    });
+  }
+
+  if (totals.liveSteps > 0 && !hasAnyVideoEvidence(slug)) {
+    issuesOut.push({
+      severity: "info",
+      kind: "no-video-evidence",
+      title: "No walkthrough video is attached",
+      detail:
+        "Stills can explain states, but not timing, sequence, streaming, animation, or native gestures. Record at least one representative flow when the backend supports video, or leave the missing capability explicit in the run manifest.",
+    });
+  }
+
   // 5 — What the walk found broken.
   //
   // Issues live here rather than in their own panel because they *are* a
@@ -485,6 +538,35 @@ function hasWalkedJourney(slug: string, personaId: string): boolean {
       if (Array.isArray(doc?.scenes) && doc.scenes.length > 0) return true;
     } catch {
       // A malformed journey file is not a walked journey.
+    }
+  }
+  return false;
+}
+
+/** True when any feature or persona artifact points to a video that exists. */
+function hasAnyVideoEvidence(slug: string): boolean {
+  const dir = projectDir(slug);
+  if (!fs.existsSync(dir)) return false;
+  let names: string[];
+  try {
+    names = fs.readdirSync(dir);
+  } catch {
+    return false;
+  }
+  for (const name of names) {
+    if (!name.endsWith(".json") || name === "catalog.json") continue;
+    try {
+      const doc = JSON.parse(fs.readFileSync(path.join(dir, name), "utf8"));
+      const refs = [
+        doc?.video?.file,
+        doc?.walkRecording,
+        doc?.storyVideo,
+        ...(Array.isArray(doc?.steps) ? doc.steps.map((s: { videoFilename?: string }) => s.videoFilename) : []),
+        ...(Array.isArray(doc?.scenes) ? doc.scenes.map((s: { videoFilename?: string }) => s.videoFilename) : []),
+      ].filter((ref): ref is string => typeof ref === "string" && ref.length > 0);
+      if (refs.some((ref) => fs.existsSync(path.join(dir, ref)))) return true;
+    } catch {
+      // Malformed data is handled elsewhere and is not video evidence.
     }
   }
   return false;

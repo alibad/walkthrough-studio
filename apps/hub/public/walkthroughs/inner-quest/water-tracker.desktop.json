@@ -1,0 +1,39 @@
+{
+  "featureId": "water-tracker",
+  "featureName": "Water Tracker",
+  "type": "feature",
+  "location": "/water-tracker",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Water Tracker, from entry to detail",
+  "overview": "Log glasses of water consumed throughout the day. Track daily and weekly intake to stay consistently hydrated.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Water Tracker — Landing State",
+      "description": "The landing page showing the water intake logging interface with quick-add buttons and daily progress display.",
+      "screenshotFilename": "water-tracker/step-1-landing.png",
+      "screenshotAlt": "Water Tracker landing page on desktop",
+      "action": "Opened /water-tracker.",
+      "location": "/water-tracker",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Log glasses of water with a single tap",
+    "See daily progress toward your hydration goal",
+    "View weekly intake statistics and trends",
+    "Build consistent hydration habits over time"
+  ],
+  "tips": [
+    "Set a daily water goal and log each glass as you drink it for the most accurate tracking.",
+    "Review your weekly stats to identify days when you tend to drink less and plan accordingly."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

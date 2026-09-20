@@ -1,0 +1,49 @@
+{
+  "featureId": "work-life-circle",
+  "featureName": "Work-Life Circle",
+  "type": "feature",
+  "location": "/career/work-life-circle",
+  "category": "career",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Work-Life Circle, from entry to detail",
+  "overview": "Assess work-life integration across multiple dimensions to visualize where you feel fulfilled and where you're out of balance.",
+  "targetAudience": "Users interested in career tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Work-Life Circle — Landing State",
+      "description": "The landing page of the Work-Life Circle tool showing the initial state and main interface.",
+      "screenshotFilename": "work-life-circle/step-1-landing.png",
+      "screenshotAlt": "Work-Life Circle landing page on desktop",
+      "action": "Opened /career/work-life-circle.",
+      "location": "/career/work-life-circle",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Work-Life Circle — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "work-life-circle/step-2-below-fold.png",
+      "screenshotAlt": "Work-Life Circle below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/career/work-life-circle",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Visual wheel assessment of work-life integration across key life dimensions",
+    "Identifies gaps between your current satisfaction and ideal state in each area",
+    "Highlights which dimensions need the most attention for better balance",
+    "Track changes over time to see whether your work-life integration is improving"
+  ],
+  "tips": [
+    "Rate each dimension based on how satisfied you currently feel, not how objectively well things are going — your subjective experience is what matters for balance.",
+    "Look for the areas with the lowest scores first: even small improvements in your lowest-rated dimensions tend to have the biggest impact on overall life satisfaction."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

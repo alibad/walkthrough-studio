@@ -14,7 +14,7 @@ import { Check, CircleAlert, CircleDashed, Loader2, X } from "lucide-react";
  * So the page reports nothing about the machine on its own, and every claim it
  * makes comes from here: a real request per provider against a free
  * list-models endpoint, run only when somebody asks for it. The server half of
- * this is a shell-out to `pnpm doctor`, so the page and the command cannot
+ * this is a shell-out to `pnpm run doctor`, so the page and the command cannot
  * disagree about whether a key works.
  */
 
@@ -129,7 +129,7 @@ export function VerifyPanel() {
           <p className="mt-1.5 text-small text-ink-muted">
             Makes one real request per configured provider against a free list-models endpoint.
             Nothing is generated and nothing is charged. Identical to{" "}
-            <code className="font-mono text-micro text-ink">pnpm doctor</code>.
+            <code className="font-mono text-micro text-ink">pnpm run doctor</code>.
           </p>
         </div>
         <button

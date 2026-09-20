@@ -199,7 +199,7 @@ export default function SetupPage() {
             <>
               <p className="mt-2 max-w-[62ch] text-small text-ink-muted">
                 This page holds no state of its own — it renders the model above and asks{" "}
-                <code className="font-mono text-micro text-ink">pnpm doctor</code>{" "}
+                <code className="font-mono text-micro text-ink">pnpm run doctor</code>{" "}
                 for everything about this machine. That keeps one implementation of &ldquo;does this
                 credential work&rdquo;, so the page and the command can never disagree about it.
               </p>
@@ -218,7 +218,7 @@ export default function SetupPage() {
                 verifies each key against the real endpoint:
               </p>
               <pre className="mt-3 overflow-x-auto rounded border border-rule bg-paper-sunken p-3 font-mono text-[0.75rem] leading-relaxed text-ink-muted">
-                {"pnpm doctor        # the same report, in the terminal\npnpm dev           # then open /setup"}
+                {"pnpm run doctor    # the same report, in the terminal\npnpm dev           # then open /setup"}
               </pre>
             </div>
           )}

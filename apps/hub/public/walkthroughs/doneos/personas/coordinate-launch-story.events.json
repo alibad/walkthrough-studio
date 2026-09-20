@@ -1,0 +1,58 @@
+{
+  "journeyId": "coordinate-launch",
+  "personaId": "execution-lead",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 50450,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7550,
+      "narration": "Maya gathers launch work into one queue, tracks ownership, and follows each task to its outcome.",
+      "image": "personas/execution-lead-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7550,
+      "durMs": 5000,
+      "narration": "Maya opens Focus to see which launch commitments can move now.",
+      "image": "focus-stack/mobile/step-01-ready.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 12550,
+      "durMs": 7650,
+      "narration": "Maya sees reviewer access, observability, and permissions ranked together with the next agent work.",
+      "image": "shared-queue/mobile/step-01-ready.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 20200,
+      "durMs": 8650,
+      "narration": "Maya checks launch goals: 72 percent complete, one blocked item, and work still tied to outcomes.",
+      "image": "goal-progress/desktop/step-01-ready.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 28850,
+      "durMs": 7000,
+      "narration": "Maya reads the ledger: claims, blocks, and review moves show who did what.",
+      "image": "activity-ledger/desktop/step-01-ready.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 35850,
+      "durMs": 6550,
+      "narration": "Maya schedules one Slack update from the ledger, giving the team one shared status source.",
+      "image": "slack-status/mobile/step-01-ready.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 42400,
+      "durMs": 8050,
+      "narration": "Maya shares a launch status she can trace back to the work, actor, and blocker behind every line.",
+      "image": "personas/execution-lead.png"
+    }
+  ]
+}

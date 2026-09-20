@@ -1,0 +1,49 @@
+{
+  "featureId": "movement-log",
+  "featureName": "Movement Log",
+  "type": "feature",
+  "location": "/movement-log",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Movement Log, from entry to detail",
+  "overview": "Log movement type, duration, intensity, and how it felt to build a mindful relationship with physical activity and track your movement patterns.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Movement Log — Landing State",
+      "description": "The landing page showing the movement logging form with type, duration, intensity, and felt-sense fields.",
+      "screenshotFilename": "movement-log/step-1-landing.png",
+      "screenshotAlt": "Movement Log landing page on desktop",
+      "action": "Opened /movement-log.",
+      "location": "/movement-log",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Movement Log — Below the Fold",
+      "description": "Additional content visible after scrolling, showing movement history and summaries of recent activity.",
+      "screenshotFilename": "movement-log/step-2-below-fold.png",
+      "screenshotAlt": "Movement Log below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/movement-log",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Log movement type and specific activity",
+    "Record session duration and intensity",
+    "Capture how the movement felt — physically and emotionally",
+    "Track movement patterns and build a mindful activity practice"
+  ],
+  "tips": [
+    "Include all types of movement — walks, stretching, and dancing count alongside workouts.",
+    "The 'how it felt' field is especially valuable: notice correlations between movement type and mood."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

@@ -1,0 +1,39 @@
+{
+  "featureId": "energy-levels",
+  "featureName": "Energy Levels",
+  "type": "feature",
+  "location": "/energy-levels",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Energy Levels, from entry to detail",
+  "overview": "Log energy at morning, afternoon, and evening with mood and activities to build a complete daily energy profile.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Energy Levels — Landing State",
+      "description": "The landing page showing the three-part daily energy logging interface for morning, afternoon, and evening check-ins.",
+      "screenshotFilename": "energy-levels/step-1-landing.png",
+      "screenshotAlt": "Energy Levels landing page on desktop",
+      "action": "Opened /energy-levels.",
+      "location": "/energy-levels",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Log energy levels three times daily — morning, afternoon, and evening",
+    "Pair energy ratings with current mood",
+    "Note activities influencing your energy",
+    "Build a comprehensive daily energy profile over time"
+  ],
+  "tips": [
+    "Log all three daily check-ins consistently for the most complete picture of your energy rhythms.",
+    "Pay attention to which activities consistently appear on your highest-energy afternoons."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

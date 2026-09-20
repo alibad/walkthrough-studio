@@ -1,0 +1,39 @@
+{
+  "featureId": "home-environment",
+  "featureName": "Home Environment",
+  "type": "feature",
+  "location": "/home-environment",
+  "category": "wellbeing",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Home Environment, from entry to detail",
+  "overview": "Assess rooms and spaces for satisfaction, issues, and needed improvements. Understand how your living environment impacts your wellbeing and identify areas for positive change.",
+  "targetAudience": "Users interested in wellbeing tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Home Environment — Landing State",
+      "description": "The landing page showing the room assessment interface where you can evaluate each space in your home.",
+      "screenshotFilename": "home-environment/step-1-landing.png",
+      "screenshotAlt": "Home Environment landing page on desktop",
+      "action": "Opened /home-environment.",
+      "location": "/home-environment",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Assess satisfaction levels for each room and space in your home",
+    "Log issues and needed improvements per space",
+    "Track changes in your home environment over time",
+    "Understand the connection between your living space and wellbeing"
+  ],
+  "tips": [
+    "Walk through each room mindfully before rating — notice how the space makes you feel physically and emotionally.",
+    "Revisit your assessment after making improvements to track the impact on your overall satisfaction."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

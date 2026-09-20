@@ -1,0 +1,88 @@
+{
+  "personaId": "execution-lead",
+  "journeyId": "coordinate-launch",
+  "headline": "From a crowded launch day to one accountable execution story",
+  "overview": "Maya runs a launch where people and agents work side by side. DoneOS gives her one focus boundary, one queue, one outcome view, one ledger, and one team status.",
+  "payoff": "Maya shares a launch status she can trace back to the work, actor, and blocker behind every line.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "morning-focus",
+      "title": "Maya starts with three commitments",
+      "narrative": "Maya is coordinating a product launch with two people and two agents. She opens Focus first because she does not need another backlog; she needs to know what is allowed to move now.",
+      "frames": [
+        "focus-stack/mobile/step-01-ready.png"
+      ],
+      "frameCaptions": [
+        "Maya starts with three commitments"
+      ],
+      "location": "DoneOS → Focus Stack",
+      "surface": "mobile",
+      "sourceFeature": "focus-stack",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "choose-next",
+      "title": "The next work is already ordered",
+      "narrative": "A reviewer account, an observability spec, and a permissions map are already ranked together. Agent work does not live in a separate console that Maya has to remember to check.",
+      "frames": [
+        "shared-queue/mobile/step-01-ready.png"
+      ],
+      "frameCaptions": [
+        "The next work is already ordered"
+      ],
+      "location": "DoneOS → Shared Queue",
+      "surface": "mobile",
+      "sourceFeature": "shared-queue",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "check-outcomes",
+      "title": "Tasks still point to outcomes",
+      "narrative": "Before assigning more work, Maya checks the goals. The launch is 72 percent complete, one item is blocked, and the execution loop still has room to prove itself.",
+      "frames": [
+        "goal-progress/desktop/step-01-ready.png"
+      ],
+      "frameCaptions": [
+        "Tasks still point to outcomes"
+      ],
+      "location": "DoneOS → Goal Progress",
+      "surface": "desktop",
+      "sourceFeature": "goal-progress",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "audit-agents",
+      "title": "Agent work leaves names behind",
+      "narrative": "The ledger shows who claimed a contract test, who blocked a release check, and who moved artwork to review. Maya can reconstruct the day without asking every actor for a status.",
+      "frames": [
+        "activity-ledger/desktop/step-01-ready.png"
+      ],
+      "frameCaptions": [
+        "Agent work leaves names behind"
+      ],
+      "location": "DoneOS → Activity Ledger",
+      "surface": "desktop",
+      "sourceFeature": "activity-ledger",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "share-status",
+      "title": "The team gets the same truth",
+      "narrative": "DoneOS turns that ledger into the scheduled Slack update. Maya leaves with one status source instead of a message assembled from tabs, memory, and private agent logs.",
+      "frames": [
+        "slack-status/mobile/step-01-ready.png"
+      ],
+      "frameCaptions": [
+        "The team gets the same truth"
+      ],
+      "location": "DoneOS → Slack Status",
+      "surface": "mobile",
+      "sourceFeature": "slack-status",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T16:54:15.045Z",
+  "storyVideo": "personas/coordinate-launch-story.mp4"
+}

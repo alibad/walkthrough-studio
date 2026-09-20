@@ -1,0 +1,49 @@
+{
+  "featureId": "company-match",
+  "featureName": "Company Culture Match",
+  "type": "feature",
+  "location": "/career/company-match",
+  "category": "career",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Company Culture Match, from entry to detail",
+  "overview": "Pick your top 5 career values, then rate companies against them to find your best culture fit. Make more informed job decisions based on what actually matters to you.",
+  "targetAudience": "Users interested in career tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Company Culture Match — Landing State",
+      "description": "The landing page of the Company Culture Match tool showing the initial state and main interface.",
+      "screenshotFilename": "company-match/step-1-landing.png",
+      "screenshotAlt": "Company Culture Match landing page on desktop",
+      "action": "Opened /career/company-match.",
+      "location": "/career/company-match",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Company Culture Match — Below the Fold",
+      "description": "Additional content visible after scrolling, including detailed sections and supplementary information.",
+      "screenshotFilename": "company-match/step-2-below-fold.png",
+      "screenshotAlt": "Company Culture Match below the fold content on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/career/company-match",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Select your top 5 career values from a curated list (e.g., autonomy, impact, stability, growth)",
+    "Rate multiple companies against your chosen values to generate fit scores",
+    "Side-by-side comparison of companies weighted by what matters most to you",
+    "Helps you move beyond salary and title to evaluate culture alignment objectively"
+  ],
+  "tips": [
+    "Be ruthless about your top 5 values — forcing yourself to prioritize is the point. If everything is important, nothing is.",
+    "Try to rate companies based on what you know (interviews, Glassdoor, conversations with employees) rather than their marketing — culture fit depends on reality, not branding."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

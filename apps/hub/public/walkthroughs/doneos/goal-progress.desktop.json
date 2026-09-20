@@ -1,0 +1,31 @@
+{
+  "featureId": "goal-progress",
+  "featureName": "Goal Progress",
+  "type": "feature",
+  "location": "DoneOS → Goal Progress",
+  "category": "product",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Tasks stay separate while outcomes stay visible",
+  "overview": "Goals summarize progress, active work, and blockers without embedding the task system inside the outcome itself.",
+  "targetAudience": "Operators coordinating accountable human and agent execution",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Goal Progress, ready",
+      "action": "Opened the committed DoneOS store-preview harness with screen=goals.",
+      "description": "Goals summarize progress, active work, and blockers without embedding the task system inside the outcome itself.",
+      "screenshotFilename": "goal-progress/desktop/step-01-ready.png",
+      "screenshotAlt": "Goal Progress in the DoneOS Flutter product on undefined",
+      "location": "DoneOS → Goal Progress",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Tasks stay separate while outcomes stay visible"
+  ],
+  "note": "Live-rendered from DoneOS's committed store-preview entry point with fictional showcase data. This proves the Flutter product surface, not a production account or a signed iOS/Android store binary.",
+  "generatedAt": "2026-09-20T16:53:34.755Z",
+  "capturedAt": "2026-09-20T16:53:34.755Z"
+}

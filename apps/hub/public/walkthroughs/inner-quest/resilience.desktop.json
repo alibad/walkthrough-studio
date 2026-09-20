@@ -1,0 +1,49 @@
+{
+  "featureId": "resilience",
+  "featureName": "Resilience Assessment",
+  "type": "feature",
+  "location": "/resilience",
+  "category": "psychology",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Resilience Assessment, from entry to detail",
+  "overview": "The Resilience Assessment measures your psychological resilience across multiple dimensions — how well you recover from setbacks, maintain perspective under pressure, draw on social support, and find meaning in adversity. Understanding your resilience profile helps you identify your natural strengths when facing difficulty and pinpoint the areas where you can build greater emotional fortitude.",
+  "targetAudience": "Users interested in psychology tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Resilience Assessment — Landing State",
+      "description": "The landing page showing the initial state and main interface, with the multi-dimensional resilience questionnaire and overview of what the assessment measures.",
+      "screenshotFilename": "resilience/step-1-landing.png",
+      "screenshotAlt": "Resilience Assessment landing page on desktop",
+      "action": "Opened /resilience.",
+      "location": "/resilience",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Resilience Assessment — Below the Fold",
+      "description": "Additional content visible after scrolling, including your resilience scores across dimensions and targeted recommendations for growth.",
+      "screenshotFilename": "resilience/step-2-below-fold.png",
+      "screenshotAlt": "Resilience Assessment below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/resilience",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Multi-dimensional assessment covering recovery, perspective, social support, and meaning-making",
+    "Dimension-by-dimension score breakdown revealing resilience strengths and gaps",
+    "Evidence-based insights on what drives psychological resilience",
+    "Targeted recommendations for building resilience in your lower-scoring dimensions"
+  ],
+  "tips": [
+    "Take the assessment during a normal period, not immediately after a crisis — your baseline is what matters most",
+    "Focus growth efforts on your lowest-scoring dimension for the most impactful resilience gains"
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}

@@ -1,0 +1,49 @@
+{
+  "featureId": "relationship-enrichment",
+  "featureName": "Relationship Enrichment",
+  "type": "feature",
+  "location": "/relationships/enrichment",
+  "category": "relationships",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Relationship Enrichment, from entry to detail",
+  "overview": "Select a contact and assess relationship strengths. Track commitments to actively invest in and enrich your important relationships.",
+  "targetAudience": "Users interested in relationships tools for personal growth and self-discovery.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Relationship Enrichment — Landing State",
+      "description": "The landing page showing contact selection and the relationship strengths assessment interface.",
+      "screenshotFilename": "relationship-enrichment/step-1-landing.png",
+      "screenshotAlt": "Relationship Enrichment landing page on desktop",
+      "action": "Opened /relationships/enrichment.",
+      "location": "/relationships/enrichment",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Relationship Enrichment — Below the Fold",
+      "description": "Additional content visible after scrolling, showing commitment tracking and relationship strength results.",
+      "screenshotFilename": "relationship-enrichment/step-2-below-fold.png",
+      "screenshotAlt": "Relationship Enrichment below the fold on desktop",
+      "action": "Scrolled to the next captured section.",
+      "location": "/relationships/enrichment",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Select a contact to focus your relationship investment",
+    "Assess strengths across key relationship dimensions",
+    "Track commitments to actively enrich your relationships",
+    "Get insights on where to invest energy for stronger bonds"
+  ],
+  "tips": [
+    "Choose one relationship at a time to give it focused attention and meaningful assessment.",
+    "Set specific, actionable commitments after each assessment to see real improvement."
+  ],
+  "note": "Imported from Inner Quest's app-owned walkthrough library. The captures are real product evidence, but their original run manifest and detailed interaction log predate Walkthrough Studio, so freshness is not claimed.",
+  "generatedAt": "2026-03-19T02:00:00.000Z",
+  "capturedAt": "2026-03-19T02:00:00.000Z",
+  "synthetic": false
+}
