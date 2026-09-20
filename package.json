@@ -6,6 +6,7 @@
   "scripts": {
     "doctor": "node scripts/doctor.mjs",
     "walk:mcp-stories": "node scripts/walk-mcp-stories.mjs",
+    "walk:mcp-app-stories": "node scripts/walk-mcp-app-stories.mjs",
     "dev": "pnpm --filter hub dev",
     "build": "pnpm --filter hub build",
     "start": "pnpm --filter hub start",

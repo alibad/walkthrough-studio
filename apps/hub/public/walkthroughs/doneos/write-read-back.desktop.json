@@ -1,0 +1,68 @@
+{
+  "featureId": "write-read-back",
+  "featureName": "MCP task in the real app",
+  "type": "feature",
+  "location": "DoneOS app → Connect → Execute → Activity",
+  "category": "mcp",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Connect an agent, create a task, watch it land",
+  "overview": "This walkthrough crosses the boundary the protocol-only demo cannot: DoneOS explains the connection in its own settings, accepts a real MCP write, shows the resulting task in Queue, and attributes the event to the connected agent in Activity.",
+  "targetAudience": "People deciding whether MCP changes the product or only the developer console",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Connection starts inside DoneOS",
+      "action": "Opened Connect and inspected the AI Agents panel.",
+      "description": "DoneOS explains what the MCP credential does before it asks for one: the connected agent can work the shared Queue, and every action is attributed in Activity. The empty state shows the supported clients and makes it clear that a key does not start an agent by itself.",
+      "screenshotFilename": "write-read-back/desktop/step-01-connect-settings.png",
+      "screenshotAlt": "DoneOS Connect screen showing AI agent setup and its attribution model",
+      "location": "DoneOS → Connect → AI Agents",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The connected credential reports its use",
+      "action": "Connected with the generated local credential, then created and independently read back a task through the official MCP SDK.",
+      "description": "After the call, the credential appears as Walkthrough Agent with its usage state inside the product. The one-time token never appears in the capture.",
+      "screenshotFilename": "write-read-back/desktop/step-02-agent-connected.png",
+      "screenshotAlt": "DoneOS Connect screen showing the Walkthrough Agent credential after an MCP call",
+      "location": "DoneOS → Connect → AI Agents",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The MCP task is now real app work",
+      "action": "Opened Execute, then Queue after the MCP write completed.",
+      "description": "The exact high-priority task created through MCP appears in DoneOS beside the normal app controls. It is not a terminal transcript or a mocked result; this is the Flutter product reading the same emulator-backed state.",
+      "screenshotFilename": "write-read-back/desktop/step-03-task-in-queue.png",
+      "screenshotAlt": "DoneOS Queue showing the exact task created through MCP",
+      "location": "DoneOS → Execute → Queue",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Activity keeps the agent accountable",
+      "action": "Opened Activity and found the creation event.",
+      "description": "DoneOS records the write as an execution event attributed to Walkthrough Agent. That closes the user-facing loop from connection settings, to MCP action, to visible task, to an auditable history.",
+      "screenshotFilename": "write-read-back/desktop/step-04-agent-activity.png",
+      "screenshotAlt": "DoneOS Activity showing the MCP-created task attributed to Walkthrough Agent",
+      "location": "DoneOS → Execute → Activity",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "In-app MCP connection settings",
+    "Official MCP SDK write and independent read-back",
+    "The exact task visible in the Flutter Queue",
+    "Agent attribution in Activity"
+  ],
+  "tips": [
+    "All account and task data in this walkthrough is fictional and exists only in local emulators."
+  ],
+  "note": "Live-walked against the committed DoneOS Flutter app and local Firebase emulators. The disposable credential was never shown and disappears when the emulator session ends.",
+  "generatedAt": "2026-09-20T13:58:53.280Z",
+  "capturedAt": "2026-09-20T13:58:53.280Z",
+  "observedWorkItemId": "f18a3ddd-3265-4fde-9af6-09dd3075c3b2"
+}

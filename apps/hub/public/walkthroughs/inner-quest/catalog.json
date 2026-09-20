@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "projectName": "Inner Quest",
-  "platform": "cli",
-  "driver": "terminal",
-  "capturedAgainst": "rebuilt stdio server + local recording fixture + unauthenticated production discovery",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "authenticated Inner Quest web app + MCP connector + rebuilt local protocol proof",
   "discoveredAt": "2026-09-20T12:35:41.552Z",
-  "updatedAt": "2026-09-20T12:35:41.552Z",
+  "updatedAt": "2026-09-20T14:01:09.000Z",
   "brand": {
     "primaryColor": "#8b5cf6",
     "accentColor": "#ec4899",
@@ -16,21 +16,22 @@
   },
   "scope": {
     "status": "bounded",
-    "note": "Event proof only: generated MCP discovery plus isolated fictional writes. Production OAuth discovery is shown, but no private account was authorized and no production write was attempted."
+    "note": "Product proof used the authenticated owner app and one fictional action that was removed after capture. The protocol repair remains a local fixture proof and is not claimed as deployed."
   },
   "features": [
     {
       "featureId": "repaired-write-path",
-      "featureName": "Repaired write path",
-      "location": "node packages/mcp-server/dist/index.js",
+      "featureName": "MCP action in the real app",
+      "location": "Inner Quest app → Connect → My Action Items",
       "category": "mcp",
-      "requiresAuth": false,
+      "requiresAuth": true,
       "surfaceStatus": {
-        "terminal": "done"
+        "terminal": "done",
+        "desktop": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-20T12:35:41.552Z",
-      "notes": "Captured from the local dirty Inner Quest working copy against a recording fixture. The production endpoint check proves OAuth discovery only; the repair is not claimed as deployed."
+      "lastWalkthroughAt": "2026-09-20T14:01:09.000Z",
+      "notes": "The desktop surface shows Connect, the exact authenticated MCP-created action in My Action Items, and its app detail. The terminal surface separately proves the local generator repair."
     }
   ],
   "personas": [],

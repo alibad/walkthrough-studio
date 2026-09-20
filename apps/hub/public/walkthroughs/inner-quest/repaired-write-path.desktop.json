@@ -1,0 +1,57 @@
+{
+  "featureId": "repaired-write-path",
+  "featureName": "MCP action in the real app",
+  "type": "feature",
+  "location": "Inner Quest app → Connect → My Action Items",
+  "category": "mcp",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Connect securely, create an action, see it in Inner Quest",
+  "overview": "This is the product-facing half of the Inner Quest MCP story. The app explains its secure Codex connection, an authenticated MCP call creates a fictional action, and the exact result appears in My Action Items with its details intact.",
+  "targetAudience": "People deciding whether Inner Quest MCP reaches the actual Personal OS",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Connection is a product flow, not a copied secret",
+      "action": "Opened Inner Quest Connect and expanded the developer setup.",
+      "description": "The recommended flow is install, connect, and approve: Codex handles the secure sign-in and can refresh or disconnect access. The advanced section keeps public endpoints available for other clients without making raw keys the default experience.",
+      "screenshotFilename": "repaired-write-path/desktop/step-01-connect-settings.png",
+      "screenshotAlt": "Inner Quest Connect screen showing the secure Codex connection and advanced developer setup",
+      "location": "Inner Quest → Connect",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The MCP action lands in My Action Items",
+      "action": "Created a high-priority fictional action through the authenticated Inner Quest MCP connector, then filtered the real app to that title.",
+      "description": "The exact result appears in the Backlog lane of My Action Items. The filter isolates the fictional proof record so no unrelated private action titles are published in the walkthrough.",
+      "screenshotFilename": "repaired-write-path/desktop/step-02-action-in-app.png",
+      "screenshotAlt": "Inner Quest My Action Items showing the exact fictional action created through MCP",
+      "location": "Inner Quest → My Action Items",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The action arrives with usable product detail",
+      "action": "Opened the MCP-created action in the normal Inner Quest editor.",
+      "description": "The title, To Do status, High priority, and fictional provenance note are all present in the app. This is the same editable record a person would work with, not a protocol response rendered as a fake screen.",
+      "screenshotFilename": "repaired-write-path/desktop/step-03-action-detail.png",
+      "screenshotAlt": "Inner Quest action detail showing the MCP-created title, status, priority, and fictional note",
+      "location": "Inner Quest → My Action Items → Action detail",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "In-app OAuth connection guidance",
+    "Authenticated MCP write",
+    "The exact result visible in My Action Items",
+    "Private background records excluded from captures"
+  ],
+  "tips": [
+    "The proof action is explicitly fictional and was removed from the private account after capture."
+  ],
+  "note": "Live-walked in the authenticated owner app with a single fictional action. Captures were isolated to that record and contain no unrelated private action titles.",
+  "generatedAt": "2026-09-20T14:01:09.000Z",
+  "capturedAt": "2026-09-20T14:01:09.000Z"
+}

@@ -81,6 +81,42 @@
         "videos": 0,
         "issues": 0
       }
+    },
+    {
+      "id": "2026-09-20T14:01:09.000Z",
+      "startedAt": "2026-09-20T13:34:00.000Z",
+      "completedAt": "2026-09-20T14:01:09.000Z",
+      "skill": "walkthrough",
+      "agent": "codex",
+      "target": {
+        "app": "Inner Quest",
+        "ref": "authenticated production web app"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "authenticated Chrome + Inner Quest MCP connector",
+        "capturedAgainst": "Inner Quest Connect and My Action Items",
+        "env": {
+          "data": "one fictional proof action",
+          "privateBackgroundData": "excluded from captures"
+        },
+        "surfaces": [
+          "desktop"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Connection settings, authenticated MCP write, isolated app result, and action detail"
+      },
+      "coverage": {
+        "features": [
+          "repaired-write-path"
+        ],
+        "personas": [],
+        "screenshots": 3,
+        "videos": 0,
+        "issues": 0
+      }
     }
   ]
 }

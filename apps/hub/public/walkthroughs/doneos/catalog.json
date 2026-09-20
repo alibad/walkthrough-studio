@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
   "projectName": "DoneOS",
-  "platform": "cli",
-  "driver": "terminal",
-  "capturedAgainst": "generated stdio server + isolated HTTP fixture + unauthenticated production discovery",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "committed DoneOS Flutter web app + Firebase emulators + official MCP SDK",
   "discoveredAt": "2026-09-20T12:35:41.552Z",
-  "updatedAt": "2026-09-20T12:35:41.552Z",
+  "updatedAt": "2026-09-20T13:58:53.280Z",
   "brand": {
     "primaryColor": "#ff6b5f",
     "accentColor": "#39d98a",
@@ -16,7 +16,7 @@
   },
   "scope": {
     "status": "bounded",
-    "note": "Event proof only: generated MCP discovery plus isolated fictional writes. Production OAuth discovery is shown, but no private account was authorized and no production write was attempted."
+    "note": "Product proof uses a disposable fictional account in Firebase emulators. The terminal surface remains isolated fixture proof; neither flow writes to DoneOS production."
   },
   "features": [
     {
@@ -34,16 +34,17 @@
     },
     {
       "featureId": "write-read-back",
-      "featureName": "Controlled write and read-back",
-      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "featureName": "MCP task in the real app",
+      "location": "DoneOS app → Connect → Execute → Activity",
       "category": "mcp",
-      "requiresAuth": false,
+      "requiresAuth": true,
       "surfaceStatus": {
-        "terminal": "done"
+        "terminal": "done",
+        "desktop": "done"
       },
       "issueCount": 0,
-      "lastWalkthroughAt": "2026-09-20T12:35:41.552Z",
-      "notes": "Live-walked against the isolated mcp-humanquest fixture. Production was probed only far enough to observe its unauthenticated OAuth challenge."
+      "lastWalkthroughAt": "2026-09-20T13:58:53.280Z",
+      "notes": "Flutter UI and MCP shared the same emulator-backed state; the exact task was visible in Queue and attributed in Activity."
     }
   ],
   "personas": [],

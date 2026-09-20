@@ -83,6 +83,42 @@
         "videos": 0,
         "issues": 0
       }
+    },
+    {
+      "id": "2026-09-20T13:58:53.280Z",
+      "startedAt": "2026-09-20T13:58:53.280Z",
+      "completedAt": "2026-09-20T14:00:18.935Z",
+      "skill": "walkthrough",
+      "agent": "codex",
+      "target": {
+        "app": "DoneOS",
+        "ref": "local committed Flutter source"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "Playwright + official MCP SDK",
+        "capturedAgainst": "DoneOS Flutter web app and local Firebase emulators",
+        "env": {
+          "data": "disposable fictional emulator account",
+          "productionAuth": "none"
+        },
+        "surfaces": [
+          "desktop"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "Connection settings, MCP write/read-back, Queue result, and Activity attribution"
+      },
+      "coverage": {
+        "features": [
+          "write-read-back"
+        ],
+        "personas": [],
+        "screenshots": 4,
+        "videos": 0,
+        "issues": 0
+      }
     }
   ]
 }

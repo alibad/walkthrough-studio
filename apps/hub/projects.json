@@ -63,12 +63,13 @@
       "slug": "doneos",
       "name": "DoneOS",
       "tag": "Human Quest · accountable execution",
-      "description": "One accountable execution system for human and AI work. Current Studio coverage focuses on its MCP features: generated discovery, isolated writes, independent read-back, and authority boundaries.",
-      "longDescription": "DoneOS gives agents the same execution contract people use: inspect shared work, create an outcome, move work through explicit commands, record why it is blocked, and read the resulting state back. The current bounded event walkthrough covers the product's MCP features through the generated server and an isolated in-memory DoneOS fixture. It does not load a production credential or touch a real account.",
+      "description": "One accountable execution system for human and AI work. Its MCP feature now follows a connection from app settings to a real task in Queue and an attributed Activity event.",
+      "longDescription": "DoneOS gives agents the same execution contract people use. The product walkthrough opens the real Connect settings, uses the official MCP SDK against a disposable emulator account, and shows the exact task appear in the Flutter Queue and Activity history. A separate terminal surface preserves the deeper generated-contract proof without replacing the app story.",
       "target": {
-        "platform": "cli",
-        "driver": "terminal",
-        "binary": "node mcp/lib/index.js"
+        "platform": "web",
+        "driver": "playwright",
+        "local": "http://127.0.0.1:5321",
+        "production": "https://app.doneos.net"
       },
       "codebase": {
         "local": "../done_os",
@@ -78,19 +79,19 @@
         "type": "api-token"
       },
       "meta": {
-        "driverLabel": "Official MCP SDK + transcript"
+        "driverLabel": "Flutter app + official MCP SDK"
       }
     },
     {
       "slug": "inner-quest",
       "name": "Inner Quest",
       "tag": "Human Quest · private Personal OS",
-      "description": "A private Personal OS spanning character, relationships, career and wellbeing. Current Studio coverage focuses on its MCP feature and repaired write path.",
-      "longDescription": "Inner Quest brings goals, relationships, career, wellbeing and reading into one private Personal OS. The current bounded event walkthrough covers its MCP feature through the rebuilt local executable and a recording fixture: one of the six formerly dead free-form writes now reaches the expected API route, and a separate read finds the exact result. Production remains behind owner OAuth consent.",
+      "description": "A private Personal OS spanning character, relationships, career and wellbeing. Its MCP feature now connects inside the app and lands an action in My Action Items.",
+      "longDescription": "Inner Quest brings goals, relationships, career, wellbeing and reading into one private Personal OS. The product walkthrough shows the secure in-app Codex connection, an authenticated fictional MCP write, and the exact resulting action in My Action Items. A separate terminal surface retains the local generator-repair proof and its independent read-back.",
       "target": {
-        "platform": "cli",
-        "driver": "terminal",
-        "binary": "node packages/mcp-server/dist/index.js"
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://www.innerquest.app"
       },
       "codebase": {
         "local": "../inner_quest",
@@ -101,7 +102,7 @@
         "interactiveOnly": true
       },
       "meta": {
-        "driverLabel": "Official MCP SDK + transcript"
+        "driverLabel": "Authenticated app + MCP connector"
       }
     }
   ]
