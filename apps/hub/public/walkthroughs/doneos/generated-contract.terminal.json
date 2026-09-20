@@ -1,0 +1,48 @@
+{
+  "featureId": "generated-contract",
+  "featureName": "Generated MCP contract",
+  "type": "feature",
+  "location": "node mcp/lib/index.js",
+  "category": "mcp",
+  "surface": "terminal",
+  "platform": "cli",
+  "locale": "en",
+  "headline": "Fifty-five typed tools from one execution contract",
+  "overview": "The generated executable is not a list in a document. The official MCP SDK accepts the whole surface, including write annotations, OAuth scopes, idempotency headers and typed outputs.",
+  "targetAudience": "Operators deciding whether an agent-facing product surface is trustworthy",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The generated surface is executable",
+      "action": "Connected with the official MCP SDK and called `tools/list` on the generated DoneOS stdio server.",
+      "description": "The generated stdio server completed MCP discovery with **55 valid tools**: 36 write actions and 19 reads.",
+      "screenshotFilename": "generated-contract/terminal/step-01-generated-contract.png",
+      "screenshotAlt": "Terminal showing the generated DoneOS MCP server returning 55 valid tools",
+      "location": "node mcp/lib/index.js",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The contract carries execution semantics",
+      "action": "Inspected the generated `create_work_item` tool returned by discovery.",
+      "description": "The inspected work command carries the parts that usually disappear in naive code generation: a retry key, a narrow scope and a structured result.",
+      "screenshotFilename": "generated-contract/terminal/step-02-generated-contract.png",
+      "screenshotAlt": "Terminal showing DoneOS work creation semantics including idempotency and typed output",
+      "location": "node mcp/lib/index.js",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "55 SDK-validated tools",
+    "36 explicit writes",
+    "Idempotency and output semantics preserved"
+  ],
+  "tips": [
+    "This is the broad generated adapter, not the separately reviewed hosted production surface."
+  ],
+  "note": "Discovery ran against the local generated executable with a non-production placeholder credential; no tool call reached DoneOS production.",
+  "generatedAt": "2026-09-20T12:35:41.552Z",
+  "capturedAt": "2026-09-20T12:35:41.552Z",
+  "targetSha": "096ec7d812c64486ae1f65d92f05aca9c093f4c0",
+  "targetCommitDate": "2026-09-20T11:46:48+03:00"
+}

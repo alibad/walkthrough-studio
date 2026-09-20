@@ -1,0 +1,88 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T12:31:06.193Z",
+      "startedAt": "2026-09-20T12:31:06.193Z",
+      "completedAt": "2026-09-20T12:31:10.228Z",
+      "skill": "walkthrough",
+      "agent": "codex",
+      "target": {
+        "sha": "096ec7d812c64486ae1f65d92f05aca9c093f4c0",
+        "shaShort": "096ec7d8",
+        "branch": "main",
+        "dirty": false,
+        "commitDate": "2026-09-20T11:46:48+03:00",
+        "commitSubject": "feat(feedback): add shadcn selects and transcription",
+        "watchPath": "."
+      },
+      "config": {
+        "platform": "cli",
+        "driver": "official MCP SDK + terminal renderer",
+        "capturedAgainst": "DoneOS generated executable and mcp-humanquest isolated fixture",
+        "env": {
+          "data": "isolated fictional fixtures",
+          "productionAuth": "none"
+        },
+        "surfaces": [
+          "terminal"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "SDK-validated discovery; fictional fixture writes and independent read-back; production OAuth discovery only"
+      },
+      "coverage": {
+        "features": [
+          "generated-contract",
+          "write-read-back"
+        ],
+        "personas": [],
+        "screenshots": 8,
+        "videos": 0,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-20T12:35:41.552Z",
+      "startedAt": "2026-09-20T12:35:41.552Z",
+      "completedAt": "2026-09-20T12:35:50.338Z",
+      "skill": "walkthrough",
+      "agent": "codex",
+      "target": {
+        "sha": "096ec7d812c64486ae1f65d92f05aca9c093f4c0",
+        "shaShort": "096ec7d8",
+        "branch": "main",
+        "dirty": false,
+        "commitDate": "2026-09-20T11:46:48+03:00",
+        "commitSubject": "feat(feedback): add shadcn selects and transcription",
+        "watchPath": "."
+      },
+      "config": {
+        "platform": "cli",
+        "driver": "official MCP SDK + terminal renderer",
+        "capturedAgainst": "DoneOS generated executable and mcp-humanquest isolated fixture",
+        "env": {
+          "data": "isolated fictional fixtures",
+          "productionAuth": "none"
+        },
+        "surfaces": [
+          "terminal"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "SDK-validated discovery; fictional fixture writes and independent read-back; production OAuth discovery only"
+      },
+      "coverage": {
+        "features": [
+          "generated-contract",
+          "write-read-back"
+        ],
+        "personas": [],
+        "screenshots": 8,
+        "videos": 0,
+        "issues": 0
+      }
+    }
+  ]
+}

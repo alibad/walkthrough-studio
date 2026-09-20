@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ExternalLink, Folder, Play, Terminal } from "lucide-react";
 import { isLocalHub } from "@/lib/capabilities";
 import { PlatformBadge } from "@/components/platform-badge";
@@ -20,6 +21,7 @@ export function ProjectHero({ summary }: { summary: ProjectSummary }) {
   const platform = project.target.platform;
   const profile = platformProfile(platform);
   const driver = effectiveDriver(platform, project.target.driver);
+  const logoPath = summary.catalog?.brand?.logoPath?.replace(/^\/+/, "");
 
   return (
     <header className="border-b border-rule bg-paper-raised">
@@ -38,7 +40,21 @@ export function ProjectHero({ summary }: { summary: ProjectSummary }) {
           <StalenessPill staleness={staleness} className="ml-auto" />
         </div>
 
-        <h1 className="display mt-4 text-head-lg max-w-[24ch]">{project.name}</h1>
+        <div className="mt-4 flex items-center gap-4">
+          {logoPath && (
+            <div className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-md border border-rule bg-paper p-1.5 shadow-plate">
+              <Image
+                src={`/walkthroughs/${project.slug}/${logoPath}`}
+                alt={`${project.name} logo`}
+                width={64}
+                height={64}
+                className="size-full object-contain"
+                unoptimized
+              />
+            </div>
+          )}
+          <h1 className="display text-head-lg max-w-[24ch]">{project.name}</h1>
+        </div>
 
         {(project.longDescription || project.description) && (
           <p className="mt-4 max-w-[62ch] text-body leading-relaxed text-ink-muted">
@@ -52,7 +68,7 @@ export function ProjectHero({ summary }: { summary: ProjectSummary }) {
           <div>
             <dt className="text-micro text-ink-faint">Driver</dt>
             <dd className="mt-0.5 text-ink" title={profile.blurb}>
-              {DRIVER_LABELS[driver] ?? driver}
+              {project.meta?.driverLabel ?? DRIVER_LABELS[driver] ?? driver}
             </dd>
           </div>
           {/* Local only, deliberately.

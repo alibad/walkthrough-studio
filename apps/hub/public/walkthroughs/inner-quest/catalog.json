@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Inner Quest",
+  "platform": "cli",
+  "driver": "terminal",
+  "capturedAgainst": "rebuilt stdio server + local recording fixture + unauthenticated production discovery",
+  "discoveredAt": "2026-09-20T12:35:41.552Z",
+  "updatedAt": "2026-09-20T12:35:41.552Z",
+  "brand": {
+    "primaryColor": "#8b5cf6",
+    "accentColor": "#ec4899",
+    "backgroundColor": "#0f1020",
+    "textColor": "#f8fafc",
+    "logoPath": "brand/logo.svg",
+    "fontFamily": "Inter"
+  },
+  "scope": {
+    "status": "bounded",
+    "note": "Event proof only: generated MCP discovery plus isolated fictional writes. Production OAuth discovery is shown, but no private account was authorized and no production write was attempted."
+  },
+  "features": [
+    {
+      "featureId": "repaired-write-path",
+      "featureName": "Repaired write path",
+      "location": "node packages/mcp-server/dist/index.js",
+      "category": "mcp",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "terminal": "done"
+      },
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T12:35:41.552Z",
+      "notes": "Captured from the local dirty Inner Quest working copy against a recording fixture. The production endpoint check proves OAuth discovery only; the repair is not claimed as deployed."
+    }
+  ],
+  "personas": [],
+  "synthetic": false
+}

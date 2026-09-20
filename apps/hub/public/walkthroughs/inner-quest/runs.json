@@ -1,0 +1,86 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T12:31:06.193Z",
+      "startedAt": "2026-09-20T12:31:06.193Z",
+      "completedAt": "2026-09-20T12:31:10.228Z",
+      "skill": "walkthrough",
+      "agent": "codex",
+      "target": {
+        "sha": "d2cde25375451250f3d165b9fa14cabfa2a992d5",
+        "shaShort": "d2cde253",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": "2026-09-08T14:21:27+03:00",
+        "commitSubject": "feat: enforce complete SEO route coverage",
+        "watchPath": "."
+      },
+      "config": {
+        "platform": "cli",
+        "driver": "official MCP SDK + terminal renderer",
+        "capturedAgainst": "Inner Quest generated executable and local recording fixture",
+        "env": {
+          "data": "isolated fictional fixtures",
+          "productionAuth": "none"
+        },
+        "surfaces": [
+          "terminal"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "SDK-validated discovery; fictional values write and independent read-back; production OAuth discovery only; target working tree was dirty"
+      },
+      "coverage": {
+        "features": [
+          "repaired-write-path"
+        ],
+        "personas": [],
+        "screenshots": 5,
+        "videos": 0,
+        "issues": 0
+      }
+    },
+    {
+      "id": "2026-09-20T12:35:41.552Z",
+      "startedAt": "2026-09-20T12:35:41.552Z",
+      "completedAt": "2026-09-20T12:35:50.340Z",
+      "skill": "walkthrough",
+      "agent": "codex",
+      "target": {
+        "sha": "d2cde25375451250f3d165b9fa14cabfa2a992d5",
+        "shaShort": "d2cde253",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": "2026-09-08T14:21:27+03:00",
+        "commitSubject": "feat: enforce complete SEO route coverage",
+        "watchPath": "."
+      },
+      "config": {
+        "platform": "cli",
+        "driver": "official MCP SDK + terminal renderer",
+        "capturedAgainst": "Inner Quest generated executable and local recording fixture",
+        "env": {
+          "data": "isolated fictional fixtures",
+          "productionAuth": "none"
+        },
+        "surfaces": [
+          "terminal"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "SDK-validated discovery; fictional values write and independent read-back; production OAuth discovery only; target working tree was dirty"
+      },
+      "coverage": {
+        "features": [
+          "repaired-write-path"
+        ],
+        "personas": [],
+        "screenshots": 5,
+        "videos": 0,
+        "issues": 0
+      }
+    }
+  ]
+}

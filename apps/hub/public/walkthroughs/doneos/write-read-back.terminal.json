@@ -1,0 +1,89 @@
+{
+  "featureId": "write-read-back",
+  "featureName": "Controlled write and read-back",
+  "type": "feature",
+  "location": "MCP SDK → isolated DoneOS execution fixture",
+  "category": "mcp",
+  "surface": "terminal",
+  "platform": "cli",
+  "locale": "en",
+  "headline": "An agent changes work, then proves what changed",
+  "overview": "This rehearsal uses the same generated HTTP transport a client uses, but the backing board is session-scoped fictional data. The sequence reads first, creates and starts work, records a blocker, then independently reads the resulting goal and status.",
+  "targetAudience": "Operators deciding whether an agent-facing product surface is trustworthy",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "A safe slice, reached like a real client",
+      "action": "Connected to the generated HTTP route with the official MCP SDK and called `tools/list`.",
+      "description": "The official MCP SDK accepts the event-safe 23-tool slice. The backing API is an in-memory fixture with no credential or code path to DoneOS production.",
+      "screenshotFilename": "write-read-back/terminal/step-01-write-read-back.png",
+      "screenshotAlt": "Terminal showing the isolated DoneOS MCP demo returning 23 valid tools",
+      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Read before acting",
+      "action": "Called `list_work_items` for work already in progress.",
+      "description": "The first action is a read. That keeps the agent from manufacturing a second source of truth before it knows what the shared board already contains.",
+      "screenshotFilename": "write-read-back/terminal/step-02-write-read-back.png",
+      "screenshotAlt": "Terminal showing the DoneOS agent reading active work before changing anything",
+      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "One goal becomes attributable work",
+      "action": "Called `create_goal`, `create_work_item`, then the `start_work_item` command.",
+      "description": "A fictional goal becomes a high-priority work item and moves through the command designed for that transition, so the execution ledger records the change.",
+      "screenshotFilename": "write-read-back/terminal/step-03-write-read-back.png",
+      "screenshotAlt": "Terminal showing a synthetic DoneOS goal turned into started work",
+      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "A blocker is state plus evidence",
+      "action": "Called `block_work_item` and appended a separate execution event with the reason.",
+      "description": "Blocking is not just a status bit. The command changes state, then a separate attributable event records why the work cannot move.",
+      "screenshotFilename": "write-read-back/terminal/step-04-write-read-back.png",
+      "screenshotAlt": "Terminal showing DoneOS recording a blocked item and the reason",
+      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The write survives an independent read",
+      "action": "Called the read-only status and goal tools after the writes completed.",
+      "description": "The peak moment is the independent read: the exact goal ID and title are found after the write, alongside a status summary that includes the blocker.",
+      "screenshotFilename": "write-read-back/terminal/step-05-write-read-back.png",
+      "screenshotAlt": "Terminal showing DoneOS status and exact read-back of the created goal",
+      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 6,
+      "title": "Authority is isolated and production stays gated",
+      "action": "Connected with a fresh fixture token, then probed the public production MCP endpoint without credentials.",
+      "description": "A different bearer token sees the untouched seed board, while the public endpoint still refuses anonymous access and advertises its OAuth boundary.",
+      "screenshotFilename": "write-read-back/terminal/step-06-write-read-back.png",
+      "screenshotAlt": "Terminal showing DoneOS fixture isolation and the production OAuth boundary",
+      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "keyFeatures": [
+    "Official MCP SDK transport",
+    "Command-based state transitions",
+    "Independent read-back",
+    "Per-token fixture isolation"
+  ],
+  "tips": [
+    "All names and records in this walkthrough are fictional event data."
+  ],
+  "note": "Live-walked against the isolated mcp-humanquest fixture. Production was probed only far enough to observe its unauthenticated OAuth challenge.",
+  "generatedAt": "2026-09-20T12:35:41.552Z",
+  "capturedAt": "2026-09-20T12:35:41.552Z",
+  "targetSha": "096ec7d812c64486ae1f65d92f05aca9c093f4c0",
+  "targetCommitDate": "2026-09-20T11:46:48+03:00"
+}

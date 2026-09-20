@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">DoneOS execution kernel mark</title>
+  <desc id="desc">Coral and green execution brackets enclosing a yellow recorded event.</desc>
+  <rect width="1024" height="1024" fill="#17191C"/>
+  <path d="M190 190H460V330H330V694H460V834H190Z" fill="#FF6B5F"/>
+  <path d="M834 190H564V330H694V694H564V834H834Z" fill="#39D98A"/>
+  <rect x="460" y="460" width="104" height="104" fill="#F4C95D"/>
+</svg>

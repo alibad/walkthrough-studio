@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 2,
+  "projectName": "DoneOS",
+  "platform": "cli",
+  "driver": "terminal",
+  "capturedAgainst": "generated stdio server + isolated HTTP fixture + unauthenticated production discovery",
+  "discoveredAt": "2026-09-20T12:35:41.552Z",
+  "updatedAt": "2026-09-20T12:35:41.552Z",
+  "brand": {
+    "primaryColor": "#ff6b5f",
+    "accentColor": "#39d98a",
+    "backgroundColor": "#17191c",
+    "textColor": "#f5f7fa",
+    "logoPath": "brand/logo.svg",
+    "fontFamily": "Inter"
+  },
+  "scope": {
+    "status": "bounded",
+    "note": "Event proof only: generated MCP discovery plus isolated fictional writes. Production OAuth discovery is shown, but no private account was authorized and no production write was attempted."
+  },
+  "features": [
+    {
+      "featureId": "generated-contract",
+      "featureName": "Generated MCP contract",
+      "location": "node mcp/lib/index.js",
+      "category": "mcp",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "terminal": "done"
+      },
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T12:35:41.552Z",
+      "notes": "Discovery ran against the local generated executable with a non-production placeholder credential; no tool call reached DoneOS production."
+    },
+    {
+      "featureId": "write-read-back",
+      "featureName": "Controlled write and read-back",
+      "location": "MCP SDK → isolated DoneOS execution fixture",
+      "category": "mcp",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "terminal": "done"
+      },
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T12:35:41.552Z",
+      "notes": "Live-walked against the isolated mcp-humanquest fixture. Production was probed only far enough to observe its unauthenticated OAuth challenge."
+    }
+  ],
+  "personas": [],
+  "synthetic": false
+}
