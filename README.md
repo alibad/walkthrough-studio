@@ -21,6 +21,21 @@ apps/hub/              the HUB   — reads what the skill wrote and publishes it
 The skill runs in **Claude Code** or **Codex**. The hub is a Next.js app that
 reads plain JSON and PNGs off disk — no database, no build step for content.
 
+See the running library at
+[walkthrough.humanquest.net](https://walkthrough.humanquest.net).
+
+## See the output
+
+The repository includes a complete, reproducible Wikipedia walk across desktop
+and mobile. These are the actual files the hub renders.
+
+| Search on desktop | The same article on mobile |
+| --- | --- |
+| [![Wikipedia search walkthrough on desktop](apps/hub/public/walkthroughs/wikipedia/search/desktop/step-02-suggestions.png)](https://walkthrough.humanquest.net/wikipedia/features/search) | [![Wikipedia article walkthrough on mobile](apps/hub/public/walkthroughs/wikipedia/article/mobile/step-01-lead.png)](https://walkthrough.humanquest.net/wikipedia/features/article) |
+
+[Watch the fact-checker journey](apps/hub/public/walkthroughs/wikipedia/personas/verify-a-claim-story.mp4)
+or [open it in the live hub](https://walkthrough.humanquest.net/wikipedia/personas/fact-checker/journeys/verify-a-claim).
+
 ---
 
 ## Why this exists
