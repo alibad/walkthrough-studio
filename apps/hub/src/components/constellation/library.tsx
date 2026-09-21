@@ -14,30 +14,31 @@
  * links were worth preserving.
  */
 
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { LayoutGrid, Orbit } from "lucide-react";
-import type { ConstellationNode, PersonaSummary, ProjectSummary } from "@/lib/types";
-import type { ConstellationEdge } from "@/lib/constellation";
-import { Dashboard } from "@/components/dashboard";
+import type { AtlasProduct } from "@/lib/product-atlas";
 import { ConstellationChart } from "./chart";
-import { AppPanel } from "./app-panel";
+import { ProductPanel } from "./product-panel";
+import { ProductAtlasList } from "./product-list";
 
 type View = "chart" | "list";
 
 interface LibraryProps {
-  summaries: ProjectSummary[];
-  nodes: ConstellationNode[];
-  edges: ConstellationEdge[];
-  /** Personas per project slug, resolved server-side. */
-  personasBySlug: Record<string, PersonaSummary[]>;
+  products: AtlasProduct[];
 }
 
-export function Library({ summaries, nodes, edges, personasBySlug }: LibraryProps) {
+export function Library({ products }: LibraryProps) {
   const router = useRouter();
   const params = useSearchParams();
-  const selected = params.get("app");
+  const selectedParam = params.get("app");
+  const active =
+    products.find(
+      (product) =>
+        product.id === selectedParam ||
+        product.variants.some((variant) => variant.slug === selectedParam),
+    ) ?? null;
+  const selected = active?.id ?? null;
 
   // The chart is the product's front door on every surface. List remains a
   // temporary alternate view, but it never changes what the next visit opens.
@@ -65,60 +66,40 @@ export function Library({ summaries, nodes, edges, personasBySlug }: LibraryProp
     return () => window.removeEventListener("keydown", onKey);
   }, [selected, select]);
 
-  const active = summaries.find((s) => s.project.slug === selected) ?? null;
-  const activeNode = nodes.find((n) => n.slug === selected) ?? null;
-
   return (
     // The chart view fills the viewport rather than sizing itself: a map you
     // have to scroll is not a map. The header is fixed height and the chart
     // takes whatever is left, letterboxed by the SVG's own viewBox.
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="mx-auto flex w-full max-w-[1180px] shrink-0 items-end justify-between gap-6 px-6 pt-8">
+      <div className="mx-auto flex w-full max-w-[1440px] shrink-0 flex-col items-start gap-5 px-6 pt-8 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
         <div>
           <p className="eyebrow">The library</p>
-          <h1 className="display mt-2 text-balance">
-            {summaries.length === 0
-              ? "Nothing documented yet"
-              : `${summaries.length} ${summaries.length === 1 ? "app" : "apps"} on the chart`}
-          </h1>
-          <p className="mt-2.5 max-w-[54ch] text-small text-ink-muted">
-            Every app sits in the territory of the platform it is documented on. A star&rsquo;s
-            outer ring is what has been catalogued; the filled centre is what has actually been
-            walked.
+          <h1 className="display mt-2 text-balance">Cartographic Product Atlas</h1>
+          <p className="mt-2.5 max-w-[66ch] text-small text-ink-muted">
+            {products.length} products across five human territories. Platform-specific evidence
+            lives inside each product; an outer ring is what has been catalogued and the filled
+            centre is what has actually been walked.
           </p>
         </div>
         <ViewToggle view={view} onChange={chooseView} />
       </div>
 
       {view === "chart" ? (
-        <div className="relative mt-2 flex min-h-0 flex-1">
-          {/* The SVG letterboxes itself to its viewBox ratio, so a fixed
-              min-height leaves dead paper above and below it on a narrow
-              column. Match the ratio there and let the desktop keep its
-              generous floor. */}
-          <div className="relative mx-auto aspect-[10/7] w-full max-w-[1180px] px-2 lg:aspect-auto lg:min-h-[26rem]">
+        <div className="relative mx-auto mt-5 w-full max-w-[1440px] px-4 pb-8">
+          <div className="relative">
             <ConstellationChart
-              nodes={nodes}
-              edges={edges}
+              products={products}
               selected={selected}
               onSelect={select}
             />
+            {active && <ProductPanel product={active} onClose={() => select(null)} />}
           </div>
 
-          {summaries.length === 0 && <EmptyChartPrompt />}
-
-          {active && activeNode && (
-            <AppPanel
-              summary={active}
-              node={activeNode}
-              personas={personasBySlug[active.project.slug] ?? []}
-              onClose={() => select(null)}
-            />
-          )}
+          {products.length === 0 && <EmptyChartPrompt />}
         </div>
       ) : (
-        <div className="mt-2 overflow-y-auto">
-          <Dashboard summaries={summaries} />
+        <div className="mt-5 overflow-y-auto">
+          <ProductAtlasList products={products} />
         </div>
       )}
     </div>
@@ -128,7 +109,7 @@ export function Library({ summaries, nodes, edges, personasBySlug }: LibraryProp
 function ViewToggle({ view, onChange }: { view: View; onChange: (v: View) => void }) {
   return (
     <div
-      className="flex shrink-0 items-center gap-1 rounded border border-rule bg-paper-raised p-1"
+      className="flex shrink-0 self-end items-center gap-1 rounded border border-rule bg-paper-raised p-1 sm:self-auto"
       role="tablist"
       aria-label="Library view"
     >
@@ -170,20 +151,13 @@ function EmptyChartPrompt() {
     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
       <div className="pointer-events-auto mat max-w-[38ch] text-center">
         <p className="eyebrow">Empty chart</p>
-        <h2 className="mt-2 font-serif text-head">Five territories, no apps</h2>
+        <h2 className="mt-2 font-serif text-head">Five territories, no products</h2>
         <p className="mt-2 text-small text-ink-muted">
-          Register the first app and it will appear in the territory of its platform.
+          Register the first product and it will appear in the territory of its human purpose.
         </p>
         <code className="mt-4 block rounded bg-paper-sunken px-3 py-2 font-mono text-label text-ink">
           pnpm new-project
         </code>
-        <p className="mt-4 text-label text-ink-faint">
-          Or read the{" "}
-          <Link href="/" className="underline decoration-rule-strong underline-offset-2">
-            walkthrough skill
-          </Link>{" "}
-          to point an agent at an app.
-        </p>
       </div>
     </div>
   );

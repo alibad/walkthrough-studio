@@ -10,11 +10,11 @@
  *
  * So the substrate here is the only spatial fact this tool genuinely knows
  * about an app: **which platforms it runs on.** Five territories, one per
- * platform. An app documented on one platform sits inside that territory; an
- * app documented on several sits at the centroid of the ones it spans, which
- * puts a React Native app physically between iOS and Android and a desktop
- * Electron app between web and desktop. The chart earns its shape from the
- * data instead of decorating it.
+ * platform. An app sits in the territory where its walkthrough was captured;
+ * support for additional platforms is drawn as a bridge to those territories.
+ * That keeps every app addressable in a dense portfolio without discarding the
+ * cross-platform information. The chart earns its shape from the data instead
+ * of decorating it.
  *
  * Two properties this file guarantees, both of which matter more than they
  * sound:
@@ -52,9 +52,13 @@ export interface Territory {
  * the bottom so the chart has visual weight where the eye settles.
  */
 export const TERRITORIES: Record<Platform, Territory> = {
-  web: { id: "web", label: "Web", cx: 0.26, cy: 0.36, r: 0.17 },
-  ios: { id: "ios", label: "iOS", cx: 0.62, cy: 0.20, r: 0.13 },
-  android: { id: "android", label: "Android", cx: 0.81, cy: 0.44, r: 0.13 },
+  // Web is intentionally the broadest plate. Portfolio-sized libraries tend
+  // to have many more browser apps than native or terminal apps, so giving it
+  // the same footprint as every other territory makes a complete catalog
+  // unreadable precisely when the library becomes useful.
+  web: { id: "web", label: "Web", cx: 0.26, cy: 0.31, r: 0.24 },
+  ios: { id: "ios", label: "iOS", cx: 0.72, cy: 0.20, r: 0.13 },
+  android: { id: "android", label: "Android", cx: 0.88, cy: 0.44, r: 0.13 },
   desktop: { id: "desktop", label: "Desktop", cx: 0.63, cy: 0.76, r: 0.14 },
   cli: { id: "cli", label: "Terminal", cx: 0.21, cy: 0.71, r: 0.13 },
 };
@@ -86,7 +90,7 @@ const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 export function layoutConstellation(summaries: ProjectSummary[]): ConstellationNode[] {
   const groups = new Map<string, ProjectSummary[]>();
   for (const summary of summaries) {
-    const key = (summary.platforms.length > 0 ? summary.platforms : [summary.project.target.platform]).join("+");
+    const key = summary.project.target.platform;
     const bucket = groups.get(key);
     if (bucket) bucket.push(summary);
     else groups.set(key, [summary]);
@@ -95,7 +99,7 @@ export function layoutConstellation(summaries: ProjectSummary[]): ConstellationN
   const nodes: ConstellationNode[] = [];
 
   for (const [key, members] of groups) {
-    const platforms = key.split("+") as Platform[];
+    const platforms = [key] as Platform[];
     const territories = platforms.map((p) => TERRITORIES[p]).filter(Boolean);
     if (territories.length === 0) continue;
 
@@ -113,7 +117,35 @@ export function layoutConstellation(summaries: ProjectSummary[]): ConstellationN
 
     ordered.forEach((summary, i) => {
       const slug = summary.project.slug;
-      // A lone app sits dead centre in its territory; a crowd spirals out.
+      // Dense single-platform groups use a poster-like rack rather than a
+      // spiral. At portfolio scale the labels are part of the navigation, not
+      // decoration; a four-column rack keeps names and coverage copy legible.
+      // Smaller groups retain the more organic constellation treatment.
+      const dense = ordered.length >= 2;
+      const columns = dense
+        ? ordered.length >= 9
+          ? 5
+          : Math.ceil(Math.sqrt(ordered.length))
+        : 0;
+      const rows = dense ? Math.ceil(ordered.length / columns) : 0;
+      const row = dense ? Math.floor(i / columns) : 0;
+      const rowStart = dense ? row * columns : 0;
+      const itemsInRow = dense ? Math.min(columns, ordered.length - rowStart) : 0;
+      const column = dense ? i - rowStart : 0;
+
+      const rackX = dense
+        ? cx +
+          (column - (itemsInRow - 1) / 2) *
+            (spread * (ordered.length >= 9 ? 0.52 : 1.4))
+        : 0;
+      const rackY = dense
+        ? cy +
+          (row - (rows - 1) / 2) *
+            (spread * (ordered.length >= 9 ? 0.8 : 1.2))
+        : 0;
+
+      // A lone app sits dead centre in its territory; a smaller crowd spirals
+      // out using the stable golden-angle distribution.
       const t = ordered.length === 1 ? 0 : Math.sqrt((i + 0.4) / ordered.length);
       const angle = i * GOLDEN_ANGLE + unit(slug) * Math.PI * 2;
       const jitter = 0.85 + unit(`${slug}:r`) * 0.3;
@@ -121,12 +153,17 @@ export function layoutConstellation(summaries: ProjectSummary[]): ConstellationN
       const features = summary.catalog?.features ?? [];
       const walked = features.filter(isFeatureWalked).length;
 
+      const nodePlatforms =
+        summary.platforms.length > 0
+          ? summary.platforms
+          : [summary.project.target.platform];
+
       nodes.push({
         slug,
         name: summary.project.name,
-        platforms,
-        x: clamp01(cx + Math.cos(angle) * spread * t * jitter),
-        y: clamp01(cy + Math.sin(angle) * spread * t * jitter),
+        platforms: nodePlatforms,
+        x: clamp01(dense ? rackX : cx + Math.cos(angle) * spread * t * jitter),
+        y: clamp01(dense ? rackY : cy + Math.sin(angle) * spread * t * jitter),
         coverage: features.length === 0 ? 0 : walked / features.length,
         featureCount: features.length,
         walkedCount: walked,

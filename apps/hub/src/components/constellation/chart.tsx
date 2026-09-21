@@ -1,390 +1,310 @@
 "use client";
 
-/**
- * The library chart.
- *
- * An engraved celestial map of every app in the library, positioned by the
- * platforms it is documented on (see `lib/constellation.ts` for why platforms
- * and not geography).
- *
- * Three decisions worth stating, because each of them is the opposite of the
- * obvious choice:
- *
- * 1. **All five territories always draw, even empty ones.** The tempting
- *    version shows only what you have. But a library with one app in it would
- *    then be a single dot on a blank field, which reads as a broken chart
- *    rather than as an honest one. Drawing the empty territories as ink
- *    outlines says "these are the five places an app can live, and you have
- *    documented one" — which is both truthful and legible on day one.
- * 2. **No animation library.** The intro is CSS keyframes on
- *    `stroke-dashoffset` and `opacity`. The hub has seven dependencies and a
- *    chart that draws itself is not worth an eighth.
- * 3. **Ink on paper, not stars in space.** A dark starfield is the reflex for
- *    anything called a constellation, and it would fight the one light
- *    register this theme commits to. An antique celestial chart *is* ink on
- *    cream paper, so the metaphor survives intact and the screenshots this
- *    hub mats stay the only bright rectangles on the page.
- */
-
+import Image from "next/image";
 import { useState } from "react";
-import type { ConstellationNode, Platform } from "@/lib/types";
-import { TERRITORIES, type ConstellationEdge } from "@/lib/constellation";
+import { cn } from "@/lib/utils";
 import { PLATFORM_PROFILES } from "@/lib/platforms";
-
-/** Chart space. Normalized 0..1 positions multiply into this box. */
-const W = 1000;
-const H = 700;
-
-const px = (x: number) => x * W;
-const py = (y: number) => y * H;
+import {
+  ATLAS_TERRITORIES,
+  type AtlasProduct,
+  type AtlasTerritoryId,
+} from "@/lib/product-atlas";
 
 interface ChartProps {
-  nodes: ConstellationNode[];
-  edges: ConstellationEdge[];
+  products: AtlasProduct[];
   selected: string | null;
-  onSelect: (slug: string | null) => void;
+  onSelect: (id: string | null) => void;
 }
 
-export function ConstellationChart({ nodes, edges, selected, onSelect }: ChartProps) {
+const TERRITORY_COPY: Record<AtlasTerritoryId, { align: string }> = {
+  "practice-wellbeing": { align: "left-[11%] top-[13%]" },
+  "learning-discovery": { align: "left-[57%] top-[12%]" },
+  "planning-work": { align: "left-[10%] top-[55%]" },
+  "personal-growth": { align: "left-[45%] top-[57%]" },
+  "applied-tools": { align: "left-[82%] top-[56%]" },
+};
+
+const MOBILE_TERRITORY_COLORS: Record<
+  AtlasTerritoryId,
+  { background: string; border: string }
+> = {
+  "practice-wellbeing": { background: "#edf3e7", border: "#cad6c0" },
+  "learning-discovery": { background: "#e9f2f6", border: "#c4d7df" },
+  "planning-work": { background: "#f8efdf", border: "#dfceb1" },
+  "personal-growth": { background: "#f7e7e3", border: "#dfc3bc" },
+  "applied-tools": { background: "#efebf3", border: "#d3c9dc" },
+};
+
+export function ConstellationChart({ products, selected, onSelect }: ChartProps) {
   const [hovered, setHovered] = useState<string | null>(null);
-  const occupied = new Set<Platform>();
-  for (const node of nodes) for (const p of node.platforms) occupied.add(p);
+
+  return (
+    <section
+      className="atlas-shell relative overflow-hidden rounded-sm border border-rule bg-paper"
+      aria-label="Cartographic product atlas"
+    >
+      <div className="relative hidden aspect-[36/19] min-h-[34rem] md:block">
+        <Image
+          src="/art/product-atlas-map.png"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 1440px) 100vw, 1440px"
+          className="object-fill mix-blend-multiply"
+        />
+
+        <AtlasRoutes products={products} selected={selected} hovered={hovered} />
+
+        {ATLAS_TERRITORIES.map((territory) => (
+          <div
+            key={territory.id}
+            className={cn("pointer-events-none absolute z-[2]", TERRITORY_COPY[territory.id].align)}
+          >
+            <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-ink/80 lg:text-[10px]">
+              {territory.name}
+            </p>
+            <p className="mt-0.5 font-serif text-[10px] italic text-ink-muted lg:text-xs">
+              {territory.motto}
+            </p>
+          </div>
+        ))}
+
+        <div className="absolute inset-0 z-[3]">
+          {products.map((product) => (
+            <ProductNode
+              key={product.id}
+              product={product}
+              active={selected === product.id}
+              hovered={hovered === product.id}
+              dimmed={selected !== null && selected !== product.id}
+              onHover={setHovered}
+              onSelect={onSelect}
+            />
+          ))}
+        </div>
+
+        <AtlasLegend />
+      </div>
+
+      <MobileAtlas products={products} selected={selected} onSelect={onSelect} />
+    </section>
+  );
+}
+
+function AtlasRoutes({
+  products,
+  selected,
+  hovered,
+}: {
+  products: AtlasProduct[];
+  selected: string | null;
+  hovered: string | null;
+}) {
+  const active = selected ?? hovered;
+  const groups = ATLAS_TERRITORIES.map((territory) =>
+    products.filter((product) => product.territory === territory.id),
+  );
 
   return (
     <svg
-      viewBox={`0 0 ${W} ${H}`}
-      // `absolute inset-0` so the box is the parent's, not the drawing's.
-      // Sized by `h-full w-full` alone, the width wins and the SVG grows
-      // taller than the viewport instead of letterboxing into it.
-      className="absolute inset-0 size-full select-none"
-      preserveAspectRatio="xMidYMid meet"
-      role="img"
-      aria-label="Library chart — apps positioned by the platforms they are documented on"
+      viewBox="0 0 1000 528"
+      preserveAspectRatio="none"
+      className="pointer-events-none absolute inset-0 z-[1] size-full"
+      aria-hidden
     >
-      <defs>
-        {/* Radial fade so a territory's plate dissolves into the paper
-            instead of sitting in a hard-edged box. */}
-        <radialGradient id="territory-fade">
-          <stop offset="55%" stopColor="white" stopOpacity="1" />
-          <stop offset="100%" stopColor="white" stopOpacity="0" />
-        </radialGradient>
-        <mask id="territory-mask">
-          <rect width={W} height={H} fill="black" />
-          {Object.values(TERRITORIES).map((t) => (
-            <circle
-              key={t.id}
-              cx={px(t.cx)}
-              cy={py(t.cy)}
-              r={t.r * W * 0.9}
-              fill="url(#territory-fade)"
-            />
-          ))}
-        </mask>
-      </defs>
-
-      {/* ── Graticule ─────────────────────────────────────────────────────
-          The faint ruled grid of a printed chart. Purely atmospheric, and
-          deliberately below everything else in both z-order and contrast. */}
-      <g
-        className="constellation-graticule"
-        stroke="var(--rule)"
-        strokeWidth="0.5"
-        fill="none"
-        opacity="0.5"
-      >
-        {Array.from({ length: 9 }, (_, i) => (
-          <line key={`v${i}`} x1={(i + 1) * (W / 10)} y1="0" x2={(i + 1) * (W / 10)} y2={H} />
-        ))}
-        {Array.from({ length: 6 }, (_, i) => (
-          <line key={`h${i}`} x1="0" y1={(i + 1) * (H / 7)} x2={W} y2={(i + 1) * (H / 7)} />
-        ))}
-      </g>
-
-      {/* ── Territories ───────────────────────────────────────────────────── */}
-      {Object.values(TERRITORIES).map((t, i) => {
-        const live = occupied.has(t.id);
-        const profile = PLATFORM_PROFILES[t.id];
-        const r = t.r * W;
-        return (
-          <g
-            key={t.id}
-            className="constellation-territory"
-            style={{ animationDelay: `${i * 90}ms` }}
-          >
-            <circle
-              cx={px(t.cx)}
-              cy={py(t.cy)}
-              r={r}
+      {groups.flatMap((group) =>
+        group.slice(0, -1).map((product, index) => {
+          const next = group[index + 1];
+          const isActive = active === product.id || active === next.id;
+          const x1 = product.x * 1000;
+          const y1 = product.y * 528;
+          const x2 = next.x * 1000;
+          const y2 = next.y * 528;
+          const bend = Math.max(10, Math.abs(x2 - x1) * 0.13);
+          return (
+            <path
+              key={`${product.id}-${next.id}`}
+              d={`M ${x1} ${y1} Q ${(x1 + x2) / 2} ${Math.min(y1, y2) - bend} ${x2} ${y2}`}
               fill="none"
-              stroke={live ? "var(--rule-strong)" : "var(--rule)"}
-              strokeWidth={live ? 1 : 0.8}
-              strokeDasharray="2 6"
+              stroke={isActive ? "var(--brand)" : "var(--ink-faint)"}
+              strokeWidth={isActive ? 1.15 : 0.75}
+              strokeDasharray="2 4"
+              opacity={isActive ? 0.75 : 0.42}
             />
-            <text
-              x={px(t.cx)}
-              y={py(t.cy) + r + 22}
-              textAnchor="middle"
-              className="constellation-territory-label"
-              fill={live ? "var(--ink-muted)" : "var(--ink-faint)"}
-            >
-              {profile.short.toUpperCase()}
-            </text>
-            {!live && (
-              <text
-                x={px(t.cx)}
-                y={py(t.cy) + 4}
-                textAnchor="middle"
-                className="constellation-territory-empty"
-                fill="var(--ink-faint)"
-              >
-                unpopulated
-              </text>
-            )}
-          </g>
-        );
-      })}
-
-      {/* ── Constellation lines ───────────────────────────────────────────
-          Bridges (a multi-platform app tethered to each territory it spans)
-          are the only lines carrying information, so they get the accent
-          colour; figure lines are neutral ink. */}
-      <g className="constellation-edges">
-        {edges.map((edge, i) => (
-          <line
-            key={i}
-            x1={px(edge.from.x)}
-            y1={py(edge.from.y)}
-            x2={px(edge.to.x)}
-            y2={py(edge.to.y)}
-            stroke={edge.bridge ? "var(--brand)" : "var(--rule-strong)"}
-            strokeWidth={edge.bridge ? 0.9 : 0.7}
-            strokeDasharray={edge.bridge ? "4 4" : undefined}
-            opacity={edge.bridge ? 0.55 : 0.8}
-          />
-        ))}
-      </g>
-
-      {/* ── Apps ──────────────────────────────────────────────────────────── */}
-      {nodes.map((node, i) => (
-        <AppStar
-          key={node.slug}
-          node={node}
-          index={i}
-          active={selected === node.slug}
-          dimmed={selected !== null && selected !== node.slug}
-          hovered={hovered === node.slug}
-          onHover={setHovered}
-          onSelect={onSelect}
-        />
-      ))}
+          );
+        }),
+      )}
     </svg>
   );
 }
 
-/**
- * One app, drawn as an engraved star.
- *
- * Size encodes walked coverage rather than feature count, because the number
- * that matters when scanning a library is "how much of this app is actually
- * documented" — a 40-feature catalog with two walks should not outweigh a
- * 6-feature catalog that is finished. The unwalked remainder shows as the gap
- * between the outer ring (catalogued) and the filled disc (walked), so an
- * under-documented app looks hollow, which is the point.
- */
-function AppStar({
-  node,
-  index,
+function ProductNode({
+  product,
   active,
-  dimmed,
   hovered,
+  dimmed,
   onHover,
   onSelect,
 }: {
-  node: ConstellationNode;
-  index: number;
+  product: AtlasProduct;
   active: boolean;
-  dimmed: boolean;
   hovered: boolean;
-  onHover: (slug: string | null) => void;
-  onSelect: (slug: string | null) => void;
+  dimmed: boolean;
+  onHover: (id: string | null) => void;
+  onSelect: (id: string | null) => void;
 }) {
-  const cx = px(node.x);
-  const cy = py(node.y);
-  const outer = 20 + Math.min(node.featureCount, 24) * 0.9;
-  // The filled disc is capped well inside the ring. At 100% coverage an
-  // uncapped disc exactly fills its own outline, so a fully-documented app
-  // renders as a plain blob and the ring — the thing that makes "hollow means
-  // under-documented" legible — disappears at precisely the moment it should
-  // read as complete.
-  const inner = outer * (0.2 + Math.min(Math.max(node.coverage, 0), 1) * 0.42);
   const lifted = active || hovered;
+  const circumference = 2 * Math.PI * 27;
+  const dash = Math.max(0, Math.min(product.coverage, 1)) * circumference;
+  const glyphSize = 58 + Math.min(product.featureCount, 30) * 0.45;
 
   return (
-    <g
-      // A focus outline on an SVG <g> draws a rectangle around the group's
-      // bounding box, which includes the label and the portrait fan — an ugly
-      // box around a star. Suppressed here and replaced by routing keyboard
-      // focus through the same `lifted` treatment as hover, so the indicator
-      // is the star growing rather than a rect around it.
-      className="constellation-star cursor-pointer outline-none"
-      style={{ animationDelay: `${450 + index * 120}ms` }}
-      opacity={dimmed ? 0.35 : 1}
-      onMouseEnter={() => onHover(node.slug)}
+    <button
+      type="button"
+      onClick={() => onSelect(active ? null : product.id)}
+      onMouseEnter={() => onHover(product.id)}
       onMouseLeave={() => onHover(null)}
-      onFocus={() => onHover(node.slug)}
+      onFocus={() => onHover(product.id)}
       onBlur={() => onHover(null)}
-      onClick={() => onSelect(active ? null : node.slug)}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onSelect(active ? null : node.slug);
-        }
-      }}
-      aria-label={`${node.name} — ${node.walkedCount} of ${node.featureCount} features walked`}
-    >
-      {/* Catalogued extent. */}
-      <circle
-        cx={cx}
-        cy={cy}
-        r={outer}
-        fill="none"
-        stroke={lifted ? "var(--ink)" : "var(--ink-muted)"}
-        strokeWidth={lifted ? 1.8 : 1.3}
-      />
-      {/* Radiating hairlines — the engraving that makes it a star and not a
-          bubble chart. Eight is enough to read; more turns to mush at size. */}
-      {Array.from({ length: 8 }, (_, i) => {
-        const a = (i * Math.PI) / 4;
-        const r0 = outer + 3;
-        const r1 = outer + (lifted ? 11 : 7);
-        return (
-          <line
-            key={i}
-            x1={cx + Math.cos(a) * r0}
-            y1={cy + Math.sin(a) * r0}
-            x2={cx + Math.cos(a) * r1}
-            y2={cy + Math.sin(a) * r1}
-            stroke="var(--ink-muted)"
-            strokeWidth="1.1"
-            opacity={lifted ? 1 : 0.65}
-          />
-        );
-      })}
-      {/* Walked coverage. */}
-      <circle cx={cx} cy={cy} r={inner} fill={active ? "var(--brand)" : "var(--ink)"} />
-
-      <text
-        x={cx}
-        y={cy + outer + 30}
-        textAnchor="middle"
-        className="constellation-star-label"
-        fill="var(--ink)"
-      >
-        {node.name}
-      </text>
-      <text
-        x={cx}
-        y={cy + outer + 46}
-        textAnchor="middle"
-        className="constellation-star-meta"
-        fill="var(--ink-muted)"
-      >
-        {node.featureCount === 0
-          ? "nothing walked yet"
-          : `${node.walkedCount}/${node.featureCount} walked`}
-        {node.personaCount > 0 &&
-          ` · ${node.personaCount} ${node.personaCount === 1 ? "persona" : "personas"}`}
-      </text>
-
-      {/* Persona portraits, fanned above the star.
-          Positioned in pixel space rather than given coordinates of their own:
-          a persona has no location, and inventing one would be the same
-          dishonesty the geographic globe committed. */}
-      {node.personas.length > 0 && (
-        <PersonaFan cx={cx} cy={cy - outer - 26} personas={node.personas} lifted={lifted} />
+      aria-pressed={active}
+      aria-label={`${product.name}: ${product.walkedCount} of ${product.featureCount} features walked; ${product.platforms.map((platform) => PLATFORM_PROFILES[platform].short).join(", ")}`}
+      className={cn(
+        "atlas-product absolute z-[4] -translate-x-1/2 -translate-y-1/2 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-paper",
+        lifted && "z-[6] -translate-y-[54%]",
+        dimmed && "opacity-[0.35]",
       )}
-    </g>
+      style={{ left: `${product.x * 100}%`, top: `${product.y * 100}%` }}
+    >
+      <span
+        className={cn(
+          "relative mx-auto block transition-transform duration-200",
+          lifted && "scale-110",
+        )}
+        style={{ width: glyphSize, height: glyphSize }}
+      >
+        <svg viewBox="0 0 72 72" className="size-full overflow-visible" aria-hidden>
+          <circle cx="36" cy="36" r="30" fill="var(--paper)" stroke="var(--rule-strong)" />
+          <circle cx="36" cy="36" r="27" fill="none" stroke="var(--rule)" strokeWidth="4" />
+          <circle
+            cx="36"
+            cy="36"
+            r="27"
+            fill="none"
+            stroke={active ? "var(--brand)" : "var(--ink)"}
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeDasharray={`${dash} ${circumference - dash}`}
+            transform="rotate(-90 36 36)"
+          />
+          <circle
+            cx="36"
+            cy="36"
+            r={9 + Math.min(product.coverage, 1) * 7}
+            fill={active ? "var(--brand)" : "var(--ink)"}
+          />
+          {[0, 90, 180, 270].map((angle) => {
+            const radians = (angle * Math.PI) / 180;
+            return (
+              <line
+                key={angle}
+                x1={36 + Math.cos(radians) * 32}
+                y1={36 + Math.sin(radians) * 32}
+                x2={36 + Math.cos(radians) * 36}
+                y2={36 + Math.sin(radians) * 36}
+                stroke="var(--ink-muted)"
+                strokeWidth="1"
+              />
+            );
+          })}
+        </svg>
+      </span>
+
+      <span className="mt-1 block whitespace-nowrap font-serif text-[11px] leading-none text-ink lg:text-[13px]">
+        {product.name}
+      </span>
+
+      {product.platforms.length > 1 && (
+        <span className="mt-1 flex justify-center gap-1">
+          {product.platforms.map((platform) => (
+            <span
+              key={platform}
+              className="rounded-full border border-rule-strong bg-paper/90 px-1.5 py-0.5 font-mono text-[7px] leading-none text-ink-muted lg:text-[8px]"
+            >
+              {PLATFORM_PROFILES[platform].short}
+            </span>
+          ))}
+        </span>
+      )}
+    </button>
   );
 }
 
-function PersonaFan({
-  cx,
-  cy,
-  personas,
-  lifted,
-}: {
-  cx: number;
-  cy: number;
-  personas: ConstellationNode["personas"];
-  lifted: boolean;
-}) {
-  const shown = personas.slice(0, 5);
-  const r = lifted ? 24 : 20;
-  const gap = r * 1.55;
-  const startX = cx - ((shown.length - 1) * gap) / 2;
-
+function AtlasLegend() {
   return (
-    <g className="constellation-fan">
-      {shown.map((persona, i) => {
-        const x = startX + i * gap;
-        const clip = `persona-clip-${persona.id}-${i}`;
+    <div className="absolute bottom-3 left-1/2 z-[5] flex -translate-x-1/2 items-center gap-4 rounded border border-rule bg-paper/90 px-3 py-2 shadow-plate backdrop-blur-sm">
+      <p className="font-mono text-[8px] uppercase tracking-[0.22em] text-ink-faint">How to read</p>
+      <LegendMark filled label="Walked" />
+      <LegendMark label="Catalogued" />
+      <span className="hidden items-center gap-1.5 font-serif text-[10px] text-ink-muted lg:flex">
+        <span className="size-2 rounded-full border border-rule-strong bg-paper" />
+        Platform facet
+      </span>
+    </div>
+  );
+}
+
+function LegendMark({ filled = false, label }: { filled?: boolean; label: string }) {
+  return (
+    <span className="flex items-center gap-1.5 font-serif text-[10px] text-ink-muted">
+      <span className={cn("size-3 rounded-full border border-ink", filled ? "bg-ink" : "bg-paper")} />
+      {label}
+    </span>
+  );
+}
+
+function MobileAtlas({ products, selected, onSelect }: ChartProps) {
+  return (
+    <div className="space-y-3 bg-paper-sunken/35 p-3 md:hidden">
+      {ATLAS_TERRITORIES.map((territory) => {
+        const territoryProducts = products.filter((product) => product.territory === territory.id);
+        const colors = MOBILE_TERRITORY_COLORS[territory.id];
         return (
-          <g key={persona.id}>
-            <defs>
-              <clipPath id={clip}>
-                <circle cx={x} cy={cy} r={r} />
-              </clipPath>
-            </defs>
-            {persona.portrait ? (
-              <image
-                href={persona.portrait}
-                x={x - r}
-                y={cy - r}
-                width={r * 2}
-                height={r * 2}
-                clipPath={`url(#${clip})`}
-                preserveAspectRatio="xMidYMin slice"
-              />
-            ) : (
-              <>
-                <circle cx={x} cy={cy} r={r} fill="var(--paper-sunken)" />
-                <text
-                  x={x}
-                  y={cy + 4}
-                  textAnchor="middle"
-                  className="constellation-fan-initial"
-                  fill="var(--ink-muted)"
-                  style={{ fontSize: r * 0.8 }}
+          <section
+            key={territory.id}
+            className="overflow-hidden rounded-sm border px-4 py-4"
+            style={{ backgroundColor: colors.background, borderColor: colors.border }}
+          >
+            <div className="border-b border-rule pb-2">
+              <h2 className="font-mono text-micro uppercase tracking-[0.22em]">{territory.name}</h2>
+              <p className="mt-1 font-serif text-small italic text-ink-muted">{territory.motto}</p>
+            </div>
+            <div className="mt-2 divide-y divide-rule">
+              {territoryProducts.map((product) => (
+                <button
+                  key={product.id}
+                  type="button"
+                  onClick={() => onSelect(selected === product.id ? null : product.id)}
+                  className={cn(
+                    "flex min-h-14 w-full items-center justify-between gap-4 rounded-sm px-2 py-3 text-left transition-colors hover:bg-paper/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2",
+                    selected === product.id && "bg-paper/70",
+                  )}
+                  aria-pressed={selected === product.id}
                 >
-                  {persona.name.trim().charAt(0).toUpperCase()}
-                </text>
-              </>
-            )}
-            <circle
-              cx={x}
-              cy={cy}
-              r={r}
-              fill="none"
-              stroke="var(--paper)"
-              strokeWidth="2"
-            />
-            <circle cx={x} cy={cy} r={r} fill="none" stroke="var(--ink-muted)" strokeWidth="1" />
-          </g>
+                  <span>
+                    <span className="block font-serif text-title">{product.name}</span>
+                    <span className="mt-1 block text-micro text-ink-muted">
+                      {product.platforms.map((platform) => PLATFORM_PROFILES[platform].short).join(" · ")}
+                    </span>
+                  </span>
+                  <span className="font-mono text-micro text-ink-faint">
+                    {product.walkedCount}/{product.featureCount}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </section>
         );
       })}
-      {personas.length > shown.length && (
-        <text
-          x={startX + shown.length * gap}
-          y={cy + 4}
-          textAnchor="middle"
-          className="constellation-fan-initial"
-          fill="var(--ink-muted)"
-        >
-          +{personas.length - shown.length}
-        </text>
-      )}
-    </g>
+    </div>
   );
 }
