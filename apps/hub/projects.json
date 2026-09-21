@@ -12,6 +12,24 @@
   ],
   "projects": [
     {
+      "slug": "doneos",
+      "name": "DoneOS",
+      "tag": "Human Quest · accountable execution",
+      "description": "See an MCP-created task arrive in the real DoneOS queue and remain attributable in Activity.",
+      "longDescription": "This bounded walkthrough follows one fictional task across the product boundary: DoneOS explains the agent connection, the MCP client creates the task, Queue shows the same record, and Activity preserves who did it. The captures use committed Flutter code and disposable local emulator data; no production credential or personal record appears.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://app.doneos.net"
+      },
+      "auth": {
+        "type": "api-token"
+      },
+      "meta": {
+        "driverLabel": "Flutter app + official MCP SDK"
+      }
+    },
+    {
       "slug": "wikipedia",
       "name": "Wikipedia",
       "tag": "Sample · public site",

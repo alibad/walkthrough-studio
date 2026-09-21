@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "projectName": "DoneOS",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "Committed DoneOS Flutter app with disposable local emulator data",
+  "discoveredAt": "2026-09-20T13:58:53.280Z",
+  "updatedAt": "2026-09-20T13:58:53.280Z",
+  "brand": {
+    "primaryColor": "#ff6b5f",
+    "accentColor": "#39d98a",
+    "backgroundColor": "#17191c",
+    "textColor": "#f5f7fa",
+    "logoPath": "brand/logo.svg",
+    "fontFamily": "Inter"
+  },
+  "scope": {
+    "status": "partial",
+    "note": "Public evidence is intentionally limited to the MCP write/read-back story captured with fictional emulator data.",
+    "excluded": ["Production accounts", "Production credentials", "Unrelated product surfaces"]
+  },
+  "features": [
+    {
+      "featureId": "write-read-back",
+      "featureName": "MCP task in the real app",
+      "location": "DoneOS app → Connect → Execute → Activity",
+      "category": "mcp",
+      "requiresAuth": true,
+      "surfaceStatus": { "desktop": "done" },
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T13:58:53.280Z",
+      "notes": "The Flutter UI and MCP client shared disposable emulator-backed state; the exact task was visible in Queue and attributed in Activity."
+    }
+  ],
+  "personas": [],
+  "synthetic": false
+}
