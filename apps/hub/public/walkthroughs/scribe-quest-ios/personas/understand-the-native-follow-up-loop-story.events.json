@@ -1,0 +1,37 @@
+{
+  "journeyId": "understand-the-native-follow-up-loop",
+  "personaId": "client-conversation-owner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 30700,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 6250,
+      "narration": "Maya completes the account boundary and sees a conversation become a portable follow-up record.",
+      "image": "personas/client-conversation-owner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 6250,
+      "durMs": 7100,
+      "narration": "Maya sees sign-in protect her record, while microphone access waits until she starts recording.",
+      "image": "native-auth-boundary/iphone/step-01-sign-in.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13350,
+      "durMs": 9100,
+      "narration": "Simulator footage shows Maya capturing a conversation, linking context, and exporting a PDF follow-up record.",
+      "image": "demos/conversation.jpg"
+    },
+    {
+      "kind": "outro",
+      "startMs": 22450,
+      "durMs": 8250,
+      "narration": "Maya understands what the native app is designed to do and exactly where fresh authenticated evidence stops.",
+      "image": "personas/client-conversation-owner.png"
+    }
+  ]
+}

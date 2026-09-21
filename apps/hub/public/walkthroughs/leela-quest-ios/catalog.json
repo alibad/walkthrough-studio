@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Leela Quest · iOS",
+  "platform": "ios",
+  "driver": "ios-simulator",
+  "capturedAgainst": "com.humanquest.leela 1.2.18+72 · Leela Quest QA · iOS 26.5",
+  "discoveredAt": "2026-09-20T19:20:00Z",
+  "updatedAt": "2026-09-20T19:36:17Z",
+  "scope": {
+    "status": "partial",
+    "note": "The actual native first-run, home, and game-mode path is live-walked. Completing a paid roll, multiplayer, spoken guidance, purchases, account sync, and physical-device behavior remain outside this run."
+  },
+  "features": [
+    {
+      "featureId": "native-guided-start",
+      "featureName": "Native guided start",
+      "location": "LanguageScreen → GameModeScreen",
+      "category": "guided reflection",
+      "requiresAuth": false,
+      "surfaceStatus": { "iphone": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:36:17Z"
+    },
+    {
+      "featureId": "complete-board-journey",
+      "featureName": "Complete a full board journey",
+      "location": "GameBoardScreen",
+      "category": "gameplay",
+      "requiresAuth": false,
+      "surfaceStatus": { "iphone": "pending" },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; not exercised because it spends credits and creates persistent journey state."
+    },
+    {
+      "featureId": "conversation-guide",
+      "featureName": "Use conversation and spoken guidance",
+      "location": "TalkModeScreen",
+      "category": "guidance",
+      "requiresAuth": false,
+      "surfaceStatus": { "iphone": "pending" },
+      "videoStatus": "pending",
+      "issueCount": 0
+    },
+    {
+      "featureId": "multiplayer",
+      "featureName": "Create or join multiplayer",
+      "location": "MultiplayerScreen",
+      "category": "multiplayer",
+      "requiresAuth": true,
+      "surfaceStatus": { "iphone": "blocked" },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Requires another participant and persistent account state."
+    }
+  ],
+  "personas": [
+    {
+      "id": "reflective-player",
+      "name": "Aisha Karim",
+      "description": "Arrives with a real decision she has been circling for weeks and wants a structured reflection, not a prediction.",
+      "entryPoint": "LanguageScreen",
+      "keyJourneys": ["choose-a-native-quest"],
+      "portrait": "personas/reflective-player.png",
+      "scene": "personas/reflective-player-scene.png",
+      "navItems": [
+        { "label": "Home", "location": "HomeScreen" },
+        { "label": "Quests", "location": "QuestsScreen" },
+        { "label": "Profile", "location": "ProfileScreen" }
+      ]
+    }
+  ]
+}

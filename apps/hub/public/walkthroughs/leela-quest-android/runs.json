@@ -1,0 +1,21 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:45:00Z-native-first-run",
+      "startedAt": "2026-09-20T19:43:00Z",
+      "completedAt": "2026-09-20T19:45:00Z",
+      "skill": "walkthrough",
+      "agent": "Maestro + adb screenrecord",
+      "target": { "sha": "", "shaShort": "—", "dirty": false, "commitDate": null, "commitSubject": "Installed APK; exact source SHA not proven." },
+      "config": {
+        "platform": "android",
+        "driver": "android-emulator",
+        "capturedAgainst": "com.humanquest.leela 1.2.18+72 · Small_Phone_API_35",
+        "surfaces": ["android"],
+        "locales": ["en"],
+        "notes": "Package data cleared before walk; actual APK; no account, purchase, or personal data created."
+      },
+      "coverage": { "features": ["native-first-run"], "personas": ["reflective-player"], "screenshots": 5, "videos": 1, "issues": 0 }
+    }
+  ]
+}

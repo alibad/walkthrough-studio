@@ -1,0 +1,37 @@
+{
+  "journeyId": "reach-the-android-account-boundary",
+  "personaId": "reflective-player",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 25650,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 5900,
+      "narration": "Aisha learns the practice’s language and purpose before the app pauses at sign-in.",
+      "image": "personas/reflective-player-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 5900,
+      "durMs": 6700,
+      "narration": "Aisha moves through Android’s setup, choosing language and setting an intention before signing in.",
+      "image": "native-first-run/android/step-01-language.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 12600,
+      "durMs": 6000,
+      "narration": "Aisha reaches sign-in and pauses, without choosing an account or creating a session.",
+      "image": "native-first-run/android/step-05-auth.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 18600,
+      "durMs": 7050,
+      "narration": "She knows what the practice is and why an account is requested before she chooses a provider.",
+      "image": "personas/reflective-player.png"
+    }
+  ]
+}

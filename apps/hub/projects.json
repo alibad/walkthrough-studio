@@ -192,6 +192,244 @@
       "auth": {
         "type": "none"
       }
+    },
+    {
+      "slug": "autobounds",
+      "name": "AutoBounds",
+      "tag": "Human Quest · precision agriculture",
+      "description": "AI-assisted field-boundary mapping, model comparison, project organization, and export for agricultural teams.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://autobounds.com"
+      },
+      "codebase": {
+        "local": "../autobounds",
+        "stack": "nextjs-app-router"
+      },
+      "auth": {
+        "type": "oauth",
+        "interactiveOnly": true
+      }
+    },
+    {
+      "slug": "leela-quest-web",
+      "name": "Leela Quest · Web",
+      "tag": "Human Quest · guided reflection",
+      "description": "The web surface of the Game of Leela adaptation, guiding a player from intention through the board and reflection.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://app.leelaquest.com"
+      },
+      "codebase": {
+        "local": "../leela/leela_quest",
+        "stack": "flutter-web"
+      },
+      "auth": {
+        "type": "oauth",
+        "interactiveOnly": true
+      }
+    },
+    {
+      "slug": "leela-quest-ios",
+      "name": "Leela Quest · iOS",
+      "tag": "Human Quest · native guided reflection",
+      "description": "The actual native iPhone experience, captured from a clean simulator install rather than a responsive browser.",
+      "target": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "bundleId": "com.humanquest.leela",
+        "appPath": "../leela/leela_quest/build/ios/Debug-iphonesimulator/Runner.app",
+        "device": "Leela Quest QA"
+      },
+      "codebase": {
+        "local": "../leela/leela_quest",
+        "stack": "flutter"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "leela-quest-android",
+      "name": "Leela Quest · Android",
+      "tag": "Human Quest · native guided reflection",
+      "description": "The actual native Android first-run and authentication handoff, captured from an emulator build rather than a responsive browser.",
+      "target": {
+        "platform": "android",
+        "driver": "android-emulator",
+        "bundleId": "com.humanquest.leela",
+        "appPath": "../leela/leela_quest/build/app/outputs/flutter-apk/app-debug.apk",
+        "device": "Small_Phone_API_35"
+      },
+      "codebase": {
+        "local": "../leela/leela_quest",
+        "stack": "flutter"
+      },
+      "auth": {
+        "type": "oauth",
+        "interactiveOnly": true
+      }
+    },
+    {
+      "slug": "handstand-quest-web",
+      "name": "Handstand Quest · Web",
+      "tag": "Human Quest · progressive handstand training",
+      "description": "The public product guide for goals, workouts, voice-timed practice, progress, and hands-free video.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://www.handstandquest.com"
+      },
+      "codebase": {
+        "local": "../handstand-timer-ios",
+        "stack": "swiftui"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "handstand-quest-ios",
+      "name": "Handstand Quest · iOS",
+      "tag": "Human Quest · native handstand training",
+      "description": "The native iPhone training experience, including first run, a structured practice, timer controls, and progress feedback.",
+      "target": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "bundleId": "fitquest.handstand",
+        "device": "iPhone 17"
+      },
+      "codebase": {
+        "local": "../handstand-timer-ios",
+        "stack": "swiftui"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "plan-quest",
+      "name": "Plan Quest",
+      "tag": "Human Quest · adaptive planning",
+      "description": "A living planning workspace for turning rough goals into milestones, priorities, timelines, notes, and decisions.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://my.plans.quest"
+      },
+      "codebase": {
+        "local": "../plan/timequest",
+        "stack": "nextjs-app-router"
+      },
+      "auth": {
+        "type": "oauth",
+        "interactiveOnly": true
+      }
+    },
+    {
+      "slug": "scribe-quest-web",
+      "name": "Scribe Quest · Web",
+      "tag": "Human Quest · conversations into action",
+      "description": "The web experience for capturing conversations, producing summaries, and carrying follow-ups into action.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://app.scribe-quest.com"
+      },
+      "codebase": {
+        "local": "../scribe_quest",
+        "stack": "flutter-web"
+      },
+      "auth": {
+        "type": "email-password",
+        "interactiveOnly": true
+      }
+    },
+    {
+      "slug": "scribe-quest-ios",
+      "name": "Scribe Quest · iOS",
+      "tag": "Human Quest · native conversation capture",
+      "description": "The actual native iPhone capture and follow-up experience, recorded from a simulator build.",
+      "target": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "bundleId": "com.humanquest.scribe",
+        "appPath": "../scribe_quest/build/ios/Debug-iphonesimulator/Runner.app",
+        "device": "Scribe Billing QA"
+      },
+      "codebase": {
+        "local": "../scribe_quest",
+        "stack": "flutter"
+      },
+      "auth": {
+        "type": "email-password",
+        "interactiveOnly": true
+      }
+    },
+    {
+      "slug": "scribe-quest-android",
+      "name": "Scribe Quest · Android",
+      "tag": "Human Quest · native conversation capture",
+      "description": "The actual native Android sign-in and account boundary, captured from the release APK on an emulator.",
+      "target": {
+        "platform": "android",
+        "driver": "android-emulator",
+        "bundleId": "com.humanquest.scribe",
+        "appPath": "../scribe_quest/build/app/outputs/flutter-apk/app-debug.apk",
+        "device": "Small_Phone_API_35"
+      },
+      "codebase": {
+        "local": "../scribe_quest",
+        "stack": "flutter"
+      },
+      "auth": {
+        "type": "email-password",
+        "interactiveOnly": true
+      }
+    },
+    {
+      "slug": "calendar-clarity",
+      "name": "Calendar Clarity",
+      "tag": "Human Quest · Chrome extension",
+      "description": "A browser extension that dims calendar noise, protects focus, adds event actions, and applies native syncing colors.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "production": "https://www.calendarclarity.app"
+      },
+      "codebase": {
+        "local": "../ccc",
+        "stack": "chrome-extension"
+      },
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "slug": "breath-quest",
+      "name": "Breath Quest",
+      "tag": "Human Quest · audio-controlled experiment",
+      "description": "A local-first set of breath and clap experiments where the microphone becomes a wellness-game controller.",
+      "target": {
+        "platform": "web",
+        "driver": "playwright",
+        "local": "http://localhost:3110",
+        "production": "https://breather.quest",
+        "launch": {
+          "command": "pnpm dev --port 3110",
+          "cwd": "../breathquest",
+          "port": 3110
+        }
+      },
+      "codebase": {
+        "local": "../breathquest",
+        "stack": "nextjs-app-router"
+      },
+      "auth": {
+        "type": "none"
+      }
     }
   ]
 }

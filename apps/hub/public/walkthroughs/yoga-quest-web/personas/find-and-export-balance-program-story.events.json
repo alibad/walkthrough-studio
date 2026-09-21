@@ -1,0 +1,72 @@
+{
+  "journeyId": "find-and-export-balance-program",
+  "personaId": "class-planning-teacher",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 70000,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7950,
+      "narration": "Nadia filters the teacher library for balance classes and begins comparing structured three-week programs.",
+      "image": "personas/class-planning-teacher-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7950,
+      "durMs": 9500,
+      "narration": "Nadia scans the teacher library, checking duration, level, focus, and format for tomorrow’s balance class.",
+      "image": "journey-class-planning-teacher/desktop/scene-01-library.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 17450,
+      "durMs": 7300,
+      "narration": "Nadia searches balance, narrowing the class list to sessions she can compare by approach and length.",
+      "image": "journey-class-planning-teacher/desktop/scene-02-balance-search.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 24750,
+      "durMs": 6300,
+      "narration": "Nadia opens Programs and chooses a three-week balance path with paced sessions.",
+      "image": "journey-class-planning-teacher/desktop/scene-03-programs.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 31050,
+      "durMs": 6050,
+      "narration": "The plan sets a three-week balance goal with eight sessions using wall and chair support.",
+      "image": "journey-class-planning-teacher/desktop/scene-04-program.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 37100,
+      "durMs": 7850,
+      "narration": "Nadia traces the progression from supported steps to standing flow, with rest days built into each week.",
+      "image": "journey-class-planning-teacher/desktop/scene-05-path.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 44950,
+      "durMs": 6550,
+      "narration": "Nadia pastes the JSON into the importer, where the draft remains in this tab for review.",
+      "image": "journey-class-planning-teacher/desktop/scene-06-import.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 51500,
+      "durMs": 8550,
+      "narration": "The importer confirms 33 exercises, six workouts, and an eight-session balance program for Nadia to inspect.",
+      "image": "journey-class-planning-teacher/desktop/scene-07-preview.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 60050,
+      "durMs": 9950,
+      "narration": "She reaches a real import preview confirming the complete eight-session program, 33 exercises, and six workouts before anything is saved.",
+      "image": "personas/class-planning-teacher.png"
+    }
+  ]
+}

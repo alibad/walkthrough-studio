@@ -26,5 +26,20 @@
       "notes": "Fresh app state through the first native studio screen; later teaching and account flows remain intentionally outside this bounded walkthrough."
     }
   ],
-  "personas": []
+  "personas": [
+    {
+      "id": "class-planning-teacher",
+      "name": "Nadia Rahman",
+      "description": "A yoga teacher who needs a prepared class she can teach from the actual native app, including offline and local-first behavior.",
+      "portrait": "personas/class-planning-teacher.png",
+      "scene": "personas/class-planning-teacher-scene.png",
+      "entryPoint": "OnboardingScreen",
+      "keyJourneys": ["enter-the-native-studio"],
+      "navItems": [
+        { "label": "Studio", "location": "HomeShell" },
+        { "label": "Library", "location": "LibraryScreen" },
+        { "label": "Teach Mode", "location": "TeachModeScreen" }
+      ]
+    }
+  ]
 }

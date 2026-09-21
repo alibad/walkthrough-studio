@@ -1,0 +1,37 @@
+{
+  "journeyId": "enter-the-native-studio",
+  "personaId": "class-planning-teacher",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 30200,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 6750,
+      "narration": "Nadia enters the native studio, where visual planning and private, glanceable teaching tools await.",
+      "image": "personas/class-planning-teacher-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 6750,
+      "durMs": 6100,
+      "narration": "Native onboarding shows Nadia how to shape a class arc and prepare the next cue.",
+      "image": "native-first-run/iphone/step-01-plan.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 12850,
+      "durMs": 7900,
+      "narration": "Nadia enters a prepared private studio, where a class waits with a direct teaching action.",
+      "image": "native-first-run/iphone/step-03-private.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 20750,
+      "durMs": 9450,
+      "narration": "Nadia reaches a native prepared class with Teach this class visible and understands what remains outside this bounded first-run walk.",
+      "image": "personas/class-planning-teacher.png"
+    }
+  ]
+}

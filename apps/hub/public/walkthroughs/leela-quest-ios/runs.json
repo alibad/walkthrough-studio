@@ -1,0 +1,33 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:36:17Z-native-guided-start",
+      "startedAt": "2026-09-20T19:20:00Z",
+      "completedAt": "2026-09-20T19:36:17Z",
+      "skill": "walkthrough",
+      "agent": "Maestro + simctl",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitDate": null,
+        "commitSubject": "Installed simulator binary; exact source SHA not proven."
+      },
+      "config": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "capturedAgainst": "com.humanquest.leela 1.2.18+72 · Leela Quest QA · iOS 26.5",
+        "surfaces": ["iphone"],
+        "locales": ["en"],
+        "notes": "Actual native app; app reinstalled before final walk; no account, purchase, or personal data created; persisted synthetic seed disclosed; recording compressed to H.264 MP4."
+      },
+      "coverage": {
+        "features": ["native-guided-start"],
+        "personas": ["reflective-player"],
+        "screenshots": 7,
+        "videos": 1,
+        "issues": 0
+      }
+    }
+  ]
+}

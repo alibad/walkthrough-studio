@@ -1,0 +1,94 @@
+{
+  "personaId": "ag-operations-lead",
+  "journeyId": "assess-ai-boundary-workflow",
+  "headline": "Maya reaches the real app gate knowing the three-step workflow, available models, export formats, and credit model she is evaluating.",
+  "overview": "A live product-level walk for AutoBounds, framed around Maya Thornton's actual decision rather than a list of routes.",
+  "payoff": "Maya reaches the real app gate knowing the three-step workflow, available models, export formats, and credit model she is evaluating.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "The outcome is stated before the machinery",
+      "narrative": "The promise is concrete: turn manual delineation into an export-ready starting point from satellite imagery.",
+      "frames": [
+        "evaluate-field-mapping-workflow/desktop/step-01-outcome.png"
+      ],
+      "frameCaptions": [
+        "The outcome is stated before the machinery"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "evaluate-field-mapping-workflow",
+      "action": "Opened the public AutoBounds product page.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "The workflow is point, process, export",
+      "narrative": "Maya can see what she must provide, what the model does, and what leaves the system before she evaluates implementation detail.",
+      "frames": [
+        "evaluate-field-mapping-workflow/desktop/step-02-workflow.png"
+      ],
+      "frameCaptions": [
+        "The workflow is point, process, export"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "evaluate-field-mapping-workflow",
+      "action": "Moved to the three-step workflow.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Models are compared by operating trade-offs",
+      "narrative": "The model page makes speed, prompting, and boundary quality part of the product decision instead of presenting AI as one opaque button.",
+      "frames": [
+        "evaluate-field-mapping-workflow/desktop/step-03-models.png"
+      ],
+      "frameCaptions": [
+        "Models are compared by operating trade-offs"
+      ],
+      "location": "/ai-models",
+      "surface": "desktop",
+      "sourceFeature": "evaluate-field-mapping-workflow",
+      "action": "Opened the AI model comparison.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-04",
+      "title": "Credits map to accepted work",
+      "narrative": "Pricing explains that one credit buys one extraction and is deducted only when a result is accepted, which is the operational unit Maya needed.",
+      "frames": [
+        "evaluate-field-mapping-workflow/desktop/step-04-pricing.png"
+      ],
+      "frameCaptions": [
+        "Credits map to accepted work"
+      ],
+      "location": "/pricing",
+      "surface": "desktop",
+      "sourceFeature": "evaluate-field-mapping-workflow",
+      "action": "Opened pricing.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-05",
+      "title": "The real application starts at an account gate",
+      "narrative": "The walkthrough stops honestly at the production sign-in surface; projects, Labs, and exports remain blocked without an authenticated workspace.",
+      "frames": [
+        "evaluate-field-mapping-workflow/desktop/step-05-app-gate.png"
+      ],
+      "frameCaptions": [
+        "The real application starts at an account gate"
+      ],
+      "location": "/demo",
+      "surface": "desktop",
+      "sourceFeature": "evaluate-field-mapping-workflow",
+      "action": "Opened the production app demo route.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:20:17.804Z",
+  "walkRecording": "video/page@66f6adfad0a41f10088345dc4fa3b068.mp4",
+  "storyVideo": "personas/assess-ai-boundary-workflow-story.mp4"
+}

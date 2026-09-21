@@ -1,0 +1,61 @@
+{
+  "featureId": "native-goal-setting",
+  "featureName": "Native baseline and goal setting",
+  "type": "feature",
+  "location": "OnboardingPage1 → AuthPicker",
+  "category": "onboarding",
+  "surface": "iphone",
+  "platform": "ios",
+  "locale": "en",
+  "headline": "From first launch to a measurable first handstand goal",
+  "overview": "A live walk through the actual native iPhone app: welcome, current ability, suggested targets, and the account boundary used to sync progress.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The native app starts with the training journey",
+      "action": "Built and launched Handstand Quest on an isolated iPhone simulator.",
+      "description": "The real iOS app frames handstand progress as a climb and begins with a three-step setup rather than dropping Jordan into a generic exercise catalog.",
+      "screenshotFilename": "native-goal-setting/iphone/step-01-welcome.png",
+      "screenshotAlt": "Handstand Quest native iPhone welcome screen",
+      "location": "OnboardPage1ViewController",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Ability is captured in training language",
+      "action": "Tapped Get Started.",
+      "description": "The native app asks for a practical baseline: not yet, under five seconds, five to thirty, thirty-plus, or a fine-tuned best hold.",
+      "screenshotFilename": "native-goal-setting/iphone/step-02-baseline.png",
+      "screenshotAlt": "Handstand Quest native baseline choices",
+      "location": "OnboardPage2ViewController",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "A beginner receives concrete first goals",
+      "action": "Selected working toward a first handstand and continued.",
+      "description": "The app proposes a five-second hold target and five minutes of daily practice, making the plan measurable while keeping both values adjustable.",
+      "screenshotFilename": "native-goal-setting/iphone/step-03-goals.png",
+      "screenshotAlt": "Handstand Quest native five-second and five-minute goals",
+      "location": "OnboardPage3ViewController",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Sync is offered after value is established",
+      "action": "Tapped Continue and stopped before choosing an identity provider.",
+      "description": "Google, Apple, Facebook, and email are offered to sync workouts, goals, and progress. No account was selected or created.",
+      "screenshotFilename": "native-goal-setting/iphone/step-04-auth.png",
+      "screenshotAlt": "Handstand Quest native Save your progress sign-in screen",
+      "location": "AuthPickerViewController",
+      "verificationStatus": "gated-write"
+    }
+  ],
+  "video": { "file": "video/native-goal-setting.mp4" },
+  "keyFeatures": ["Native ability baseline", "Suggested hold goal", "Suggested daily-practice goal", "Cross-provider progress sync"],
+  "capturedAt": "2026-09-20T20:02:00Z",
+  "generatedAt": "2026-09-20T20:02:00Z",
+  "targetSha": "34fb18b56d2370323f7c57b6aa17c97f1ca2b89d",
+  "targetCommitDate": "2024-12-27T16:34:56-08:00",
+  "note": "Built from the current dirty Handstand Quest checkout using an iOS 17 deployment-target override required by its current AVAudioApplication usage. Existing uncommitted product changes were preserved and are part of the binary under test. No account was created."
+}

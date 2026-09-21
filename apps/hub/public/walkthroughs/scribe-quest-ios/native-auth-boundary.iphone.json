@@ -1,0 +1,39 @@
+{
+  "featureId": "native-auth-boundary",
+  "featureName": "Native sign-in and account boundary",
+  "type": "feature",
+  "location": "LoginScreen → SignUpScreen",
+  "category": "account",
+  "surface": "iphone",
+  "platform": "ios",
+  "locale": "en",
+  "headline": "The real iPhone app explains the account boundary before asking for data",
+  "overview": "A live walk of the installed Scribe Quest iOS app through sign-in and account creation without submitting credentials or creating an account.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Conversation history is explicitly account-scoped",
+      "action": "Launched the real Scribe Quest iPhone app and dismissed the simulator's Apple-account prompt.",
+      "description": "The native sign-in screen offers Google, Apple, and email, says why authentication is required, and delays microphone permission until capture begins.",
+      "screenshotFilename": "native-auth-boundary/iphone/step-01-sign-in.png",
+      "screenshotAlt": "Scribe Quest native sign-in screen on iPhone",
+      "location": "LoginScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Account creation is visible without being executed",
+      "action": "Opened Create an account and stopped before entering or submitting information.",
+      "description": "The native surface states that no credit card is required and shows the cross-device account options. No account or personal data was created.",
+      "screenshotFilename": "native-auth-boundary/iphone/step-02-create-account.png",
+      "screenshotAlt": "Scribe Quest native create account screen on iPhone",
+      "location": "SignUpScreen",
+      "verificationStatus": "gated-write"
+    }
+  ],
+  "video": { "file": "video/native-auth-boundary.mp4" },
+  "keyFeatures": ["Native Google, Apple, and email sign-in", "Explicit microphone timing", "Cross-device account creation"],
+  "capturedAt": "2026-09-20T19:42:00Z",
+  "generatedAt": "2026-09-20T19:42:00Z",
+  "note": "Captured from the actual com.humanquest.scribe iPhone simulator build, version 1.0.5+43, on iOS 26.5. The binary predates the current source HEAD, so no source SHA is claimed."
+}

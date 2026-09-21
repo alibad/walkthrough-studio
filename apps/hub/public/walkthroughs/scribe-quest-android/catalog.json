@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Scribe Quest · Android",
+  "platform": "android",
+  "driver": "android-emulator",
+  "capturedAgainst": "com.humanquest.scribe 1.0.6+44 · Small_Phone_API_35",
+  "discoveredAt": "2026-09-20T19:46:00Z",
+  "updatedAt": "2026-09-20T19:58:00Z",
+  "scope": {
+    "status": "bounded",
+    "note": "The actual Android sign-in and account-creation boundary is live-walked. Authenticated capture, analysis, relationships, exports, purchases, and physical-device behavior remain outside this run."
+  },
+  "features": [
+    {
+      "featureId": "native-auth-boundary",
+      "featureName": "Android sign-in and account boundary",
+      "location": "LoginScreen → SignUpScreen",
+      "category": "account",
+      "requiresAuth": false,
+      "surfaceStatus": { "android": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:58:00Z"
+    },
+    {
+      "featureId": "android-conversation-capture",
+      "featureName": "Capture and analyze a conversation on Android",
+      "location": "RecordingScreen",
+      "category": "capture",
+      "requiresAuth": true,
+      "surfaceStatus": { "android": "blocked" },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Requires an authenticated isolated test account and microphone input."
+    }
+  ],
+  "personas": [
+    {
+      "id": "client-conversation-owner",
+      "name": "Maya Ortiz",
+      "description": "Needs decisions and follow-ups from an important conversation to stay attached to the relationship.",
+      "entryPoint": "LoginScreen",
+      "keyJourneys": ["reach-the-android-account-boundary"],
+      "portrait": "personas/client-conversation-owner.png",
+      "scene": "personas/client-conversation-owner-scene.png",
+      "navItems": [
+        { "label": "Sign in", "location": "LoginScreen" },
+        { "label": "Create account", "location": "SignUpScreen" },
+        { "label": "Capture", "location": "RecordingScreen" }
+      ]
+    }
+  ]
+}

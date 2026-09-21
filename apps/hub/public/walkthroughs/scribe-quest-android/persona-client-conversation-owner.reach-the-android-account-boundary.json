@@ -1,0 +1,47 @@
+{
+  "personaId": "client-conversation-owner",
+  "journeyId": "reach-the-android-account-boundary",
+  "headline": "Maya understands the Android account boundary before trusting it with a conversation",
+  "overview": "The actual Android app explains history, microphone timing, and account options without accepting credentials or creating persistent data.",
+  "payoff": "Maya reaches account creation knowing what sign-in protects and exactly where the walkthrough stops.",
+  "platform": "android",
+  "surface": "android",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "Review the native Android sign-in",
+      "narrative": "Maya sees Google and email sign-in, the reason authentication exists, and when microphone permission is requested.",
+      "frames": [
+        "native-auth-boundary/android/step-01-sign-in.png"
+      ],
+      "frameCaptions": [
+        "Native Android sign-in"
+      ],
+      "location": "LoginScreen",
+      "surface": "android",
+      "sourceFeature": "native-auth-boundary",
+      "action": "Review sign-in choices",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Inspect account creation without submitting",
+      "narrative": "The native form is visible, but no credentials or account write are executed.",
+      "frames": [
+        "native-auth-boundary/android/step-02-create-account.png"
+      ],
+      "frameCaptions": [
+        "Native Android account form"
+      ],
+      "location": "SignUpScreen",
+      "surface": "android",
+      "sourceFeature": "native-auth-boundary",
+      "action": "Open account creation",
+      "verificationStatus": "gated-write"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:58:00Z",
+  "targetSha": "98b80e11996ae747e1bf736f299d60f6b8cae86d",
+  "walkRecording": "video/native-auth-boundary.mp4",
+  "storyVideo": "personas/reach-the-android-account-boundary-story.mp4"
+}

@@ -1,0 +1,58 @@
+{
+  "journeyId": "compare-arabic-and-russian",
+  "personaId": "multiscript-learner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 54100,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 6900,
+      "narration": "Elena replaces the empty Arabic editor with a Russian sample, staying in the same workspace.",
+      "image": "personas/multiscript-learner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 6900,
+      "durMs": 7950,
+      "narration": "Elena opens an Arabic editor where right-to-left layout, speech controls, and keyboard guidance are already visible.",
+      "image": "journey-multiscript-learner/desktop/scene-01-arabic.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 14850,
+      "durMs": 7950,
+      "narration": "One click fills the right-to-left editor with Arabic text, showing joined letters, spacing, and key layout.",
+      "image": "journey-multiscript-learner/desktop/scene-02-arabic-sample.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 22800,
+      "durMs": 7600,
+      "narration": "The picker lists languages in English and native names, keeping the Arabic workspace open behind it.",
+      "image": "journey-multiscript-learner/desktop/scene-03-language-picker.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 30400,
+      "durMs": 6750,
+      "narration": "The route, editor, help text, and keyboard layout now switch fully to Russian.",
+      "image": "journey-multiscript-learner/desktop/scene-04-russian.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 37150,
+      "durMs": 8100,
+      "narration": "A Russian sample fills the editor above Cyrillic keys, giving Elena a second working writing surface.",
+      "image": "journey-multiscript-learner/desktop/scene-05-russian-sample.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 45250,
+      "durMs": 8850,
+      "narration": "She has produced visible sample text in both Arabic and Russian and confirmed the matching layouts without installing anything.",
+      "image": "personas/multiscript-learner.png"
+    }
+  ]
+}

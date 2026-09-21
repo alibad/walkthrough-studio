@@ -1,0 +1,95 @@
+{
+  "personaId": "interaction-researcher",
+  "journeyId": "compare-breath-and-clap-controls",
+  "headline": "Noah compares the three experiments and reaches their actual calibration, clap-detection, and game surfaces on the local build.",
+  "overview": "A live product-level walk for Breath Quest, framed around Noah Bennett's actual decision rather than a list of routes.",
+  "payoff": "Noah compares the three experiments and reaches their actual calibration, clap-detection, and game surfaces on the local build.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "The project is explicit about being an experiment",
+      "narrative": "Three hypotheses separate breath detection, clap patterns, and a playful sound-controlled runner instead of pretending one sensor already solves everything.",
+      "frames": [
+        "try-audio-controlled-experiments/desktop/step-01-lab.png"
+      ],
+      "frameCaptions": [
+        "The project is explicit about being an experiment"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "try-audio-controlled-experiments",
+      "action": "Opened the local Breath Quest build.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Breath control begins with calibration",
+      "narrative": "The real interface explains that personal microphone levels must be calibrated before gameplay; the dependency is visible, not hidden.",
+      "frames": [
+        "try-audio-controlled-experiments/desktop/step-02-breath.png"
+      ],
+      "frameCaptions": [
+        "Breath control begins with calibration"
+      ],
+      "location": "/hypothesis-1",
+      "surface": "desktop",
+      "sourceFeature": "try-audio-controlled-experiments",
+      "action": "Opened the breath-detection experiment.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Clap detection exposes its live controls",
+      "narrative": "Start/stop listening, detection counts, settings, timelines, and play feedback expose what the recognizer is doing.",
+      "frames": [
+        "try-audio-controlled-experiments/desktop/step-03-clap.png"
+      ],
+      "frameCaptions": [
+        "Clap detection exposes its live controls"
+      ],
+      "location": "/hypothesis-2",
+      "surface": "desktop",
+      "sourceFeature": "try-audio-controlled-experiments",
+      "action": "Opened the clap-pattern experiment.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-04",
+      "title": "The signal is tested in an actual game",
+      "narrative": "The third hypothesis moves beyond meters into onboarding, lives, scoring, and a complete game loop controlled by sound.",
+      "frames": [
+        "try-audio-controlled-experiments/desktop/step-04-game.png"
+      ],
+      "frameCaptions": [
+        "The signal is tested in an actual game"
+      ],
+      "location": "/hypothesis-3",
+      "surface": "desktop",
+      "sourceFeature": "try-audio-controlled-experiments",
+      "action": "Opened the sound-controlled runner.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-05",
+      "title": "The sensor can be inspected, not merely trusted",
+      "narrative": "Time-domain, frequency, envelope, and zero-crossing tools make the experimental signal visible to Noah before he treats it as a controller.",
+      "frames": [
+        "try-audio-controlled-experiments/desktop/step-05-tools.png"
+      ],
+      "frameCaptions": [
+        "The sensor can be inspected, not merely trusted"
+      ],
+      "location": "/audio-tools",
+      "surface": "desktop",
+      "sourceFeature": "try-audio-controlled-experiments",
+      "action": "Opened the audio analysis tools.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:23:14.534Z",
+  "targetSha": "9f8c867248067ea3436cda5bfb443e258fc60f54",
+  "walkRecording": "video/page@5ca1ebbf35a4e1a499ab8357b334a466.mp4",
+  "storyVideo": "personas/compare-breath-and-clap-controls-story.mp4"
+}

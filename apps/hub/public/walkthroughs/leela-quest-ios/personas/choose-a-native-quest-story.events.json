@@ -1,0 +1,44 @@
+{
+  "journeyId": "choose-a-native-quest",
+  "personaId": "reflective-player",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 33250,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 6850,
+      "narration": "Aisha reviews the practice, resumes her journey, and compares play modes before choosing her next step.",
+      "image": "personas/reflective-player-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 6850,
+      "durMs": 6200,
+      "narration": "Aisha selects her language and reads how wisdom, play, and intention guide the practice.",
+      "image": "native-guided-start/iphone/step-01-language.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13050,
+      "durMs": 5750,
+      "narration": "Aisha returns to a seeded journey, with New Quest still available beside it.",
+      "image": "native-guided-start/iphone/step-05-home.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 18800,
+      "durMs": 6200,
+      "narration": "Aisha opens New Quest and compares three commitment levels before using a credit.",
+      "image": "native-guided-start/iphone/step-06-mode.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 25000,
+      "durMs": 8250,
+      "narration": "She reaches the Full Game, Daily Practice, and Real Board choices with the interaction model and cost visible.",
+      "image": "personas/reflective-player.png"
+    }
+  ]
+}

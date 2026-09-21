@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Plan Quest",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.plans.quest",
+  "discoveredAt": "2026-09-20T19:19:45.978Z",
+  "updatedAt": "2026-09-20T19:22:05.811Z",
+  "scope": {
+    "status": "partial",
+    "note": "Source navigation and the live public entry were reconciled. The product-level journey is live-walked on desktop and mobile; authenticated and device-gated features remain explicitly pending or blocked.",
+    "excluded": []
+  },
+  "features": [
+    {
+      "featureId": "turn-a-goal-into-a-living-plan",
+      "featureName": "Turning a goal into a living plan",
+      "location": "/",
+      "category": "planning",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:22:05.811Z"
+    },
+    {
+      "featureId": "plan-from-prompt",
+      "featureName": "Generate a plan from a prompt",
+      "location": "/plans",
+      "category": "planning",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "timeline",
+      "featureName": "Rebalance a timeline",
+      "location": "/timeline",
+      "category": "planning",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "priorities",
+      "featureName": "Choose current priorities",
+      "location": "/priorities",
+      "category": "execution",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "backlog",
+      "featureName": "Keep a planning backlog",
+      "location": "/backlog",
+      "category": "execution",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "notes-and-reflection",
+      "featureName": "Keep notes and reflect",
+      "location": "/notes",
+      "category": "reflection",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "shared-workspaces",
+      "featureName": "Plan with a team",
+      "location": "/teams",
+      "category": "collaboration",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "mcp-connection",
+      "featureName": "Connect an AI planning client",
+      "location": "/settings/mcp",
+      "category": "connections",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    }
+  ],
+  "personas": [
+    {
+      "id": "multi-goal-planner",
+      "name": "Samira Nasser",
+      "description": "Is balancing a professional transition with family and study commitments. She needs to see trade-offs and revise dates without rebuilding the plan, not another static task list.",
+      "entryPoint": "/",
+      "keyJourneys": [
+        "evaluate-an-adaptive-plan"
+      ],
+      "portrait": "personas/multi-goal-planner.png",
+      "scene": "personas/multi-goal-planner-scene.png",
+      "navItems": [
+        {
+          "label": "Generate a plan from a prompt",
+          "location": "/plans"
+        },
+        {
+          "label": "Rebalance a timeline",
+          "location": "/timeline"
+        },
+        {
+          "label": "Choose current priorities",
+          "location": "/priorities"
+        },
+        {
+          "label": "Keep a planning backlog",
+          "location": "/backlog"
+        },
+        {
+          "label": "Keep notes and reflect",
+          "location": "/notes"
+        }
+      ]
+    }
+  ]
+}

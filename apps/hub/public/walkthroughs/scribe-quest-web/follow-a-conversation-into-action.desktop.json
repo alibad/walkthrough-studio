@@ -1,0 +1,88 @@
+{
+  "featureId": "follow-a-conversation-into-action",
+  "featureName": "Following a conversation into action",
+  "type": "feature",
+  "location": "/",
+  "category": "conversation capture",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Amal sees how a saved conversation becomes a summary, evidence-linked relationship insight, and deliberately scoped PDF before the real app sign-in.",
+  "overview": "A live product-level walk for Scribe Quest · Web, framed around Amal Rahman's actual decision rather than a list of routes.",
+  "targetAudience": "Runs client conversations that create decisions and follow-ups faster than she can document them. She needs meaning and ownership preserved, not a verbatim transcript to reread.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The output is meaning and momentum",
+      "action": "Opened Scribe Quest.",
+      "description": "The sample result shows what mattered, next steps, and people before asking Amal to trust the capture machinery.",
+      "screenshotFilename": "follow-a-conversation-into-action/desktop/step-01-result.png",
+      "screenshotAlt": "Scribe Quest example summary with next steps and people",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Capture, signal, and action stay distinct",
+      "action": "Moved to the three-part workflow.",
+      "description": "The product separates recording from interpretation and follow-up, making control and responsibility visible.",
+      "screenshotFilename": "follow-a-conversation-into-action/desktop/step-02-workflow.png",
+      "screenshotAlt": "Scribe Quest capture-to-action workflow",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Three real app walkthroughs expose the result",
+      "action": "Moved to the recorded app walkthroughs.",
+      "description": "Conversation review, relationship provenance, and PDF scope are shown with real simulator recordings and explicit synthetic-sample disclosure.",
+      "screenshotFilename": "follow-a-conversation-into-action/desktop/step-03-demos.png",
+      "screenshotAlt": "Scribe Quest recorded app walkthrough gallery",
+      "location": "/#demos",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Meaning, context, and ownership stay connected",
+      "action": "Moved to the result model.",
+      "description": "Summaries, decisions, people, and follow-ups are framed as connected outcomes rather than independent AI outputs.",
+      "screenshotFilename": "follow-a-conversation-into-action/desktop/step-04-outcomes.png",
+      "screenshotAlt": "Scribe Quest outcome model",
+      "location": "/#use-cases",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Capture permission remains a choice",
+      "action": "Moved to the privacy model.",
+      "description": "Recording, audio retention, transcription, and AI assistance are separated so a user can choose what data leaves the device.",
+      "screenshotFilename": "follow-a-conversation-into-action/desktop/step-05-privacy.png",
+      "screenshotAlt": "Scribe Quest microphone and privacy model",
+      "location": "/#privacy",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 6,
+      "title": "The real workspace is account-protected",
+      "action": "Opened the production web app.",
+      "description": "The Flutter workspace reaches its genuine email and Google sign-in screen; no test account is invented for the walkthrough.",
+      "screenshotFilename": "follow-a-conversation-into-action/desktop/step-06-sign-in.png",
+      "screenshotAlt": "Scribe Quest web-app sign-in screen",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/page@0383f35d7cf4e31ef00818def4216817.mp4"
+  },
+  "keyFeatures": [
+    "Capture a conversation",
+    "Transcribe on device or in the cloud",
+    "Review summary and next steps",
+    "Trace relationship insights to sources",
+    "Choose what a PDF shares",
+    "Review people and commitments"
+  ],
+  "capturedAt": "2026-09-20T19:19:21.820Z",
+  "generatedAt": "2026-09-20T19:19:21.820Z"
+}

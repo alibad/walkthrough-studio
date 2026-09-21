@@ -1,0 +1,94 @@
+{
+  "personaId": "multi-goal-planner",
+  "journeyId": "evaluate-an-adaptive-plan",
+  "headline": "Samira reaches the real sign-in surface after seeing prompt-to-plan, timeline, prioritization, reflection, collaboration, and MCP access as one adaptable system.",
+  "overview": "A live product-level walk for Plan Quest, framed around Samira Nasser's actual decision rather than a list of routes.",
+  "payoff": "Samira reaches the real sign-in surface after seeing prompt-to-plan, timeline, prioritization, reflection, collaboration, and MCP access as one adaptable system.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "The job is a plan that survives change",
+      "narrative": "The promise names the failure mode Samira recognizes: goals keep changing shape after the first burst of motivation.",
+      "frames": [
+        "turn-a-goal-into-a-living-plan/desktop/step-01-goal.png"
+      ],
+      "frameCaptions": [
+        "The job is a plan that survives change"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "turn-a-goal-into-a-living-plan",
+      "action": "Opened Plan Quest.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Three real planning problems anchor the tour",
+      "narrative": "Broad goals, changing plans, and lost momentum are presented as separate situations rather than one generic productivity pitch.",
+      "frames": [
+        "turn-a-goal-into-a-living-plan/desktop/step-02-tour.png"
+      ],
+      "frameCaptions": [
+        "Three real planning problems anchor the tour"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "turn-a-goal-into-a-living-plan",
+      "action": "Moved to the quick tour.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Changing plans is treated as normal",
+      "narrative": "The active scenario shifts to rebalancing as dates, capacity, and energy change—the core behavior of a living plan.",
+      "frames": [
+        "turn-a-goal-into-a-living-plan/desktop/step-03-changing.png"
+      ],
+      "frameCaptions": [
+        "Changing plans is treated as normal"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "turn-a-goal-into-a-living-plan",
+      "action": "Selected the changing-plan tour.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-04",
+      "title": "The system spans creation through reflection",
+      "narrative": "Prompt planning, timeline, priorities, progress, notes, reflection, teamwork, and bring-your-own AI are visible as one connected workflow.",
+      "frames": [
+        "turn-a-goal-into-a-living-plan/desktop/step-04-system.png"
+      ],
+      "frameCaptions": [
+        "The system spans creation through reflection"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "turn-a-goal-into-a-living-plan",
+      "action": "Moved to the complete feature set.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-05",
+      "title": "The next step is the real product gate",
+      "narrative": "The authenticated workspace offers Google, GitHub, email, and Twitter sign-in. No account is created during this evidence run.",
+      "frames": [
+        "turn-a-goal-into-a-living-plan/desktop/step-05-sign-in.png"
+      ],
+      "frameCaptions": [
+        "The next step is the real product gate"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "turn-a-goal-into-a-living-plan",
+      "action": "Opened the production planning app.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:22:05.811Z",
+  "walkRecording": "video/page@0232ae63063f2c5ab471e30afd672c85.mp4",
+  "storyVideo": "personas/evaluate-an-adaptive-plan-story.mp4"
+}

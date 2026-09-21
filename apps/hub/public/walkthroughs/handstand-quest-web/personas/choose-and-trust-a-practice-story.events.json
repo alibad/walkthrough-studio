@@ -1,0 +1,58 @@
+{
+  "journeyId": "choose-and-trust-a-practice",
+  "personaId": "consistent-beginner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 53500,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7050,
+      "narration": "Jordan chooses a goal, then begins a practice loop with timing, video, and records.",
+      "image": "personas/consistent-beginner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7050,
+      "durMs": 7100,
+      "narration": "Jordan tracks practice frequency and hold time, turning each session into a measurable routine.",
+      "image": "choose-a-training-workflow/desktop/step-01-promise.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 14150,
+      "durMs": 7800,
+      "narration": "Jordan turns a handstand goal into recurring practice sessions that build a regular training habit.",
+      "image": "choose-a-training-workflow/desktop/step-02-habits.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 21950,
+      "durMs": 6650,
+      "narration": "Jordan starts and stops timers by voice, keeping hands free while upside down.",
+      "image": "choose-a-training-workflow/desktop/step-03-voice.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 28600,
+      "durMs": 7150,
+      "narration": "Jordan follows a program, then selects exercises directly when time or energy shifts.",
+      "image": "choose-a-training-workflow/desktop/step-04-workouts.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 35750,
+      "durMs": 8150,
+      "narration": "Jordan reviews records, exercise stats, custom work, workouts, and hands-free video to track measurable improvement.",
+      "image": "choose-a-training-workflow/desktop/step-05-progress.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 43900,
+      "durMs": 9600,
+      "narration": "Jordan sees how goals, structured or freestyle practice, voice timing, video, and progress records form one repeatable training loop.",
+      "image": "personas/consistent-beginner.png"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "journeyId": "learn-model-practice",
+  "personaId": "interview-candidate",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 66900,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 6150,
+      "narration": "Maya starts with one request path, tracing how each service affects the next.",
+      "image": "personas/interview-candidate-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 6150,
+      "durMs": 6550,
+      "narration": "Maya opens today’s plan: one chapter now, with the week’s system design work visible.",
+      "image": "journey-interview-candidate/desktop/scene-01-plan.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 12700,
+      "durMs": 6450,
+      "narration": "Maya starts a three-minute lesson that frames browser, service, and database as one system.",
+      "image": "journey-interview-candidate/desktop/scene-02-lesson.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 19150,
+      "durMs": 7150,
+      "narration": "Maya follows the second event, tracing how one user action triggers the next system response.",
+      "image": "journey-interview-candidate/desktop/scene-03-request.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 26300,
+      "durMs": 9750,
+      "narration": "Maya opens capacity controls, turning users, storage, RPS, instances, headroom, and cost into operating numbers.",
+      "image": "journey-interview-candidate/desktop/scene-04-model.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 36050,
+      "durMs": 7650,
+      "narration": "A launch spike pushes 2.2 times planned peak traffic through the same fleet, exposing the forecast.",
+      "image": "journey-interview-candidate/desktop/scene-05-launch-spike.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 43700,
+      "durMs": 8450,
+      "narration": "Maya selects the URL shortener rehearsal, applying her request path and capacity model to the interview brief.",
+      "image": "journey-interview-candidate/desktop/scene-06-brief.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 52150,
+      "durMs": 6450,
+      "narration": "Maya starts the timer, using her rubric and notes to explain the system under pressure.",
+      "image": "journey-interview-candidate/desktop/scene-07-practice.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 58600,
+      "durMs": 8300,
+      "narration": "She begins a timed URL-shortener design session with a request model and capacity language she has just practised.",
+      "image": "personas/interview-candidate.png"
+    }
+  ]
+}

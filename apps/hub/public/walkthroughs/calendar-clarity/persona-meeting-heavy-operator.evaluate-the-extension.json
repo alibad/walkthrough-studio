@@ -1,0 +1,94 @@
+{
+  "personaId": "meeting-heavy-operator",
+  "journeyId": "evaluate-the-extension",
+  "headline": "Priya can distinguish visibility, focus, event actions, and native syncing colors before installing the extension.",
+  "overview": "A live product-level walk for Calendar Clarity, framed around Priya Shah's actual decision rather than a list of routes.",
+  "payoff": "Priya can distinguish visibility, focus, event actions, and native syncing colors before installing the extension.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "The same calendar, with less visual competition",
+      "narrative": "Before and after states explain the product without asking Priya to abandon Google Calendar or create another account.",
+      "frames": [
+        "see-a-calmer-calendar/desktop/step-01-clarity.png"
+      ],
+      "frameCaptions": [
+        "The same calendar, with less visual competition"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "see-a-calmer-calendar",
+      "action": "Opened Calendar Clarity.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Four jobs are kept separate",
+      "narrative": "Visibility, focus, event actions, and colors are presented as distinct tools so Priya can evaluate the part she actually needs.",
+      "frames": [
+        "see-a-calmer-calendar/desktop/step-02-features.png"
+      ],
+      "frameCaptions": [
+        "Four jobs are kept separate"
+      ],
+      "location": "/#features",
+      "surface": "desktop",
+      "sourceFeature": "see-a-calmer-calendar",
+      "action": "Moved to the feature map.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Visibility dims noise without hiding events",
+      "narrative": "Solo, external, declined, and tentative events recede but remain present, preserving awareness without equal visual weight.",
+      "frames": [
+        "see-a-calmer-calendar/desktop/step-03-visibility.png"
+      ],
+      "frameCaptions": [
+        "Visibility dims noise without hiding events"
+      ],
+      "location": "/#event-visibility",
+      "surface": "desktop",
+      "sourceFeature": "see-a-calmer-calendar",
+      "action": "Opened the Event Visibility walkthrough.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-04",
+      "title": "Focus happens inside the event context",
+      "narrative": "The timer, ambient sounds, and Zen mode keep the work session attached to the calendar block that justified it.",
+      "frames": [
+        "see-a-calmer-calendar/desktop/step-04-focus.png"
+      ],
+      "frameCaptions": [
+        "Focus happens inside the event context"
+      ],
+      "location": "/#focus-timer",
+      "surface": "desktop",
+      "sourceFeature": "see-a-calmer-calendar",
+      "action": "Opened the Focus Timer walkthrough.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-05",
+      "title": "Colors are native, named, and portable",
+      "narrative": "AI grouping remains optional, while saved colors use Google's own event colors so they survive on mobile and other devices.",
+      "frames": [
+        "see-a-calmer-calendar/desktop/step-05-colors.png"
+      ],
+      "frameCaptions": [
+        "Colors are native, named, and portable"
+      ],
+      "location": "/#custom-colors",
+      "surface": "desktop",
+      "sourceFeature": "see-a-calmer-calendar",
+      "action": "Opened the Custom Colors walkthrough.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:17:28.770Z",
+  "walkRecording": "video/page@9e474ddf14e6481cef824a0553636c6c.mp4",
+  "storyVideo": "personas/evaluate-the-extension-story.mp4"
+}

@@ -1,0 +1,96 @@
+{
+  "featureId": "native-guided-start",
+  "featureName": "Native guided start",
+  "type": "feature",
+  "location": "LanguageScreen → GameModeScreen",
+  "category": "guided reflection",
+  "surface": "iphone",
+  "platform": "ios",
+  "locale": "en",
+  "headline": "From first launch to choosing a real Leela journey",
+  "overview": "A live walk through the actual iPhone app: language selection, three-part onboarding, the native home, game-mode selection, and the On the Board journey choices.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The native journey starts with language",
+      "action": "Launched Leela Quest after reinstalling the simulator build.",
+      "description": "The real iPhone app opens with an explicit language choice before it explains the game.",
+      "screenshotFilename": "native-guided-start/iphone/step-01-language.png",
+      "screenshotAlt": "Leela Quest native language selection on iPhone",
+      "location": "LanguageScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Ancient wisdom is framed as a modern practice",
+      "action": "Selected English and continued.",
+      "description": "The first native onboarding screen explains the five-thousand-year-old self-discovery game and its modern guided interpretation.",
+      "screenshotFilename": "native-guided-start/iphone/step-02-wisdom.png",
+      "screenshotAlt": "Leela Quest Ancient Wisdom Awaits onboarding screen",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "The game is positioned as divine play",
+      "action": "Advanced to the second onboarding card.",
+      "description": "The app sets the expectation that chance opens a reflection rather than predicting an outcome.",
+      "screenshotFilename": "native-guided-start/iphone/step-03-play.png",
+      "screenshotAlt": "Leela Quest Divine Play onboarding screen",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The user is asked to bring an intention",
+      "action": "Advanced to the final onboarding card.",
+      "description": "The native flow closes onboarding by connecting the board to a question the player genuinely wants to explore.",
+      "screenshotFilename": "native-guided-start/iphone/step-04-begins.png",
+      "screenshotAlt": "Leela Quest Your Journey Begins onboarding screen",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The home screen resumes a real quest",
+      "action": "Tapped Begin Your Quest.",
+      "description": "The actual native home shows streak, journey context, rewards, and a clear New Quest action. The simulator already held a synthetic seeded journey; no personal account data was entered for this walk.",
+      "screenshotFilename": "native-guided-start/iphone/step-05-home.png",
+      "screenshotAlt": "Leela Quest native home with seeded journey and New Quest action",
+      "location": "HomeScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 6,
+      "title": "New Quest exposes distinct ways to play",
+      "action": "Tapped New Quest.",
+      "description": "On the Board, conversational, multiplayer, and card-based entries are presented as separate native modes with their own purpose and credit cost.",
+      "screenshotFilename": "native-guided-start/iphone/step-06-mode.png",
+      "screenshotAlt": "Leela Quest native game mode selection",
+      "location": "GameModeScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 7,
+      "title": "On the Board branches by commitment",
+      "action": "Selected On the Board.",
+      "description": "The native app offers Full Game, Daily Practice, and Real Board companion paths before an intention or credit is committed.",
+      "screenshotFilename": "native-guided-start/iphone/step-07-board-mode.png",
+      "screenshotAlt": "Leela Quest native On the Board journey choices",
+      "location": "OnBoardModeScreen",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/native-onboarding-to-mode.mp4"
+  },
+  "keyFeatures": [
+    "Native language selection and onboarding",
+    "Seeded journey continuation",
+    "Multiple quest modes",
+    "Full, daily, and real-board play paths"
+  ],
+  "capturedAt": "2026-09-20T19:36:17Z",
+  "generatedAt": "2026-09-20T19:36:17Z",
+  "note": "Captured from the actual com.humanquest.leela iPhone simulator build, version 1.2.18+72, on iOS 26.5. The installed binary predated the current source HEAD, so no source SHA is claimed. A synthetic seeded journey persisted outside the reinstalled app container; no account, purchase, or personal data was created."
+}

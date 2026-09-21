@@ -1,0 +1,43 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:20:17.804Z",
+      "startedAt": "2026-09-20T19:19:45.960Z",
+      "completedAt": "2026-09-20T19:20:17.804Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": null,
+        "commitSubject": "Public production capture; deployed source SHA is not exposed."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.autobounds.com",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "evaluate-field-mapping-workflow"
+        ],
+        "personas": [
+          "ag-operations-lead"
+        ],
+        "screenshots": 10,
+        "videos": 2,
+        "issues": 0
+      }
+    }
+  ]
+}

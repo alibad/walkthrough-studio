@@ -1,0 +1,51 @@
+{
+  "personaId": "class-planning-teacher",
+  "journeyId": "enter-the-native-studio",
+  "headline": "Nadia enters the real native studio knowing it works as a teaching companion",
+  "overview": "The actual iPhone app explains visual planning, glanceable Teach Mode, and local-first privacy before opening a prepared class in the native studio.",
+  "payoff": "Nadia reaches a native prepared class with Teach this class visible and understands what remains outside this bounded first-run walk.",
+  "platform": "ios",
+  "surface": "iphone",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "Understand the teaching model",
+      "narrative": "The native onboarding shows Nadia that she can shape a class arc and keep the next cue ready during teaching.",
+      "frames": [
+        "native-first-run/iphone/step-01-plan.png",
+        "native-first-run/iphone/step-02-teach.png"
+      ],
+      "frameCaptions": [
+        "Plan the class as an arc",
+        "Keep the next cue ready"
+      ],
+      "location": "OnboardingScreen",
+      "surface": "iphone",
+      "sourceFeature": "native-first-run",
+      "action": "Complete the first two native onboarding screens",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Enter a private, prepared studio",
+      "narrative": "The final onboarding card explains local-first behavior, then the app opens the native studio with a prepared class and a direct teaching action.",
+      "frames": [
+        "native-first-run/iphone/step-03-private.png",
+        "native-first-run/iphone/step-04-home.png"
+      ],
+      "frameCaptions": [
+        "Local-first privacy",
+        "Native prepared class"
+      ],
+      "location": "OnboardingScreen → HomeShell",
+      "surface": "iphone",
+      "sourceFeature": "native-first-run",
+      "action": "Enter the native studio",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T12:38:48Z",
+  "targetSha": "892d6695cdd0855e73cbd31e1b720026ab12a2f5",
+  "walkRecording": "video/native-first-run.mp4",
+  "storyVideo": "personas/enter-the-native-studio-story.mp4"
+}

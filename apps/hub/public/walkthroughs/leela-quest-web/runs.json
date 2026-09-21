@@ -1,0 +1,43 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:22:59.419Z",
+      "startedAt": "2026-09-20T19:22:17.811Z",
+      "completedAt": "2026-09-20T19:22:59.419Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "main",
+        "dirty": false,
+        "commitDate": null,
+        "commitSubject": "Public production capture; deployed source SHA is not exposed."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.leela.quest",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "understand-the-game"
+        ],
+        "personas": [
+          "reflective-player"
+        ],
+        "screenshots": 10,
+        "videos": 2,
+        "issues": 0
+      }
+    }
+  ]
+}

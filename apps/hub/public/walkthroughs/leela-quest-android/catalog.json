@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Leela Quest · Android",
+  "platform": "android",
+  "driver": "android-emulator",
+  "capturedAgainst": "com.humanquest.leela 1.2.18+72 · Small_Phone_API_35",
+  "discoveredAt": "2026-09-20T19:43:00Z",
+  "updatedAt": "2026-09-20T19:45:00Z",
+  "scope": {
+    "status": "bounded",
+    "note": "The actual Android first run is live-walked through its authentication handoff. Authenticated play, credits, purchases, microphone, multiplayer, and physical-device behavior are not counted as covered."
+  },
+  "features": [
+    {
+      "featureId": "native-first-run",
+      "featureName": "Android native first run",
+      "location": "LanguageScreen → AuthScreen",
+      "category": "onboarding",
+      "requiresAuth": false,
+      "surfaceStatus": { "android": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:45:00Z"
+    },
+    {
+      "featureId": "android-board-journey",
+      "featureName": "Play a board journey on Android",
+      "location": "GameBoardScreen",
+      "category": "gameplay",
+      "requiresAuth": true,
+      "surfaceStatus": { "android": "blocked" },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Fresh app state reached the authentication boundary; no account or purchase was authorized."
+    }
+  ],
+  "personas": [
+    {
+      "id": "reflective-player",
+      "name": "Aisha Karim",
+      "description": "Arrives with a real decision and wants a structured reflection, not a prediction.",
+      "entryPoint": "LanguageScreen",
+      "keyJourneys": ["reach-the-android-account-boundary"],
+      "portrait": "personas/reflective-player.png",
+      "scene": "personas/reflective-player-scene.png",
+      "navItems": [
+        { "label": "Language", "location": "LanguageScreen" },
+        { "label": "Onboarding", "location": "OnboardingScreen" },
+        { "label": "Sign in", "location": "AuthScreen" }
+      ]
+    }
+  ]
+}

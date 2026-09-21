@@ -1,0 +1,43 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:20:11.120Z",
+      "startedAt": "2026-09-20T19:19:45.940Z",
+      "completedAt": "2026-09-20T19:20:11.120Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "3.0.0",
+        "dirty": true,
+        "commitDate": null,
+        "commitSubject": "Public production capture; deployed source SHA is not exposed."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.handstandquest.com",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "choose-a-training-workflow"
+        ],
+        "personas": [
+          "consistent-beginner"
+        ],
+        "screenshots": 10,
+        "videos": 2,
+        "issues": 0
+      }
+    }
+  ]
+}

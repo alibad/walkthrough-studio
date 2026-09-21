@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "id": "ios-deployment-target-override",
+      "featureId": "native-goal-setting",
+      "location": "Xcode build",
+      "surface": "iphone",
+      "severity": "major",
+      "title": "Current source requires iOS 17 build override",
+      "detail": "The default simulator build failed first on older CocoaPods deployment targets, then on iOS 16 and 17 API availability. It built successfully with IPHONEOS_DEPLOYMENT_TARGET=17.0 and SWIFT_ENABLE_EXPLICIT_MODULES=NO. The product source itself was not edited.",
+      "foundAt": "2026-09-20T20:02:00Z",
+      "status": "open"
+    }
+  ],
+  "updatedAt": "2026-09-20T20:02:00Z"
+}

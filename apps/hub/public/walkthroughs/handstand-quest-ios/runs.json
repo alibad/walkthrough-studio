@@ -1,0 +1,28 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T20:02:00Z-native-goal-setting",
+      "startedAt": "2026-09-20T19:00:00Z",
+      "completedAt": "2026-09-20T20:02:00Z",
+      "skill": "walkthrough",
+      "agent": "xcodebuild + Maestro + simctl",
+      "target": {
+        "sha": "34fb18b56d2370323f7c57b6aa17c97f1ca2b89d",
+        "shaShort": "34fb18b5",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": "2024-12-27T16:34:56-08:00",
+        "commitSubject": "Add a new setting for enabling/disabling playing sounds interval of time based exercises"
+      },
+      "config": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "capturedAgainst": "fitquest.handstand 3.0.7+2 · iOS 26.5",
+        "surfaces": ["iphone"],
+        "locales": ["en"],
+        "notes": "Built without editing source using IPHONEOS_DEPLOYMENT_TARGET=17.0 and SWIFT_ENABLE_EXPLICIT_MODULES=NO; existing dirty worktree preserved and disclosed; no account created."
+      },
+      "coverage": { "features": ["native-goal-setting"], "personas": ["consistent-beginner"], "screenshots": 4, "videos": 1, "issues": 1 }
+    }
+  ]
+}

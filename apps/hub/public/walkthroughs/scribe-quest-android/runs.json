@@ -1,0 +1,28 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:58:00Z-native-auth-boundary",
+      "startedAt": "2026-09-20T19:46:00Z",
+      "completedAt": "2026-09-20T19:58:00Z",
+      "skill": "walkthrough",
+      "agent": "Flutter build + Maestro + adb",
+      "target": {
+        "sha": "98b80e11996ae747e1bf736f299d60f6b8cae86d",
+        "shaShort": "98b80e1",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": "2026-09-20T21:40:33+03:00",
+        "commitSubject": "feat: add marketing feedback flow"
+      },
+      "config": {
+        "platform": "android",
+        "driver": "android-emulator",
+        "capturedAgainst": "com.humanquest.scribe 1.0.6+44 · Small_Phone_API_35",
+        "surfaces": ["android"],
+        "locales": ["en"],
+        "notes": "Actual lib/main.dart debug APK; package data cleared; no credentials or personal data entered; existing checkout dirt disclosed and preserved."
+      },
+      "coverage": { "features": ["native-auth-boundary"], "personas": ["client-conversation-owner"], "screenshots": 2, "videos": 1, "issues": 0 }
+    }
+  ]
+}

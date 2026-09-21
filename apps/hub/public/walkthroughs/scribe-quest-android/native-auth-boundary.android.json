@@ -1,0 +1,41 @@
+{
+  "featureId": "native-auth-boundary",
+  "featureName": "Android sign-in and account boundary",
+  "type": "feature",
+  "location": "LoginScreen → SignUpScreen",
+  "category": "account",
+  "surface": "android",
+  "platform": "android",
+  "locale": "en",
+  "headline": "The real Android app reaches account creation without taking personal data",
+  "overview": "A live walk of a freshly built Scribe Quest Android APK through sign-in and account creation, stopping before credentials or an account write.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Android explains why sign-in exists",
+      "action": "Built lib/main.dart, installed the debug APK, cleared its package data, and launched it.",
+      "description": "The actual Android app offers Google and email sign-in, says conversation history is account-scoped, and states that microphone permission is requested only when capture starts.",
+      "screenshotFilename": "native-auth-boundary/android/step-01-sign-in.png",
+      "screenshotAlt": "Scribe Quest native Android sign-in screen",
+      "location": "LoginScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Account creation is inspected, not submitted",
+      "action": "Scrolled to Create an account and opened the native form.",
+      "description": "The Android surface presents name, email, password, and Google options with no credit card required. The walkthrough stops before entering or submitting data.",
+      "screenshotFilename": "native-auth-boundary/android/step-02-create-account.png",
+      "screenshotAlt": "Scribe Quest native Android create-account screen",
+      "location": "SignUpScreen",
+      "verificationStatus": "gated-write"
+    }
+  ],
+  "video": { "file": "video/native-auth-boundary.mp4" },
+  "keyFeatures": ["Native Android Google and email sign-in", "Explicit microphone timing", "Account creation boundary"],
+  "capturedAt": "2026-09-20T19:58:00Z",
+  "generatedAt": "2026-09-20T19:58:00Z",
+  "targetSha": "98b80e11996ae747e1bf736f299d60f6b8cae86d",
+  "targetCommitDate": "2026-09-20T21:40:33+03:00",
+  "note": "Built from lib/main.dart after discovering that the older app-release.apk was a native smoke harness. The source checkout was dirty only in existing Makefile, Firebase cache, and an untracked utility; no source files were changed for this capture."
+}

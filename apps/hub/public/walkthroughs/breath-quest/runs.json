@@ -1,0 +1,82 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:22:36.443Z",
+      "startedAt": "2026-09-20T19:22:17.786Z",
+      "completedAt": "2026-09-20T19:22:36.443Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "9f8c867248067ea3436cda5bfb443e258fc60f54",
+        "shaShort": "9f8c867",
+        "branch": "master",
+        "dirty": false,
+        "commitDate": "2025-12-11T01:50:20-08:00",
+        "commitSubject": "Fix React Server Components RCE vulnerability"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "http://localhost:3110",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, video, realMobile, freshContext, contentful, consoleNetwork · surface \"mobile\": the page overflows horizontally — content is 668px wide on a 393px surface, so the layout viewport expanded to 668px and a real phone renders this zoomed out with a sideways scroll"
+      },
+      "coverage": {
+        "features": [
+          "try-audio-controlled-experiments"
+        ],
+        "personas": [
+          "interaction-researcher"
+        ],
+        "screenshots": 5,
+        "videos": 1,
+        "issues": 2
+      }
+    },
+    {
+      "id": "2026-09-20T19:23:14.534Z",
+      "startedAt": "2026-09-20T19:22:56.537Z",
+      "completedAt": "2026-09-20T19:23:14.534Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "9f8c867248067ea3436cda5bfb443e258fc60f54",
+        "shaShort": "9f8c867",
+        "branch": "master",
+        "dirty": false,
+        "commitDate": "2025-12-11T01:50:20-08:00",
+        "commitSubject": "Fix React Server Components RCE vulnerability"
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "http://localhost:3110",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext · surface \"mobile\": the page overflows horizontally — content is 668px wide on a 393px surface, so the layout viewport expanded to 668px and a real phone renders this zoomed out with a sideways scroll"
+      },
+      "coverage": {
+        "features": [
+          "try-audio-controlled-experiments"
+        ],
+        "personas": [
+          "interaction-researcher"
+        ],
+        "screenshots": 10,
+        "videos": 2,
+        "issues": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "featureId": "turn-a-goal-into-a-living-plan",
+  "featureName": "Turning a goal into a living plan",
+  "type": "feature",
+  "location": "/",
+  "category": "planning",
+  "surface": "desktop",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Samira reaches the real sign-in surface after seeing prompt-to-plan, timeline, prioritization, reflection, collaboration, and MCP access as one adaptable system.",
+  "overview": "A live product-level walk for Plan Quest, framed around Samira Nasser's actual decision rather than a list of routes.",
+  "targetAudience": "Is balancing a professional transition with family and study commitments. She needs to see trade-offs and revise dates without rebuilding the plan, not another static task list.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The job is a plan that survives change",
+      "action": "Opened Plan Quest.",
+      "description": "The promise names the failure mode Samira recognizes: goals keep changing shape after the first burst of motivation.",
+      "screenshotFilename": "turn-a-goal-into-a-living-plan/desktop/step-01-goal.png",
+      "screenshotAlt": "Plan Quest adaptive planning introduction",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Three real planning problems anchor the tour",
+      "action": "Moved to the quick tour.",
+      "description": "Broad goals, changing plans, and lost momentum are presented as separate situations rather than one generic productivity pitch.",
+      "screenshotFilename": "turn-a-goal-into-a-living-plan/desktop/step-02-tour.png",
+      "screenshotAlt": "Plan Quest quick-tour choices",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Changing plans is treated as normal",
+      "action": "Selected the changing-plan tour.",
+      "description": "The active scenario shifts to rebalancing as dates, capacity, and energy change—the core behavior of a living plan.",
+      "screenshotFilename": "turn-a-goal-into-a-living-plan/desktop/step-03-changing.png",
+      "screenshotAlt": "Plan Quest changing-plan tour selected",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The system spans creation through reflection",
+      "action": "Moved to the complete feature set.",
+      "description": "Prompt planning, timeline, priorities, progress, notes, reflection, teamwork, and bring-your-own AI are visible as one connected workflow.",
+      "screenshotFilename": "turn-a-goal-into-a-living-plan/desktop/step-04-system.png",
+      "screenshotAlt": "Plan Quest planning and reflection feature system",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The next step is the real product gate",
+      "action": "Opened the production planning app.",
+      "description": "The authenticated workspace offers Google, GitHub, email, and Twitter sign-in. No account is created during this evidence run.",
+      "screenshotFilename": "turn-a-goal-into-a-living-plan/desktop/step-05-sign-in.png",
+      "screenshotAlt": "Plan Quest production sign-in screen",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/page@0232ae63063f2c5ab471e30afd672c85.mp4"
+  },
+  "keyFeatures": [
+    "Generate a plan from a prompt",
+    "Rebalance a timeline",
+    "Choose current priorities",
+    "Keep a planning backlog",
+    "Keep notes and reflect",
+    "Plan with a team",
+    "Connect an AI planning client"
+  ],
+  "capturedAt": "2026-09-20T19:21:26.889Z",
+  "generatedAt": "2026-09-20T19:21:26.889Z"
+}

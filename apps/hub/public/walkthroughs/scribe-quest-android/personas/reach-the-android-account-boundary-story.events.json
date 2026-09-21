@@ -1,0 +1,37 @@
+{
+  "journeyId": "reach-the-android-account-boundary",
+  "personaId": "client-conversation-owner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 26700,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 5900,
+      "narration": "Maya sees that the app explains its limits before it asks her to share a conversation.",
+      "image": "personas/client-conversation-owner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 5900,
+      "durMs": 7600,
+      "narration": "Maya reviews Google and email sign-in, then sees microphone permission requested before recording begins.",
+      "image": "native-auth-boundary/android/step-01-sign-in.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13500,
+      "durMs": 6150,
+      "narration": "Maya views the account form and confirms nothing is submitted or created.",
+      "image": "native-auth-boundary/android/step-02-create-account.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 19650,
+      "durMs": 7050,
+      "narration": "Maya reaches account creation knowing what sign-in protects and exactly where the walkthrough stops.",
+      "image": "personas/client-conversation-owner.png"
+    }
+  ]
+}

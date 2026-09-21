@@ -1,0 +1,65 @@
+{
+  "journeyId": "copenhagen-to-first-phrases",
+  "personaId": "curious-traveler",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 58850,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 8650,
+      "narration": "Mira finds Copenhagen, changes the map view, then follows Danish into phrases for public places.",
+      "image": "personas/curious-traveler-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 8650,
+      "durMs": 7700,
+      "narration": "Mira enters Copenhagen and sees search, layers, the world view, and place index without signing in.",
+      "image": "journey-curious-traveler/mobile/scene-01-explorer.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 16350,
+      "durMs": 6900,
+      "narration": "The index narrows to Copenhagen, City, Europe, giving Mira a specific destination.",
+      "image": "journey-curious-traveler/mobile/scene-02-search.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 23250,
+      "durMs": 6950,
+      "narration": "Copenhagen opens into language, people, and a destination guide, giving Mira routes to choose.",
+      "image": "journey-curious-traveler/mobile/scene-03-copenhagen.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 30200,
+      "durMs": 7200,
+      "narration": "Mira switches projections, keeping Copenhagen selected and the routes she found in view.",
+      "image": "journey-curious-traveler/mobile/scene-04-flat-map.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 37400,
+      "durMs": 7300,
+      "narration": "Copenhagen’s public guide lists Danish phrases for daily life, work, culture, and emergencies.",
+      "image": "journey-curious-traveler/mobile/scene-05-phrases.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 44700,
+      "durMs": 7050,
+      "narration": "Mira reaches daily Danish phrases, turning curiosity into a first step for life abroad.",
+      "image": "journey-curious-traveler/mobile/scene-06-daily-life.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 51750,
+      "durMs": 7100,
+      "narration": "She leaves the explorer with a visible set of essential Danish phrases tied to the city she chose.",
+      "image": "personas/curious-traveler.png"
+    }
+  ]
+}

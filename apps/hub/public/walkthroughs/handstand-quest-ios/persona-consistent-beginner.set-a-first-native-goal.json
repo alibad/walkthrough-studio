@@ -1,0 +1,51 @@
+{
+  "personaId": "consistent-beginner",
+  "journeyId": "set-a-first-native-goal",
+  "headline": "Jordan turns first-handstand ambition into a five-minute daily practice target",
+  "overview": "The real iPhone app captures Jordan's current ability, suggests measurable first goals, and explains why an account is useful before asking for one.",
+  "payoff": "Jordan reaches sync with a five-second hold target and five-minute daily practice already visible.",
+  "platform": "ios",
+  "surface": "iphone",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "Establish an honest baseline",
+      "narrative": "Jordan begins in the native app and identifies as working toward a first handstand.",
+      "frames": [
+        "native-goal-setting/iphone/step-01-welcome.png",
+        "native-goal-setting/iphone/step-02-baseline.png"
+      ],
+      "frameCaptions": [
+        "Native welcome",
+        "Current ability"
+      ],
+      "location": "OnboardPage1ViewController → OnboardPage2ViewController",
+      "surface": "iphone",
+      "sourceFeature": "native-goal-setting",
+      "action": "Choose a baseline",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Accept a measurable starting point",
+      "narrative": "The native setup suggests a five-second hold and five minutes per day, then offers account sync without forcing a provider selection during the walk.",
+      "frames": [
+        "native-goal-setting/iphone/step-03-goals.png",
+        "native-goal-setting/iphone/step-04-auth.png"
+      ],
+      "frameCaptions": [
+        "First goals",
+        "Progress sync boundary"
+      ],
+      "location": "OnboardPage3ViewController → AuthPickerViewController",
+      "surface": "iphone",
+      "sourceFeature": "native-goal-setting",
+      "action": "Review goals and sync options",
+      "verificationStatus": "gated-write"
+    }
+  ],
+  "capturedAt": "2026-09-20T20:02:00Z",
+  "targetSha": "34fb18b56d2370323f7c57b6aa17c97f1ca2b89d",
+  "walkRecording": "video/native-goal-setting.mp4",
+  "storyVideo": "personas/set-a-first-native-goal-story.mp4"
+}

@@ -1,0 +1,78 @@
+{
+  "featureId": "understand-the-game",
+  "featureName": "Understanding the game before playing",
+  "type": "feature",
+  "location": "/",
+  "category": "guided reflection",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Aisha understands the intention, roll, wisdom, reflection, and observation loop before she enters the game.",
+  "overview": "A live product-level walk for Leela Quest · Web, framed around Aisha Karim's actual decision rather than a list of routes.",
+  "targetAudience": "Arrives with a real decision she has been circling for weeks and wants a structured reflection, not a prediction or a generic meditation app.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "A journey, not a fortune teller",
+      "action": "Opened the public Leela Quest introduction.",
+      "description": "The product frames the board as self-discovery through ancient wisdom and offers native and browser entry points.",
+      "screenshotFilename": "understand-the-game/mobile/step-01-introduction.png",
+      "screenshotAlt": "Leela Quest introduction and platform links",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The full reflection loop is visible",
+      "action": "Moved to How It Works.",
+      "description": "Aisha sees that the product begins with her intention, uses the roll to create a prompt, and ends with reflection and observation.",
+      "screenshotFilename": "understand-the-game/mobile/step-02-loop.png",
+      "screenshotAlt": "Leela Quest five-step reflection loop",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Rules turn symbolism into a usable practice",
+      "action": "Opened How to Play.",
+      "description": "The guide explains how intention, dice, snakes, arrows, and square meanings work together so the ritual is learnable rather than mystical UI.",
+      "screenshotFilename": "understand-the-game/mobile/step-03-how-to-play.png",
+      "screenshotAlt": "Leela Quest how-to-play guide",
+      "location": "/how-to-play",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The 72-square board can be studied before a roll",
+      "action": "Opened the board reference.",
+      "description": "The board reference exposes the map and its states outside a live session, giving Aisha context for the guidance she will receive.",
+      "screenshotFilename": "understand-the-game/mobile/step-04-board.png",
+      "screenshotAlt": "Leela Quest cosmic board reference",
+      "location": "/board",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The product hands off to the real game",
+      "action": "Opened the production web app.",
+      "description": "The browser build is the actual Flutter game surface. Native iPhone evidence is published separately so this web handoff is not misrepresented as mobile-app proof.",
+      "screenshotFilename": "understand-the-game/mobile/step-05-web-app.png",
+      "screenshotAlt": "Leela Quest production web app",
+      "location": "/#/menu",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/page@3dcf33af8f0a76764047273898562d6c.mp4"
+  },
+  "keyFeatures": [
+    "Set an intention",
+    "Roll and move on the board",
+    "Receive square wisdom",
+    "Reflect on the journey",
+    "Use a spoken guide",
+    "Review past journeys"
+  ],
+  "capturedAt": "2026-09-20T19:22:59.385Z",
+  "generatedAt": "2026-09-20T19:22:59.385Z"
+}

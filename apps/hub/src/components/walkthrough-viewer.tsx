@@ -57,7 +57,13 @@ export function WalkthroughViewer({
   const [surfaceId, setSurfaceId] = useState(surfaces[0]?.id);
   const surface = surfaces.find((s) => s.id === surfaceId) ?? surfaces[0];
   const walkthrough = surface ? walkthroughs[surface.id] : undefined;
-  const primaryVideo = walkthrough?.steps.find((step) => step.videoFilename)?.videoFilename;
+  // Capture backends write a whole-walk recording at `video.file`; individual
+  // steps may additionally carry short clips. Prefer the complete recording
+  // so every catalog item marked "Video walkthrough" has an immediate,
+  // prominent play entry point on the feature page.
+  const primaryVideo =
+    walkthrough?.video?.file ??
+    walkthrough?.steps.find((step) => step.videoFilename)?.videoFilename;
 
   const [lightbox, setLightbox] = useState<{ files: string[]; index: number } | null>(null);
   /* "Compare" is only meaningful with something to compare against, so the

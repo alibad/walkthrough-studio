@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Calendar Clarity",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.calendarclarity.app",
+  "discoveredAt": "2026-09-20T19:17:02.000Z",
+  "updatedAt": "2026-09-20T19:17:28.770Z",
+  "scope": {
+    "status": "partial",
+    "note": "Source navigation and the live public entry were reconciled. The product-level journey is live-walked on desktop and mobile; authenticated and device-gated features remain explicitly pending or blocked.",
+    "excluded": []
+  },
+  "features": [
+    {
+      "featureId": "see-a-calmer-calendar",
+      "featureName": "Seeing a calmer calendar",
+      "location": "/",
+      "category": "calendar focus",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:17:28.770Z"
+    },
+    {
+      "featureId": "event-visibility",
+      "featureName": "Dim distracting events",
+      "location": "Google Calendar › Visibility",
+      "category": "visibility",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "focus-timer",
+      "featureName": "Run a focus timer with Zen mode",
+      "location": "Google Calendar › Focus",
+      "category": "focus",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "event-actions",
+      "featureName": "Reshape an event",
+      "location": "Google Calendar › Event actions",
+      "category": "calendar actions",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "custom-colors",
+      "featureName": "Apply native syncing colors",
+      "location": "Google Calendar › Colors",
+      "category": "organization",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    }
+  ],
+  "personas": [
+    {
+      "id": "meeting-heavy-operator",
+      "name": "Priya Shah",
+      "description": "Has a calendar full of meetings, solo blocks, tentative holds, and follow-ups. She wants the important commitments to stand out without moving to a new calendar app.",
+      "entryPoint": "/",
+      "keyJourneys": [
+        "evaluate-the-extension"
+      ],
+      "portrait": "personas/meeting-heavy-operator.png",
+      "scene": "personas/meeting-heavy-operator-scene.png",
+      "navItems": [
+        {
+          "label": "Dim distracting events",
+          "location": "Google Calendar › Visibility"
+        },
+        {
+          "label": "Run a focus timer with Zen mode",
+          "location": "Google Calendar › Focus"
+        },
+        {
+          "label": "Reshape an event",
+          "location": "Google Calendar › Event actions"
+        },
+        {
+          "label": "Apply native syncing colors",
+          "location": "Google Calendar › Colors"
+        }
+      ]
+    }
+  ]
+}

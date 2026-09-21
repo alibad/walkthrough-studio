@@ -1,0 +1,58 @@
+{
+  "journeyId": "compare-breath-and-clap-controls",
+  "personaId": "interaction-researcher",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 55300,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7950,
+      "narration": "Noah compares three experiments, then reaches calibration, clap detection, and game surfaces on the local build.",
+      "image": "personas/interaction-researcher-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7950,
+      "durMs": 7350,
+      "narration": "Noah sees three experiments: breath calibration, clap patterns, and a sound-controlled runner.",
+      "image": "try-audio-controlled-experiments/desktop/step-01-lab.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 15300,
+      "durMs": 6950,
+      "narration": "Breath control begins with microphone calibration, shown as a required step before gameplay starts.",
+      "image": "try-audio-controlled-experiments/desktop/step-02-breath.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 22250,
+      "durMs": 8250,
+      "narration": "Noah starts listening, tracks clap counts, adjusts settings, and watches feedback reveal each detected sound.",
+      "image": "try-audio-controlled-experiments/desktop/step-03-clap.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 30500,
+      "durMs": 8050,
+      "narration": "Noah tests the signal in a game where claps guide onboarding, lives, scoring, and each round.",
+      "image": "try-audio-controlled-experiments/desktop/step-04-game.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 38550,
+      "durMs": 7700,
+      "narration": "Noah inspects the signal in time, frequency, envelope, and zero-crossing views before using it.",
+      "image": "try-audio-controlled-experiments/desktop/step-05-tools.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 46250,
+      "durMs": 9050,
+      "narration": "Noah compares the three experiments and reaches their actual calibration, clap-detection, and game surfaces on the local build.",
+      "image": "personas/interaction-researcher.png"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Scribe Quest · iOS",
+  "platform": "ios",
+  "driver": "ios-simulator",
+  "capturedAgainst": "com.humanquest.scribe 1.0.5+43 · Scribe Billing QA · iOS 26.5",
+  "discoveredAt": "2026-09-20T19:30:00Z",
+  "updatedAt": "2026-09-20T19:42:00Z",
+  "scope": {
+    "status": "partial",
+    "note": "Sign-in and account creation were freshly walked in the actual native app. Three deeper capabilities use clearly labeled, product-supplied simulator demos because authenticated capture was not authorized."
+  },
+  "features": [
+    {
+      "featureId": "native-auth-boundary",
+      "featureName": "Native sign-in and account boundary",
+      "location": "LoginScreen → SignUpScreen",
+      "category": "account",
+      "requiresAuth": false,
+      "surfaceStatus": { "iphone": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:42:00Z"
+    },
+    {
+      "featureId": "native-conversation-capture",
+      "featureName": "Capture a conversation",
+      "location": "RecordingScreen",
+      "category": "capture",
+      "requiresAuth": true,
+      "surfaceStatus": { "iphone": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "notes": "Product-supplied simulator demo; authenticated live replay remains pending."
+    },
+    {
+      "featureId": "native-relationship-followup",
+      "featureName": "Turn conversation into relationship follow-up",
+      "location": "RelationshipDetailScreen",
+      "category": "follow-up",
+      "requiresAuth": true,
+      "surfaceStatus": { "iphone": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "notes": "Product-supplied simulator demo; authenticated live replay remains pending."
+    },
+    {
+      "featureId": "native-pdf-export",
+      "featureName": "Export a conversation to PDF",
+      "location": "ExportScreen",
+      "category": "export",
+      "requiresAuth": true,
+      "surfaceStatus": { "iphone": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "notes": "Product-supplied simulator demo; authenticated write replay remains pending."
+    }
+  ],
+  "personas": [
+    {
+      "id": "client-conversation-owner",
+      "name": "Maya Ortiz",
+      "description": "Needs the decisions and follow-ups from an important client conversation to stay attached to the relationship.",
+      "entryPoint": "LoginScreen",
+      "keyJourneys": ["understand-the-native-follow-up-loop"],
+      "portrait": "personas/client-conversation-owner.png",
+      "scene": "personas/client-conversation-owner-scene.png",
+      "navItems": [
+        { "label": "Capture", "location": "RecordingScreen" },
+        { "label": "Relationships", "location": "ContactsScreen" },
+        { "label": "Export", "location": "ExportScreen" }
+      ]
+    }
+  ]
+}

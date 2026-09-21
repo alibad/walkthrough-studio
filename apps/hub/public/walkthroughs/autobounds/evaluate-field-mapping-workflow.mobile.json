@@ -1,0 +1,77 @@
+{
+  "featureId": "evaluate-field-mapping-workflow",
+  "featureName": "Evaluating a field-mapping workflow",
+  "type": "feature",
+  "location": "/",
+  "category": "field mapping",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Maya reaches the real app gate knowing the three-step workflow, available models, export formats, and credit model she is evaluating.",
+  "overview": "A live product-level walk for AutoBounds, framed around Maya Thornton's actual decision rather than a list of routes.",
+  "targetAudience": "Runs mapping operations for a regional agriculture team and needs a faster first pass before GIS review. She cares about accepted boundaries and export compatibility, not an impressive model name on its own.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The outcome is stated before the machinery",
+      "action": "Opened the public AutoBounds product page.",
+      "description": "The promise is concrete: turn manual delineation into an export-ready starting point from satellite imagery.",
+      "screenshotFilename": "evaluate-field-mapping-workflow/mobile/step-01-outcome.png",
+      "screenshotAlt": "AutoBounds explaining AI field-boundary mapping",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "The workflow is point, process, export",
+      "action": "Moved to the three-step workflow.",
+      "description": "Maya can see what she must provide, what the model does, and what leaves the system before she evaluates implementation detail.",
+      "screenshotFilename": "evaluate-field-mapping-workflow/mobile/step-02-workflow.png",
+      "screenshotAlt": "The three-step AutoBounds field mapping workflow",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Models are compared by operating trade-offs",
+      "action": "Opened the AI model comparison.",
+      "description": "The model page makes speed, prompting, and boundary quality part of the product decision instead of presenting AI as one opaque button.",
+      "screenshotFilename": "evaluate-field-mapping-workflow/mobile/step-03-models.png",
+      "screenshotAlt": "AutoBounds AI model comparison",
+      "location": "/ai-models",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Credits map to accepted work",
+      "action": "Opened pricing.",
+      "description": "Pricing explains that one credit buys one extraction and is deducted only when a result is accepted, which is the operational unit Maya needed.",
+      "screenshotFilename": "evaluate-field-mapping-workflow/mobile/step-04-pricing.png",
+      "screenshotAlt": "AutoBounds credit pricing and acceptance model",
+      "location": "/pricing",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The real application starts at an account gate",
+      "action": "Opened the production app demo route.",
+      "description": "The walkthrough stops honestly at the production sign-in surface; projects, Labs, and exports remain blocked without an authenticated workspace.",
+      "screenshotFilename": "evaluate-field-mapping-workflow/mobile/step-05-app-gate.png",
+      "screenshotAlt": "AutoBounds production sign-in screen",
+      "location": "/demo",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/page@31092c9884e41fba642f0d0132eafbaf.mp4"
+  },
+  "keyFeatures": [
+    "Map and extract field boundaries",
+    "Compare extraction models",
+    "Organize projects, farms, and fields",
+    "Export accepted boundaries",
+    "Operate model and user settings"
+  ],
+  "capturedAt": "2026-09-20T19:20:17.766Z",
+  "generatedAt": "2026-09-20T19:20:17.766Z"
+}

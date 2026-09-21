@@ -1,0 +1,76 @@
+{
+  "featureId": "see-a-calmer-calendar",
+  "featureName": "Seeing a calmer calendar",
+  "type": "feature",
+  "location": "/",
+  "category": "calendar focus",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Priya can distinguish visibility, focus, event actions, and native syncing colors before installing the extension.",
+  "overview": "A live product-level walk for Calendar Clarity, framed around Priya Shah's actual decision rather than a list of routes.",
+  "targetAudience": "Has a calendar full of meetings, solo blocks, tentative holds, and follow-ups. She wants the important commitments to stand out without moving to a new calendar app.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The same calendar, with less visual competition",
+      "action": "Opened Calendar Clarity.",
+      "description": "Before and after states explain the product without asking Priya to abandon Google Calendar or create another account.",
+      "screenshotFilename": "see-a-calmer-calendar/mobile/step-01-clarity.png",
+      "screenshotAlt": "Calendar Clarity hero and calmer calendar promise",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Four jobs are kept separate",
+      "action": "Moved to the feature map.",
+      "description": "Visibility, focus, event actions, and colors are presented as distinct tools so Priya can evaluate the part she actually needs.",
+      "screenshotFilename": "see-a-calmer-calendar/mobile/step-02-features.png",
+      "screenshotAlt": "Calendar Clarity four-feature map",
+      "location": "/#features",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Visibility dims noise without hiding events",
+      "action": "Opened the Event Visibility walkthrough.",
+      "description": "Solo, external, declined, and tentative events recede but remain present, preserving awareness without equal visual weight.",
+      "screenshotFilename": "see-a-calmer-calendar/mobile/step-03-visibility.png",
+      "screenshotAlt": "Calendar Clarity Event Visibility walkthrough",
+      "location": "/#event-visibility",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Focus happens inside the event context",
+      "action": "Opened the Focus Timer walkthrough.",
+      "description": "The timer, ambient sounds, and Zen mode keep the work session attached to the calendar block that justified it.",
+      "screenshotFilename": "see-a-calmer-calendar/mobile/step-04-focus.png",
+      "screenshotAlt": "Calendar Clarity Focus Timer walkthrough",
+      "location": "/#focus-timer",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Colors are native, named, and portable",
+      "action": "Opened the Custom Colors walkthrough.",
+      "description": "AI grouping remains optional, while saved colors use Google's own event colors so they survive on mobile and other devices.",
+      "screenshotFilename": "see-a-calmer-calendar/mobile/step-05-colors.png",
+      "screenshotAlt": "Calendar Clarity Custom Colors walkthrough",
+      "location": "/#custom-colors",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/page@ab6dc2ca3716600a50843eb32e77c2d0.mp4"
+  },
+  "keyFeatures": [
+    "Dim distracting events",
+    "Run a focus timer with Zen mode",
+    "Reshape an event",
+    "Apply native syncing colors"
+  ],
+  "capturedAt": "2026-09-20T19:17:28.731Z",
+  "generatedAt": "2026-09-20T19:17:28.731Z"
+}

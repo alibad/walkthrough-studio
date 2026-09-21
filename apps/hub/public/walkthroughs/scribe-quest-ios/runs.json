@@ -1,0 +1,33 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:42:00Z-native-auth-boundary",
+      "startedAt": "2026-09-20T19:30:00Z",
+      "completedAt": "2026-09-20T19:42:00Z",
+      "skill": "walkthrough",
+      "agent": "Maestro + simctl + repository demo inventory",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "dirty": false,
+        "commitDate": null,
+        "commitSubject": "Installed simulator binary; exact source SHA not proven."
+      },
+      "config": {
+        "platform": "ios",
+        "driver": "ios-simulator",
+        "capturedAgainst": "com.humanquest.scribe 1.0.5+43 · Scribe Billing QA · iOS 26.5",
+        "surfaces": ["iphone"],
+        "locales": ["en"],
+        "notes": "Actual native auth boundary walked without personal data; no account created; deeper simulator recordings copied from the repository and labeled described rather than walked."
+      },
+      "coverage": {
+        "features": ["native-auth-boundary"],
+        "personas": ["client-conversation-owner"],
+        "screenshots": 2,
+        "videos": 4,
+        "issues": 1
+      }
+    }
+  ]
+}

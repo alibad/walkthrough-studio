@@ -1,0 +1,78 @@
+{
+  "featureId": "choose-a-training-workflow",
+  "featureName": "Choosing a handstand training workflow",
+  "type": "feature",
+  "location": "/",
+  "category": "training",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Jordan sees how goals, structured or freestyle practice, voice timing, video, and progress records form one repeatable training loop.",
+  "overview": "A live product-level walk for Handstand Quest · Web, framed around Jordan Lee's actual decision rather than a list of routes.",
+  "targetAudience": "Can kick up to a wall but practices inconsistently. Jordan needs a short repeatable session and visible progress, not a library that assumes they already know how to program handstand training.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The promise is consistency and measurement",
+      "action": "Opened Handstand Quest.",
+      "description": "Jordan is told what improves: practice frequency and measurable hold time, not an abstract fitness score.",
+      "screenshotFilename": "choose-a-training-workflow/mobile/step-01-promise.png",
+      "screenshotAlt": "Handstand Quest consistency promise",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Goals become scheduled habits",
+      "action": "Moved to goals and habits.",
+      "description": "The product connects an outcome to recurring exercises instead of leaving Jordan with a one-off workout.",
+      "screenshotFilename": "choose-a-training-workflow/mobile/step-02-habits.png",
+      "screenshotAlt": "Handstand Quest goals and habit scheduling",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Voice keeps hands off the screen",
+      "action": "Moved to practice mode.",
+      "description": "Start and stop voice commands make timing compatible with being upside down—the interaction is designed around the physical task.",
+      "screenshotFilename": "choose-a-training-workflow/mobile/step-03-voice.png",
+      "screenshotAlt": "Handstand Quest voice-controlled practice mode",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "Structure and freestyle coexist",
+      "action": "Moved to workout choices.",
+      "description": "Jordan can follow a program while learning, then choose exercises directly when energy or time changes.",
+      "screenshotFilename": "choose-a-training-workflow/mobile/step-04-workouts.png",
+      "screenshotAlt": "Handstand Quest structured and freestyle workout choices",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The loop closes on evidence",
+      "action": "Moved to progress and customization.",
+      "description": "Records, per-exercise stats, custom exercises, workouts, and hands-free video make improvement reviewable rather than anecdotal.",
+      "screenshotFilename": "choose-a-training-workflow/mobile/step-05-progress.png",
+      "screenshotAlt": "Handstand Quest progress, custom exercise, and video features",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/page@91c81a55ff0706757c637df3d814f561.mp4"
+  },
+  "keyFeatures": [
+    "Set goals and practice habits",
+    "Follow structured workouts",
+    "Run a freestyle practice",
+    "Control the timer by voice",
+    "Review progress and records",
+    "Record hands-free practice video"
+  ],
+  "capturedAt": "2026-09-20T19:20:11.075Z",
+  "generatedAt": "2026-09-20T19:20:11.075Z"
+}

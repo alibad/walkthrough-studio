@@ -1,0 +1,16 @@
+{
+  "issues": [
+    {
+      "id": "authenticated-native-journey-not-walked",
+      "featureId": "native-conversation-capture",
+      "location": "LoginScreen",
+      "surface": "iphone",
+      "severity": "major",
+      "title": "Authenticated native workflow needs a fresh isolated test account",
+      "detail": "The installed app reached sign-in and account creation cleanly, but a new account was not created and no existing personal account was used. Deeper product footage is disclosed as repository-supplied simulator demo evidence.",
+      "foundAt": "2026-09-20T19:42:00Z",
+      "status": "open"
+    }
+  ],
+  "updatedAt": "2026-09-20T19:42:00Z"
+}

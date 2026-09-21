@@ -1,0 +1,52 @@
+{
+  "personaId": "reflective-player",
+  "journeyId": "reach-the-android-account-boundary",
+  "headline": "Aisha understands the practice before Android asks her to sign in",
+  "overview": "A fresh Android install explains language, wisdom, play, and intention, then stops honestly at the account boundary.",
+  "payoff": "She knows what the practice is and why an account is requested before she chooses a provider.",
+  "platform": "android",
+  "surface": "android",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "Understand the native practice",
+      "narrative": "Aisha walks the real Android onboarding from language through intention.",
+      "frames": [
+        "native-first-run/android/step-01-language.png",
+        "native-first-run/android/step-02-wisdom.png",
+        "native-first-run/android/step-03-play.png",
+        "native-first-run/android/step-04-begins.png"
+      ],
+      "frameCaptions": [
+        "Choose language",
+        "Ancient wisdom",
+        "Divine play",
+        "Bring an intention"
+      ],
+      "location": "LanguageScreen → OnboardingScreen",
+      "surface": "android",
+      "sourceFeature": "native-first-run",
+      "action": "Complete native Android onboarding",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Stop at sign-in without creating state",
+      "narrative": "The fresh package reaches Google and email sign-in. The walkthrough does not select an account or invent an authenticated result.",
+      "frames": [
+        "native-first-run/android/step-05-auth.png"
+      ],
+      "frameCaptions": [
+        "Native Android authentication boundary"
+      ],
+      "location": "AuthScreen",
+      "surface": "android",
+      "sourceFeature": "native-first-run",
+      "action": "Review sign-in choices",
+      "verificationStatus": "gated-write"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:45:00Z",
+  "walkRecording": "video/native-first-run.mp4",
+  "storyVideo": "personas/reach-the-android-account-boundary-story.mp4"
+}

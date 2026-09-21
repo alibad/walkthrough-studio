@@ -1,0 +1,29 @@
+{
+  "featureId": "native-pdf-export",
+  "featureName": "Export a conversation to PDF",
+  "type": "feature",
+  "location": "ExportScreen",
+  "category": "export",
+  "surface": "iphone",
+  "platform": "ios",
+  "locale": "en",
+  "headline": "Carry the result out of the app",
+  "overview": "An existing product-supplied iPhone Simulator demo shows PDF export. It is disclosed as pre-recorded source evidence rather than a fresh write operation.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "A conversation becomes a portable artifact",
+      "action": "Reviewed the repository's narrated PDF export demonstration.",
+      "description": "The demo shows a synthetic conversation exported from the native app. This run did not create a new file or share external data.",
+      "screenshotFilename": "demos/pdf.png",
+      "screenshotAlt": "Scribe Quest product demo of native PDF export",
+      "location": "ExportScreen",
+      "verificationStatus": "synthetic"
+    }
+  ],
+  "video": { "file": "demos/pdf.mp4" },
+  "keyFeatures": ["PDF export", "Portable conversation record"],
+  "capturedAt": "2026-09-20T19:42:00Z",
+  "generatedAt": "2026-09-20T19:42:00Z",
+  "note": "Copied from marketing/public/demos/pdf.mp4 in the Scribe Quest repository. Real simulator footage with synthetic sample content, but not re-executed in this run."
+}

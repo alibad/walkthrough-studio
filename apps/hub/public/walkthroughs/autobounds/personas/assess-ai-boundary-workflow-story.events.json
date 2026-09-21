@@ -1,0 +1,58 @@
+{
+  "journeyId": "assess-ai-boundary-workflow",
+  "personaId": "ag-operations-lead",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 57200,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 9200,
+      "narration": "Maya reaches the app gate, ready to judge its workflow, models, exports, and credit costs.",
+      "image": "personas/ag-operations-lead-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 9200,
+      "durMs": 7250,
+      "narration": "Maya turns satellite imagery into an export-ready starting point instead of drawing boundaries by hand.",
+      "image": "evaluate-field-mapping-workflow/desktop/step-01-outcome.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 16450,
+      "durMs": 8150,
+      "narration": "Maya sees the workflow: point, process, export, with inputs, model work, and outputs defined.",
+      "image": "evaluate-field-mapping-workflow/desktop/step-02-workflow.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 24600,
+      "durMs": 6650,
+      "narration": "Maya compares models by speed, prompting needs, and boundary quality before choosing one.",
+      "image": "evaluate-field-mapping-workflow/desktop/step-03-models.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 31250,
+      "durMs": 7200,
+      "narration": "Pricing shows Maya that credits are charged only for accepted extractions, matching her work units.",
+      "image": "evaluate-field-mapping-workflow/desktop/step-04-pricing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 38450,
+      "durMs": 8450,
+      "narration": "Maya reaches the sign-in gate; projects, Labs, and exports remain locked behind an authenticated workspace.",
+      "image": "evaluate-field-mapping-workflow/desktop/step-05-app-gate.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 46900,
+      "durMs": 10300,
+      "narration": "Maya reaches the real app gate knowing the three-step workflow, available models, export formats, and credit model she is evaluating.",
+      "image": "personas/ag-operations-lead.png"
+    }
+  ]
+}

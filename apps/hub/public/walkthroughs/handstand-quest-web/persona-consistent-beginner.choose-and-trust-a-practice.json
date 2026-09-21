@@ -1,0 +1,94 @@
+{
+  "personaId": "consistent-beginner",
+  "journeyId": "choose-and-trust-a-practice",
+  "headline": "Jordan sees how goals, structured or freestyle practice, voice timing, video, and progress records form one repeatable training loop.",
+  "overview": "A live product-level walk for Handstand Quest · Web, framed around Jordan Lee's actual decision rather than a list of routes.",
+  "payoff": "Jordan sees how goals, structured or freestyle practice, voice timing, video, and progress records form one repeatable training loop.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "The promise is consistency and measurement",
+      "narrative": "Jordan is told what improves: practice frequency and measurable hold time, not an abstract fitness score.",
+      "frames": [
+        "choose-a-training-workflow/desktop/step-01-promise.png"
+      ],
+      "frameCaptions": [
+        "The promise is consistency and measurement"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "choose-a-training-workflow",
+      "action": "Opened Handstand Quest.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Goals become scheduled habits",
+      "narrative": "The product connects an outcome to recurring exercises instead of leaving Jordan with a one-off workout.",
+      "frames": [
+        "choose-a-training-workflow/desktop/step-02-habits.png"
+      ],
+      "frameCaptions": [
+        "Goals become scheduled habits"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "choose-a-training-workflow",
+      "action": "Moved to goals and habits.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Voice keeps hands off the screen",
+      "narrative": "Start and stop voice commands make timing compatible with being upside down—the interaction is designed around the physical task.",
+      "frames": [
+        "choose-a-training-workflow/desktop/step-03-voice.png"
+      ],
+      "frameCaptions": [
+        "Voice keeps hands off the screen"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "choose-a-training-workflow",
+      "action": "Moved to practice mode.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-04",
+      "title": "Structure and freestyle coexist",
+      "narrative": "Jordan can follow a program while learning, then choose exercises directly when energy or time changes.",
+      "frames": [
+        "choose-a-training-workflow/desktop/step-04-workouts.png"
+      ],
+      "frameCaptions": [
+        "Structure and freestyle coexist"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "choose-a-training-workflow",
+      "action": "Moved to workout choices.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-05",
+      "title": "The loop closes on evidence",
+      "narrative": "Records, per-exercise stats, custom exercises, workouts, and hands-free video make improvement reviewable rather than anecdotal.",
+      "frames": [
+        "choose-a-training-workflow/desktop/step-05-progress.png"
+      ],
+      "frameCaptions": [
+        "The loop closes on evidence"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "choose-a-training-workflow",
+      "action": "Moved to progress and customization.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:20:11.120Z",
+  "walkRecording": "video/page@6319d5b73950015feafddd5ed3f37109.mp4",
+  "storyVideo": "personas/choose-and-trust-a-practice-story.mp4"
+}

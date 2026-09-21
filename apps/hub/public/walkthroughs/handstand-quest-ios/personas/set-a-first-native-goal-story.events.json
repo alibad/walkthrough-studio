@@ -1,0 +1,37 @@
+{
+  "journeyId": "set-a-first-native-goal",
+  "personaId": "consistent-beginner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 28500,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7950,
+      "narration": "Jordan records current balance, receives a five-minute daily target, then sees why creating an account helps.",
+      "image": "personas/consistent-beginner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7950,
+      "durMs": 5400,
+      "narration": "Jordan opens the app and sets a first handstand as the goal.",
+      "image": "native-goal-setting/iphone/step-01-welcome.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13350,
+      "durMs": 7350,
+      "narration": "Jordan accepts a five-second hold and five daily minutes, then sees optional account sync.",
+      "image": "native-goal-setting/iphone/step-03-goals.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 20700,
+      "durMs": 7800,
+      "narration": "Jordan reaches sync with a five-second hold target and five-minute daily practice already visible.",
+      "image": "personas/consistent-beginner.png"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "journeyId": "prepare-for-a-guided-journey",
+  "personaId": "reflective-player",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 52550,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7850,
+      "narration": "Aisha reviews the intention, roll, wisdom, reflection, and observation loop before deciding to enter.",
+      "image": "personas/reflective-player-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7850,
+      "durMs": 6950,
+      "narration": "Aisha sees a self-discovery journey grounded in ancient wisdom, available on the web or in the app.",
+      "image": "understand-the-game/desktop/step-01-introduction.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 14800,
+      "durMs": 6850,
+      "narration": "Aisha sees her intention guide the roll, prompt reflection, and close with observation.",
+      "image": "understand-the-game/desktop/step-02-loop.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 21650,
+      "durMs": 7650,
+      "narration": "The guide links intention, dice, snakes, arrows, and squares into a practice Aisha can learn.",
+      "image": "understand-the-game/desktop/step-03-how-to-play.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 29300,
+      "durMs": 8350,
+      "narration": "Before playing, Aisha studies the 72-square board and its states to understand forthcoming guidance.",
+      "image": "understand-the-game/desktop/step-04-board.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 37650,
+      "durMs": 5900,
+      "narration": "Aisha enters the browser game, while iPhone evidence remains published separately.",
+      "image": "understand-the-game/desktop/step-05-web-app.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 43550,
+      "durMs": 9000,
+      "narration": "Aisha understands the intention, roll, wisdom, reflection, and observation loop before she enters the game.",
+      "image": "personas/reflective-player.png"
+    }
+  ]
+}

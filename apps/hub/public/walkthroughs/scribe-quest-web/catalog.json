@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Scribe Quest · Web",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.scribe-quest.com",
+  "discoveredAt": "2026-09-20T19:19:05.974Z",
+  "updatedAt": "2026-09-20T19:19:39.119Z",
+  "scope": {
+    "status": "partial",
+    "note": "Source navigation and the live public entry were reconciled. The product-level journey is live-walked on desktop and mobile; authenticated and device-gated features remain explicitly pending or blocked.",
+    "excluded": []
+  },
+  "features": [
+    {
+      "featureId": "follow-a-conversation-into-action",
+      "featureName": "Following a conversation into action",
+      "location": "/",
+      "category": "conversation capture",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:19:39.119Z"
+    },
+    {
+      "featureId": "capture",
+      "featureName": "Capture a conversation",
+      "location": "CaptureScreen",
+      "category": "capture",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "transcription",
+      "featureName": "Transcribe on device or in the cloud",
+      "location": "ProcessingScreen",
+      "category": "processing",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "summary-and-actions",
+      "featureName": "Review summary and next steps",
+      "location": "ConversationDetailScreen",
+      "category": "follow-up",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "relationships",
+      "featureName": "Trace relationship insights to sources",
+      "location": "RelationshipMapScreen",
+      "category": "relationships",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "pdf-export",
+      "featureName": "Choose what a PDF shares",
+      "location": "PdfPreviewScreen",
+      "category": "sharing",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "people",
+      "featureName": "Review people and commitments",
+      "location": "PeopleScreen",
+      "category": "follow-up",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    }
+  ],
+  "personas": [
+    {
+      "id": "client-conversation-owner",
+      "name": "Amal Rahman",
+      "description": "Runs client conversations that create decisions and follow-ups faster than she can document them. She needs meaning and ownership preserved, not a verbatim transcript to reread.",
+      "entryPoint": "/",
+      "keyJourneys": [
+        "assess-the-follow-up-loop"
+      ],
+      "portrait": "personas/client-conversation-owner.png",
+      "scene": "personas/client-conversation-owner-scene.png",
+      "navItems": [
+        {
+          "label": "Capture a conversation",
+          "location": "CaptureScreen"
+        },
+        {
+          "label": "Transcribe on device or in the cloud",
+          "location": "ProcessingScreen"
+        },
+        {
+          "label": "Review summary and next steps",
+          "location": "ConversationDetailScreen"
+        },
+        {
+          "label": "Trace relationship insights to sources",
+          "location": "RelationshipMapScreen"
+        },
+        {
+          "label": "Choose what a PDF shares",
+          "location": "PdfPreviewScreen"
+        }
+      ]
+    }
+  ]
+}

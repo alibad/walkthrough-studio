@@ -1,0 +1,65 @@
+{
+  "journeyId": "assess-the-follow-up-loop",
+  "personaId": "client-conversation-owner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 64450,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7700,
+      "narration": "Amal reviews a saved conversation as it becomes a summary, linked insight, and scoped PDF.",
+      "image": "personas/client-conversation-owner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7700,
+      "durMs": 6100,
+      "narration": "Amal sees what mattered, who is involved, and the next steps before signing in.",
+      "image": "follow-a-conversation-into-action/desktop/step-01-result.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13800,
+      "durMs": 8500,
+      "narration": "Amal sees the record, interpretation, and follow-up remain separate, with each responsibility visible.",
+      "image": "follow-a-conversation-into-action/desktop/step-02-workflow.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 22300,
+      "durMs": 8050,
+      "narration": "Amal reviews synthetic sample conversations, traces relationship evidence, and checks the PDF’s limited scope.",
+      "image": "follow-a-conversation-into-action/desktop/step-03-demos.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 30350,
+      "durMs": 8300,
+      "narration": "Amal sees summaries, decisions, people, and follow-ups remain connected to the conversation and its evidence.",
+      "image": "follow-a-conversation-into-action/desktop/step-04-outcomes.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 38650,
+      "durMs": 7800,
+      "narration": "Amal chooses separately whether recording, audio, transcription, or AI assistance leaves the device.",
+      "image": "follow-a-conversation-into-action/desktop/step-05-privacy.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 46450,
+      "durMs": 6650,
+      "narration": "The workspace opens to its real sign-in screen, without creating a test account.",
+      "image": "follow-a-conversation-into-action/desktop/step-06-sign-in.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 53100,
+      "durMs": 11350,
+      "narration": "Amal sees how a saved conversation becomes a summary, evidence-linked relationship insight, and deliberately scoped PDF before the real app sign-in.",
+      "image": "personas/client-conversation-owner.png"
+    }
+  ]
+}

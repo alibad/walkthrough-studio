@@ -1,0 +1,110 @@
+{
+  "personaId": "client-conversation-owner",
+  "journeyId": "assess-the-follow-up-loop",
+  "headline": "Amal sees how a saved conversation becomes a summary, evidence-linked relationship insight, and deliberately scoped PDF before the real app sign-in.",
+  "overview": "A live product-level walk for Scribe Quest · Web, framed around Amal Rahman's actual decision rather than a list of routes.",
+  "payoff": "Amal sees how a saved conversation becomes a summary, evidence-linked relationship insight, and deliberately scoped PDF before the real app sign-in.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "The output is meaning and momentum",
+      "narrative": "The sample result shows what mattered, next steps, and people before asking Amal to trust the capture machinery.",
+      "frames": [
+        "follow-a-conversation-into-action/desktop/step-01-result.png"
+      ],
+      "frameCaptions": [
+        "The output is meaning and momentum"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "follow-a-conversation-into-action",
+      "action": "Opened Scribe Quest.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Capture, signal, and action stay distinct",
+      "narrative": "The product separates recording from interpretation and follow-up, making control and responsibility visible.",
+      "frames": [
+        "follow-a-conversation-into-action/desktop/step-02-workflow.png"
+      ],
+      "frameCaptions": [
+        "Capture, signal, and action stay distinct"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "follow-a-conversation-into-action",
+      "action": "Moved to the three-part workflow.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Three real app walkthroughs expose the result",
+      "narrative": "Conversation review, relationship provenance, and PDF scope are shown with real simulator recordings and explicit synthetic-sample disclosure.",
+      "frames": [
+        "follow-a-conversation-into-action/desktop/step-03-demos.png"
+      ],
+      "frameCaptions": [
+        "Three real app walkthroughs expose the result"
+      ],
+      "location": "/#demos",
+      "surface": "desktop",
+      "sourceFeature": "follow-a-conversation-into-action",
+      "action": "Moved to the recorded app walkthroughs.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-04",
+      "title": "Meaning, context, and ownership stay connected",
+      "narrative": "Summaries, decisions, people, and follow-ups are framed as connected outcomes rather than independent AI outputs.",
+      "frames": [
+        "follow-a-conversation-into-action/desktop/step-04-outcomes.png"
+      ],
+      "frameCaptions": [
+        "Meaning, context, and ownership stay connected"
+      ],
+      "location": "/#use-cases",
+      "surface": "desktop",
+      "sourceFeature": "follow-a-conversation-into-action",
+      "action": "Moved to the result model.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-05",
+      "title": "Capture permission remains a choice",
+      "narrative": "Recording, audio retention, transcription, and AI assistance are separated so a user can choose what data leaves the device.",
+      "frames": [
+        "follow-a-conversation-into-action/desktop/step-05-privacy.png"
+      ],
+      "frameCaptions": [
+        "Capture permission remains a choice"
+      ],
+      "location": "/#privacy",
+      "surface": "desktop",
+      "sourceFeature": "follow-a-conversation-into-action",
+      "action": "Moved to the privacy model.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-06",
+      "title": "The real workspace is account-protected",
+      "narrative": "The Flutter workspace reaches its genuine email and Google sign-in screen; no test account is invented for the walkthrough.",
+      "frames": [
+        "follow-a-conversation-into-action/desktop/step-06-sign-in.png"
+      ],
+      "frameCaptions": [
+        "The real workspace is account-protected"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "follow-a-conversation-into-action",
+      "action": "Opened the production web app.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:19:39.119Z",
+  "walkRecording": "video/page@0383f35d7cf4e31ef00818def4216817.mp4",
+  "storyVideo": "personas/assess-the-follow-up-loop-story.mp4"
+}

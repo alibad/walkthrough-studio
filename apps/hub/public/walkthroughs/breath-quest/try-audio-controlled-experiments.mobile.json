@@ -1,0 +1,78 @@
+{
+  "featureId": "try-audio-controlled-experiments",
+  "featureName": "Trying audio-controlled experiments",
+  "type": "feature",
+  "location": "/",
+  "category": "biological interfaces",
+  "surface": "mobile",
+  "platform": "web",
+  "locale": "en",
+  "headline": "Noah compares the three experiments and reaches their actual calibration, clap-detection, and game surfaces on the local build.",
+  "overview": "A live product-level walk for Breath Quest, framed around Noah Bennett's actual decision rather than a list of routes.",
+  "targetAudience": "Prototypes playful wellness interfaces and wants to understand which audio signals are robust enough to control a game. He cares about observable detection and calibration, not a polished wellness claim.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The project is explicit about being an experiment",
+      "action": "Opened the local Breath Quest build.",
+      "description": "Three hypotheses separate breath detection, clap patterns, and a playful sound-controlled runner instead of pretending one sensor already solves everything.",
+      "screenshotFilename": "try-audio-controlled-experiments/mobile/step-01-lab.png",
+      "screenshotAlt": "Breath Quest experiment index",
+      "location": "/",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Breath control begins with calibration",
+      "action": "Opened the breath-detection experiment.",
+      "description": "The real interface explains that personal microphone levels must be calibrated before gameplay; the dependency is visible, not hidden.",
+      "screenshotFilename": "try-audio-controlled-experiments/mobile/step-02-breath.png",
+      "screenshotAlt": "Breath Quest breath-detection calibration surface",
+      "location": "/hypothesis-1",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Clap detection exposes its live controls",
+      "action": "Opened the clap-pattern experiment.",
+      "description": "Start/stop listening, detection counts, settings, timelines, and play feedback expose what the recognizer is doing.",
+      "screenshotFilename": "try-audio-controlled-experiments/mobile/step-03-clap.png",
+      "screenshotAlt": "Breath Quest clap-pattern controls",
+      "location": "/hypothesis-2",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The signal is tested in an actual game",
+      "action": "Opened the sound-controlled runner.",
+      "description": "The third hypothesis moves beyond meters into onboarding, lives, scoring, and a complete game loop controlled by sound.",
+      "screenshotFilename": "try-audio-controlled-experiments/mobile/step-04-game.png",
+      "screenshotAlt": "Breath Quest sound-controlled runner",
+      "location": "/hypothesis-3",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "The sensor can be inspected, not merely trusted",
+      "action": "Opened the audio analysis tools.",
+      "description": "Time-domain, frequency, envelope, and zero-crossing tools make the experimental signal visible to Noah before he treats it as a controller.",
+      "screenshotFilename": "try-audio-controlled-experiments/mobile/step-05-tools.png",
+      "screenshotAlt": "Breath Quest audio analysis tools",
+      "location": "/audio-tools",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "video": {
+    "file": "video/page@7d071699916148d1c4b3eaa8e146068b.mp4"
+  },
+  "keyFeatures": [
+    "Calibrate breath detection",
+    "Control with clap patterns",
+    "Play the sound-controlled game",
+    "Inspect live audio features"
+  ],
+  "capturedAt": "2026-09-20T19:23:14.501Z",
+  "generatedAt": "2026-09-20T19:23:14.501Z",
+  "targetSha": "9f8c867248067ea3436cda5bfb443e258fc60f54",
+  "targetCommitDate": "2025-12-11T01:50:20-08:00"
+}

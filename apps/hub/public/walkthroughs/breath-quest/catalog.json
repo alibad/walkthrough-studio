@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Breath Quest",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "http://localhost:3110",
+  "discoveredAt": "2026-09-20T19:22:56.537Z",
+  "updatedAt": "2026-09-20T19:23:14.534Z",
+  "scope": {
+    "status": "partial",
+    "note": "Source navigation and the live public entry were reconciled. The product-level journey is live-walked on desktop and mobile; authenticated and device-gated features remain explicitly pending or blocked.",
+    "excluded": []
+  },
+  "features": [
+    {
+      "featureId": "try-audio-controlled-experiments",
+      "featureName": "Trying audio-controlled experiments",
+      "location": "/",
+      "category": "biological interfaces",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 1,
+      "lastWalkthroughAt": "2026-09-20T19:23:14.534Z"
+    },
+    {
+      "featureId": "breath-detection",
+      "featureName": "Calibrate breath detection",
+      "location": "/hypothesis-1",
+      "category": "breath",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "clap-patterns",
+      "featureName": "Control with clap patterns",
+      "location": "/hypothesis-2",
+      "category": "clap",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "sound-game",
+      "featureName": "Play the sound-controlled game",
+      "location": "/hypothesis-3",
+      "category": "game",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "audio-tools",
+      "featureName": "Inspect live audio features",
+      "location": "/audio-tools",
+      "category": "analysis",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    }
+  ],
+  "personas": [
+    {
+      "id": "interaction-researcher",
+      "name": "Noah Bennett",
+      "description": "Prototypes playful wellness interfaces and wants to understand which audio signals are robust enough to control a game. He cares about observable detection and calibration, not a polished wellness claim.",
+      "entryPoint": "/",
+      "keyJourneys": [
+        "compare-breath-and-clap-controls"
+      ],
+      "portrait": "personas/interaction-researcher.png",
+      "scene": "personas/interaction-researcher-scene.png",
+      "navItems": [
+        {
+          "label": "Calibrate breath detection",
+          "location": "/hypothesis-1"
+        },
+        {
+          "label": "Control with clap patterns",
+          "location": "/hypothesis-2"
+        },
+        {
+          "label": "Play the sound-controlled game",
+          "location": "/hypothesis-3"
+        },
+        {
+          "label": "Inspect live audio features",
+          "location": "/audio-tools"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "featureId": "native-first-run",
+  "featureName": "Android native first run",
+  "type": "feature",
+  "location": "LanguageScreen → AuthScreen",
+  "category": "onboarding",
+  "surface": "android",
+  "platform": "android",
+  "locale": "en",
+  "headline": "The real Android app reaches its honest account handoff",
+  "overview": "A fresh emulator walk through the actual Leela Quest APK from language selection and native onboarding to the Android authentication surface.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Android starts with language",
+      "action": "Cleared the package and launched the installed APK.",
+      "description": "The native Android app begins with the same explicit language decision as iPhone.",
+      "screenshotFilename": "native-first-run/android/step-01-language.png",
+      "screenshotAlt": "Leela Quest Android language selection",
+      "location": "LanguageScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Ancient wisdom is introduced natively",
+      "action": "Selected English and continued.",
+      "description": "The Android onboarding explains the origin and self-discovery purpose of Leela.",
+      "screenshotFilename": "native-first-run/android/step-02-wisdom.png",
+      "screenshotAlt": "Leela Quest Ancient Wisdom onboarding on Android",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Divine play sets the interaction model",
+      "action": "Advanced to the second onboarding screen.",
+      "description": "Chance is framed as an opening for reflection rather than a prediction.",
+      "screenshotFilename": "native-first-run/android/step-03-play.png",
+      "screenshotAlt": "Leela Quest Divine Play onboarding on Android",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 4,
+      "title": "The final card asks for a real intention",
+      "action": "Advanced to Begin Your Quest.",
+      "description": "The native flow connects the game to a question the player genuinely wants to examine.",
+      "screenshotFilename": "native-first-run/android/step-04-begins.png",
+      "screenshotAlt": "Leela Quest final onboarding card on Android",
+      "location": "OnboardingScreen",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "stepNumber": 5,
+      "title": "Android stops at the real account boundary",
+      "action": "Tapped Begin Your Quest and stopped before authentication.",
+      "description": "The fresh Android package asks for Google or email sign-in to save progress and unlock all features. No account was selected or created.",
+      "screenshotFilename": "native-first-run/android/step-05-auth.png",
+      "screenshotAlt": "Leela Quest native Android sign-in screen",
+      "location": "AuthScreen",
+      "verificationStatus": "gated-write"
+    }
+  ],
+  "video": { "file": "video/native-first-run.mp4" },
+  "keyFeatures": ["Native Android onboarding", "Language selection", "Account and progress boundary"],
+  "capturedAt": "2026-09-20T19:45:00Z",
+  "generatedAt": "2026-09-20T19:45:00Z",
+  "note": "Captured from the actual com.humanquest.leela APK, version 1.2.18+72, on the Small_Phone_API_35 emulator. The APK was prebuilt, so no exact source SHA is claimed."
+}

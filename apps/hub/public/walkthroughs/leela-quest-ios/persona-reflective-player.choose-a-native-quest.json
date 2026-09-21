@@ -1,0 +1,70 @@
+{
+  "personaId": "reflective-player",
+  "journeyId": "choose-a-native-quest",
+  "headline": "Aisha chooses how much of the Leela journey she is ready to begin",
+  "overview": "The real iPhone app explains the practice, resumes a seeded journey, and lets Aisha compare distinct play modes before spending a credit or entering an intention.",
+  "payoff": "She reaches the Full Game, Daily Practice, and Real Board choices with the interaction model and cost visible.",
+  "platform": "ios",
+  "surface": "iphone",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "Understand the practice",
+      "narrative": "Aisha moves from language selection through the native explanation of wisdom, play, and intention.",
+      "frames": [
+        "native-guided-start/iphone/step-01-language.png",
+        "native-guided-start/iphone/step-02-wisdom.png",
+        "native-guided-start/iphone/step-03-play.png",
+        "native-guided-start/iphone/step-04-begins.png"
+      ],
+      "frameCaptions": [
+        "Choose language",
+        "Ancient wisdom",
+        "Divine play",
+        "Bring an intention"
+      ],
+      "location": "LanguageScreen → OnboardingScreen",
+      "surface": "iphone",
+      "sourceFeature": "native-guided-start",
+      "action": "Complete native onboarding",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "Start from an honest home state",
+      "narrative": "The app resumes a synthetic seeded journey and keeps New Quest immediately available; the walkthrough does not disguise or replace that state.",
+      "frames": [
+        "native-guided-start/iphone/step-05-home.png"
+      ],
+      "frameCaptions": [
+        "Native home with seeded journey"
+      ],
+      "location": "HomeScreen",
+      "surface": "iphone",
+      "sourceFeature": "native-guided-start",
+      "action": "Open the native home",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Choose a mode before committing",
+      "narrative": "Aisha opens New Quest, selects On the Board, and compares three different levels of commitment without spending a credit.",
+      "frames": [
+        "native-guided-start/iphone/step-06-mode.png",
+        "native-guided-start/iphone/step-07-board-mode.png"
+      ],
+      "frameCaptions": [
+        "Choose a game mode",
+        "Choose an On the Board path"
+      ],
+      "location": "GameModeScreen → OnBoardModeScreen",
+      "surface": "iphone",
+      "sourceFeature": "native-guided-start",
+      "action": "Compare native journey choices",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:36:17Z",
+  "walkRecording": "video/native-onboarding-to-mode.mp4",
+  "storyVideo": "personas/choose-a-native-quest-story.mp4"
+}

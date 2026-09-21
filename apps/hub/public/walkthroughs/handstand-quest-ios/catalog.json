@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Handstand Quest · iOS",
+  "platform": "ios",
+  "driver": "ios-simulator",
+  "capturedAgainst": "fitquest.handstand 3.0.7+2 · Handstand Quest Walkthrough 20260920 · iOS 26.5",
+  "discoveredAt": "2026-09-20T19:00:00Z",
+  "updatedAt": "2026-09-20T20:02:00Z",
+  "scope": {
+    "status": "partial",
+    "note": "The actual native baseline, first goals, and sync boundary are live-walked. Authenticated workout playback, voice timing, video, progress history, HealthKit, and physical-device behavior remain pending."
+  },
+  "features": [
+    {
+      "featureId": "native-goal-setting",
+      "featureName": "Native baseline and goal setting",
+      "location": "OnboardingPage1 → AuthPicker",
+      "category": "onboarding",
+      "requiresAuth": false,
+      "surfaceStatus": { "iphone": "done" },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T20:02:00Z"
+    },
+    {
+      "featureId": "structured-workout",
+      "featureName": "Complete a structured workout",
+      "location": "WorkoutSequenceViewController",
+      "category": "training",
+      "requiresAuth": true,
+      "surfaceStatus": { "iphone": "blocked" },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Requires an isolated signed-in test account and workout state."
+    },
+    {
+      "featureId": "voice-timed-practice",
+      "featureName": "Run voice-timed practice",
+      "location": "AudioListener / PracticeViewController",
+      "category": "practice",
+      "requiresAuth": true,
+      "surfaceStatus": { "iphone": "blocked" },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Requires microphone permission and a physical-device follow-up for meaningful validation."
+    },
+    {
+      "featureId": "progress-and-video",
+      "featureName": "Review progress and practice video",
+      "location": "StatsViewController / ExerciseVideoViewController",
+      "category": "progress",
+      "requiresAuth": true,
+      "surfaceStatus": { "iphone": "blocked" },
+      "videoStatus": "pending",
+      "issueCount": 0
+    }
+  ],
+  "personas": [
+    {
+      "id": "consistent-beginner",
+      "name": "Jordan Lee",
+      "description": "Can kick up to a wall but practices inconsistently and needs a short repeatable session with measurable progress.",
+      "entryPoint": "OnboardPage1ViewController",
+      "keyJourneys": ["set-a-first-native-goal"],
+      "portrait": "personas/consistent-beginner.png",
+      "scene": "personas/consistent-beginner-scene.png",
+      "navItems": [
+        { "label": "Baseline", "location": "OnboardPage2ViewController" },
+        { "label": "Goals", "location": "OnboardPage3ViewController" },
+        { "label": "Progress sync", "location": "AuthPickerViewController" }
+      ]
+    }
+  ]
+}

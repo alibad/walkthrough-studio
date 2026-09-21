@@ -1,0 +1,94 @@
+{
+  "personaId": "reflective-player",
+  "journeyId": "prepare-for-a-guided-journey",
+  "headline": "Aisha understands the intention, roll, wisdom, reflection, and observation loop before she enters the game.",
+  "overview": "A live product-level walk for Leela Quest · Web, framed around Aisha Karim's actual decision rather than a list of routes.",
+  "payoff": "Aisha understands the intention, roll, wisdom, reflection, and observation loop before she enters the game.",
+  "platform": "web",
+  "surface": "desktop",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "A journey, not a fortune teller",
+      "narrative": "The product frames the board as self-discovery through ancient wisdom and offers native and browser entry points.",
+      "frames": [
+        "understand-the-game/desktop/step-01-introduction.png"
+      ],
+      "frameCaptions": [
+        "A journey, not a fortune teller"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "understand-the-game",
+      "action": "Opened the public Leela Quest introduction.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "The full reflection loop is visible",
+      "narrative": "Aisha sees that the product begins with her intention, uses the roll to create a prompt, and ends with reflection and observation.",
+      "frames": [
+        "understand-the-game/desktop/step-02-loop.png"
+      ],
+      "frameCaptions": [
+        "The full reflection loop is visible"
+      ],
+      "location": "/",
+      "surface": "desktop",
+      "sourceFeature": "understand-the-game",
+      "action": "Moved to How It Works.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-03",
+      "title": "Rules turn symbolism into a usable practice",
+      "narrative": "The guide explains how intention, dice, snakes, arrows, and square meanings work together so the ritual is learnable rather than mystical UI.",
+      "frames": [
+        "understand-the-game/desktop/step-03-how-to-play.png"
+      ],
+      "frameCaptions": [
+        "Rules turn symbolism into a usable practice"
+      ],
+      "location": "/how-to-play",
+      "surface": "desktop",
+      "sourceFeature": "understand-the-game",
+      "action": "Opened How to Play.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-04",
+      "title": "The 72-square board can be studied before a roll",
+      "narrative": "The board reference exposes the map and its states outside a live session, giving Aisha context for the guidance she will receive.",
+      "frames": [
+        "understand-the-game/desktop/step-04-board.png"
+      ],
+      "frameCaptions": [
+        "The 72-square board can be studied before a roll"
+      ],
+      "location": "/board",
+      "surface": "desktop",
+      "sourceFeature": "understand-the-game",
+      "action": "Opened the board reference.",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-05",
+      "title": "The product hands off to the real game",
+      "narrative": "The browser build is the actual Flutter game surface. Native iPhone evidence is published separately so this web handoff is not misrepresented as mobile-app proof.",
+      "frames": [
+        "understand-the-game/desktop/step-05-web-app.png"
+      ],
+      "frameCaptions": [
+        "The product hands off to the real game"
+      ],
+      "location": "/#/menu",
+      "surface": "desktop",
+      "sourceFeature": "understand-the-game",
+      "action": "Opened the production web app.",
+      "verificationStatus": "live-walked"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:22:59.419Z",
+  "walkRecording": "video/page@f2db04723b3911006cbe6560d4ea7d40.mp4",
+  "storyVideo": "personas/prepare-for-a-guided-journey-story.mp4"
+}

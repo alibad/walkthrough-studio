@@ -1,0 +1,29 @@
+{
+  "featureId": "native-relationship-followup",
+  "featureName": "Turn conversation into relationship follow-up",
+  "type": "feature",
+  "location": "RelationshipDetailScreen",
+  "category": "follow-up",
+  "surface": "iphone",
+  "platform": "ios",
+  "locale": "en",
+  "headline": "Keep the person and the next action together",
+  "overview": "An existing product-supplied iPhone Simulator demo shows relationship context and follow-up. It is disclosed as pre-recorded source evidence.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "Follow-up is organized around the relationship",
+      "action": "Reviewed the repository's narrated relationship demonstration.",
+      "description": "The demo shows synthetic contact context becoming usable follow-up inside the native app. The authenticated journey was not freshly replayed.",
+      "screenshotFilename": "demos/relationships.png",
+      "screenshotAlt": "Scribe Quest product demo of native relationship follow-up",
+      "location": "RelationshipDetailScreen",
+      "verificationStatus": "synthetic"
+    }
+  ],
+  "video": { "file": "demos/relationships.mp4" },
+  "keyFeatures": ["Relationship context", "Practical follow-up"],
+  "capturedAt": "2026-09-20T19:42:00Z",
+  "generatedAt": "2026-09-20T19:42:00Z",
+  "note": "Copied from marketing/public/demos/relationships.mp4 in the Scribe Quest repository. Real simulator footage with synthetic sample content, but not re-executed in this run."
+}

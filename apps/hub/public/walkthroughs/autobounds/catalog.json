@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "projectName": "AutoBounds",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.autobounds.com",
+  "discoveredAt": "2026-09-20T19:19:45.960Z",
+  "updatedAt": "2026-09-20T19:20:17.804Z",
+  "scope": {
+    "status": "partial",
+    "note": "Source navigation and the live public entry were reconciled. The product-level journey is live-walked on desktop and mobile; authenticated and device-gated features remain explicitly pending or blocked.",
+    "excluded": []
+  },
+  "features": [
+    {
+      "featureId": "evaluate-field-mapping-workflow",
+      "featureName": "Evaluating a field-mapping workflow",
+      "location": "/",
+      "category": "field mapping",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:20:17.804Z"
+    },
+    {
+      "featureId": "map-and-extract",
+      "featureName": "Map and extract field boundaries",
+      "location": "/projects/[projectId]/farms/[farmId]/fields/[fieldId]",
+      "category": "field mapping",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "model-labs",
+      "featureName": "Compare extraction models",
+      "location": "/labs",
+      "category": "experiments",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "projects-and-farms",
+      "featureName": "Organize projects, farms, and fields",
+      "location": "/projects",
+      "category": "organization",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "export-boundaries",
+      "featureName": "Export accepted boundaries",
+      "location": "/projects/[projectId]",
+      "category": "export",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "admin-operations",
+      "featureName": "Operate model and user settings",
+      "location": "/admin",
+      "category": "administration",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    }
+  ],
+  "personas": [
+    {
+      "id": "ag-operations-lead",
+      "name": "Maya Thornton",
+      "description": "Runs mapping operations for a regional agriculture team and needs a faster first pass before GIS review. She cares about accepted boundaries and export compatibility, not an impressive model name on its own.",
+      "entryPoint": "/",
+      "keyJourneys": [
+        "assess-ai-boundary-workflow"
+      ],
+      "portrait": "personas/ag-operations-lead.png",
+      "scene": "personas/ag-operations-lead-scene.png",
+      "navItems": [
+        {
+          "label": "Map and extract field boundaries",
+          "location": "/projects/[projectId]/farms/[farmId]/fields/[fieldId]"
+        },
+        {
+          "label": "Compare extraction models",
+          "location": "/labs"
+        },
+        {
+          "label": "Organize projects, farms, and fields",
+          "location": "/projects"
+        },
+        {
+          "label": "Export accepted boundaries",
+          "location": "/projects/[projectId]"
+        },
+        {
+          "label": "Operate model and user settings",
+          "location": "/admin"
+        }
+      ]
+    }
+  ]
+}

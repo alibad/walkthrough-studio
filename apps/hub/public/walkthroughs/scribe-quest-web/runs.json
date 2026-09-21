@@ -1,0 +1,117 @@
+{
+  "runs": [
+    {
+      "id": "2026-09-20T19:17:49.073Z",
+      "startedAt": "2026-09-20T19:17:32.096Z",
+      "completedAt": "2026-09-20T19:17:49.073Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": null,
+        "commitSubject": "Public production capture; deployed source SHA is not exposed."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.scribe-quest.com",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [],
+        "personas": [],
+        "screenshots": 6,
+        "videos": 0,
+        "issues": 2
+      }
+    },
+    {
+      "id": "2026-09-20T19:18:30.806Z",
+      "startedAt": "2026-09-20T19:18:04.547Z",
+      "completedAt": "2026-09-20T19:18:30.806Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": null,
+        "commitSubject": "Public production capture; deployed source SHA is not exposed."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.scribe-quest.com",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "follow-a-conversation-into-action"
+        ],
+        "personas": [
+          "client-conversation-owner"
+        ],
+        "screenshots": 9,
+        "videos": 1,
+        "issues": 1
+      }
+    },
+    {
+      "id": "2026-09-20T19:19:39.119Z",
+      "startedAt": "2026-09-20T19:19:05.974Z",
+      "completedAt": "2026-09-20T19:19:39.119Z",
+      "skill": "walkthrough",
+      "agent": "walk-portfolio-quests.mjs",
+      "target": {
+        "sha": "",
+        "shaShort": "—",
+        "branch": "main",
+        "dirty": true,
+        "commitDate": null,
+        "commitSubject": "Public production capture; deployed source SHA is not exposed."
+      },
+      "config": {
+        "platform": "web",
+        "driver": "playwright",
+        "capturedAgainst": "https://www.scribe-quest.com",
+        "surfaces": [
+          "desktop",
+          "mobile"
+        ],
+        "locales": [
+          "en"
+        ],
+        "notes": "source inventory reconciled with live public entry · authenticated features remain blocked rather than simulated · video normalized to H.264 MP4 when available · invariants verified: retina, animationsFrozen, timeFrozen, contentful, consoleNetwork, video, realMobile, freshContext"
+      },
+      "coverage": {
+        "features": [
+          "follow-a-conversation-into-action"
+        ],
+        "personas": [
+          "client-conversation-owner"
+        ],
+        "screenshots": 12,
+        "videos": 2,
+        "issues": 0
+      }
+    }
+  ]
+}

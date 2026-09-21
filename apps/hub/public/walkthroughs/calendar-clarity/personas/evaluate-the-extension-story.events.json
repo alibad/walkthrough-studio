@@ -1,0 +1,58 @@
+{
+  "journeyId": "evaluate-the-extension",
+  "personaId": "meeting-heavy-operator",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 53000,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 7500,
+      "narration": "Priya compares visibility, focus, event actions, and sync colors before deciding whether to install.",
+      "image": "personas/meeting-heavy-operator-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 7500,
+      "durMs": 7000,
+      "narration": "Priya sees the same Google Calendar, with fewer competing colors and clearer event details.",
+      "image": "see-a-calmer-calendar/desktop/step-01-clarity.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 14500,
+      "durMs": 7650,
+      "narration": "Priya sees visibility, focus, event actions, and colors as separate tools before choosing what she needs.",
+      "image": "see-a-calmer-calendar/desktop/step-02-features.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 22150,
+      "durMs": 8200,
+      "narration": "Priya sees solo, external, declined, and tentative events dim, while remaining visible on her calendar.",
+      "image": "see-a-calmer-calendar/desktop/step-03-visibility.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 30350,
+      "durMs": 6900,
+      "narration": "Inside the event, Priya starts a timer, ambient sounds, and Zen mode for the scheduled work.",
+      "image": "see-a-calmer-calendar/desktop/step-04-focus.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 37250,
+      "durMs": 7300,
+      "narration": "Priya sees saved colors follow Google Calendar events to her phone and other devices.",
+      "image": "see-a-calmer-calendar/desktop/step-05-colors.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 44550,
+      "durMs": 8450,
+      "narration": "Priya can distinguish visibility, focus, event actions, and native syncing colors before installing the extension.",
+      "image": "personas/meeting-heavy-operator.png"
+    }
+  ]
+}

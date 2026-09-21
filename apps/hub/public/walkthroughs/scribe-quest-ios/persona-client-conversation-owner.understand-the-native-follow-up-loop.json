@@ -1,0 +1,52 @@
+{
+  "personaId": "client-conversation-owner",
+  "journeyId": "understand-the-native-follow-up-loop",
+  "headline": "Maya sees the native path from a conversation to a portable follow-up record",
+  "overview": "The account boundary is freshly walked. Deeper capture, relationship, and PDF scenes use the product's existing narrated simulator demos and are explicitly marked described rather than freshly walked.",
+  "payoff": "Maya understands what the native app is designed to do and exactly where fresh authenticated evidence stops.",
+  "platform": "ios",
+  "surface": "iphone",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "Understand the account boundary",
+      "narrative": "The actual iPhone app explains why sign-in is needed, when microphone permission appears, and how an account can be created without executing the write.",
+      "frames": [
+        "native-auth-boundary/iphone/step-01-sign-in.png",
+        "native-auth-boundary/iphone/step-02-create-account.png"
+      ],
+      "frameCaptions": [
+        "Native sign-in",
+        "Native account creation"
+      ],
+      "location": "LoginScreen → SignUpScreen",
+      "surface": "iphone",
+      "sourceFeature": "native-auth-boundary",
+      "action": "Review the real authentication boundary",
+      "verificationStatus": "live-walked"
+    },
+    {
+      "id": "scene-02",
+      "title": "See the intended capture and follow-up loop",
+      "narrative": "Product-supplied simulator footage demonstrates capture, relationship context, and PDF export using synthetic sample content. This scene is not claimed as a fresh authenticated run.",
+      "frames": [
+        "demos/conversation.png",
+        "demos/relationships.png",
+        "demos/pdf.png"
+      ],
+      "frameCaptions": [
+        "Conversation capture demo",
+        "Relationship follow-up demo",
+        "PDF export demo"
+      ],
+      "location": "RecordingScreen → RelationshipDetailScreen → ExportScreen",
+      "surface": "iphone",
+      "sourceFeature": "native-conversation-capture",
+      "action": "Review product-supplied native demos",
+      "verificationStatus": "synthetic"
+    }
+  ],
+  "capturedAt": "2026-09-20T19:42:00Z",
+  "walkRecording": "video/native-auth-boundary.mp4",
+  "storyVideo": "personas/understand-the-native-follow-up-loop-story.mp4"
+}

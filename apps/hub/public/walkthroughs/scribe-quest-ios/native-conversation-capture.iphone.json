@@ -1,0 +1,29 @@
+{
+  "featureId": "native-conversation-capture",
+  "featureName": "Capture a conversation",
+  "type": "feature",
+  "location": "RecordingScreen",
+  "category": "capture",
+  "surface": "iphone",
+  "platform": "ios",
+  "locale": "en",
+  "headline": "Capture while the conversation is happening",
+  "overview": "An existing product-supplied iPhone Simulator demo shows live conversation capture. It is published here as pre-recorded source evidence, not claimed as a fresh authenticated walk.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "title": "The capture surface stays focused on the conversation",
+      "action": "Reviewed the repository's narrated iPhone Simulator demonstration.",
+      "description": "The demo shows the native recording workflow with synthetic sample content. Authentication and microphone capture were not replayed in this run.",
+      "screenshotFilename": "demos/conversation.png",
+      "screenshotAlt": "Scribe Quest product demo of native conversation capture",
+      "location": "RecordingScreen",
+      "verificationStatus": "synthetic"
+    }
+  ],
+  "video": { "file": "demos/conversation.mp4" },
+  "keyFeatures": ["Live native recording", "Conversation-focused capture"],
+  "capturedAt": "2026-09-20T19:42:00Z",
+  "generatedAt": "2026-09-20T19:42:00Z",
+  "note": "Copied from marketing/public/demos/conversation.mp4 in the Scribe Quest repository. Real simulator footage with synthetic sample content, but not re-executed in this run."
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 2,
+  "projectName": "Leela Quest · Web",
+  "platform": "web",
+  "driver": "playwright",
+  "capturedAgainst": "https://www.leela.quest",
+  "discoveredAt": "2026-09-20T19:22:17.811Z",
+  "updatedAt": "2026-09-20T19:22:59.419Z",
+  "scope": {
+    "status": "partial",
+    "note": "Source navigation and the live public entry were reconciled. The product-level journey is live-walked on desktop and mobile; authenticated and device-gated features remain explicitly pending or blocked.",
+    "excluded": []
+  },
+  "features": [
+    {
+      "featureId": "understand-the-game",
+      "featureName": "Understanding the game before playing",
+      "location": "/",
+      "category": "guided reflection",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "done",
+        "mobile": "done"
+      },
+      "videoStatus": "done",
+      "issueCount": 0,
+      "lastWalkthroughAt": "2026-09-20T19:22:59.419Z"
+    },
+    {
+      "featureId": "set-intention",
+      "featureName": "Set an intention",
+      "location": "IntentionScreen",
+      "category": "journey",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "roll-and-move",
+      "featureName": "Roll and move on the board",
+      "location": "GameBoardScreen",
+      "category": "gameplay",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "receive-wisdom",
+      "featureName": "Receive square wisdom",
+      "location": "SquareDetailScreen",
+      "category": "wisdom",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "reflect-on-journey",
+      "featureName": "Reflect on the journey",
+      "location": "ReflectionScreen",
+      "category": "reflection",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    },
+    {
+      "featureId": "talk-mode",
+      "featureName": "Use a spoken guide",
+      "location": "TalkModeScreen",
+      "category": "guidance",
+      "requiresAuth": false,
+      "surfaceStatus": {
+        "desktop": "pending",
+        "mobile": "pending"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source and awaiting an isolated feature walk."
+    },
+    {
+      "featureId": "journey-history",
+      "featureName": "Review past journeys",
+      "location": "HistoryScreen",
+      "category": "reflection",
+      "requiresAuth": true,
+      "surfaceStatus": {
+        "desktop": "blocked",
+        "mobile": "blocked"
+      },
+      "videoStatus": "pending",
+      "issueCount": 0,
+      "notes": "Catalogued from source; the live production path requires an authenticated workspace."
+    }
+  ],
+  "personas": [
+    {
+      "id": "reflective-player",
+      "name": "Aisha Karim",
+      "description": "Arrives with a real decision she has been circling for weeks and wants a structured reflection, not a prediction or a generic meditation app.",
+      "entryPoint": "/",
+      "keyJourneys": [
+        "prepare-for-a-guided-journey"
+      ],
+      "portrait": "personas/reflective-player.png",
+      "scene": "personas/reflective-player-scene.png",
+      "navItems": [
+        {
+          "label": "Set an intention",
+          "location": "IntentionScreen"
+        },
+        {
+          "label": "Roll and move on the board",
+          "location": "GameBoardScreen"
+        },
+        {
+          "label": "Receive square wisdom",
+          "location": "SquareDetailScreen"
+        },
+        {
+          "label": "Reflect on the journey",
+          "location": "ReflectionScreen"
+        },
+        {
+          "label": "Use a spoken guide",
+          "location": "TalkModeScreen"
+        }
+      ]
+    }
+  ]
+}

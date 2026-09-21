@@ -1,0 +1,58 @@
+{
+  "journeyId": "evaluate-an-adaptive-plan",
+  "personaId": "multi-goal-planner",
+  "voice": "openai · nova",
+  "note": "Captures are real. The voice is synthesized locally and is not the product's own audio.",
+  "totalMs": 54250,
+  "beats": [
+    {
+      "kind": "intro",
+      "startMs": 0,
+      "durMs": 6300,
+      "narration": "Samira reaches sign-in after tracing one system from planning prompts to shared reflection.",
+      "image": "personas/multi-goal-planner-scene.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 6300,
+      "durMs": 7000,
+      "narration": "Samira needs a plan that holds as priorities shift after the first burst of motivation.",
+      "image": "turn-a-goal-into-a-living-plan/desktop/step-01-goal.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 13300,
+      "durMs": 8300,
+      "narration": "Samira sees broad goals, changing plans, and lost momentum treated as separate planning problems.",
+      "image": "turn-a-goal-into-a-living-plan/desktop/step-02-tour.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 21600,
+      "durMs": 6350,
+      "narration": "Samira rebalances the active scenario as dates, capacity, and energy shift.",
+      "image": "turn-a-goal-into-a-living-plan/desktop/step-03-changing.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 27950,
+      "durMs": 7350,
+      "narration": "Samira sees planning, progress, reflection, teamwork, and AI access connected in one workspace.",
+      "image": "turn-a-goal-into-a-living-plan/desktop/step-04-system.png"
+    },
+    {
+      "kind": "scene",
+      "startMs": 35300,
+      "durMs": 6550,
+      "narration": "Samira reaches the sign-in gate, where Google, GitHub, email, and Twitter remain available.",
+      "image": "turn-a-goal-into-a-living-plan/desktop/step-05-sign-in.png"
+    },
+    {
+      "kind": "outro",
+      "startMs": 41850,
+      "durMs": 12400,
+      "narration": "Samira reaches the real sign-in surface after seeing prompt-to-plan, timeline, prioritization, reflection, collaboration, and MCP access as one adaptable system.",
+      "image": "personas/multi-goal-planner.png"
+    }
+  ]
+}
