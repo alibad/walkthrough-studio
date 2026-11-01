@@ -6,6 +6,7 @@ import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { INSTALL_PATHS, INVARIANT_PROMISES, REPO } from "@/lib/adoption";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/use" },
   // The root layout already appends the suite name via a title template.
   title: "Use it on your own app",
   description:

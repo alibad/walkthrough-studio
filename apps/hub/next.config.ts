@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   // never read server-side, only linked by URL, so exclude them. The glob is
   // doubled because the tracing root may resolve to the app or the repo root.
   outputFileTracingExcludes: {
-    "*": ["public/walkthroughs/**/*.mp4", "**/public/walkthroughs/**/*.mp4"],
+    "*": ["public/walkthroughs/**/*.mp4", "**/public/walkthroughs/**/*.mp4", "public/walkthroughs/**/*.webm", "**/public/walkthroughs/**/*.webm"],
   },
 
   images: {

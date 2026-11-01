@@ -26,6 +26,7 @@ export async function generateMetadata({
   const feature = getFeature(slug, featureId);
   if (!project || !feature) return { title: "Not found" };
   return {
+    alternates: { canonical: `/${slug}/features/${featureId}` },
     title: `${feature.featureName} · ${project.name}`,
     description: `Walkthrough of ${feature.featureName} in ${project.name}.`,
   };

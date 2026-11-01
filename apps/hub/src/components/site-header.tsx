@@ -114,13 +114,15 @@ export function SiteHeader({
 export function SiteFooter({ className }: { className?: string }) {
   return (
     <footer className={cn("border-t border-rule bg-paper-sunken/40", className)}>
-      <div className="mx-auto flex max-w-[76rem] flex-col gap-3 px-6 py-8 text-small text-ink-faint sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex max-w-[76rem] flex-col gap-3 px-6 py-8 text-small text-ink-faint lg:flex-row lg:items-center lg:justify-between">
         <p>
-          Captures are written by the{" "}
+          A <a href="https://www.humanquest.net/" className="underline underline-offset-2">Human Quest</a> project. Captures are written by the{" "}
           <code className="font-mono text-[0.8125rem] text-ink-muted">walkthrough</code> skill
           and read straight off disk. Nothing here is generated at request time.
         </p>
-        <p className="flex shrink-0 items-center gap-3">
+        <p className="flex flex-wrap items-center gap-3">
+          <a href="https://www.humanquest.net/ai-patterns" className="text-ink-muted underline underline-offset-2">Explore AI Patterns</a>
+          <span aria-hidden>·</span>
           <Link
             href="/use"
             className="text-ink-muted underline decoration-rule-strong underline-offset-2 transition-colors hover:text-ink"

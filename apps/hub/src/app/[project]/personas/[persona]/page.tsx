@@ -20,6 +20,7 @@ export async function generateMetadata({
   const persona = project ? getPersonaDetail(slug, personaId) : null;
   if (!project || !persona) return { title: "Not found" };
   return {
+    alternates: { canonical: `/${slug}/personas/${personaId}` },
     title: `${persona.name} · ${project.name}`,
     description: plainText(persona.description),
   };

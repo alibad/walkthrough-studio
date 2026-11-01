@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
 import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
@@ -40,22 +41,25 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  // Needed to resolve the OG image to an absolute URL. Override with
-  // NEXT_PUBLIC_SITE_URL when deploying somewhere other than localhost.
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  // The verified public origin resolves every share image consistently.
+  // Override NEXT_PUBLIC_SITE_URL for a different verified deployment.
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Walkthrough Studio",
+    default: SITE_TITLE,
     template: "%s · Walkthrough Studio",
   },
   description:
     "Walk any app — web, mobile, desktop or command line — and publish what you actually saw. Captured feature by feature, persona by persona, with the drift tracked between runs.",
+  manifest: "/manifest.webmanifest",
+  twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION, images: [`${SITE_URL}/art/og-card.png`] },
   applicationName: "Walkthrough Studio",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     shortcut: "/favicon.svg",
   },
   openGraph: {
-    title: "Walkthrough Studio",
+    title: SITE_TITLE,
+    siteName: "Walkthrough Studio",
     description:
       "Walk any app — web, mobile, desktop or command line — and publish what you actually saw.",
     images: ["/art/og-card.png"],
@@ -92,6 +96,7 @@ export default function RootLayout({
       <body
         className={`${sans.variable} ${serif.variable} ${mono.variable} min-h-screen bg-paper font-sans text-ink antialiased`}
       >
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({"@context":"https://schema.org","@type":"SoftwareApplication",name:"Walkthrough Studio",url:SITE_URL,description:SITE_DESCRIPTION,applicationCategory:"DeveloperApplication",operatingSystem:"Web",codeRepository:"https://github.com/alibad/walkthrough-studio",publisher:{"@type":"Organization",name:"Human Quest",url:"https://www.humanquest.net/"}}).replace(/</g,"\\u003c")}}/>
         {children}
       </body>
     </html>

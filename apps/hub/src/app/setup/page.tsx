@@ -12,6 +12,7 @@ import {
 } from "@/lib/capabilities";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/setup" },
   title: "What it needs",
   description:
     "Every capability this system uses, which of them need an API key, and exactly what degrades when one is missing.",

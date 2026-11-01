@@ -21,6 +21,7 @@ export async function generateMetadata({
   const project = getProject(slug);
   if (!project) return { title: "Not found" };
   return {
+    alternates: { canonical: `/${slug}` },
     title: project.name,
     description: project.description ?? project.longDescription,
   };

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
 import { Suspense } from "react";
 import { Library } from "@/components/constellation/library";
 import { RepoCard } from "@/components/repo-card";
@@ -5,6 +7,8 @@ import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { getAllProjectSummaries, getPersonas } from "@/lib/data";
 import { buildProductAtlas } from "@/lib/product-atlas";
 import type { PersonaSummary } from "@/lib/types";
+
+export const metadata: Metadata = { title: { absolute: SITE_TITLE },description:SITE_DESCRIPTION,alternates:{canonical:SITE_URL},openGraph:{title:SITE_TITLE,description:SITE_DESCRIPTION,url:SITE_URL,type:"website",images:[`${SITE_URL}/art/og-card.png`]} };
 
 export default function HomePage() {
   // Read on every request. The data is a handful of JSON files on local disk,

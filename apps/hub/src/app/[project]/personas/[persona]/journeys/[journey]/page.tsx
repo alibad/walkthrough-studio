@@ -18,7 +18,7 @@ export async function generateMetadata({
   const { project: slug, persona: personaId, journey: journeyId } = await params;
   const journey = getJourney(slug, personaId, journeyId);
   if (!journey) return { title: "Not found" };
-  return { title: journey.headline, description: plainText(journey.overview) };
+  return { alternates: {canonical:`/${slug}/personas/${personaId}/journeys/${journeyId}`}, title: journey.headline, description: plainText(journey.overview) };
 }
 
 export default async function JourneyPage({

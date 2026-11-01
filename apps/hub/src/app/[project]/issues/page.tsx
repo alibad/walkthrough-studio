@@ -27,7 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { project } = await params;
   const p = getProject(project);
-  return { title: p ? `Findings — ${p.name}` : "Findings" };
+  return { alternates: {canonical:`/${project}/issues`}, title: p ? `Findings — ${p.name}` : "Findings" };
 }
 
 const SEVERITY_ORDER: CapturedIssue["severity"][] = ["blocker", "major", "minor", "polish"];
