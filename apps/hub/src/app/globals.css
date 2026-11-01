@@ -465,3 +465,16 @@
     animation: none;
   }
 }
+
+/* Shared Human Quest footer band (https://www.humanquest.net/embed/hq-footer.js), in the hub's colours. */
+hq-footer {
+  display: block;
+  --hq-bg: var(--paper-raised);
+  --hq-surface: var(--paper-sunken);
+  --hq-ink: var(--ink);
+  --hq-muted: var(--ink-muted);
+  --hq-border: var(--rule);
+  --hq-accent: var(--brand);
+  --hq-font: var(--font-sans-stack);
+}
+hq-footer:not(:defined) { min-height: 150px; }

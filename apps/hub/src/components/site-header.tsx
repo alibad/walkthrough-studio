@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Script from "next/script";
 import { ChevronRight } from "lucide-react";
 import { GithubMark } from "@/components/brand/github-mark";
 import { Logo } from "@/components/brand/logo";
@@ -114,6 +115,13 @@ export function SiteHeader({
 export function SiteFooter({ className }: { className?: string }) {
   return (
     <footer className={cn("border-t border-rule bg-paper-sunken/40", className)}>
+      {/* The shared Human Quest band: back to humanquest.net and on to the other quests. */}
+      <div className="mx-auto max-w-[76rem] px-6 pt-8">
+        <hq-footer current="walkthrough" theme="light">
+          <a href="https://www.humanquest.net/?ref=walkthrough">A Human Quest AI pattern · humanquest.net</a>
+        </hq-footer>
+        <Script src="https://www.humanquest.net/embed/hq-footer.js" strategy="afterInteractive" />
+      </div>
       <div className="mx-auto flex max-w-[76rem] flex-col gap-3 px-6 py-8 text-small text-ink-faint lg:flex-row lg:items-center lg:justify-between">
         <p>
           A <a href="https://www.humanquest.net/" className="underline underline-offset-2">Human Quest</a> project. Captures are written by the{" "}
