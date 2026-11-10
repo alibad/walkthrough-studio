@@ -66,7 +66,7 @@ export function Lightbox({
       role="dialog"
       aria-modal="true"
       aria-label={`${title} capture`}
-      className="fixed inset-0 z-50 flex flex-col bg-ink/92 backdrop-blur-sm"
+      className="wt-dark fixed inset-0 z-50 flex flex-col bg-ink/92 backdrop-blur-sm"
     >
       <div className="flex shrink-0 items-center justify-between gap-4 px-4 py-3">
         <p className="truncate font-mono text-label text-paper/70">{srcs[index]}</p>

@@ -83,7 +83,7 @@ function RunCard({ run, isLatest }: { run: RunManifest; isLatest: boolean }) {
       </header>
 
       <div className="flex flex-wrap gap-x-8 gap-y-3 px-4 py-3 text-small">
-        <div>
+        <div className="min-w-0">
           <p className="text-micro text-ink-faint">Target commit</p>
           <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[0.8125rem] text-ink">
             <GitBranch className="size-3 text-ink-faint" aria-hidden />
@@ -134,9 +134,9 @@ function RunCard({ run, isLatest }: { run: RunManifest; isLatest: boolean }) {
         </div>
 
         {run.config.capturedAgainst && (
-          <div>
+          <div className="min-w-0">
             <p className="text-micro text-ink-faint">Captured against</p>
-            <p className="mt-0.5 font-mono text-[0.8125rem] text-ink">
+            <p className="mt-0.5 font-mono text-[0.8125rem] text-ink [overflow-wrap:anywhere]">
               {run.config.capturedAgainst}
             </p>
           </div>

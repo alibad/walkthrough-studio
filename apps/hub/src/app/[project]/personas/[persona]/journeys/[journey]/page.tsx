@@ -52,7 +52,7 @@ export default async function JourneyPage({
           <div className="mt-5 flex flex-wrap items-end justify-between gap-5">
             <div className="min-w-0 flex-1">
               <p className="eyebrow">{persona.authRole ?? "Journey"}</p>
-              <h1 className="display mt-1.5 max-w-[24ch] text-balance">{journey.headline}</h1>
+              <h1 className="display mt-1.5 max-w-[24ch] text-head-lg text-balance">{journey.headline}</h1>
             </div>
             {/* Both, when both exist — they are not alternatives.
              *

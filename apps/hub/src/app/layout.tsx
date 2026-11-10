@@ -2,6 +2,21 @@ import type { Metadata, Viewport } from "next";
 import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
 import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
+// The Human Quest family look (The Path) on every page: the kit, then this
+// site's Path layer, which maps the hub's paper-and-ink tokens to day and night.
+import "@/components/hq-path/hq-path.css";
+import "./home.css";
+import { HqThemeSync } from "@/components/hq-theme-sync";
+
+// The Path: day or night before first paint (the same key every Human Quest
+// site uses). It lives in this server component so React never renders the
+// script on the client.
+const themeScript = `try{var t=localStorage.getItem("hq-theme");if(!t)t=matchMedia("(prefers-color-scheme: dark)").matches?"night":"day";document.documentElement.dataset.theme=t}catch(e){}`;
+
+// The family type (Fraunces, Instrument Sans). The kit CSS @imports it too,
+// but Next drops an @import that does not open the final stylesheet.
+const HQ_FONTS =
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";
 
 /**
  * Three faces, three jobs.
@@ -92,11 +107,18 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" data-hqp-t="pattern" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="stylesheet" href={HQ_FONTS} />
+      </head>
       <body
         className={`${sans.variable} ${serif.variable} ${mono.variable} min-h-screen bg-paper font-sans text-ink antialiased`}
       >
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({"@context":"https://schema.org","@type":"SoftwareApplication",name:"Walkthrough Studio",url:SITE_URL,description:SITE_DESCRIPTION,applicationCategory:"DeveloperApplication",operatingSystem:"Web",codeRepository:"https://github.com/alibad/walkthrough-studio",publisher:{"@type":"Organization",name:"Human Quest",url:"https://www.humanquest.net/"}}).replace(/</g,"\\u003c")}}/>
+        <HqThemeSync />
         {children}
       </body>
     </html>

@@ -107,14 +107,14 @@ export function Scene({
       );
     case "split-left":
       return (
-        <section className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 py-12 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
+        <section className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 px-6 py-12 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)]">
           <div>{body}</div>
           <div>{capture}</div>
         </section>
       );
     case "split-right":
       return (
-        <section className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
+        <section className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 px-6 py-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
           <div className="lg:order-1">{capture}</div>
           <div className="lg:order-2">{body}</div>
         </section>
@@ -149,7 +149,7 @@ function SceneCapture({
           controls
           playsInline
           preload="metadata"
-          className="size-full bg-ink object-contain"
+          className="wt-dark size-full bg-ink object-contain"
         />
       </SurfaceFrame>
     );

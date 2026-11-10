@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 import { PLATFORM_PROFILES } from "@/lib/platforms";
 import {
@@ -50,7 +50,7 @@ export function ConstellationChart({ products, selected, onSelect }: ChartProps)
           fill
           priority
           sizes="(max-width: 1440px) 100vw, 1440px"
-          className="object-fill mix-blend-multiply"
+          className="wt-atlas-map object-fill mix-blend-multiply"
         />
 
         <AtlasRoutes products={products} selected={selected} hovered={hovered} />
@@ -157,6 +157,9 @@ function ProductNode({
   const circumference = 2 * Math.PI * 27;
   const dash = Math.max(0, Math.min(product.coverage, 1)) * circumference;
   const glyphSize = 58 + Math.min(product.featureCount, 30) * 0.45;
+  // The shipped sample (Wikipedia) is a walk anyone can re-run, not a product
+  // of this family, so the map says so instead of filing it beside the quests.
+  const sample = isSample(product);
 
   return (
     <button
@@ -223,6 +226,12 @@ function ProductNode({
         {product.name}
       </span>
 
+      {sample && (
+        <span className="mt-1 block font-mono text-[8px] uppercase leading-none tracking-[0.2em] text-brand lg:text-[9px]">
+          Sample walk
+        </span>
+      )}
+
       {product.platforms.length > 1 && (
         <span className="mt-1 flex justify-center gap-1">
           {product.platforms.map((platform) => (
@@ -237,6 +246,10 @@ function ProductNode({
       )}
     </button>
   );
+}
+
+function isSample(product: AtlasProduct): boolean {
+  return product.variants.some((variant) => variant.summary.project.tag?.startsWith("Sample"));
 }
 
 function AtlasLegend() {
@@ -271,8 +284,10 @@ function MobileAtlas({ products, selected, onSelect }: ChartProps) {
         return (
           <section
             key={territory.id}
-            className="overflow-hidden rounded-sm border px-4 py-4"
-            style={{ backgroundColor: colors.background, borderColor: colors.border }}
+            className="wt-territory overflow-hidden rounded-sm border border-[var(--wt-terr-line)] bg-[var(--wt-terr-bg)] px-4 py-4"
+            style={
+              { "--wt-terr-bg": colors.background, "--wt-terr-line": colors.border } as CSSProperties
+            }
           >
             <div className="border-b border-rule pb-2">
               <h2 className="font-mono text-micro uppercase tracking-[0.22em]">{territory.name}</h2>
@@ -294,6 +309,7 @@ function MobileAtlas({ products, selected, onSelect }: ChartProps) {
                     <span className="block font-serif text-title">{product.name}</span>
                     <span className="mt-1 block text-micro text-ink-muted">
                       {product.platforms.map((platform) => PLATFORM_PROFILES[platform].short).join(" · ")}
+                      {isSample(product) && " · Sample walk"}
                     </span>
                   </span>
                   <span className="font-mono text-micro text-ink-faint">

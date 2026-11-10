@@ -244,6 +244,17 @@
     padding: 0.0625rem 0.375rem;
     white-space: nowrap;
   }
+  /* On a phone a long route or "App → Section → Screen" path wraps inside its
+     chip instead of pushing the page sideways. A chip set to truncate keeps its
+     single line (utilities win over this layer). */
+  @media (max-width: 767px) {
+    .locator {
+      white-space: normal;
+      overflow-wrap: anywhere;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
 
   /* ── Capture mat ────────────────────────────────────────────────────────
    * The recessed well a screenshot sits in. This is the one inset shadow in

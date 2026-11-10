@@ -1,0 +1,208 @@
+/* Walkthrough Studio in the Human Quest family look ("The Path").
+   The shared parts come from components/hq-path/hq-path.css. This file is the
+   site's Path layer: the root layout loads it after globals.css on every page.
+   The first part maps the hub's own paper-and-ink tokens to the family palette
+   for day and night, so every page built on them follows the sun and moon
+   button; the home page's own pieces follow, prefixed wt-. */
+
+/* ---------- Every page: the hub's tokens take the Path paper and ink ----------
+   Day is the Path's paper, night its after-sunset brown. The hub's vermilion
+   stays the accent (a little lighter after dark, the site's night colour). */
+:root {
+  --paper: #f6efe3; --paper-raised: #fffaf1; --paper-sunken: #efe4d1; --paper-deep: #e6d5b8;
+  --ink: #24170f; --ink-muted: #6a5848; --ink-faint: #9a8773;
+  --rule: #dccbb0; --rule-strong: #c8b393;
+}
+:root[data-theme="night"] {
+  --paper: #1c130e; --paper-raised: #2a1d15; --paper-sunken: #241911; --paper-deep: #30231a;
+  --ink: #f3e8d8; --ink-muted: #c4b29c; --ink-faint: #927e69;
+  --rule: #3d2c20; --rule-strong: #57412f;
+  --brand: #d1664f; --brand-deep: #e2a392; --brand-wash: color-mix(in srgb, #d1664f 16%, #1c130e);
+  color-scheme: dark;
+}
+body { transition: background-color .6s ease, color .6s ease; }
+
+/* The hub's status colours are fixed values (Tailwind @theme inline), so after
+   dark their text and washes get night versions here; by day nothing changes. */
+:root[data-theme="night"] .text-ok, :root[data-theme="night"] .text-\[\#2f7d4f\] { color: #a9cf94; }
+:root[data-theme="night"] .text-warn, :root[data-theme="night"] .text-\[\#b8860b\] { color: #e9c37a; }
+:root[data-theme="night"] .text-alert { color: #f1a593; }
+:root[data-theme="night"] .text-note, :root[data-theme="night"] .\[\&_\*\]\:text-note * { color: #a9c6de; }
+:root[data-theme="night"] .text-\[\#b4462f\] { color: var(--brand); }
+:root[data-theme="night"] .border-l-\[\#b4462f\] { border-left-color: var(--brand); }
+:root[data-theme="night"] .bg-ok-wash { background-color: #1f2a1b; }
+:root[data-theme="night"] .bg-warn-wash { background-color: #2f2412; }
+:root[data-theme="night"] .bg-alert-wash { background-color: #351a12; }
+:root[data-theme="night"] .bg-note-wash { background-color: #182431; }
+
+/* Viewer surfaces (lightbox, video player, the badges laid over photos) stay
+   dark in both themes: they frame captures, like a darkroom. */
+.wt-dark { --ink: #1c130e; --paper: #f6efe3; }
+
+/* The journey pages' "Play the story film / recorded walk" buttons are solid
+   ink by day. After dark solid ink would be a pale slab, so they turn into a
+   raised dark button with the brand's play disc carrying the call. */
+:root[data-theme="night"] .wt-video-btn { background-color: var(--paper-deep); border-color: var(--rule-strong); color: var(--ink); }
+:root[data-theme="night"] .wt-video-btn:hover { background-color: #3a2a1f; border-color: color-mix(in srgb, var(--brand) 60%, var(--rule-strong)); }
+:root[data-theme="night"] .wt-video-btn > span:first-child { background-color: var(--brand); color: var(--paper); }
+:root[data-theme="night"] .wt-video-btn > span:last-child > span:last-child { color: var(--ink-muted); }
+
+/* The object-study plates (category, platform and state art) are ink with a
+   baked alpha channel; after dark they turn to pale ink so they still read. */
+:root[data-theme="night"] img:is([src*="%2Fart%2Fcat-"], [src*="%2Fart%2Fplatform-"], [src*="%2Fart%2Fstate-"], [src*="%2Fart%2Fempty-"], [src^="/art/cat-"], [src^="/art/platform-"], [src^="/art/state-"], [src^="/art/empty-"]) {
+  filter: invert(.88) sepia(.35);
+}
+
+/* Page and section headings in the family display face. Small labels set as
+   headings (eyebrows, mono captions) keep their own face, and so does
+   everything inside the home page's atlas plate. */
+main :is(h1, h2, .display):not(.eyebrow, .font-mono, .font-sans, .hqp-display):not(.wt-atlas-plate *) {
+  font-family: var(--hqp-display); font-weight: 400; letter-spacing: -0.005em; font-variation-settings: normal; font-optical-sizing: auto;
+}
+/* Page titles take the display cut, as on the home page. */
+main :is(h1, .display):not(.eyebrow, .font-mono, .font-sans, .hqp-display):not(.wt-atlas-plate *) {
+  letter-spacing: -0.018em; font-variation-settings: "opsz" 144;
+}
+
+/* The document pages' top bar keeps its breadcrumbs and gains the moon. */
+.wt-bar .hqp-theme { width: 34px; height: 34px; }
+.wt-bar .hqp-theme svg { width: 17px; height: 17px; }
+/* Their footer: the site's own credit line, then the family sunset and footer. */
+.wt-sitefoot { position: relative; z-index: 1; margin-top: clamp(24px, 4vw, 56px); }
+
+/* ---------- Home ---------- */
+
+/* Sit above the hub's fixed paper grain; the kit page carries its own ground. */
+.wt-home { position: relative; z-index: 1; min-height: 100vh; overflow-x: clip; }
+.wt-home :focus-visible { outline-color: var(--hqp-ember); }
+/* The hub's base styles ink every heading with its own (day-only) ink; on this
+   page headings outside the atlas plate follow the family ink, day and night. */
+.wt-home .hqp-stone h3, .wt-home .hqp-card h3 { color: var(--hqp-ink); }
+
+/* ---------- Hero: promise on top, the atlas under the sun ---------- */
+.wt-hero-in { position: relative; z-index: 2; max-width: var(--hqp-max); margin: 0 auto; padding: clamp(36px, 5vh, 60px) var(--hqp-gutter) clamp(104px, 11vw, 160px); }
+.wt-hero-copy { position: relative; z-index: 3; max-width: 1000px; }
+.wt-hero-copy h1.hqp-display { font-size: clamp(46px, 5.7vw, 84px); }
+.wt-hero-copy .hqp-lede { max-width: 54ch; margin-bottom: 28px; }
+
+.wt-atlas { position: relative; margin-top: clamp(36px, 4.4vw, 56px); }
+
+.wt-atlas-head { position: relative; z-index: 2; justify-content: flex-start; align-items: flex-end; flex-wrap: wrap; column-gap: 28px; }
+.wt-atlas-intro { max-width: 60ch; }
+.wt-atlas-intro .hqp-eyebrow { margin-bottom: 8px; color: var(--hqp-td); }
+.wt-atlas-intro p:last-child { margin: 0; color: var(--hqp-ink-2); font-size: 15.5px; line-height: 1.5; }
+
+/* The Chart / List switch, in family dress. */
+.wt-atlas-head [role="tablist"] { align-self: flex-end; border-radius: 999px; border-color: var(--hqp-line); background: color-mix(in srgb, var(--hqp-card) 92%, transparent); }
+.wt-atlas-head [role="tab"] { border-radius: 999px; padding: 7px 14px; font: 500 13px/1 var(--hqp-text); color: var(--hqp-ink-2); }
+.wt-atlas-head [role="tab"][aria-selected="true"] { background: var(--hqp-ink); color: var(--hqp-paper); }
+.wt-atlas-head [role="tab"]:not([aria-selected="true"]):hover { background: var(--hqp-paper-2); color: var(--hqp-ink); }
+
+/* The map is a printed plate laid on the hills, with the sun rising behind its
+   top-right corner (a pseudo-element under the plate's own content). */
+/* The atlas keeps the hub's own printed-paper palette by day (its art was
+   drawn for it); the night rule further down prints it as a night chart. */
+.wt-atlas-plate {
+  --paper: #faf8f5; --paper-raised: #fffefc; --paper-sunken: #f2eee6; --paper-deep: #e8e3d9;
+  --ink: #1a1815; --ink-muted: #6b6459; --ink-faint: #9c948a; --rule: #e2ddd3; --rule-strong: #cbc3b5;
+  --brand: #b4462f; --brand-deep: #8d3422; --brand-wash: #f8ece8;
+}
+.wt-atlas-plate { position: relative; z-index: 1; border-radius: 16px; background: var(--paper); box-shadow: 0 0 0 1px var(--hqp-line), 0 44px 90px -44px rgba(60, 30, 10, .6); }
+.wt-atlas-plate::before {
+  --wt-sun: clamp(200px, 26vw, 380px);
+  content: ""; position: absolute; z-index: -1; width: var(--wt-sun); aspect-ratio: 1; right: 3%; top: calc(var(--wt-sun) * -0.56);
+  border-radius: 50%; background: var(--hqp-sun-core);
+  box-shadow: 0 0 0 clamp(22px, 3.4vw, 52px) color-mix(in srgb, var(--hqp-sun-halo) 45%, transparent);
+  animation: hqp-rise 9s ease-out both; transition: background .6s ease;
+}
+:root[data-theme="night"] .wt-atlas-plate::before { box-shadow: 0 0 0 clamp(22px, 3.4vw, 52px) color-mix(in srgb, var(--hqp-sun-halo) 10%, transparent); }
+.wt-atlas-plate .atlas-shell { border: 0; border-radius: 16px; }
+/* Inside the plate the atlas keeps its own type and ink (the hub's Inter and
+   paper-and-ink tokens), and its links get their own colours back from the
+   kit's "links inherit" page rule. */
+.wt-atlas-plate { color: var(--ink); font-family: var(--font-sans-stack), system-ui, sans-serif; font-size: 0.9375rem; line-height: 1.6; }
+.wt-atlas-plate a { color: revert-layer; }
+.wt-atlas-list { max-height: min(720px, 78vh); border-radius: 16px; padding-top: 28px; background: var(--paper); }
+/* No fade-in for the product glyphs here: a fade can be caught at zero opacity
+   by full-page screenshots, which emptied the map. The sun and road carry the
+   arrival instead, and the glyphs still lift on hover. */
+.wt-atlas .atlas-product { animation: none; }
+
+/* After dark the plate is a night chart rather than a bright sheet on a dark
+   page: the same printed map with paper and ink swapped, so the grid, contour
+   lines, trees and compass read as pale ink on dark paper and the territories
+   keep their tints. The product rings and lamps follow the swapped ink. */
+:root[data-theme="night"] .wt-atlas-plate {
+  --paper: #241911; --paper-raised: #2a1d15; --paper-sunken: #1f150f; --paper-deep: #30231a;
+  --ink: #f3e8d8; --ink-muted: #c4b29c; --ink-faint: #a8937c; --rule: #3d2c20; --rule-strong: #57412f;
+  --brand: #d1664f; --brand-deep: #e2a392; --brand-wash: color-mix(in srgb, #d1664f 16%, #241911);
+  box-shadow: 0 0 0 1px var(--hqp-line), 0 44px 90px -40px rgba(0, 0, 0, .8);
+}
+/* The map art is grey ink on light paper: inverted (with the hue turned back)
+   and screened onto the dark paper, it prints as pale ink on the night chart. */
+:root[data-theme="night"] .wt-atlas-map { mix-blend-mode: screen; filter: invert(1) hue-rotate(180deg) saturate(1.6); }
+/* On a phone the territories are cards: the same hue, at night depth. */
+:root[data-theme="night"] .wt-territory {
+  background-color: color-mix(in srgb, var(--wt-terr-bg) 10%, var(--paper-raised));
+  border-color: color-mix(in srgb, var(--wt-terr-line) 20%, var(--rule));
+  background-color: oklch(from var(--wt-terr-bg) 0.27 calc(c * 1.8) h);
+  border-color: oklch(from var(--wt-terr-line) 0.36 calc(c * 1.4) h);
+}
+
+/* ---------- How it works ---------- */
+.wt-code { display: inline-block; margin-top: 6px; padding: 3px 8px; border-radius: 8px; background: var(--hqp-paper-2); border: 1px solid var(--hqp-line); color: var(--hqp-ink); font: 13px/1.45 var(--hqp-mono); overflow-wrap: anywhere; }
+.wt-how .hqp-stone p { max-width: 36ch; }
+.wt-checks { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 64px; padding-top: 28px; border-top: 1px dashed var(--hqp-line); }
+.wt-checks .hqp-eyebrow { margin: 0; }
+
+/* ---------- Real walkthroughs ---------- */
+.wt-stats { display: flex; gap: clamp(22px, 4vw, 52px); margin: 0; }
+.wt-stats dt { font: 300 clamp(42px, 4.6vw, 68px)/.9 var(--hqp-display); letter-spacing: -0.035em; color: var(--hqp-td); font-variation-settings: "opsz" 144; }
+.wt-stats dd { margin: 10px 0 0; max-width: 17ch; font: 500 14px/1.35 var(--hqp-text); color: var(--hqp-ink-2); }
+.wt-examples { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.wt-example .hqp-shot { position: relative; }
+.wt-shot-frame { position: absolute; inset: 0; }
+.wt-shot-frame img { object-fit: cover; object-position: top; transition: transform .5s ease; }
+.wt-example:hover .wt-shot-frame img { transform: scale(1.03); }
+/* Phone captures stand up in a phone, bleeding off the bottom of the card. */
+.wt-shot-phone { background: color-mix(in srgb, var(--hqp-t) 34%, var(--hqp-paper-2)); }
+.wt-shot-phone .wt-shot-frame { inset: 22px auto -40px 50%; width: 42%; transform: translateX(-50%); border-radius: 24px 24px 0 0; border: 6px solid #1c130e; border-bottom: 0; overflow: hidden; background: #1c130e; transition: transform .3s ease; }
+.wt-example:hover .wt-shot-phone .wt-shot-frame { transform: translateX(-50%) translateY(-6px); }
+.wt-example:hover .wt-shot-phone .wt-shot-frame img { transform: none; }
+.wt-example .wt-meta { margin: 0 0 8px; font: 500 11px/1.3 var(--hqp-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--hqp-td); }
+.wt-example h3 { font-size: 23px; text-wrap: balance; }
+.wt-example .wt-when { margin-top: 10px; font-size: 14px; color: var(--hqp-ink-3); }
+
+/* ---------- Last call ---------- */
+.wt-final-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 72px); align-items: end; }
+.wt-final .hqp-lede { margin-bottom: 0; max-width: 40ch; }
+.wt-cmd { display: block; margin-bottom: 20px; padding: 16px 20px; border-radius: 14px; background: var(--hqp-night); color: #f3e8d8; font: 14px/1.5 var(--hqp-mono); overflow-wrap: anywhere; }
+.wt-cmd::before { content: "$ "; color: var(--hqp-sun); }
+:root[data-theme="night"] .wt-cmd { background: var(--hqp-card); border: 1px solid var(--hqp-line); }
+.wt-small { margin: 18px 0 0; color: var(--hqp-ink-3); font-size: 14.5px; }
+.wt-small a { color: var(--hqp-ink-2); text-decoration: underline; text-underline-offset: 3px; }
+.wt-small a:hover { color: var(--hqp-ember); }
+
+/* Four links, a long product name and a long call to action: fold the links
+   into the menu before the bar starts wrapping words. */
+.wt-home .hqp-nav a, .wt-home .hqp-questbar .hqp-btn { white-space: nowrap; }
+@media (max-width: 1100px) {
+  .wt-home .hqp-nav { display: none; }
+  .wt-home .hqp-menu { display: block; }
+  .wt-home .hqp-questbar .hqp-theme { margin-left: auto; }
+}
+@media (max-width: 1000px) {
+  .wt-examples { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wt-final-in { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  /* On a phone the sun sits beside the switch, just over the map's edge. */
+  .wt-atlas-head [role="tablist"] { margin-top: 16px; }
+  .wt-atlas-plate { margin-top: 26px; }
+  .wt-atlas-plate::before { --wt-sun: 210px; right: -46px; top: -66px; }
+  .wt-stats { width: 100%; justify-content: space-between; }
+}
+@media (max-width: 640px) {
+  .wt-examples { grid-template-columns: 1fr; }
+  .wt-stats dd { font-size: 13px; }
+}

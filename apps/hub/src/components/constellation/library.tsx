@@ -15,7 +15,7 @@
  */
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { LayoutGrid, Orbit } from "lucide-react";
 import type { AtlasProduct } from "@/lib/product-atlas";
 import { ConstellationChart } from "./chart";
@@ -26,9 +26,11 @@ type View = "chart" | "list";
 
 interface LibraryProps {
   products: AtlasProduct[];
+  /** Replaces the default library heading when the atlas sits inside a page hero. */
+  intro?: ReactNode;
 }
 
-export function Library({ products }: LibraryProps) {
+export function Library({ products, intro }: LibraryProps) {
   const router = useRouter();
   const params = useSearchParams();
   const selectedParam = params.get("app");
@@ -71,8 +73,14 @@ export function Library({ products }: LibraryProps) {
     // have to scroll is not a map. The header is fixed height and the chart
     // takes whatever is left, letterboxed by the SVG's own viewBox.
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="mx-auto flex w-full max-w-[1440px] shrink-0 flex-col items-start gap-5 px-6 pt-8 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-        <div>
+      <div
+        className={
+          intro
+            ? "wt-atlas-head flex w-full shrink-0 flex-row items-end justify-between gap-4"
+            : "mx-auto flex w-full max-w-[1440px] shrink-0 flex-col items-start gap-5 px-6 pt-8 sm:flex-row sm:items-end sm:justify-between sm:gap-6"
+        }
+      >
+        {intro ?? <div>
           <p className="eyebrow">The library</p>
           <h1 className="display mt-2 text-balance">Cartographic Product Atlas</h1>
           <p className="mt-2.5 max-w-[66ch] text-small text-ink-muted">
@@ -80,12 +88,12 @@ export function Library({ products }: LibraryProps) {
             lives inside each product; an outer ring is what has been catalogued and the filled
             centre is what has actually been walked.
           </p>
-        </div>
+        </div>}
         <ViewToggle view={view} onChange={chooseView} />
       </div>
 
       {view === "chart" ? (
-        <div className="relative mx-auto mt-5 w-full max-w-[1440px] px-4 pb-8">
+        <div className={intro ? "wt-atlas-plate relative mt-4 w-full" : "relative mx-auto mt-5 w-full max-w-[1440px] px-4 pb-8"}>
           <div className="relative">
             <ConstellationChart
               products={products}
@@ -98,8 +106,10 @@ export function Library({ products }: LibraryProps) {
           {products.length === 0 && <EmptyChartPrompt />}
         </div>
       ) : (
-        <div className="mt-5 overflow-y-auto">
-          <ProductAtlasList products={products} />
+        <div className={intro ? "wt-atlas-plate mt-4" : "mt-5 overflow-y-auto"}>
+          <div className={intro ? "wt-atlas-list overflow-y-auto" : undefined}>
+            <ProductAtlasList products={products} />
+          </div>
         </div>
       )}
     </div>

@@ -71,11 +71,11 @@ export function StoryPlayer({
         className={cn(
           "group/video text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
           variant === "button" &&
-            "inline-flex items-center gap-3 rounded-md border border-ink bg-ink px-4 py-2.5 text-paper shadow-plate hover:-translate-y-px hover:bg-ink/90 hover:shadow-plate-lift",
+            "wt-video-btn inline-flex items-center gap-3 rounded-md border border-ink bg-ink px-4 py-2.5 text-paper shadow-plate hover:-translate-y-px hover:bg-ink/90 hover:shadow-plate-lift",
           variant === "card" &&
             "flex w-full items-center gap-3 rounded-md border border-brand/30 bg-brand-wash px-3.5 py-3 text-brand-deep shadow-plate hover:-translate-y-px hover:border-brand/55 hover:shadow-plate-lift",
           variant === "overlay" &&
-            "absolute inset-x-3 bottom-3 z-10 flex items-center gap-2.5 rounded-md border border-paper/20 bg-ink/92 px-3 py-2.5 text-paper shadow-plate backdrop-blur hover:-translate-y-px hover:bg-ink",
+            "wt-dark absolute inset-x-3 bottom-3 z-10 flex items-center gap-2.5 rounded-md border border-paper/20 bg-ink/92 px-3 py-2.5 text-paper shadow-plate backdrop-blur hover:-translate-y-px hover:bg-ink",
           className,
         )}
       >
@@ -109,7 +109,7 @@ export function StoryPlayer({
           role="dialog"
           aria-modal="true"
           aria-label={`${title} — ${isRecording ? "walk recording" : "story video"}`}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-ink p-4 sm:p-8"
+          className="wt-dark fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-ink p-4 sm:p-8"
         >
           <div className="flex w-full max-w-[1600px] items-center justify-between gap-4">
             <p className="truncate font-serif text-title text-paper">{title}</p>

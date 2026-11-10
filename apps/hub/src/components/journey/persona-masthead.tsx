@@ -76,7 +76,7 @@ export function PersonaMasthead({
           )}
           <div className="min-w-0 flex-1">
             <p className="eyebrow">{persona.authRole ?? "Persona"}</p>
-            <h1 className="display mt-1.5 text-balance">{persona.name}</h1>
+            <h1 className="display mt-1.5 text-head-lg text-balance">{persona.name}</h1>
             <Prose className="prose-walkthrough mt-3 max-w-[62ch] text-body">
               {persona.description}
             </Prose>

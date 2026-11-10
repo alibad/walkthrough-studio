@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Script from "next/script";
 import { ChevronRight } from "lucide-react";
 import { GithubMark } from "@/components/brand/github-mark";
 import { Logo } from "@/components/brand/logo";
+import { HqFamilyFooter, HqSunset, HqThemeToggle } from "@/components/hq-path/hq-path";
 import { REPO } from "@/lib/adoption";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +30,7 @@ export function SiteHeader({
   return (
     <header
       className={cn(
-        "sticky top-0 z-30 border-b border-rule bg-paper/85 backdrop-blur-sm",
+        "wt-bar sticky top-0 z-30 border-b border-rule bg-paper/85 backdrop-blur-sm",
         className,
       )}
     >
@@ -105,24 +105,24 @@ export function SiteHeader({
           >
             <GithubMark className="size-4" />
           </Link>
+          {/* The family's sun and moon: day or night on every page, remembered
+              across every Human Quest site. */}
+          <HqThemeToggle />
         </div>
       </div>
     </header>
   );
 }
 
-/** Page footer. Credits the capture contract, which is the useful bit. */
+/**
+ * Page footer. Credits the capture contract, which is the useful bit, then
+ * closes the page the way every Human Quest site does: the sun setting behind
+ * the hills and the family footer (the same one the home page ends with).
+ */
 export function SiteFooter({ className }: { className?: string }) {
   return (
-    <footer className={cn("border-t border-rule bg-paper-sunken/40", className)}>
-      {/* The shared Human Quest band: back to humanquest.net and on to the other quests. */}
-      <div className="mx-auto max-w-[76rem] px-6 pt-8">
-        <hq-footer current="walkthrough" theme="light">
-          <a href="https://www.humanquest.net/?ref=walkthrough">A Human Quest AI pattern · humanquest.net</a>
-        </hq-footer>
-        <Script src="https://www.humanquest.net/embed/hq-footer.js" strategy="afterInteractive" />
-      </div>
-      <div className="mx-auto flex max-w-[76rem] flex-col gap-3 px-6 py-8 text-small text-ink-faint lg:flex-row lg:items-center lg:justify-between">
+    <div className={cn("wt-sitefoot", className)}>
+      <div className="mx-auto flex max-w-[76rem] flex-col gap-3 border-t border-rule px-6 py-8 text-small text-ink-faint lg:flex-row lg:items-center lg:justify-between">
         <p>
           A <a href="https://www.humanquest.net/" className="underline underline-offset-2">Human Quest</a> project. Captures are written by the{" "}
           <code className="font-mono text-[0.8125rem] text-ink-muted">walkthrough</code> skill
@@ -155,6 +155,16 @@ export function SiteFooter({ className }: { className?: string }) {
           </Link>
         </p>
       </div>
-    </footer>
+      <HqSunset />
+      <HqFamilyFooter
+        current="Walkthroughs"
+        territory="pattern"
+        extra={[
+          { label: "Use it on your app", href: "/use" },
+          { label: "What it needs", href: "/setup" },
+          { label: `${REPO.owner}/${REPO.name}`, href: REPO.url },
+        ]}
+      />
+    </div>
   );
 }
