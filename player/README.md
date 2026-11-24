@@ -62,6 +62,9 @@ narrows a target to the element containing that text.
 - `wait` with `"for": "<selector>"` waits up to `ms` (default 20 s) for search results or an answer to appear.
 
 On a step:
+- `speak` (one per language) is what the voice reads when the written line trips it up. Captions show `say`.
+  Examples: a name spelled as it sounds ("Loo-sail" for Lusail), Arabic with its vowels (اُنْقُرْ), or numbers in
+  words. Check every take with a transcript: the voice can misread a word.
 - `ready` makes the step wait for its element before it starts, live and filmed, as an answer that takes ten
   seconds needs.
 - `motion` on a chapter's first step tells the recorder the page moves on its own, such as a turning 3D scene. The

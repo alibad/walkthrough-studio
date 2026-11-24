@@ -46,7 +46,9 @@ await mkdir(join(work, 'voice', lang), { recursive: true });
 await mkdir(join(tourDir, 'voice', lang), { recursive: true });
 for (const [k, step] of tour.steps.entries()) {
   if (only && !only.has(step.id)) continue;
-  const say = pick(step.say, lang);
+  // `speak` (optional) is what the voice reads when the written line trips it up: a name spelled as it sounds
+  // ("Loo-sail" for Lusail) or Arabic with its vowels. Captions always show `say`.
+  const say = pick(step.speak, lang) || pick(step.say, lang);
   if (!say) throw Error(`Step ${k + 1} (${step.id}) has no ${lang} line`);
   const base = `${nn(k)}-${step.id}`;
   const wav = join(work, 'voice', lang, `${base}.wav`), txt = join(work, 'voice', lang, `${base}.txt`);
