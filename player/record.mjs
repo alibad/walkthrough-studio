@@ -97,8 +97,11 @@ function cues(text, start, end, max = 56) {
     for (let i = 0; i < c.length; i++) if (c[i] === ' ' && (k < 0 || Math.abs(i - c.length / 2) < Math.abs(k - c.length / 2))) k = i;
     return k < 0 ? [c] : [...halve(c.slice(0, k)), ...halve(c.slice(k + 1))];
   };
-  const sentences = text.trim().split(/(?<=[.!?؟…])\s+/).filter(Boolean);
-  const parts = sentences.flatMap((s) => pack((s.match(/[^,;:—،؛]+[,;:—،؛]*/g) || [s]).map((p) => p.trim()).filter(Boolean))).flatMap(halve);
+  // A comma inside a number ("2,127") is no place to break a caption: hold it aside while splitting.
+  const KEEP = '⁣';
+  const sentences = text.trim().replace(/(\d),(?=\d)/g, `$1${KEEP}`).split(/(?<=[.!?؟…])\s+/).filter(Boolean);
+  const parts = sentences.flatMap((s) => pack((s.match(/[^,;:—،؛]+[,;:—،؛]*/g) || [s]).map((p) => p.trim()).filter(Boolean))).flatMap(halve)
+    .map((p) => p.replaceAll(KEEP, ','));
   const total = parts.reduce((a, c) => a + c.length, 0);
   let t = start;
   return parts.map((c, j) => {
@@ -173,6 +176,13 @@ try {
       };
       new MutationObserver((ms) => ms.forEach((m) => (m.type === 'attributes' ? eager(m.target) : m.addedNodes.forEach((n) => n.nodeType === 1 && eager(n)))))
         .observe(document, { subtree: true, childList: true, attributes: true, attributeFilter: ['loading'] });
+      // A film is the tour already playing: the page's floating "Take the tour" button has no place in it.
+      const hide = () => {
+        const s = document.createElement('style');
+        s.textContent = '.playable-launch, button[data-playable-tour][style*="position: fixed"], button[data-playable-tour][style*="position:fixed"] { display: none !important; }';
+        (document.head || document.documentElement).appendChild(s);
+      };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hide); else hide();
     });
     const replayed = await replayRoutes(context, tour, tourDir, lang); // recorded answers, named in the evidence
     const page = await context.newPage();
