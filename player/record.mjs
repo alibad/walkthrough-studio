@@ -25,6 +25,7 @@ import { homedir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
 import { launchChromium } from './browser.mjs';
+import { replayRoutes } from './replay.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).join(' ').split(/\s*--/).filter(Boolean).map((s) => {
   const [k, ...v] = s.trim().split(/\s+/);
@@ -173,6 +174,7 @@ try {
       new MutationObserver((ms) => ms.forEach((m) => (m.type === 'attributes' ? eager(m.target) : m.addedNodes.forEach((n) => n.nodeType === 1 && eager(n)))))
         .observe(document, { subtree: true, childList: true, attributes: true, attributeFilter: ['loading'] });
     });
+    const replayed = await replayRoutes(context, tour, tourDir, lang); // recorded answers, named in the evidence
     const page = await context.newPage();
     const dir = join(work, 'captures', lang, `c${nn(c)}-${first.id}`);
     let result;
@@ -202,6 +204,11 @@ try {
           const now = () => (performance.now() - t0) / 1000;
           window.__playableFocus = (f) => log.push(Object.assign({ t: now() }, f));
           for (let j = 0; j < steps.length; j++) {
+            // A step that waits for something (an answer, results) starts when it shows, as the live player does.
+            for (let t = 0; j > 0 && steps[j].ready && !document.querySelector(steps[j].ready); t += 100) {
+              if (t > 25000) throw new Error(`Step ${steps[j].id}: the page never showed ${steps[j].ready}`);
+              await new Promise((r) => setTimeout(r, 100));
+            }
             starts.push(now());
             await Promise.all([window.__engine.runStep(steps[j], { duration: durations[j] }), new Promise((r) => setTimeout(r, durations[j] * 1000))]);
             if (j + 1 < steps.length) await new Promise((r) => setTimeout(r, gap * 1000));
@@ -215,6 +222,9 @@ try {
       const receipt = await take(page, dir, {
         sharp: true, viewport: vp, selectors: [frame], afterSelectors: [steps.at(-1).after || frame],
         holdBefore: 500, holdAfter: 900, label: 'observed', build, action: perform,
+        // A page that moves on its own (a turning 3D scene) says so in its chapter's "motion": the recorder then
+        // waits for a settled layout instead of still pixels, and keeps the reason.
+        ...(first.motion ? { readiness: { stability: 'layout', reason: first.motion } } : {}),
       });
       console.log(`filmed chapter ${c + 1} (${steps.map((s) => s.id).join(', ')}): ${receipt.sharp?.seconds ?? '?'} s, ${receipt.sharp?.width}x${receipt.sharp?.height}, ${result.log.length} focus moves`);
     } finally { await context.close(); }
@@ -242,6 +252,8 @@ try {
         target: new URL(urlFor(first, lang), args.app).href,
         action: steps.map((s) => (s.do || []).map((a) => `${a.do} ${a.target || ''}${a.value ? ` "${pick(a.value, lang)}"` : ''}`.trim()).join('; ')).join(' | '),
         build,
+        // Requests answered from a recording instead of the live service, and why (tour "replay").
+        ...(replayed.some((r) => r.hits) ? { replayed: replayed.filter((r) => r.hits).map(({ url, file, why }) => ({ url, file, why })) } : {}),
       },
     });
   }

@@ -90,18 +90,30 @@ function makeTrack(step, length) {
   };
 }
 
-function here() { try { const l = frame.contentWindow.location; return l.pathname + l.search; } catch { return null; } }
+function here() { try { const l = frame.contentWindow.location; return l.pathname + l.search + l.hash; } catch { return null; } }
+function samePage(url) { try { const l = frame.contentWindow.location; return l.origin === url.origin && l.pathname + l.search === url.pathname + url.search; } catch { return false; } }
 
-/** Load a page into the app frame. The frame fades out first and back in once the step's page is ready (arrive). */
-async function load(url, signal) {
+/**
+ * Load a page into the app frame. The frame fades out first and back in once the step's page is ready (arrive).
+ * A single-page app's views differ by their #route: going to another route of the same page is a hash change (no
+ * load event), and a fresh start of a route reloads it.
+ */
+async function load(url, signal, fresh = true) {
   if (!frame.classList.contains('fading') && frame.src) { frame.classList.add('fading'); await sleep(220, signal); }
+  if (url.hash && samePage(url) && !fresh) {
+    frame.contentWindow.location.hash = url.hash;
+    await sleep(450, signal);
+    return;
+  }
   return new Promise((resolve, reject) => {
     const done = () => { frame.removeEventListener('load', done); resolve(); };
     signal.addEventListener('abort', () => { frame.removeEventListener('load', done); reject(abortError()); }, { once: true });
     expectLoad = true;
     frame.classList.add('fading');
     frame.addEventListener('load', done);
-    frame.src = url.href;
+    // Setting the same address with a #route is only a hash change; reload it so a fresh start is fresh.
+    if (url.hash && samePage(url)) { frame.contentWindow.location.hash = url.hash; frame.contentWindow.location.reload(); }
+    else frame.src = url.href;
   });
 }
 
@@ -110,12 +122,12 @@ async function arrive(step, fresh, signal) {
   const address = urlFor(step, lang);
   if (address) {
     const url = new URL(address, location.origin);
-    if (fresh || here() !== url.pathname + url.search) await load(url, signal);
+    if (fresh || here() !== url.pathname + url.search + url.hash) await load(url, signal, fresh);
   }
   const win = frame.contentWindow, doc = win.document;
   const sel = step.ready || (step.do || []).find((a) => a.target)?.target;
   for (let waited = 0; sel && !doc.querySelector(sel); waited += 100) {
-    if (waited > 12000) throw new Error(`The page never showed ${sel}`);
+    if (waited > 25000) throw new Error(`The page never showed ${sel}`);
     await sleep(100, signal);
   }
   await doc.fonts?.ready;

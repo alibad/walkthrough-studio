@@ -55,7 +55,7 @@
     });
   }
 
-  const describe = (a) => (a.text ? `${a.target} containing "${a.text}"` : a.target);
+  const describe = (a) => (a.text ? `${a.target} containing "${typeof a.text === 'object' ? Object.values(a.text)[0] : a.text}"` : a.target);
 
   /**
    * options: lang; speed (above 1 compresses moves, waits and cue times, for checks); from (where the cursor starts);
@@ -123,7 +123,8 @@
 
     function find(a) {
       const all = Array.from(doc.querySelectorAll(a.target));
-      const hits = a.text ? all.filter((e) => (e.innerText || e.textContent || '').includes(a.text)) : all;
+      const text = pick(a.text, lang); // one string, or one per language ({ "en": "Play", "ar": "تشغيل" })
+      const hits = text ? all.filter((e) => (e.innerText || e.textContent || '').includes(text)) : all;
       const el = hits.find((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; }) || hits[0];
       if (!el) throw new MissingTarget(`Can't find ${describe(a)}`);
       return el;
@@ -213,9 +214,19 @@
       }
     }
 
+    /** "optional": true skips an action whose target isn't on the page (a "New chat" button only some visitors see). */
     async function act(a, signal) {
+      if (a.optional && a.target) { try { find(a); } catch (e) { if (e.name === 'MissingTarget') return undefined; throw e; } }
       switch (a.do) {
-        case 'wait': return sleep((a.ms == null ? 500 : a.ms) / speed, signal);
+        case 'wait': {
+          // "for": a selector to wait for (an answer, search results), for up to "ms" (default 20 s); else a pause.
+          if (!a.for) return sleep((a.ms == null ? 500 : a.ms) / speed, signal);
+          for (let t = 0; ; t += 100) {
+            try { find({ target: a.for, text: a.text }); return undefined; } catch (e) { if (e.name !== 'MissingTarget') throw e; }
+            if (t > (a.ms || 20000)) throw new MissingTarget(`${describe({ target: a.for, text: a.text })} never appeared`);
+            await sleep(100, signal);
+          }
+        }
         case 'clear': return clear();
         case 'scroll': {
           const el = find(a);
@@ -233,7 +244,10 @@
           await press(signal);
           if (a.do === 'click') { el.click(); return sleep(250 / speed, signal); }
           highlight(el);
-          return type(el, String(pick(a.value, lang) == null ? '' : pick(a.value, lang)), signal);
+          await type(el, String(pick(a.value, lang) == null ? '' : pick(a.value, lang)), signal);
+          // "submit": true sends the field's form, as pressing Enter would (a search box that answers on submit).
+          if (a.submit && el.form) { await sleep(250 / speed, signal); el.form.requestSubmit(); }
+          return undefined;
         }
         default: throw new Error(`Unknown action "${a.do}"`);
       }

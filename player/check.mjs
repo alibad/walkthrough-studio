@@ -7,6 +7,7 @@
 //     [--out check.json] [--browser <chromium exe>]
 import { chromium } from 'playwright';
 import { launchChromium } from './browser.mjs';
+import { replayRoutes } from './replay.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -31,6 +32,7 @@ try {
   for (const lang of langs) {
     for (const [c, ch] of chapters(tour).entries()) {
       const context = await browser.newContext({ viewport: tour.viewport || { width: 1280, height: 720 }, locale: lang });
+      await replayRoutes(context, tour, tourDir, lang); // recorded answers for services a headless browser can't reach
       const page = await context.newPage();
       const errors = [];
       page.on('pageerror', (e) => errors.push(String(e.message)));
@@ -43,7 +45,7 @@ try {
           const step = tour.steps[k], t0 = Date.now();
           if (failed) { results.push({ lang, chapter: c + 1, step: k + 1, id: step.id, ok: false, error: 'not reached: an earlier step in this chapter failed' }); continue; }
           try {
-            if (step.ready) await page.waitForSelector(step.ready, { timeout: 15000 });
+            if (step.ready) await page.waitForSelector(step.ready, { timeout: 25000 });
             await page.evaluate((step) => window.__engine.runStep(step), step);
             if (step.after) await page.waitForSelector(step.after, { state: 'visible', timeout: 5000 });
             results.push({ lang, chapter: c + 1, step: k + 1, id: step.id, ok: true, ms: Date.now() - t0 });
