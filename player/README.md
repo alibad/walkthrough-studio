@@ -7,8 +7,8 @@ One script, three outputs:
 
 | Output | Script | What it is |
 |---|---|---|
-| **Live** | `play.html` + `play.js` | the tour plays inside the app, in an iframe, under a player bar with chapters |
-| **Film** | `record.mjs` | each step filmed as a take, then assembled into an MP4 by the narrate-video skill |
+| **Live** | `play.html` + `play.js` | the tour plays inside the app, in an iframe, under a player bar with chapters; `launch.js` opens it over a page from a button |
+| **Film** | `record.mjs` | each chapter filmed as one take at 2x, with a camera that follows the action, then assembled into an MP4 by the narrate-video skill |
 | **Check** | `check.mjs` | every chapter replayed headless; a step whose target is gone fails, so a tour can't silently go stale |
 
 The narration comes from the narrate-video skill's voice studio (`voice.mjs`), in the author's own saved voice.
@@ -55,6 +55,16 @@ Actions: `point` (move the cursor there and ring it), `click`, `type` (`value`),
 `clear` (drop the ring). `target` is a CSS selector. Stable hooks such as `data-tour` survive restyling. `text`
 narrows a target to the element containing that text.
 
+`camera` (films only) says what the camera frames for an action. Left out, it frames the action's own element so it
+fills about 60% of the picture, up to `--max-zoom` (1.6). A scroll goes wide. The other values:
+- `"wide"`: the whole page.
+- `"hold"`: stay where it is.
+- a number: that zoom on the element.
+- `{ "frame": "<selector>", "zoom": 1.2 }`: frame something larger, such as the whole chart while the cursor points at one card.
+
+Focus moves less than two seconds apart, such as "the cabinet, the council and the courts", share one framing of
+everything they point at. The ring then moves within a still picture.
+
 **When** an action happens is a `cue`, a phrase from the step's line. The engine places it by where the phrase falls
 in the sentence, scaled to the narration's measured length, and starts moving just before the word. Re-record the
 voice and the actions move with it. A cue missing from one language falls back to its place in the English line.
@@ -84,6 +94,49 @@ python ~/.claude/skills/narrate-video/scripts/render.py F:/work/intro-20261124/p
 `check.mjs` and `record.mjs` run in `--browser <chromium exe>` (or `PLAYABLE_BROWSER`) when given, otherwise in
 Playwright's own Chromium, and when that isn't downloaded, in the installed Edge or Chrome. They print which.
 
+## The film
+
+`record.mjs` films each chapter as one take, at 1280x720 CSS pixels and 2x device pixels (2560x1440). The steps play
+one after another, each lasting as long as its narration. It writes narrate-video's edit plan with one scene per
+chapter:
+- **Camera:** each chapter opens wide on its page, then follows what each action is about. The camera moves are
+  eased, start a beat before the cursor, and frame the target a little above the middle. render.py crops from the
+  2x pixels, so text stays sharp at 1.6x zoom and readable on a phone.
+- **Clear of the captions:** targets are scrolled out of the bottom 30% of the page, where the caption card sits.
+- **Captions:** each line becomes short cues, a sentence or a phrase of up to 56 characters each, shown for its
+  share of the narration. They sit on a lower-third card, in the system's UI typeface (Segoe UI Semibold on
+  Windows) or the `--font` you give.
+- **Narration:** one track per chapter, each line placed where its step started.
+- **Images:** lazy images load at once while filming, since the recorder waits for every image. A photo that fails
+  to load stops the film, with its address.
+
+## Start a tour from the page
+
+Copy the player into the site, so it is served from the site's own origin:
+
+```sh
+node player/bundle.mjs --out ../my-app/public/playable     # play.html, play.js, play.css, engine.js, launch.js
+```
+
+Serve the tour folder (`tour.json` and `voice/`) from the site too, then give the page one script tag and a button:
+
+```html
+<button type="button" data-playable-tour="/walkthroughs/intro/tour.json" data-playable-lang="ar">Take the 1-minute tour</button>
+<script src="/playable/launch.js" defer></script>
+```
+
+- **Opening:** the button opens the player over the page, in place, and starts it with sound. If the browser blocks
+  sound, the cover asks for a click.
+- **Closing:** the close button or Escape closes the player and leaves the page as it was.
+- **Language:** `data-playable-lang` picks the language. It defaults to the page's `?lang=`, then `<html lang>`.
+- **Starting chapter:** `data-playable-chapter` opens at that chapter.
+- **A link to share:** the page's address with `#tour` (or `#tour=3` for chapter 3) opens the player on its cover.
+  While the player is open, the address carries `#tour`.
+- **From a script:** `window.PlayableLaunch.open({ tour, lang, chapter })`.
+
+To try it before the page has a button, run `serve.mjs --inject`. It adds the launcher to every app page it proxies,
+with a floating button labelled in the page's language.
+
 ## How the player behaves
 
 - **The voice is the clock.** Actions wait for their moment in the narration's audio, so pausing the voice pauses
@@ -103,5 +156,5 @@ Playwright's own Chromium, and when that isn't downloaded, in the installed Edge
 - **Read-only actions on live sites.** A step that saves data would save it for every viewer, so tours click,
   filter, search and navigate, and nothing that writes.
 - **Sound needs one click.** Browsers won't autoplay audio, so the tour starts from the cover's Play button.
-- **Arabic films** need Pillow with RAQM for the renderer's burned captions. The live player shows Arabic captions
-  as page text, so it needs none.
+- **Arabic films** need Pillow with RAQM (HarfBuzz and FriBiDi) for the renderer's burned captions. Pillow's
+  Windows wheels lack FriBiDi. The live player shows Arabic captions as page text, so it needs none.
