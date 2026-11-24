@@ -20,9 +20,12 @@ const STRINGS = {
   en: {
     eyebrow: 'Playable walkthrough', play: 'Play', pause: 'Pause', open: 'Open this page', close: 'Close the tour',
     fine: (n, t) => `${n} chapters · ${t} · pause any time and the page is yours to try`,
-    loading: (c, n) => `Chapter ${c} of ${n} · loading the page`,
-    playing: (c, n) => `Chapter ${c} of ${n} · pause any time to try it yourself`,
-    pausedTouched: 'Paused · you changed the page, so play starts this chapter over',
+    where: (c, n, title, k, m) => `Chapter ${c} of ${n} · ${title}${m > 1 ? ` · line ${k} of ${m}` : ''}`,
+    loading: () => 'Loading the page',
+    playing: () => 'Pause any time to try it yourself · ← → move a line',
+    going: (title) => `Going to ${title}…`,
+    prev: 'Previous line', next: 'Next line', timeline: 'Tour timeline: click or drag to any line',
+    pausedTouched: 'Paused · you changed the page, so play starts this line over',
     paused: 'Paused · the page is yours to try · play picks up here',
     ended: "That's the tour · the page is yours to explore",
     failed: (e) => `This step no longer matches the app: ${e}`,
@@ -31,9 +34,12 @@ const STRINGS = {
   ar: {
     eyebrow: 'جولة تفاعلية', play: 'تشغيل', pause: 'إيقاف مؤقت', open: 'افتح هذه الصفحة', close: 'أغلق الجولة',
     fine: (n, t) => `${n} فصول · ${t} · أوقف العرض متى شئت، فالصفحة بين يديك`,
-    loading: (c, n) => `الفصل ${c} من ${n} · جارٍ تحميل الصفحة`,
-    playing: (c, n) => `الفصل ${c} من ${n} · أوقف العرض متى شئت وجرّب بنفسك`,
-    pausedTouched: 'متوقف · غيّرت الصفحة، فسيبدأ التشغيل هذا الفصل من جديد',
+    where: (c, n, title, k, m) => `الفصل ${c} من ${n} · ${title}${m > 1 ? ` · الجملة ${k} من ${m}` : ''}`,
+    loading: () => 'جارٍ تحميل الصفحة',
+    playing: () => 'أوقف العرض متى شئت وجرّب بنفسك · ← → للتنقل بين الجمل',
+    going: (title) => `الانتقال إلى ${title}…`,
+    prev: 'الجملة السابقة', next: 'الجملة التالية', timeline: 'مسار الجولة: انقر أو اسحب إلى أي جملة',
+    pausedTouched: 'متوقف · غيّرت الصفحة، فستبدأ هذه الجملة من جديد',
     paused: 'متوقف · الصفحة بين يديك · يستأنف التشغيل من هنا',
     ended: 'انتهت الجولة · الصفحة بين يديك',
     failed: (e) => `هذه الخطوة لم تعد تطابق الصفحة: ${e}`,
@@ -146,7 +152,21 @@ async function start(n, { fresh = false } = {}) {
   i = n; touched = false; error = null; pendingPause = false; mode = 'loading'; render();
   const step = steps[n];
   try {
+    // Seeking to a line in the middle of a chapter: open the chapter fresh and replay its earlier lines quickly,
+    // silently and behind a veil, so the page is exactly where this line expects it.
+    const first = chapterStart(n);
+    if (fresh && n !== first) {
+      veil(S.going(pick(chaps[chapterOf[n]].title, lang)));
+      let ff = await arrive(steps[first], true, signal);
+      for (let k = first; k < n; k++) {
+        if (k > first) ff = await arrive(steps[k], false, signal);
+        ff.setSpeed(12);
+        try { await ff.runStep(steps[k], { signal, duration: lengths[k] }); } finally { ff.setSpeed(1); }
+      }
+      fresh = false;
+    }
     const eng = await arrive(step, fresh, signal);
+    veil(null);
     eng.setIdle(false);
     track = makeTrack(step, lengths[n]);
     mode = 'playing';
@@ -169,7 +189,7 @@ async function start(n, { fresh = false } = {}) {
     mode = 'ended'; eng.setIdle(true); eng.clear(); render();
   } catch (e) {
     if (signal.aborted || e.name === 'AbortError') return;
-    frame.classList.remove('fading');
+    frame.classList.remove('fading'); veil(null);
     if (e.name === 'MissingTarget') broken.add(chapterOf[n]);
     track?.stop();
     error = e.message; mode = 'failed'; render();
@@ -177,6 +197,12 @@ async function start(n, { fresh = false } = {}) {
 }
 
 const chapterStart = (n) => chaps[chapterOf[n]].first;
+
+/** A veil over the page while the player gets it ready (a seek replays earlier lines behind it); null lifts it. */
+function veil(text) {
+  $('veil').hidden = !text;
+  if (text) $('veil-text').textContent = text;
+}
 
 function pause() {
   if (mode !== 'playing') return;
@@ -186,7 +212,7 @@ function pause() {
 function play() {
   $('cover').hidden = true; $('bar').hidden = false;
   if (mode === 'paused') {
-    if (touched) return start(chapterStart(i), { fresh: true });
+    if (touched) return start(i, { fresh: true });
     engine?.setIdle(false); mode = 'playing'; release(); track?.play(); render();
     return;
   }
@@ -200,7 +226,27 @@ function toggle() {
   if (mode === 'playing') pause(); else play();
 }
 
-function seek(c) { $('cover').hidden = true; $('bar').hidden = false; start(chaps[c].first, { fresh: true }); }
+/** Go to any line: its chapter opens fresh and the lines before it in that chapter are replayed out of sight. */
+function seekTo(n) { $('cover').hidden = true; $('bar').hidden = false; start(Math.max(0, Math.min(steps.length - 1, n)), { fresh: true }); }
+function seek(c) { seekTo(chaps[c].first); }
+/** Back a line, or to the start of this one when it has been playing a while. */
+function prevLine() { seekTo(track && track.position() > 1.5 ? i : i - 1); }
+function nextLine() { if (i + 1 < steps.length) seekTo(i + 1); }
+
+/** The line at a point on the timeline: each chapter's segment is as wide as its narration, its lines in order. */
+function lineAt(clientX) {
+  for (const [c, el] of [...$('track').children].entries()) {
+    const r = el.getBoundingClientRect();
+    if (clientX < r.left - 2 || clientX > r.right + 2) continue;
+    let f = (clientX - r.left) / r.width;
+    if (document.documentElement.dir === 'rtl') f = 1 - f;
+    const ks = chaps[c].steps, len = ks.reduce((a, k) => a + lengths[k], 0);
+    let t = Math.max(0, Math.min(0.999, f)) * len;
+    for (const k of ks) { if (t < lengths[k]) return k; t -= lengths[k]; }
+    return ks[ks.length - 1];
+  }
+  return null;
+}
 
 // The viewer taking over: a real click or key press inside the app pauses the tour and marks the page as changed.
 // A load nobody asked for (the viewer followed a link) counts the same way.
@@ -236,6 +282,8 @@ function render() {
   const going = mode === 'playing' || (mode === 'loading' && !pendingPause);
   document.body.classList.toggle('playing', going);
   $('toggle').setAttribute('aria-label', going ? S.pause : S.play);
+  const ch = chaps[chapterOf[i]];
+  $('where').textContent = S.where(chapterOf[i] + 1, chaps.length, pick(ch.title, lang), ch.steps.indexOf(i) + 1, ch.steps.length);
   $('caption').textContent = pick(steps[i].say, lang);
   const s = $('state');
   s.textContent = (silent ? S.silent : '') + stateText();
@@ -279,13 +327,43 @@ async function boot() {
   chaps.forEach((c, k) => {
     const b = document.createElement('button');
     const name = `${k + 1}. ${pick(c.title, lang)}`;
-    b.type = 'button'; b.className = 'seg'; b.title = name;
-    b.style.flexGrow = String(c.steps.reduce((sum, s) => sum + lengths[s], 0));
+    const len = c.steps.reduce((sum, s) => sum + lengths[s], 0);
+    b.type = 'button'; b.className = 'seg'; b.tabIndex = -1;
+    b.style.flexGrow = String(len);
     b.append(document.createElement('i'));
+    // A mark where each of the chapter's later lines starts.
+    let at = 0;
+    c.steps.slice(0, -1).forEach((s) => { at += lengths[s]; const m = document.createElement('b'); m.style.insetInlineStart = `${(at / len) * 100}%`; b.append(m); });
     const label = document.createElement('span'); label.textContent = name; b.append(label);
-    b.addEventListener('click', () => seek(k));
     $('track').append(b);
   });
+  // The timeline: click or drag anywhere to go to that line; hovering shows which line it is.
+  const trackEl = $('track'), tip = $('tip');
+  let dragging = false, hover = null;
+  const show = (x) => {
+    const k = lineAt(x);
+    if (k == null) { tip.hidden = true; return null; }
+    const r = trackEl.getBoundingClientRect();
+    tip.textContent = `${chapterOf[k] + 1}. ${pick(chaps[chapterOf[k]].title, lang)} — ${pick(steps[k].say, lang)}`;
+    tip.hidden = false;
+    const w = tip.offsetWidth;
+    tip.style.left = `${Math.max(0, Math.min(r.width - w, x - r.left - w / 2))}px`;
+    return k;
+  };
+  trackEl.addEventListener('pointermove', (e) => { hover = show(e.clientX); });
+  trackEl.addEventListener('pointerleave', () => { if (!dragging) tip.hidden = true; });
+  trackEl.addEventListener('pointerdown', (e) => { dragging = true; try { trackEl.setPointerCapture(e.pointerId); } catch { /* not a live pointer */ } hover = show(e.clientX); });
+  trackEl.addEventListener('pointerup', (e) => {
+    if (!dragging) return;
+    dragging = false; tip.hidden = true;
+    const k = lineAt(e.clientX);
+    if (k != null) seekTo(k);
+  });
+  trackEl.setAttribute('aria-label', S.timeline);
+  $('prev').setAttribute('aria-label', S.prev); $('prev').title = S.prev;
+  $('next').setAttribute('aria-label', S.next); $('next').title = S.next;
+  $('prev').addEventListener('click', prevLine);
+  $('next').addEventListener('click', nextLine);
   const c0 = Math.min(Math.max(0, Number(qs.get('chapter') || 1) - 1), chaps.length - 1);
   i = chaps[c0].first;
   render();
@@ -301,11 +379,12 @@ async function boot() {
   $('toggle').addEventListener('click', toggle);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && embedded) { close(); return; }
-    if (e.target.closest?.('button, a, input')) return;
+    if (e.target.closest?.('a, input') || (e.key === ' ' && e.target.closest?.('button'))) return;
+    // Arrows move a line; with Shift, a chapter (mirrored for right-to-left).
     const c = chapterOf[i], next = lang === 'ar' ? 'ArrowLeft' : 'ArrowRight', prev = lang === 'ar' ? 'ArrowRight' : 'ArrowLeft';
     if (e.key === ' ') { e.preventDefault(); toggle(); }
-    else if (e.key === next && c + 1 < chaps.length) seek(c + 1);
-    else if (e.key === prev && c > 0) seek(c - 1);
+    else if (e.key === next) { e.preventDefault(); if (e.shiftKey) { if (c + 1 < chaps.length) seek(c + 1); } else nextLine(); }
+    else if (e.key === prev) { e.preventDefault(); if (e.shiftKey) seek(c > 0 && i === chaps[c].first ? c - 1 : c); else prevLine(); }
   });
   if (qs.get('autoplay') === '1') play();
   else await load(new URL(urlFor(steps[i], lang), location.origin), new AbortController().signal).then(() => frame.classList.remove('fading'));

@@ -78,12 +78,23 @@
   }
 
   /** A floating button, for a page that has none of its own (labelled with the tour's length in the page's language). */
+  // The floating button: a labelled pill on wide screens; on a phone a 48 px round play button (its label is its
+  // aria-label and tooltip) that slides out of the way while the page scrolls, so it never sits on content for long.
+  var STYLE = '.playable-launch{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));right:calc(20px + env(safe-area-inset-right,0px));z-index:2147482000;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px 11px 14px;border:0;border-radius:999px;background:#e4572e;color:#fff;font:600 15px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.2);cursor:pointer;transition:transform .32s cubic-bezier(.45,.05,.25,1),opacity .32s ease}'
+    + '[dir=rtl] .playable-launch{right:auto;left:calc(20px + env(safe-area-inset-left,0px))}'
+    + '.playable-launch:focus-visible{outline:3px solid #fff;outline-offset:2px}'
+    + '.playable-launch.away{transform:translateY(calc(100% + 32px));opacity:0;pointer-events:none}'
+    + '@media (max-width:600px){.playable-launch{width:48px;height:48px;padding:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));right:calc(16px + env(safe-area-inset-right,0px))}[dir=rtl] .playable-launch{left:calc(16px + env(safe-area-inset-left,0px))}.playable-launch span{display:none}.playable-launch svg{width:22px;height:22px;margin-inline-start:3px}}';
   function floating(tourUrl) {
     var b = document.createElement('button'), tour = null;
     b.type = 'button';
+    b.className = 'playable-launch';
     b.setAttribute('data-playable-tour', tourUrl);
     b.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg><span></span>';
-    // Labelled (and placed: bottom left for a right-to-left page) in the page's language, again if the page changes it.
+    var css = document.createElement('style');
+    css.textContent = STYLE;
+    document.head.appendChild(css);
+    // Labelled in the page's language (placed bottom left on a right-to-left page), again if the page changes it.
     var label = function () {
       var lang = pageLang(), minutes = 1;
       if (tour) {
@@ -91,13 +102,23 @@
         var s = tour.steps.reduce(function (a, st) { var d = st.duration; return a + ((d && typeof d === 'object' ? d[l] : d) || 4); }, 0);
         minutes = Math.max(1, Math.round(s / 60));
       }
-      b.lastChild.textContent = (LABEL[lang] || LABEL.en).replace('{n}', String(minutes));
-      b.style.cssText = 'position:fixed;bottom:20px;' + (document.documentElement.dir === 'rtl' ? 'left' : 'right') + ':20px;z-index:2147482000;display:inline-flex;align-items:center;gap:8px;padding:11px 18px 11px 14px;border:0;border-radius:999px;background:#e4572e;color:#fff;font:600 15px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.18);cursor:pointer';
+      var text = (LABEL[lang] || LABEL.en).replace('{n}', String(minutes));
+      b.lastChild.textContent = text;
+      b.setAttribute('aria-label', text);
+      b.title = text;
     };
     label();
     document.body.appendChild(b);
     new MutationObserver(label).observe(document.documentElement, { attributes: true, attributeFilter: ['lang', 'dir'] });
     fetch(new URL(tourUrl, location.href)).then(function (r) { return r.json(); }).then(function (t) { tour = t; label(); }).catch(function () { /* keep the plain label */ });
+    // On a phone, out of the way while scrolling; back 0.7 s after the page stops.
+    var narrow = window.matchMedia('(max-width: 600px)'), timer = 0;
+    window.addEventListener('scroll', function () {
+      if (!narrow.matches) return;
+      b.classList.add('away');
+      clearTimeout(timer);
+      timer = setTimeout(function () { b.classList.remove('away'); }, 700);
+    }, { passive: true });
   }
 
   // A click on any tour button, now or added later by the app, opens it; the page's language is read at that moment.

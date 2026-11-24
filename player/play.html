@@ -22,15 +22,28 @@
       <p class="fine" id="cover-fine"></p>
     </div>
   </div>
+  <div class="veil" id="veil" hidden><span class="spin" aria-hidden="true"></span><span id="veil-text"></span></div>
 </main>
 <footer class="bar" id="bar" hidden>
-  <button type="button" class="round" id="toggle" aria-label="Play">
-    <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
-    <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
-  </button>
+  <div class="controls">
+    <button type="button" class="step-btn" id="prev" aria-label="Previous line">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h2v14H6zM19 5.5v13L9.5 12z" fill="currentColor"/></svg>
+    </button>
+    <button type="button" class="round" id="toggle" aria-label="Play">
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+    </button>
+    <button type="button" class="step-btn" id="next" aria-label="Next line">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 5h2v14h-2zM5 5.5v13l9.5-6.5z" fill="currentColor"/></svg>
+    </button>
+  </div>
   <div class="mid">
+    <p class="where" id="where"></p>
     <p class="caption" id="caption" aria-live="polite"></p>
-    <div class="track" id="track" role="group" aria-label="Chapters"></div>
+    <div class="scrub">
+      <div class="track" id="track" role="slider" tabindex="0" aria-label="Tour timeline: click or drag to any line"></div>
+      <div class="tip" id="tip" hidden></div>
+    </div>
     <div class="meta">
       <span class="state" id="state"></span>
       <span class="time" id="time">0:00 / 0:00</span>

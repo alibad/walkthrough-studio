@@ -67,7 +67,7 @@
     options = options || {};
     const doc = win.document;
     const lang = options.lang || 'en';
-    const speed = options.speed || 1;
+    let speed = options.speed || 1; // setSpeed() changes it: the player fast-forwards a chapter to the step it seeks
     const size = options.cursorSize || 24;
     let pos = options.from || { x: Math.round(win.innerWidth * 0.62), y: Math.round(win.innerHeight * 0.55) };
     let layer, cursor, ring, anchor = null, raf = 0, glide = null;
@@ -140,13 +140,47 @@
       }
     }
 
-    // What counts as on screen: a film keeps targets out of the bottom of the page, where its captions sit.
+    /**
+     * How far down the page's own sticky or fixed bars reach (a site bar, then a section bar under it), measured
+     * where they are, so a target is never scrolled underneath them.
+     */
+    function stickyTop() {
+      let y = 0;
+      for (let pass = 0; pass < 4; pass++) {
+        let bottom = y;
+        for (const x of [0.2, 0.5, 0.8].map((f) => win.innerWidth * f)) {
+          for (let e = doc.elementFromPoint(x, y + 2); e && e !== doc.body && e !== doc.documentElement; e = e.parentElement) {
+            const p = win.getComputedStyle(e).position;
+            if (p !== 'fixed' && p !== 'sticky') continue;
+            const r = e.getBoundingClientRect();
+            if (r.top <= y + 2 && r.bottom > bottom && r.height < win.innerHeight * 0.4) bottom = r.bottom;
+            break;
+          }
+        }
+        if (bottom <= y + 1) break;
+        y = bottom;
+      }
+      return Math.round(y);
+    }
+
+    // What counts as on screen: below the page's sticky bars, and, in a film, out of the bottom where captions sit.
     const margins = Object.assign({ top: 64, bottom: 24 }, options.margins);
+    /** Scroll the window so `el` sits in the clear band: centred in it, or its top at the band's top ("start"). */
+    async function scrollTo(el, block, signal) {
+      const top = Math.max(margins.top, stickyTop() + 16), bottom = win.innerHeight - margins.bottom;
+      const r = el.getBoundingClientRect(), band = bottom - top;
+      const want = block === 'start' || r.height > band ? top : top + (band - r.height) / 2;
+      win.scrollTo({ top: Math.max(0, win.scrollY + r.top - want), behavior: speed > 1 ? 'auto' : 'smooth' });
+      await settle(signal);
+      // Inside a panel that scrolls on its own, the window can't bring it in: let the browser do it.
+      const after = el.getBoundingClientRect();
+      if (after.bottom < top || after.top > bottom) { el.scrollIntoView({ behavior: 'auto', block: 'center' }); await settle(signal); }
+    }
     async function reveal(el, block, signal) {
       const r = el.getBoundingClientRect();
-      if (r.top >= margins.top && r.bottom <= win.innerHeight - margins.bottom) return;
-      el.scrollIntoView({ behavior: speed > 1 ? 'auto' : 'smooth', block: block || 'center' });
-      await settle(signal);
+      const top = Math.max(margins.top, stickyTop() + 8);
+      if (r.top >= top && r.bottom <= win.innerHeight - margins.bottom) return;
+      await scrollTo(el, block || 'center', signal);
     }
 
     /**
@@ -230,8 +264,7 @@
         case 'clear': return clear();
         case 'scroll': {
           const el = find(a);
-          el.scrollIntoView({ behavior: speed > 1 ? 'auto' : 'smooth', block: a.block || 'start' });
-          await settle(signal);
+          await scrollTo(el, a.block || 'start', signal);
           return focus(a, null);
         }
         case 'point': case 'click': case 'type': {
@@ -275,7 +308,8 @@
     function setIdle(idle) { mount(); cursor.style.opacity = idle ? '0.35' : '1'; }
     function destroy() { cancelAnimationFrame(raf); if (layer) layer.remove(); }
 
-    return { win, doc, runStep, act, find, setIdle, clear, destroy, position: () => Object.assign({}, pos) };
+    function setSpeed(s) { speed = s || 1; }
+    return { win, doc, runStep, act, find, setIdle, setSpeed, clear, destroy, position: () => Object.assign({}, pos) };
   }
 
   /**
