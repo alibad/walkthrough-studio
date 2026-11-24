@@ -55,6 +55,31 @@ Actions: `point` (move the cursor there and ring it), `click`, `type` (`value`),
 `clear` (drop the ring). `target` is a CSS selector. Stable hooks such as `data-tour` survive restyling. `text`
 narrows a target to the element containing that text.
 
+`text` can be one string or one per language (`{ "en": "Tour", "ar": "جولة" }`). Other action options:
+- `"optional": true` skips the action when its target isn't there, such as a "New chat" button only a returning
+  visitor sees.
+- `type` with `"submit": true` sends the field's form, as Enter would.
+- `wait` with `"for": "<selector>"` waits up to `ms` (default 20 s) for search results or an answer to appear.
+
+On a step:
+- `ready` makes the step wait for its element before it starts, live and filmed, as an answer that takes ten
+  seconds needs.
+- `motion` on a chapter's first step tells the recorder the page moves on its own, such as a turning 3D scene. The
+  take then waits for a settled layout instead of still pixels, and keeps the reason.
+
+A single-page app's views (`/qatar/#/years`) work as chapter `url`s. Live, moving between routes of one page is a
+hash change, and a fresh chapter start reloads the route.
+
+**Replays.** A service a headless browser can't reach, such as one behind a bot check, can't be filmed or checked
+live. The tour's `replay` list gives a recorded response for those requests. The response must be recorded from the
+real service in a real browser, and its `why` says where and when. `check.mjs` and `record.mjs` answer from it, and
+the film's evidence names every replayed request. The live player always asks the real service.
+
+```jsonc
+"replay": [{ "url": "cloudfunctions\\.net/ask", "body": { "en": "replay/ask-en.ndjson", "ar": "replay/ask-ar.ndjson" },
+             "contentType": "application/x-ndjson", "delay": 2500, "why": "Ask is behind App Check; recorded in Edge on 24 Nov 2026" }]
+```
+
 `camera` (films only) says what the camera frames for an action. Left out, it frames the action's own element so it
 fills about 60% of the picture, up to `--max-zoom` (1.6). A scroll goes wide. The other values:
 - `"wide"`: the whole page.
