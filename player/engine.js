@@ -12,9 +12,13 @@
 (function (root) {
   'use strict';
 
-  const ARROW = '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 2.5v17.2l4.6-4.4 2.9 6.6 2.9-1.3-2.9-6.5h6.4z" fill="#141414" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>';
-  const ACCENT = '#e4572e';
-  const LEAD = 0.45; // start moving this long before the cue word, so the cursor lands as the word is said
+  const ARROW = (px) => `<svg viewBox="0 0 24 24" width="${px}" height="${px}" aria-hidden="true" style="display:block;transform-origin:4px 3px;transition:transform .12s ease"><path d="M4 2.5v17.2l4.6-4.4 2.9 6.6 2.9-1.3-2.9-6.5h6.4z" fill="#161616" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+  const ACCENT = '228, 87, 46';
+  const LEAD = 0.55; // start moving this long before the cue word, so the cursor lands as the word is said
+  const GLIDE = 460; // ms the highlight takes to glide from one thing to the next
+  // Ease in and out: calm starts and calm landings, for the cursor and the highlight alike.
+  const EASE = 'cubic-bezier(.45,.05,.25,1)';
+  const easeInOut = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
 
   function abortError() { const e = new Error('Step stopped'); e.name = 'AbortError'; return e; }
   class MissingTarget extends Error { constructor(m) { super(m); this.name = 'MissingTarget'; } }
@@ -53,13 +57,22 @@
 
   const describe = (a) => (a.text ? `${a.target} containing "${a.text}"` : a.target);
 
+  /**
+   * options: lang; speed (above 1 compresses moves, waits and cue times, for checks); from (where the cursor starts);
+   * cursorSize (px, default 24); margins ({ top, bottom } px a target must clear, or the page scrolls it into view);
+   * onFocus(focus), called as each action turns to what it's about, for a film's camera: { rect, zoom, viewport }
+   * frames a box, { wide: true } shows the whole page.
+   */
   function createEngine(win, options) {
     options = options || {};
     const doc = win.document;
     const lang = options.lang || 'en';
-    const speed = options.speed || 1; // above 1 compresses moves, waits and cue times, for checks
+    const speed = options.speed || 1;
+    const size = options.cursorSize || 24;
     let pos = options.from || { x: Math.round(win.innerWidth * 0.62), y: Math.round(win.innerHeight * 0.55) };
-    let layer, cursor, ring, anchor = null, raf = 0;
+    let layer, cursor, ring, anchor = null, raf = 0, glide = null;
+
+    const rectOf = (el) => { const r = el.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; };
 
     function mount() {
       if (layer && layer.isConnected) return;
@@ -67,23 +80,45 @@
       layer.setAttribute('data-playable', '');
       layer.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:2147483646';
       ring = doc.createElement('div');
-      ring.style.cssText = `position:fixed;left:0;top:0;width:0;height:0;box-sizing:border-box;border:2.5px solid ${ACCENT};border-radius:12px;box-shadow:0 0 0 5px rgba(228,87,46,.16);opacity:0;transition:opacity .3s ease`;
+      ring.style.cssText = `position:fixed;left:0;top:0;width:0;height:0;box-sizing:border-box;border:2px solid rgba(${ACCENT},.92);border-radius:12px;box-shadow:0 0 0 4px rgba(${ACCENT},.13),0 6px 22px rgba(${ACCENT},.10);opacity:0;transform:scale(1);transition:opacity .38s ease,transform .38s ${EASE}`;
       cursor = doc.createElement('div');
-      cursor.innerHTML = ARROW;
-      cursor.style.cssText = 'position:fixed;left:0;top:0;width:26px;height:26px;margin:-3px 0 0 -4px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));transition:opacity .3s ease;will-change:transform';
+      cursor.innerHTML = ARROW(size);
+      cursor.style.cssText = `position:fixed;left:0;top:0;width:${size}px;height:${size}px;margin:${-size / 8}px 0 0 ${-size / 6}px;filter:drop-shadow(0 1.5px 2.5px rgba(0,0,0,.3));transition:opacity .35s ease;will-change:transform`;
       cursor.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
       layer.append(ring, cursor);
       doc.body.append(layer);
       cancelAnimationFrame(raf);
+      // The highlight follows its element as the page scrolls, and glides (eased) from the last element to the next,
+      // both ends measured live, so a glide during a scroll still lands on the element and not where it was.
       const follow = () => {
         if (anchor && anchor.isConnected) {
-          const r = anchor.getBoundingClientRect(), p = 6;
-          ring.style.left = `${r.left - p}px`; ring.style.top = `${r.top - p}px`;
-          ring.style.width = `${r.width + 2 * p}px`; ring.style.height = `${r.height + 2 * p}px`;
-        } else if (anchor) { anchor = null; ring.style.opacity = '0'; }
+          let r = rectOf(anchor);
+          if (glide) {
+            const p = Math.min(1, (performance.now() - glide.at) / (GLIDE / speed)), e = easeInOut(p);
+            const f = glide.el && glide.el.isConnected ? rectOf(glide.el) : glide.r;
+            r = { x: f.x + (r.x - f.x) * e, y: f.y + (r.y - f.y) * e, w: f.w + (r.w - f.w) * e, h: f.h + (r.h - f.h) * e };
+            if (p >= 1) glide = null;
+          }
+          const p = 6;
+          ring.style.left = `${r.x - p}px`; ring.style.top = `${r.y - p}px`;
+          ring.style.width = `${r.w + 2 * p}px`; ring.style.height = `${r.h + 2 * p}px`;
+        } else if (anchor) { anchor = null; glide = null; ring.style.opacity = '0'; }
         raf = win.requestAnimationFrame(follow);
       };
       raf = win.requestAnimationFrame(follow);
+    }
+
+    /** Tell a film's camera what this action is about: the action's own element, a `camera.frame` element, or the whole page. */
+    function focus(a, el) {
+      if (!options.onFocus) return;
+      const c = a.camera;
+      if (c === 'hold') return;
+      if (c === 'wide' || (!el && c == null)) { options.onFocus({ wide: true }); return; }
+      const target = c && c.frame ? find({ target: c.frame, text: c.text }) : el;
+      if (!target) { options.onFocus({ wide: true }); return; }
+      const r = target.getBoundingClientRect();
+      options.onFocus({ rect: { x: r.left, y: r.top, width: r.width, height: r.height }, scroll: win.scrollY,
+        zoom: typeof c === 'number' ? c : c && c.zoom, viewport: { width: win.innerWidth, height: win.innerHeight } });
     }
 
     function find(a) {
@@ -104,9 +139,11 @@
       }
     }
 
+    // What counts as on screen: a film keeps targets out of the bottom of the page, where its captions sit.
+    const margins = Object.assign({ top: 64, bottom: 24 }, options.margins);
     async function reveal(el, block, signal) {
       const r = el.getBoundingClientRect();
-      if (r.top >= 64 && r.bottom <= win.innerHeight - 24) return;
+      if (r.top >= margins.top && r.bottom <= win.innerHeight - margins.bottom) return;
       el.scrollIntoView({ behavior: speed > 1 ? 'auto' : 'smooth', block: block || 'center' });
       await settle(signal);
     }
@@ -126,23 +163,42 @@
     async function move(to, signal) {
       mount();
       const d = Math.hypot(to.x - pos.x, to.y - pos.y);
-      const ms = Math.round(Math.min(1000, Math.max(320, 280 + d * 0.55)) / speed);
-      cursor.style.transition = `transform ${ms}ms cubic-bezier(.25,.75,.25,1), opacity .3s ease`;
+      if (d < 2) return;
+      // Unhurried: about half a second for a short hop, never more than 1.1 s across the screen.
+      const ms = Math.round(Math.min(1100, Math.max(480, 380 + d * 0.6)) / speed);
+      cursor.style.transition = `transform ${ms}ms ${EASE}, opacity .35s ease`;
       cursor.style.transform = `translate(${to.x}px, ${to.y}px)`;
       pos = to;
-      await sleep(ms + 40, signal);
+      await sleep(ms + 60, signal);
     }
 
-    function highlight(el) { mount(); anchor = el; ring.style.opacity = '1'; }
-    function clear() { anchor = null; if (ring) ring.style.opacity = '0'; }
+    function highlight(el) {
+      mount();
+      if (anchor === el) return;
+      const shown = anchor && anchor.isConnected && ring.style.opacity === '1';
+      if (shown) glide = { el: anchor, r: rectOf(anchor), at: performance.now() };
+      else {
+        // Appearing: a soft settle from slightly larger, not a pop.
+        glide = null;
+        ring.style.transition = 'none'; ring.style.transform = 'scale(1.035)';
+        void ring.offsetWidth;
+        ring.style.transition = `opacity .38s ease,transform .38s ${EASE}`; ring.style.transform = 'scale(1)';
+      }
+      anchor = el; ring.style.opacity = '1';
+    }
+    function clear() { anchor = null; glide = null; if (ring) ring.style.opacity = '0'; }
 
+    /** A click: the arrow dips, and a thin ring spreads and fades where it landed. */
     async function press(signal) {
+      const arrow = cursor.firstElementChild;
+      arrow.style.transform = 'scale(.86)';
       const dot = doc.createElement('div');
-      dot.style.cssText = `position:fixed;left:${pos.x - 18}px;top:${pos.y - 18}px;width:36px;height:36px;border-radius:50%;background:rgba(228,87,46,.38);transform:scale(.3);transition:transform .45s ease-out,opacity .45s ease-out`;
+      dot.style.cssText = `position:fixed;left:${pos.x - 16}px;top:${pos.y - 16}px;width:32px;height:32px;border-radius:50%;border:2px solid rgba(${ACCENT},.6);background:rgba(${ACCENT},.10);transform:scale(.35);opacity:1;transition:transform .55s ${EASE},opacity .55s ease-out`;
       layer.append(dot);
-      win.requestAnimationFrame(() => win.requestAnimationFrame(() => { dot.style.transform = 'scale(1.5)'; dot.style.opacity = '0'; }));
-      setTimeout(() => dot.remove(), 700);
-      await sleep(160 / speed, signal);
+      win.requestAnimationFrame(() => win.requestAnimationFrame(() => { dot.style.transform = 'scale(1.35)'; dot.style.opacity = '0'; }));
+      setTimeout(() => dot.remove(), 800);
+      await sleep(140 / speed, signal);
+      arrow.style.transform = 'scale(1)';
     }
 
     async function type(el, value, signal) {
@@ -164,11 +220,13 @@
         case 'scroll': {
           const el = find(a);
           el.scrollIntoView({ behavior: speed > 1 ? 'auto' : 'smooth', block: a.block || 'start' });
-          return settle(signal);
+          await settle(signal);
+          return focus(a, null);
         }
         case 'point': case 'click': case 'type': {
           const el = find(a);
           await reveal(el, a.block, signal);
+          focus(a, el);
           if (a.do === 'click') clear();
           await move(aim(el), signal);
           if (a.do === 'point') { highlight(el); return a.hold ? sleep(a.hold / speed, signal) : undefined; }

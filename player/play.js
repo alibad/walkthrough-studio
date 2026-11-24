@@ -7,15 +7,18 @@
 // Locally, serve.mjs puts both on one origin; on a live site this page sits in the site's own folder.
 //
 //   play.html?tour=<url of tour.json>&lang=ar&chapter=3
+//   &autoplay=1 starts without the cover (the cover comes back if the browser won't play sound yet);
+//   &embed=1 is the player opened over a page by launch.js: a close button, and Escape closes.
 const { createEngine, estimate, pick, chapters, urlFor } = window.Playable;
 const $ = (id) => document.getElementById(id);
 const qs = new URLSearchParams(location.search);
 const tourUrl = new URL(qs.get('tour') || 'tour/tour.json', location.href);
 const frame = $('app');
+const embedded = qs.get('embed') === '1' && window.parent !== window;
 
 const STRINGS = {
   en: {
-    eyebrow: 'Playable walkthrough', play: 'Play', pause: 'Pause', open: 'Open this page',
+    eyebrow: 'Playable walkthrough', play: 'Play', pause: 'Pause', open: 'Open this page', close: 'Close the tour',
     fine: (n, t) => `${n} chapters · ${t} · pause any time and the page is yours to try`,
     loading: (c, n) => `Chapter ${c} of ${n} · loading the page`,
     playing: (c, n) => `Chapter ${c} of ${n} · pause any time to try it yourself`,
@@ -26,7 +29,7 @@ const STRINGS = {
     silent: 'Silent preview, no narration recorded yet · ',
   },
   ar: {
-    eyebrow: 'جولة تفاعلية', play: 'تشغيل', pause: 'إيقاف مؤقت', open: 'افتح هذه الصفحة',
+    eyebrow: 'جولة تفاعلية', play: 'تشغيل', pause: 'إيقاف مؤقت', open: 'افتح هذه الصفحة', close: 'أغلق الجولة',
     fine: (n, t) => `${n} فصول · ${t} · أوقف العرض متى شئت، فالصفحة بين يديك`,
     loading: (c, n) => `الفصل ${c} من ${n} · جارٍ تحميل الصفحة`,
     playing: (c, n) => `الفصل ${c} من ${n} · أوقف العرض متى شئت وجرّب بنفسك`,
@@ -89,11 +92,14 @@ function makeTrack(step, length) {
 
 function here() { try { const l = frame.contentWindow.location; return l.pathname + l.search; } catch { return null; } }
 
-function load(url, signal) {
+/** Load a page into the app frame. The frame fades out first and back in once the step's page is ready (arrive). */
+async function load(url, signal) {
+  if (!frame.classList.contains('fading') && frame.src) { frame.classList.add('fading'); await sleep(220, signal); }
   return new Promise((resolve, reject) => {
     const done = () => { frame.removeEventListener('load', done); resolve(); };
     signal.addEventListener('abort', () => { frame.removeEventListener('load', done); reject(abortError()); }, { once: true });
     expectLoad = true;
+    frame.classList.add('fading');
     frame.addEventListener('load', done);
     frame.src = url.href;
   });
@@ -114,6 +120,7 @@ async function arrive(step, fresh, signal) {
   }
   await doc.fonts?.ready;
   if (address) await sleep(300, signal);
+  frame.classList.remove('fading');
   if (!engine || engine.doc !== doc) engine = createEngine(win, { from: lastPos || undefined, lang });
   return engine;
 }
@@ -135,7 +142,12 @@ async function start(n, { fresh = false } = {}) {
     if (pendingPause) { pendingPause = false; paused = true; mode = 'paused'; eng.setIdle(true); }
     render();
     await gate();
-    await track.play();
+    try { await track.play(); } catch (e) {
+      // The browser won't play sound before a click on this page (autoplay, or Safari in an overlay): the cover asks.
+      if (e.name !== 'NotAllowedError') throw e;
+      track.stop(); mode = 'idle'; $('cover').hidden = false; $('bar').hidden = true; $('cover-play').focus(); render();
+      return;
+    }
     await Promise.all([eng.runStep(step, { clock: track.time, gate, signal, duration: lengths[n] }), track.ended]);
     lastPos = eng.position();
     await sleep(chapterOf[n + 1] !== chapterOf[n] ? 650 : 250, signal);
@@ -145,6 +157,7 @@ async function start(n, { fresh = false } = {}) {
     mode = 'ended'; eng.setIdle(true); eng.clear(); render();
   } catch (e) {
     if (signal.aborted || e.name === 'AbortError') return;
+    frame.classList.remove('fading');
     if (e.name === 'MissingTarget') broken.add(chapterOf[n]);
     track?.stop();
     error = e.message; mode = 'failed'; render();
@@ -264,17 +277,26 @@ async function boot() {
   const c0 = Math.min(Math.max(0, Number(qs.get('chapter') || 1) - 1), chaps.length - 1);
   i = chaps[c0].first;
   render();
-  $('cover').hidden = false;
+  const close = () => window.parent.postMessage({ type: 'playable:close' }, location.origin);
+  if (embedded) {
+    document.body.classList.add('embed');
+    $('close').hidden = false;
+    $('close').setAttribute('aria-label', S.close); $('close').title = S.close;
+    $('close').addEventListener('click', close);
+  }
+  $('cover').hidden = qs.get('autoplay') === '1';
   $('cover-play').addEventListener('click', play);
   $('toggle').addEventListener('click', toggle);
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && embedded) { close(); return; }
     if (e.target.closest?.('button, a, input')) return;
     const c = chapterOf[i], next = lang === 'ar' ? 'ArrowLeft' : 'ArrowRight', prev = lang === 'ar' ? 'ArrowRight' : 'ArrowLeft';
     if (e.key === ' ') { e.preventDefault(); toggle(); }
     else if (e.key === next && c + 1 < chaps.length) seek(c + 1);
     else if (e.key === prev && c > 0) seek(c - 1);
   });
-  await load(new URL(urlFor(steps[i], lang), location.origin), new AbortController().signal);
+  if (qs.get('autoplay') === '1') play();
+  else await load(new URL(urlFor(steps[i], lang), location.origin), new AbortController().signal).then(() => frame.classList.remove('fading'));
   requestAnimationFrame(tick);
 }
 

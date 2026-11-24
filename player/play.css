@@ -12,8 +12,17 @@ html, body { margin: 0; height: 100%; background: var(--paper); color: var(--ink
 body { font: 15px/1.45 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; display: flex; flex-direction: column; overflow: hidden; }
 button { font: inherit; color: inherit; }
 
-.stage { position: relative; flex: 1; min-height: 0; }
-#app { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+.stage { position: relative; flex: 1; min-height: 0; background: var(--paper); }
+#app { display: block; width: 100%; height: 100%; border: 0; background: #fff; transition: opacity .3s ease; }
+#app.fading { opacity: 0; }
+/* Opened over a page by launch.js: the page is right underneath, so a close button stands in for "Open this page". */
+.embed .open { display: none; }
+.close { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: none; display: grid; place-items: center; cursor: pointer; color: var(--ink); }
+.close[hidden] { display: none; }
+.close svg { width: 18px; height: 18px; }
+.close:hover { border-color: var(--accent); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { #app { transition: none; } }
 
 .cover { position: absolute; inset: 0; display: grid; place-items: center; background: var(--scrim); backdrop-filter: blur(2px); }
 .cover[hidden] { display: none; }
@@ -26,14 +35,14 @@ button { font: inherit; color: inherit; }
 .big:hover { filter: brightness(1.06); }
 .fine { margin: 1rem 0 0; font-size: 13px; color: var(--muted); }
 
-.bar { flex: none; min-height: var(--bar-h); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1rem; align-items: center; padding: .7rem 1.1rem; border-top: 1px solid var(--line); background: var(--paper); }
+.bar { flex: none; min-height: var(--bar-h); display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 1rem; align-items: center; padding: .7rem 1.1rem; border-top: 1px solid var(--line); background: var(--paper); }
 .bar[hidden] { display: none; }
 .round { width: 52px; height: 52px; border-radius: 50%; border: 0; background: var(--accent); color: #fff; display: grid; place-items: center; cursor: pointer; }
 .round svg { width: 24px; height: 24px; }
 .round .i-pause, .playing .round .i-play { display: none; }
 .playing .round .i-pause { display: block; }
 .mid { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: .4rem; }
-.caption { margin: 0; font-size: 15.5px; min-height: 2.9em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.caption { margin: 0; font-size: 17px; font-weight: 500; line-height: 1.4; min-height: 2.8em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .track { display: flex; gap: 4px; }
 .seg { position: relative; flex: 1 1 0; height: 26px; padding: 0; border: 0; background: none; cursor: pointer; text-align: start; }
 .seg::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; border-radius: 3px; background: var(--line); }
@@ -56,6 +65,10 @@ button { font: inherit; color: inherit; }
   :root { --bar-h: 150px; }
   .bar { grid-template-columns: auto minmax(0, 1fr); padding: .6rem 1rem; }
   .open { grid-column: 1 / -1; justify-self: start; }
+  .close { position: absolute; top: .5rem; inset-inline-end: .6rem; width: 36px; height: 36px; }
+  .bar { position: relative; }
+  .embed .mid { padding-inline-end: 2.6rem; }
+  .caption { font-size: 16px; -webkit-line-clamp: 3; min-height: 4.2em; }
   .seg span { display: none; }
   .state { white-space: normal; }
   .seg { height: 10px; }

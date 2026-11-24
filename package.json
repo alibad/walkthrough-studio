@@ -28,7 +28,8 @@
     "play:serve": "node player/serve.mjs",
     "play:check": "node player/check.mjs",
     "play:voice": "node player/voice.mjs",
-    "play:record": "node player/record.mjs"
+    "play:record": "node player/record.mjs",
+    "play:bundle": "node player/bundle.mjs"
   },
   "engines": {
     "node": ">=20.9"

@@ -4,8 +4,11 @@
 // iframe to move the cursor and click). WebSocket upgrades are proxied too, so a dev server's hot reload keeps
 // working instead of polling and reloading the page under the tour.
 //
-//   node player/serve.mjs --app http://localhost:5270 --tour ../my-app/tours/intro --port 5390
+//   node player/serve.mjs --app http://localhost:5270 --tour ../my-app/tours/intro --port 5390 [--inject]
 //   open http://localhost:5390/__play/
+// --inject adds the launcher (launch.js) to every page of the app it proxies, with a floating "Take the tour"
+// button where the page has no button of its own, so a tour can be started from the page itself before the app
+// ships the launcher.
 import http from 'node:http';
 import net from 'node:net';
 import { readFile, stat } from 'node:fs/promises';
@@ -24,7 +27,9 @@ const app = new URL(args.app);
 const port = Number(args.port || 5390);
 const playerDir = dirname(fileURLToPath(import.meta.url));
 const tourDir = resolve(args.tour);
-const PLAYER_FILES = new Set(['play.html', 'play.js', 'play.css', 'engine.js']);
+const PLAYER_FILES = new Set(['play.html', 'play.js', 'play.css', 'engine.js', 'launch.js']);
+const inject = Boolean(args.inject);
+const LAUNCHER = '<script src="/__play/launch.js" data-tour="/__play/tour/tour.json" defer></script>';
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8', '.mp3': 'audio/mpeg', '.m4a': 'audio/mp4', '.ogg': 'audio/ogg', '.opus': 'audio/ogg', '.wav': 'audio/wav', '.png': 'image/png', '.svg': 'image/svg+xml' };
 
@@ -39,8 +44,20 @@ async function sendFile(res, file, root) {
 }
 
 function proxy(req, res) {
-  const out = http.request({ hostname: app.hostname, port: app.port || 80, method: req.method, path: req.url,
-    headers: { ...req.headers, host: app.host } }, (r) => { res.writeHead(r.statusCode, r.headers); r.pipe(res); });
+  const page = inject && req.method === 'GET' && /text\/html/.test(req.headers.accept || '');
+  const headers = { ...req.headers, host: app.host, ...(page ? { 'accept-encoding': 'identity' } : {}) };
+  const out = http.request({ hostname: app.hostname, port: app.port || 80, method: req.method, path: req.url, headers }, (r) => {
+    if (!page || !/text\/html/.test(r.headers['content-type'] || '') || r.headers['content-encoding']) { res.writeHead(r.statusCode, r.headers); r.pipe(res); return; }
+    const chunks = [];
+    r.on('data', (c) => chunks.push(c));
+    r.on('end', () => {
+      const html = Buffer.concat(chunks).toString('utf8');
+      const h = { ...r.headers };
+      delete h['content-length'];
+      res.writeHead(r.statusCode, h);
+      res.end(html.includes('</body>') ? html.replace('</body>', `${LAUNCHER}</body>`) : html + LAUNCHER);
+    });
+  });
   out.on('error', (e) => { if (!res.headersSent) res.writeHead(502, { 'content-type': 'text/plain' }); res.end(`The app at ${app.origin} didn't answer: ${e.message}`); });
   req.pipe(out);
 }
@@ -73,4 +90,5 @@ server.listen(port, 'localhost', () => {
   console.log(`Playable walkthrough: http://localhost:${port}/__play/`);
   console.log(`  app  ${app.origin} (proxied)`);
   console.log(`  tour ${join(tourDir, 'tour.json')}`);
+  if (inject) console.log(`  launcher on every app page: open http://localhost:${port}${'/'} and press "Take the tour"`);
 });
