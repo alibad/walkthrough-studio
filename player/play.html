@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Walkthrough</title>
+<link rel="stylesheet" href="play.css">
+</head>
+<body>
+<main class="stage">
+  <iframe id="app" title="The app this walkthrough plays in"></iframe>
+  <div class="cover" id="cover" hidden>
+    <div class="cover-card">
+      <p class="eyebrow">Playable walkthrough</p>
+      <h1 id="cover-title"></h1>
+      <p class="lede" id="cover-lede"></p>
+      <button type="button" class="big" id="cover-play">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+        <span>Play</span>
+      </button>
+      <p class="fine" id="cover-fine"></p>
+    </div>
+  </div>
+</main>
+<footer class="bar" id="bar" hidden>
+  <button type="button" class="round" id="toggle" aria-label="Play">
+    <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+    <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+  </button>
+  <div class="mid">
+    <p class="caption" id="caption" aria-live="polite"></p>
+    <div class="track" id="track" role="group" aria-label="Chapters"></div>
+    <div class="meta">
+      <span class="state" id="state"></span>
+      <span class="time" id="time">0:00 / 0:00</span>
+    </div>
+  </div>
+  <a class="open" id="open" target="_top" href="#">Open this page
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</footer>
+<script src="engine.js"></script>
+<script type="module" src="play.js"></script>
+</body>
+</html>

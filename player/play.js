@@ -1,0 +1,281 @@
+// The player: a tour played live in the real app (the iframe above the bar), with the narration's audio as the
+// clock. Pause and the page is the viewer's to click around in; play again and it picks up where it stopped. If the
+// viewer changed something while paused (clicked, typed, followed a link), play starts the current chapter over
+// from its own address, so the narration never describes a screen the viewer isn't looking at.
+//
+// The app must be served from this page's origin: the player reaches into the iframe to move the cursor and click.
+// Locally, serve.mjs puts both on one origin; on a live site this page sits in the site's own folder.
+//
+//   play.html?tour=<url of tour.json>&lang=ar&chapter=3
+const { createEngine, estimate, pick, chapters, urlFor } = window.Playable;
+const $ = (id) => document.getElementById(id);
+const qs = new URLSearchParams(location.search);
+const tourUrl = new URL(qs.get('tour') || 'tour/tour.json', location.href);
+const frame = $('app');
+
+const STRINGS = {
+  en: {
+    eyebrow: 'Playable walkthrough', play: 'Play', pause: 'Pause', open: 'Open this page',
+    fine: (n, t) => `${n} chapters · ${t} · pause any time and the page is yours to try`,
+    loading: (c, n) => `Chapter ${c} of ${n} · loading the page`,
+    playing: (c, n) => `Chapter ${c} of ${n} · pause any time to try it yourself`,
+    pausedTouched: 'Paused · you changed the page, so play starts this chapter over',
+    paused: 'Paused · the page is yours to try · play picks up here',
+    ended: "That's the tour · the page is yours to explore",
+    failed: (e) => `This step no longer matches the app: ${e}`,
+    silent: 'Silent preview, no narration recorded yet · ',
+  },
+  ar: {
+    eyebrow: 'جولة تفاعلية', play: 'تشغيل', pause: 'إيقاف مؤقت', open: 'افتح هذه الصفحة',
+    fine: (n, t) => `${n} فصول · ${t} · أوقف العرض متى شئت، فالصفحة بين يديك`,
+    loading: (c, n) => `الفصل ${c} من ${n} · جارٍ تحميل الصفحة`,
+    playing: (c, n) => `الفصل ${c} من ${n} · أوقف العرض متى شئت وجرّب بنفسك`,
+    pausedTouched: 'متوقف · غيّرت الصفحة، فسيبدأ التشغيل هذا الفصل من جديد',
+    paused: 'متوقف · الصفحة بين يديك · يستأنف التشغيل من هنا',
+    ended: 'انتهت الجولة · الصفحة بين يديك',
+    failed: (e) => `هذه الخطوة لم تعد تطابق الصفحة: ${e}`,
+    silent: 'معاينة صامتة، لم يُسجَّل التعليق بعد · ',
+  },
+};
+
+let tour, steps, chaps, chapterOf = [], lengths = [], offsets = [], total = 0, lang = 'en', S = STRINGS.en;
+let i = 0, mode = 'idle', ctl = null, track = null, engine = null, lastPos = null;
+let touched = false, expectLoad = false, error = null, silent = false, pendingPause = false;
+const broken = new Set();
+
+let paused = false, waiters = [];
+const gate = () => (paused ? new Promise((r) => waiters.push(r)) : Promise.resolve());
+const release = () => { paused = false; waiters.splice(0).forEach((r) => r()); };
+
+const abortError = () => Object.assign(new Error('stopped'), { name: 'AbortError' });
+const sleep = (ms, signal) => new Promise((resolve, reject) => {
+  const t = setTimeout(resolve, ms);
+  signal?.addEventListener('abort', () => { clearTimeout(t); reject(abortError()); }, { once: true });
+});
+const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+
+/** The narration for a step: its recorded audio, or a timer standing in for it in a silent preview. */
+function makeTrack(step, length) {
+  const src = pick(step.audio, lang);
+  if (src) {
+    const audio = new Audio(new URL(src, tourUrl).href);
+    audio.preload = 'auto';
+    const ended = new Promise((resolve, reject) => {
+      audio.addEventListener('ended', resolve, { once: true });
+      audio.addEventListener('error', () => reject(new Error(`The narration ${src} won't play`)), { once: true });
+    });
+    ended.catch(() => {});
+    return {
+      time: () => (audio.ended ? Infinity : audio.currentTime),
+      position: () => (audio.ended ? length : audio.currentTime),
+      play: () => (audio.ended ? Promise.resolve() : audio.play()),
+      pause: () => audio.pause(),
+      stop: () => { audio.pause(); audio.removeAttribute('src'); audio.load(); },
+      ended,
+    };
+  }
+  let acc = 0, since = null, timer, done;
+  const ended = new Promise((r) => (done = r));
+  const now = () => acc + (since == null ? 0 : (performance.now() - since) / 1000);
+  return {
+    time: now,
+    position: () => Math.min(now(), length),
+    play: () => { if (since == null) { since = performance.now(); timer = setTimeout(done, (length - acc) * 1000); } return Promise.resolve(); },
+    pause: () => { if (since != null) { acc = now(); since = null; clearTimeout(timer); } },
+    stop: () => clearTimeout(timer),
+    ended,
+  };
+}
+
+function here() { try { const l = frame.contentWindow.location; return l.pathname + l.search; } catch { return null; } }
+
+function load(url, signal) {
+  return new Promise((resolve, reject) => {
+    const done = () => { frame.removeEventListener('load', done); resolve(); };
+    signal.addEventListener('abort', () => { frame.removeEventListener('load', done); reject(abortError()); }, { once: true });
+    expectLoad = true;
+    frame.addEventListener('load', done);
+    frame.src = url.href;
+  });
+}
+
+/** Bring the iframe to the step's address if it has one (reloading for a clean start when asked) and wait until it's ready. */
+async function arrive(step, fresh, signal) {
+  const address = urlFor(step, lang);
+  if (address) {
+    const url = new URL(address, location.origin);
+    if (fresh || here() !== url.pathname + url.search) await load(url, signal);
+  }
+  const win = frame.contentWindow, doc = win.document;
+  const sel = step.ready || (step.do || []).find((a) => a.target)?.target;
+  for (let waited = 0; sel && !doc.querySelector(sel); waited += 100) {
+    if (waited > 12000) throw new Error(`The page never showed ${sel}`);
+    await sleep(100, signal);
+  }
+  await doc.fonts?.ready;
+  if (address) await sleep(300, signal);
+  if (!engine || engine.doc !== doc) engine = createEngine(win, { from: lastPos || undefined, lang });
+  return engine;
+}
+
+async function start(n, { fresh = false } = {}) {
+  ctl?.abort();
+  track?.stop();
+  release();
+  ctl = new AbortController();
+  const { signal } = ctl;
+  i = n; touched = false; error = null; pendingPause = false; mode = 'loading'; render();
+  const step = steps[n];
+  try {
+    const eng = await arrive(step, fresh, signal);
+    eng.setIdle(false);
+    track = makeTrack(step, lengths[n]);
+    mode = 'playing';
+    // Pause pressed while the page was loading: arrive, then wait at the start of the step.
+    if (pendingPause) { pendingPause = false; paused = true; mode = 'paused'; eng.setIdle(true); }
+    render();
+    await gate();
+    await track.play();
+    await Promise.all([eng.runStep(step, { clock: track.time, gate, signal, duration: lengths[n] }), track.ended]);
+    lastPos = eng.position();
+    await sleep(chapterOf[n + 1] !== chapterOf[n] ? 650 : 250, signal);
+    await gate();
+    if (signal.aborted) return;
+    if (n + 1 < steps.length) return start(n + 1);
+    mode = 'ended'; eng.setIdle(true); eng.clear(); render();
+  } catch (e) {
+    if (signal.aborted || e.name === 'AbortError') return;
+    if (e.name === 'MissingTarget') broken.add(chapterOf[n]);
+    track?.stop();
+    error = e.message; mode = 'failed'; render();
+  }
+}
+
+const chapterStart = (n) => chaps[chapterOf[n]].first;
+
+function pause() {
+  if (mode !== 'playing') return;
+  paused = true; track?.pause(); engine?.setIdle(true); mode = 'paused'; render();
+}
+
+function play() {
+  $('cover').hidden = true; $('bar').hidden = false;
+  if (mode === 'paused') {
+    if (touched) return start(chapterStart(i), { fresh: true });
+    engine?.setIdle(false); mode = 'playing'; release(); track?.play(); render();
+    return;
+  }
+  if (mode === 'ended') return start(0, { fresh: true });
+  if (mode === 'idle') return start(i);
+  if (mode === 'failed') return start(chapterStart(i), { fresh: true });
+}
+
+function toggle() {
+  if (mode === 'loading') { pendingPause = !pendingPause; render(); return; }
+  if (mode === 'playing') pause(); else play();
+}
+
+function seek(c) { $('cover').hidden = true; $('bar').hidden = false; start(chaps[c].first, { fresh: true }); }
+
+// The viewer taking over: a real click or key press inside the app pauses the tour and marks the page as changed.
+// A load nobody asked for (the viewer followed a link) counts the same way.
+function watch() {
+  let doc;
+  try { doc = frame.contentWindow.document; } catch { return; }
+  const took = (e) => { if (!e.isTrusted) return; touched = true; if (mode === 'playing') pause(); render(); };
+  doc.addEventListener('pointerdown', took, true);
+  doc.addEventListener('keydown', took, true);
+}
+frame.addEventListener('load', () => {
+  if (frame.contentWindow.location.href === 'about:blank') return;
+  if (expectLoad) expectLoad = false;
+  else { touched = true; if (mode === 'playing') pause(); }
+  watch();
+  $('open').href = frame.contentWindow.location.href;
+  if (steps) render();
+});
+
+function stateText() {
+  const c = chapterOf[i] + 1, n = chaps.length;
+  switch (mode) {
+    case 'loading': return S.loading(c, n);
+    case 'playing': return S.playing(c, n);
+    case 'paused': return touched ? S.pausedTouched : S.paused;
+    case 'ended': return S.ended;
+    case 'failed': return S.failed(error);
+    default: return '';
+  }
+}
+
+function render() {
+  const going = mode === 'playing' || (mode === 'loading' && !pendingPause);
+  document.body.classList.toggle('playing', going);
+  $('toggle').setAttribute('aria-label', going ? S.pause : S.play);
+  $('caption').textContent = pick(steps[i].say, lang);
+  const s = $('state');
+  s.textContent = (silent ? S.silent : '') + stateText();
+  s.classList.toggle('warn', mode === 'failed' || silent);
+  [...$('track').children].forEach((el, c) => { el.classList.toggle('on', c === chapterOf[i]); el.classList.toggle('broken', broken.has(c)); });
+}
+
+function tick() {
+  const pos = mode === 'ended' ? total : offsets[i] + Math.min(track && (mode === 'playing' || mode === 'paused') ? track.position() : 0, lengths[i]);
+  $('time').textContent = `${fmt(pos)} / ${fmt(total)}`;
+  [...$('track').children].forEach((el, c) => {
+    const a = offsets[chaps[c].first], b = chaps[c].steps.reduce((sum, k) => sum + lengths[k], 0);
+    el.firstChild.style.width = `${(Math.max(0, Math.min(1, (pos - a) / b)) * 100).toFixed(2)}%`;
+  });
+  requestAnimationFrame(tick);
+}
+
+async function boot() {
+  tour = await fetch(tourUrl).then((r) => { if (!r.ok) throw new Error(`No tour at ${tourUrl}`); return r.json(); });
+  steps = tour.steps;
+  const langs = tour.langs || [tour.lang || 'en'];
+  lang = langs.includes(qs.get('lang')) ? qs.get('lang') : tour.lang || langs[0];
+  S = STRINGS[lang] || STRINGS.en;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  chaps = chapters(tour);
+  chaps.forEach((c, k) => c.steps.forEach((s) => (chapterOf[s] = k)));
+  silent = steps.some((s) => !pick(s.audio, lang));
+  lengths = steps.map((s) => pick(s.duration, lang) || estimate(s.say, lang));
+  offsets = lengths.map((_, k) => lengths.slice(0, k).reduce((a, b) => a + b, 0));
+  total = lengths.reduce((a, b) => a + b, 0);
+  const title = pick(tour.title, lang);
+  document.title = `${title} · ${S.eyebrow}`;
+  document.querySelector('.eyebrow').textContent = S.eyebrow;
+  document.querySelector('#cover-play span').textContent = S.play;
+  $('open').firstChild.textContent = `${S.open} `;
+  $('cover-title').textContent = title;
+  $('cover-lede').textContent = pick(tour.lede, lang) || '';
+  const credit = pick(tour.voice?.credit, lang);
+  $('cover-fine').textContent = S.fine(chaps.length, fmt(total)) + (credit ? ` · ${credit}` : '') + (silent ? ` · ${S.silent.replace(/ · $/, '')}` : '');
+  chaps.forEach((c, k) => {
+    const b = document.createElement('button');
+    const name = `${k + 1}. ${pick(c.title, lang)}`;
+    b.type = 'button'; b.className = 'seg'; b.title = name;
+    b.style.flexGrow = String(c.steps.reduce((sum, s) => sum + lengths[s], 0));
+    b.append(document.createElement('i'));
+    const label = document.createElement('span'); label.textContent = name; b.append(label);
+    b.addEventListener('click', () => seek(k));
+    $('track').append(b);
+  });
+  const c0 = Math.min(Math.max(0, Number(qs.get('chapter') || 1) - 1), chaps.length - 1);
+  i = chaps[c0].first;
+  render();
+  $('cover').hidden = false;
+  $('cover-play').addEventListener('click', play);
+  $('toggle').addEventListener('click', toggle);
+  document.addEventListener('keydown', (e) => {
+    if (e.target.closest?.('button, a, input')) return;
+    const c = chapterOf[i], next = lang === 'ar' ? 'ArrowLeft' : 'ArrowRight', prev = lang === 'ar' ? 'ArrowRight' : 'ArrowLeft';
+    if (e.key === ' ') { e.preventDefault(); toggle(); }
+    else if (e.key === next && c + 1 < chaps.length) seek(c + 1);
+    else if (e.key === prev && c > 0) seek(c - 1);
+  });
+  await load(new URL(urlFor(steps[i], lang), location.origin), new AbortController().signal);
+  requestAnimationFrame(tick);
+}
+
+boot().catch((e) => { document.body.textContent = `The walkthrough couldn't start: ${e.message}`; });

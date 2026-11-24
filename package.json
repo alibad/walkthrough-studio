@@ -24,7 +24,11 @@
     "persona:moments": "node scripts/generate-persona-moments.mjs",
     "persona:story": "node scripts/render-persona-story.mjs",
     "tts:sample": "node scripts/tts-sample.mjs",
-    "reset:demo": "node scripts/reset-demo.mjs"
+    "reset:demo": "node scripts/reset-demo.mjs",
+    "play:serve": "node player/serve.mjs",
+    "play:check": "node player/check.mjs",
+    "play:voice": "node player/voice.mjs",
+    "play:record": "node player/record.mjs"
   },
   "engines": {
     "node": ">=20.9"
