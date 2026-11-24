@@ -205,6 +205,9 @@ plugins/walkthrough/
     SKILL.md                 start here
     references/              contracts and runbooks
     drivers/                 one per platform
+player/                      playable walkthroughs: one tour script plays live in the
+                             app, films to an MP4 and runs as a check (player/README.md).
+                             Generic: tours and their narration live with each app.
 scripts/
   walk-wikipedia.mjs              reference walk script — clone this
   generate-creatives.mjs     brand illustration via gpt-image-2
