@@ -6,6 +6,7 @@
 //   node player/check.mjs --app http://localhost:5270 --tour ../my-app/walkthroughs/intro [--lang en] [--speed 4]
 //     [--out check.json] [--browser <chromium exe>]
 import { chromium } from 'playwright';
+import { launchChromium } from './browser.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -23,9 +24,8 @@ const tour = JSON.parse((await readFile(join(tourDir, 'tour.json'), 'utf8')).rep
 const speed = Number(args.speed || 4);
 const langs = args.lang ? [args.lang] : tour.langs || [tour.lang || 'en'];
 
-// --browser (or PLAYABLE_BROWSER) names an installed Chromium when Playwright's own revision isn't downloaded.
-const executablePath = args.browser || process.env.PLAYABLE_BROWSER;
-const browser = await chromium.launch(executablePath ? { executablePath } : {});
+// --browser (or PLAYABLE_BROWSER) names a Chromium; otherwise Playwright's own, then the installed Edge or Chrome.
+const browser = await launchChromium(chromium, { executablePath: args.browser || process.env.PLAYABLE_BROWSER });
 const results = [];
 try {
   for (const lang of langs) {

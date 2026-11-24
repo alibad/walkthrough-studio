@@ -20,6 +20,7 @@ import { dirname, join, relative, resolve } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
+import { launchChromium } from './browser.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).join(' ').split(/\s*--/).filter(Boolean).map((s) => {
   const [k, ...v] = s.trim().split(/\s+/);
@@ -44,9 +45,9 @@ const build = args.build || 'unknown';
 /** The encoded clip's length, which the renderer's trim must not pass (a take's wall-clock seconds run a frame long). */
 const clipSeconds = (file) => Math.floor(Number(spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', file], { encoding: 'utf8' }).stdout) * 1000) / 1000;
 
-// --browser (or PLAYABLE_BROWSER) names an installed Chromium when Playwright's own revision isn't downloaded.
-const executablePath = args.browser || process.env.PLAYABLE_BROWSER;
-const browser = await chromium.launch({ ...(executablePath ? { executablePath } : {}), args: [`--force-device-scale-factor=${scale}`, `--window-size=${vp.width},${vp.height}`] });
+// --browser (or PLAYABLE_BROWSER) names a Chromium; otherwise Playwright's own, then the installed Edge or Chrome.
+const browser = await launchChromium(chromium, { executablePath: args.browser || process.env.PLAYABLE_BROWSER,
+  args: [`--force-device-scale-factor=${scale}`, `--window-size=${vp.width},${vp.height}`] });
 const scenes = [];
 let from = null;
 try {

@@ -81,8 +81,8 @@ node player/record.mjs --app http://localhost:5270 --tour ../my-app/walkthroughs
 python ~/.claude/skills/narrate-video/scripts/render.py F:/work/intro-20261124/plan.en.json F:/work/intro-20261124/cut-en
 ```
 
-`check.mjs` and `record.mjs` take `--browser <chromium exe>` (or `PLAYABLE_BROWSER`) when Playwright's own browser
-revision isn't downloaded.
+`check.mjs` and `record.mjs` run in `--browser <chromium exe>` (or `PLAYABLE_BROWSER`) when given, otherwise in
+Playwright's own Chromium, and when that isn't downloaded, in the installed Edge or Chrome. They print which.
 
 ## How the player behaves
 
